@@ -1,0 +1,134 @@
+import 'dart:io';
+
+import 'package:b21pdf/core/ads/ad_service.dart';
+import 'package:b21pdf/core/ads/ad_scene.dart';
+import 'package:b21pdf/core/ads/ad_placement.dart';
+import 'package:b21pdf/core/config/app_config.dart';
+import 'package:b21pdf/core/user/user_eligibility_service.dart';
+import 'package:b21pdf/core/analytics/analytics_event.dart';
+import 'package:b21pdf/core/analytics/analytics_service.dart';
+import 'package:b21pdf/core/presentation/base_controller.dart';
+import 'package:b21pdf/core/events/app_event.dart';
+import 'package:b21pdf/core/events/app_event_type.dart';
+import 'package:b21pdf/core/events/app_event_bus.dart';
+import 'package:b21pdf/core/permissions/permission_service.dart';
+import 'package:b21pdf/core/storage/preferences/insert_widget_cache.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+enum DocumentCategory {
+  all("All", "all_tab_sel", "all_tab_uns"),
+  pdf("PDF", "pdf_tab_sel", "pdf_tab_uns"),
+  word("Word", "word_tab_sel", "word_tab_uns"),
+  excel("Excel", "excel_tab_sel", "excel_tab_uns");
+
+  final String label;
+  final String selectedIcon;
+  final String unselectedIcon;
+
+  const DocumentCategory(this.label, this.selectedIcon, this.unselectedIcon);
+}
+
+class LibraryTabController extends BaseController {
+  final TextEditingController textEditingController = TextEditingController();
+  final PageController pageController = PageController();
+  int selectedTabIndex = 0;
+  bool showAddWidget = !InsertWidgetCache.readAdded();
+  bool requestingStoragePermission = false;
+
+  @override
+  void onReady() {
+    super.onReady();
+    requestDocumentStoragePermission();
+  }
+
+  void selectCategory(DocumentCategory category) {
+    AnalyticsService.instance.trackEvent(
+      pointType: AnalyticsEvent.file_filter_click,
+    );
+    pageController.animateToPage(
+      category.index,
+      duration: const Duration(milliseconds: 100),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  void onPageChanged(int index, BuildContext context) {
+    if (selectedTabIndex == index) return;
+    selectedTabIndex = index;
+    update();
+    AdService.instance.showCachedAd(
+      adScene: AdScene.pr_user_use,
+      adPosId: AdPlacement.pr_up_int,
+      adHostContext: context,
+    );
+  }
+
+  void updateFileSearchQuery(String keyword) => AppEventBus.instance.publish(
+    AppEvent(type: AppEventType.fileSearch, stringValue: keyword),
+  );
+
+  @override
+  bool subscribesToAppEvents() => true;
+
+  @override
+  void onAppEvent(AppEvent event) {
+    if (event.type == AppEventType.widgetAdded) {
+      showAddWidget = false;
+      update();
+    } else if (event.type == AppEventType.storagePermissionRequest) {
+      requestDocumentStoragePermission();
+    }
+  }
+
+  Future<void> requestDocumentStoragePermission() async {
+    if (requestingStoragePermission) return;
+    requestingStoragePermission = true;
+    try {
+      final Permission permission = await _resolveRequiredStoragePermission();
+      final PermissionResult result = await PermissionService.instance
+          .requestPermission(permission: permission);
+      if (result.isShowPermissionAd) {
+        AnalyticsService.instance.trackEvent(
+          pointType: AnalyticsEvent.storage_auth_click,
+        );
+        if (UserEligibilityService.instance.isEligibleUser) {
+          AdService.instance.showCachedAd(
+            adScene: AdScene.pr_launch,
+            adPosId: AdPlacement.pr_permission_open,
+          );
+        }
+      }
+      if (!result.isGranted) return;
+      AppEventBus.instance.publish(
+        AppEvent(type: AppEventType.storagePermissionGranted),
+      );
+    } finally {
+      requestingStoragePermission = false;
+    }
+  }
+
+  Future<Permission> _resolveRequiredStoragePermission() async {
+    if (!Platform.isAndroid) return Permission.storage;
+    final androidInfo = await DeviceInfoPlugin().androidInfo;
+    return androidInfo.version.sdkInt >= 30
+        ? Permission.manageExternalStorage
+        : Permission.storage;
+  }
+
+  void runDebugActions() async {
+    if (!kDebugMode) {
+      return;
+    }
+  }
+
+  @override
+  void onClose() {
+    textEditingController.dispose();
+    pageController.dispose();
+    super.onClose();
+  }
+}

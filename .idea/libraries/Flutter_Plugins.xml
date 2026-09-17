@@ -1,0 +1,67 @@
+<component name="libraryTable">
+  <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/jni_flutter-1.0.2" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/image_picker_macos-0.2.2+1" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.5" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.5" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_web-32.2.9" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/google_mobile_ads-7.0.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_analytics_web-0.6.1+9" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.2" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/sqflite_darwin-2.4.3+1" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/share_plus-12.0.1" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher-6.3.2" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/printing-5.14.3" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_core_web-3.9.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_tba_info-0.0.9" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_foundation-2.6.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_app_lifecycle-0.0.3" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_core-4.11.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_android-2.3.1" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_analytics-12.4.3" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/image_picker_for_web-3.1.1" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_check_af_new-0.0.2" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.32" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/file_selector_linux-0.9.4" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/file_selector_windows-0.9.3+5" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider-2.1.6" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/sqflite-2.4.2" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler-12.0.3" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_remote_config_web-1.10.10" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/syncfusion_flutter_pdfviewer-32.2.9" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_linux-3.2.2" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/webview_flutter_android-4.14.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0" />
+      <root url="file://$PROJECT_DIR$/../plugins/flutter_boom_notification_plugins" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/image_picker_linux-0.2.2" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/image_picker_ios-0.8.13+6" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/appsflyer_sdk_plus-0.0.4" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/sqflite_android-2.4.3" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_preview_file-0.0.9" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_custom_facebook-0.0.5" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/android_play_install_referrer-0.4.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/doc_scan_flutter-2.0.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/image_picker_android-0.8.13+19" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/webview_flutter-4.13.1" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.4+1" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/device_info_plus-12.4.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/image_picker-1.2.2" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.26.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/image_picker_windows-0.2.2" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_web-2.4.3" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_ios-6.4.1" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/jni-1.0.3" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/fluttertoast-9.1.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_remote_config-6.5.3" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.5" />
+      <root url="file://$PROJECT_DIR$/../plugins/flutter_pdf_ad_plugins" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/app_settings-6.1.1" />
+      <root url="file://$PROJECT_DIR$/../plugins/flutter_add_widget_plugins" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_pdf_risk_control_plugins-0.0.2" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/photo_manager-3.5.0" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
