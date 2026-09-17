@@ -20,15 +20,15 @@ abstract class BaseScreen<T extends BaseController> extends StatefulWidget {
     return false;
   }
 
-  Color get backgroundColor => Colors.white;
+  Color get backgroundColor => Color(0xffF5F2E9);
 
-  Color get navigationBarColor => Colors.white;
+  Color get navigationBarColor => Color(0xffF5F2E9);
 
   SystemUiOverlayStyle get systemUiOverlayStyle => SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
     statusBarBrightness: Brightness.light,
-    systemNavigationBarColor: Colors.white,
+    systemNavigationBarColor: navigationBarColor,
     systemNavigationBarIconBrightness: Brightness.dark,
     systemNavigationBarDividerColor: Colors.transparent,
   );

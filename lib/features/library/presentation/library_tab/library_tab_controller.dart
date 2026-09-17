@@ -20,16 +20,14 @@ import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plug
 import 'package:permission_handler/permission_handler.dart';
 
 enum DocumentCategory {
-  all("All", "all_tab_sel", "all_tab_uns"),
-  pdf("PDF", "pdf_tab_sel", "pdf_tab_uns"),
-  word("Word", "word_tab_sel", "word_tab_uns"),
-  excel("Excel", "excel_tab_sel", "excel_tab_uns");
+  all("All"),
+  pdf("PDF"),
+  word("Word"),
+  excel("Excel");
 
   final String label;
-  final String selectedIcon;
-  final String unselectedIcon;
 
-  const DocumentCategory(this.label, this.selectedIcon, this.unselectedIcon);
+  const DocumentCategory(this.label);
 }
 
 class LibraryTabController extends BaseController {

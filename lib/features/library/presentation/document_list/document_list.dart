@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_preview_file/flutter_preview_file.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -40,34 +41,14 @@ class _DocumentsListSectionState
       init: controller,
       global: false,
       builder: (controller) {
-        return Stack(
-          children: [
-            Container(
-              width: double.infinity,
-              height: 64.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16.w),
-                  topRight: Radius.circular(16.w),
-                ),
-                border: Border.all(
-                  width: 1.w,
-                  color: Colors.white,
-                ),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xffECE4FF),Color(0xffFCFBFF)],
-                ),
-              ),
-            ),
-            Column(
-              children: [
-                _buildSortControls(controller),
-                _buildContentSection(controller),
-              ],
-            )
-          ],
+        return Container(
+          margin: EdgeInsets.only(left: 12.w,right: 12.w),
+          child: Column(
+            children: [
+              _buildSortControls(controller),
+              _buildContentSection(controller),
+            ],
+          ),
         );
       },
     );
@@ -75,9 +56,8 @@ class _DocumentsListSectionState
 
   Widget _buildSortControls(DocumentListController controller) => Container(
     width: double.infinity,
-    height: 48.h,
+    height: 44.h,
     alignment: Alignment.centerLeft,
-    padding: EdgeInsets.only(left: 16.w,right: 16.w),
     child: Row(
       children: [
         Expanded(
@@ -87,10 +67,11 @@ class _DocumentsListSectionState
             },
             child: LocalizedTextView(
               "Local Storage".tr,
-              fontSize: 18.sp,
-              color: Colors.black,
+              fontSize: 16.sp,
+              color: Color(0xff333333),
               fontWeight: FontWeight.bold,
               overflow: TextOverflow.ellipsis,
+              fontType: FontType.extra,
             ),
           ),
         ),
@@ -104,15 +85,16 @@ class _DocumentsListSectionState
             children: [
               AssetPictureView(
                 "document_library/sort_menu",
-                width: 20.w,
-                height: 20.w,
+                width: 24.w,
+                height: 24.w,
               ),
-              SizedBox(width: 4.w),
+              SizedBox(width: 2.w),
               LocalizedTextView(
                 "Sort".tr,
-                fontSize: 14.sp,
-                color: Color(0xff8E9091),
+                fontSize: 10.sp,
+                color: Color(0xff334155),
                 fontWeight: FontWeight.w500,
+                fontType: FontType.semi,
               ),
             ],
           ),
@@ -127,15 +109,16 @@ class _DocumentsListSectionState
             children: [
               AssetPictureView(
                 "document_library/select_documents",
-                width: 20.w,
-                height: 20.w,
+                width: 24.w,
+                height: 24.w,
               ),
-              SizedBox(width: 4.w),
+              SizedBox(width: 2.w),
               LocalizedTextView(
                 "Select".tr,
-                fontSize: 14.sp,
-                color: Color(0xff8E9091),
+                fontSize: 10.sp,
+                color: Color(0xff334155),
                 fontWeight: FontWeight.w500,
+                fontType: FontType.semi,
               ),
             ],
           ),
@@ -145,28 +128,20 @@ class _DocumentsListSectionState
   );
 
   Widget _buildContentSection(DocumentListController controller) => Expanded(
-    child: Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12.w),
+    child: switch (controller.listState) {
+      DocumentListState.noPermission => _buildDemoDocumentEmptyState(
+        controller: controller,
+        emptyWidget: _buildPermissionRequiredState(controller),
       ),
-      child: switch (controller.listState) {
-        DocumentListState.noPermission => _buildDemoDocumentEmptyState(
-          controller: controller,
-          emptyWidget: _buildPermissionRequiredState(controller),
-        ),
-        DocumentListState.loading => _buildLoadingState(),
-        DocumentListState.loaded =>
-          controller.visibleFiles.isEmpty
-              ? _buildDemoDocumentEmptyState(
-                  controller: controller,
-                  emptyWidget: _buildNoFilesState(controller),
-                )
-              : _buildDocumentListViewport(controller),
-      },
-    ),
+      DocumentListState.loading => _buildLoadingState(),
+      DocumentListState.loaded =>
+        controller.visibleFiles.isEmpty
+            ? _buildDemoDocumentEmptyState(
+                controller: controller,
+                emptyWidget: _buildNoFilesState(controller),
+              )
+            : _buildDocumentListViewport(controller),
+    },
   );
 
   Widget _buildDocumentListViewport(DocumentListController controller) =>
@@ -188,9 +163,12 @@ class _DocumentsListSectionState
         : 0;
     final int itemCount = controller.visibleFiles.length + nativeAdCount;
     controller.syncNativeAdListState(itemCount);
-    return ListView.separated(
+    return MasonryGridView.count(
+      crossAxisCount: 2,
+      mainAxisSpacing: 8.h,
+      crossAxisSpacing: 8.w,
       itemCount: itemCount,
-      itemBuilder: (context, index) {
+      itemBuilder: (BuildContext context, int index) {
         if (canShowNativeAd && controller.isNativeAdIndex(index)) {
           return _buildNativeAdSlot(
             controller: controller,
@@ -204,12 +182,6 @@ class _DocumentsListSectionState
         final file = controller.visibleFiles[fileIndex];
         return _buildFileItem(controller, file);
       },
-      separatorBuilder: (BuildContext context, int index) => Container(
-        width: double.infinity,
-        height: 0.5.h,
-        color: Color(0xffF5F7F9),
-        margin: EdgeInsets.only(left: 16.w),
-      ),
     );
   }
 
@@ -252,18 +224,12 @@ class _DocumentsListSectionState
     _ => 'branding/word_logo',
   };
 
-  Color _fileBackgroundColor(FileToolsFileInfo file) => switch (file.type) {
-    FileToolsDocumentType.word => const Color(0xff2C90FE),
-    FileToolsDocumentType.excel => const Color(0xff01C87C),
-    _ => const Color(0xffF85758),
-  };
-
   String _formatFileMetadata(FileToolsFileInfo file) {
     final date = DateTime.fromMillisecondsSinceEpoch(file.updateTime ?? 0);
     final dateText =
         '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
     final size = (file.size ?? 0) / 1024 / 1024;
-    return '$dateText | ${size.toStringAsFixed(1)}M';
+    return '$dateText · ${size.toStringAsFixed(1)}M';
   }
 
   Widget _buildFileItem(
@@ -274,32 +240,29 @@ class _DocumentsListSectionState
       onPressed: () => controller.onFileItemPressed(file),
       child: Container(
         width: double.infinity,
-        height: 68.h,
-        alignment: Alignment.centerLeft,
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: Row(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(2.w),
+        ),
+        padding: EdgeInsets.all(12.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AssetPictureView(_fileIcon(file), width: 32.w, height: 32.w),
-            SizedBox(width: 12.w),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LocalizedTextView(
-                    file.name ?? '',
-                    fontSize: 14.sp,
-                    color: Color(0xff07080E),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  LocalizedTextView(
-                    _formatFileMetadata(file),
-                    fontSize: 12.sp,
-                    color: const Color(0xff8E9091),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
+            AssetPictureView(_fileIcon(file), width: 40.w, height: 40.w),
+            LocalizedTextView(
+              file.name ?? '',
+              fontSize: 14.sp,
+              color: Color(0xff000000),
+              overflow: TextOverflow.ellipsis,
+              fontType: FontType.black,
+            ),
+            LocalizedTextView(
+              _formatFileMetadata(file),
+              fontSize: 10.sp,
+              color: const Color(0xff5E5E5E),
+              overflow: TextOverflow.ellipsis,
+              fontType: FontType.medium,
             ),
           ],
         ),
@@ -373,41 +336,42 @@ class _DocumentsListSectionState
         children: [
           AssetPictureView(
             "document_library/storage_permission",
-            width: 120.w,
+            width: 140.w,
             height: 120.w,
           ),
           SizedBox(height: 12.h),
           LocalizedTextView(
             "No permissions granted".tr,
-            fontSize: 20.sp,
-            color: Color(0xff07080E),
-            fontWeight: FontWeight.bold,
+            fontSize: 16.sp,
+            color: Color(0xff1A1D22),
+            fontType: FontType.extra,
           ),
           SizedBox(height: 6.h),
           LocalizedTextView(
             "Permission is required to access all files".tr,
-            fontSize: 14.sp,
-            color: Color(0xff8E9091),
+            fontSize: 12.sp,
+            color: Color(0xff7B7B7B),
+            fontType: FontType.medium,
           ),
-          SizedBox(height: 20.h),
+          SizedBox(height: 34.h),
           TapGuardView(
             onPressed: () {
               controller.onRequestPermissionPressed();
             },
             child: Container(
-              width: double.infinity,
-              height: 48.h,
+              width: 208.w,
+              height: 44.h,
               alignment: Alignment.center,
-              margin: EdgeInsets.only(left: 24.w,right: 24.w),
               decoration: BoxDecoration(
-                color: Color(0xff8C69F3),
-                borderRadius: BorderRadius.circular(12.w),
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(2.w),
               ),
               child: LocalizedTextView(
                 "Go to settings".tr,
-                fontSize: 18.sp,
+                fontSize: 16.sp,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
+                fontType: FontType.semi,
               ),
             ),
           ),

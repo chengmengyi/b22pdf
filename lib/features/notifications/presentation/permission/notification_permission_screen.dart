@@ -24,100 +24,138 @@ class NotificationPermissionScreen
     BuildContext context,
     NotificationPermissionController controller,
   ) {
-    return Column(
+    return Stack(
+      alignment: Alignment.topCenter,
       children: [
         AssetPictureView(
-          "permissions/notification_illustration",
+          'permissions/overlay_illustration',
           width: double.infinity,
-          height: 320.h,
+          height: 360.h,
         ),
-        SizedBox(height: 24.h),
-        LocalizedTextView(
-          "This app has an update".tr,
-          fontSize: 24.sp,
-          color: Color(0xff07080E),
-          fontWeight: FontWeight.bold,
-        ),
-        SizedBox(height: 10.h),
-        LocalizedTextView(
-          "Please upgrade to enjoy the latest functions.".tr,
-          fontSize: 14.sp,
-          color: Color(0xff8E9091),
-          fontWeight: FontWeight.w500,
-        ),
-        Spacer(),
-        Container(
-          width: double.infinity,
-          padding: EdgeInsets.all(12.w),
-          margin: EdgeInsets.symmetric(horizontal: 40.w),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.w),
-            color: Color(0xffF5F7F9),
-          ),
-          child: Row(
-            children: [
-              AssetPictureView('branding/app_logo', width: 48.w, height: 48.w),
-              SizedBox(width: 8.w),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    LocalizedTextView(
-                      AppConfig.applicationName.tr,
-                      fontSize: 16.sp,
-                      color: Color(0xff07080E),
-                      fontWeight: FontWeight.bold,
-                      overflow: TextOverflow.ellipsis,
+        Column(
+          children: [
+            SizedBox(height: 130.h),
+            AssetPictureView(
+              "permissions/notification_illustration_image",
+              width: 203.w,
+              height: 140.h,
+            ),
+            SizedBox(height: 24.h),
+            LocalizedTextView(
+              "Stay Update".tr,
+              fontSize: 20.sp,
+              color: Color(0xff07080E),
+              fontWeight: FontWeight.bold,
+              fontType: FontType.extra,
+            ),
+            SizedBox(height: 20.h),
+            Container(
+              margin: EdgeInsets.only(left: 20.w,right: 20.w),
+              child: LocalizedTextView(
+                "Enable Notifications To Get Instant Alerts When Your File Processing Is Complete.".tr,
+                fontSize: 14.sp,
+                color: Color(0xff5E5E5E),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(height: 40.h),
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(12.w),
+              margin: EdgeInsets.symmetric(horizontal: 20.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(2.w),
+                color: Colors.white,
+              ),
+              child: Row(
+                children: [
+                  AssetPictureView('branding/app_logo', width: 48.w, height: 48.w),
+                  SizedBox(width: 8.w),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        LocalizedTextView(
+                          AppConfig.applicationName.tr,
+                          fontSize: 14.sp,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.ellipsis,
+                          fontType: FontType.extra,
+                        ),
+                        LocalizedTextView(
+                          "All notifications".tr,
+                          fontSize: 12.sp,
+                          color: Color(0xff979796),
+                          fontType: FontType.semi,
+                        ),
+                      ],
                     ),
-                    LocalizedTextView(
-                      "All notifications".tr,
-                      fontSize: 12.sp,
-                      color: Color(0xff525759),
-                    ),
-                  ],
+                  ),
+                  const SwitchView(),
+                ],
+              ),
+            ),
+            SizedBox(height: 12.h,),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //1.Tap The Toggle Switch Above
+                // 2.Allow Notifications In System Settings
+                LocalizedTextView(
+                  '1.Tap The Toggle Switch Above'.tr,
+                  fontSize: 14.sp,
+                  color: const Color(0xff5E5E5E),
+                  fontWeight: FontWeight.w500,
+                ),
+                LocalizedTextView(
+                  '2.Allow Notifications In System Settings'.tr,
+                  fontSize: 14.sp,
+                  color: const Color(0xff5E5E5E),
+                  fontWeight: FontWeight.w500,
+                ),
+              ],
+            ),
+            Spacer(),
+            PulseView(
+              child: TapGuardView(
+                onPressed: () {
+                  controller.onUpdatePressed();
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 48.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.symmetric(horizontal: 16.w),
+                  decoration: BoxDecoration(
+                    color: Color(0xffC40000),
+                    borderRadius: BorderRadius.circular(2.w),
+                  ),
+                  child: LocalizedTextView(
+                    'Update now'.tr,
+                    fontSize: 16.sp,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-              const SwitchView(),
-            ],
-          ),
-        ),
-        Spacer(),
-        PulseView(
-          child: TapGuardView(
-            onPressed: () {
-              controller.onUpdatePressed();
-            },
-            child: Container(
-              width: double.infinity,
-              height: 48.h,
-              alignment: Alignment.center,
-              margin: EdgeInsets.symmetric(horizontal: 16.w),
-              decoration: BoxDecoration(
-                color: Color(0xff8C69F3),
-                borderRadius: BorderRadius.circular(12.w),
-              ),
+            ),
+            SizedBox(height: 20.h),
+            TapGuardView(
+              onPressed: controller.onLaterPressed,
               child: LocalizedTextView(
-                'Update now'.tr,
-                fontSize: 16.sp,
-                color: Colors.white,
+                'Later'.tr,
+                fontSize: 14.sp,
+                color: const Color(0xff525759),
+                decoration: TextDecoration.underline,
                 fontWeight: FontWeight.bold,
               ),
             ),
-          ),
+            SizedBox(height: 25.h),
+          ],
         ),
-        SizedBox(height: 20.h),
-        TapGuardView(
-          onPressed: controller.onLaterPressed,
-          child: LocalizedTextView(
-            'Later'.tr,
-            fontSize: 14.sp,
-            color: const Color(0xff525759),
-            decoration: TextDecoration.underline,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SizedBox(height: 25.h),
       ],
     );
   }

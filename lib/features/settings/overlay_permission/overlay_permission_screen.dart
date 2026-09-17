@@ -23,103 +23,105 @@ class OverlayPermissionScreen extends BaseScreen<OverlayPermissionController> {
     BuildContext context,
     OverlayPermissionController controller,
   ) {
-    return Column(
+    return Stack(
+      alignment: Alignment.topCenter,
       children: [
         AssetPictureView(
           'permissions/overlay_illustration',
           width: double.infinity,
-          height: 320.h,
+          height: 360.h,
         ),
-        SizedBox(height: 24.h),
-        LocalizedTextView(
-          'Unlock Full PDF Potential'.tr,
-          fontSize: 24.sp,
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-        ),
-        SizedBox(height: 24.h),
         Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 130.h),
+            AssetPictureView(
+              'permissions/overlay_illustration_image',
+              width: 193.w,
+              height: 140.h,
+            ),
+            SizedBox(height: 24.h),
             LocalizedTextView(
-              'Step 1: find PDF flow in the list below.'.tr,
+              'This App Has An Update.'.tr,
+              fontSize: 16.sp,
+              color: Colors.black,
+              fontType: FontType.black,
+            ),
+            SizedBox(height: 24.h),
+            LocalizedTextView(
+              'Please upgrade to enjoy the latest functions.'.tr,
               fontSize: 14.sp,
-              color: const Color(0xff8E9091),
+              color: const Color(0xff5E5E5E),
               fontWeight: FontWeight.w500,
             ),
-            LocalizedTextView(
-              'Step 2: toggle the switch to ON.'.tr,
-              fontSize: 14.sp,
-              color: const Color(0xff8E9091),
-              fontWeight: FontWeight.w500,
-            ),
-          ],
-        ),
-        SizedBox(height: 56.h),
-        Container(
-          width: double.infinity,
-          padding: EdgeInsets.all(12.w),
-          margin: EdgeInsets.symmetric(horizontal: 40.w),
-          decoration: BoxDecoration(
-            color: Color(0xffF5F7F9),
-            borderRadius: BorderRadius.circular(12.w),
-          ),
-          child: Row(
-            children: [
-              AssetPictureView(
-                'branding/app_logo',
-                width: 40.w,
-                height: 40.w,
+            SizedBox(height: 40.h),
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(12.w),
+              margin: EdgeInsets.symmetric(horizontal: 20.w),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(2.w),
               ),
-              SizedBox(width: 8.w),
-              Expanded(
-                child: LocalizedTextView(
-                  AppConfig.applicationName.tr,
-                  fontSize: 16.sp,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  overflow: TextOverflow.ellipsis,
+              child: Row(
+                children: [
+                  AssetPictureView(
+                    'branding/app_logo',
+                    width: 40.w,
+                    height: 40.w,
+                  ),
+                  SizedBox(width: 8.w),
+                  Expanded(
+                    child: LocalizedTextView(
+                      AppConfig.applicationName.tr,
+                      fontSize: 12.sp,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.ellipsis,
+                      fontType: FontType.extra,
+                    ),
+                  ),
+                  const SwitchView(),
+                ],
+              ),
+            ),
+            const Spacer(),
+            PulseView(
+              child: TapGuardView(
+                onPressed: controller.onContinuePressed,
+                child: Container(
+                  width: double.infinity,
+                  height: 48.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.symmetric(horizontal: 20.w),
+                  decoration: BoxDecoration(
+                    color: Color(0xffC40000),
+                    borderRadius: BorderRadius.circular(2.w),
+                  ),
+                  child: LocalizedTextView(
+                    'Update Now'.tr,
+                    fontSize: 16.sp,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontType: FontType.extra,
+                  ),
                 ),
               ),
-              const SwitchView(),
-            ],
-          ),
-        ),
-        const Spacer(),
-        PulseView(
-          child: TapGuardView(
-            onPressed: controller.onContinuePressed,
-            child: Container(
-              width: double.infinity,
-              height: 48.h,
-              alignment: Alignment.center,
-              margin: EdgeInsets.symmetric(horizontal: 16.w),
-              decoration: BoxDecoration(
-                color: Color(0xff8C69F3),
-                borderRadius: BorderRadius.circular(16.w),
-              ),
+            ),
+            SizedBox(height: 20.h),
+            TapGuardView(
+              onPressed: controller.onLaterPressed,
               child: LocalizedTextView(
-                'Continue'.tr,
-                fontSize: 18.sp,
-                color: Colors.white,
+                'Later'.tr,
+                fontSize: 14.sp,
+                color: const Color(0xff4b5156),
+                decoration: TextDecoration.underline,
                 fontWeight: FontWeight.bold,
+                fontType: FontType.extra,
               ),
             ),
-          ),
-        ),
-        SizedBox(height: 20.h),
-        TapGuardView(
-          onPressed: controller.onLaterPressed,
-          child: LocalizedTextView(
-            'Later'.tr,
-            fontSize: 16.sp,
-            color: const Color(0xff4b5156),
-            decoration: TextDecoration.underline,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SizedBox(height: 36.h),
+            SizedBox(height: 36.h),
+          ],
+        )
       ],
     );
   }

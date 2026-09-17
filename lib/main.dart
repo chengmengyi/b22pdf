@@ -43,7 +43,7 @@ class PdfApplication extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 780),
+      designSize: const Size(360, 760),
       builder: (BuildContext context, Widget? child) => RefreshConfiguration(
         springDescription: const SpringDescription(
           mass: 0.8,

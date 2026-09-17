@@ -27,32 +27,33 @@ class LanguageSelectionScreen extends BaseScreen<LanguageSelectionController> {
   ) => GetBuilder<LanguageSelectionController>(
     init: controller,
     global: false,
-    builder: (controller) => Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: Column(
-        children: [
-          _buildHeader(),
-          SizedBox(height: 20.h),
-          _buildLanguageList(controller),
-          SizedBox(height: 30.h),
-          _buildBottomSection(controller),
-          SizedBox(height: 16.h),
-          _buildNativeAd(),
-        ],
-      ),
+    builder: (controller) => Column(
+      children: [
+        _buildHeader(),
+        Container(
+          width: double.infinity,
+          height: 2.h,
+          color: Color(0xffC9C6C0),
+          margin: EdgeInsets.only(top: 12.h,left: 12.w,right: 12.w),
+        ),
+        _buildLanguageList(controller),
+        Container(
+          width: double.infinity,
+          height: 2.h,
+          color: Color(0xff000000),
+        ),
+        _buildBottomSection(controller),
+        SizedBox(height: 16.h),
+        _buildNativeAd(),
+      ],
     ),
   );
 
   Widget _buildLanguageList(LanguageSelectionController controller) => Expanded(
     child: Container(
-      padding: EdgeInsets.all(16.w),
-      margin: EdgeInsets.only(left: 16.w,right: 16.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.w),
-        color: Color(0xffF5F7F9),
-      ),
+      margin: EdgeInsets.only(left: 12.w,right: 12.w),
       child: MediaPaddingView(
-        child: ListView.builder(
+        child: ListView.separated(
           controller: controller.languageScrollController,
           itemCount: controller.languageList.length,
           itemBuilder: (context, index) {
@@ -60,13 +61,8 @@ class LanguageSelectionScreen extends BaseScreen<LanguageSelectionController> {
             final selected = controller.isSelected(item);
             return TapGuardView(
               onPressed: () => controller.onLanguagePressed(item),
-              child: Container(
-                height: 56.h,
-                padding: EdgeInsets.only(left: 12.w,right: 12.w),
-                decoration: BoxDecoration(
-                  color: selected?Colors.white:null,
-                  borderRadius: BorderRadius.circular(12.w),
-                ),
+              child: SizedBox(
+                height: 64.h,
                 child: Row(
                   children: [
                     AssetPictureView(item.icon, width: 32.w, height: 32.w),
@@ -75,7 +71,8 @@ class LanguageSelectionScreen extends BaseScreen<LanguageSelectionController> {
                       child: LocalizedTextView(
                         item.name,
                         fontSize: 14.sp,
-                        color: const Color(0xff060E23),
+                        color: const Color(0xff1A1D22),
+                        fontType: FontType.extra,
                       ),
                     ),
                     SizedBox(width: 12.w),
@@ -83,14 +80,19 @@ class LanguageSelectionScreen extends BaseScreen<LanguageSelectionController> {
                       selected
                           ? 'common/radio_selected'
                           : 'common/radio_unselected',
-                      width: 20.w,
-                      height: 20.w,
+                      width: 28.w,
+                      height: 28.w,
                     ),
                   ],
                 ),
               ),
             );
-          },
+          }, separatorBuilder: (BuildContext context, int index) =>
+            Container(
+              width: double.infinity,
+              height: 2.h,
+              color: Color(0xffC9C6C0),
+            ),
         ),
       ),
     ),
@@ -103,15 +105,17 @@ class LanguageSelectionScreen extends BaseScreen<LanguageSelectionController> {
           width: double.infinity,
           height: 48.h,
           alignment: Alignment.center,
+          margin: EdgeInsets.all(12.w),
           decoration: BoxDecoration(
-            color: Color(0xff8C69F3),
-            borderRadius: BorderRadius.circular(12.w),
+            color: Color(0xffC40000),
+            borderRadius: BorderRadius.circular(2.w),
           ),
           child: LocalizedTextView(
             'OK'.tr,
-            fontSize: 18.sp,
+            fontSize: 16.sp,
             color: Colors.white,
             fontWeight: FontWeight.bold,
+            fontType: FontType.extra,
           ),
         ),
       );
@@ -119,23 +123,29 @@ class LanguageSelectionScreen extends BaseScreen<LanguageSelectionController> {
   Widget _buildHeader() => Column(
     mainAxisSize: MainAxisSize.min,
     children: [
-      SizedBox(height: 100.h,),
-      AssetPictureView(
-        'languages/top_icon',
-        width: 80.w,
-        height: 56.h,
+      Container(
+        width: double.infinity,
+        color: Color(0xffFFFAF6),
+        child: SafeArea(
+          child: Container(
+            width: double.infinity,
+            height: 54.h,
+            alignment: Alignment.center,
+            child: LocalizedTextView(
+              'Choose Language'.tr,
+              fontSize: 16.sp,
+              color: const Color(0xff1A1D22),
+              fontWeight: FontWeight.bold,
+              fontType: FontType.extra,
+            ),
+          ),
+        ),
       ),
-      SizedBox(height: 10.h),
-      LocalizedTextView(
-        'Welcome'.tr,
-        fontSize: 36.sp,
-        color: Color(0xff07080E),
-        fontWeight: FontWeight.bold,
-      ),
+      SizedBox(height: 20.h,),
       LocalizedTextView(
         'Choose your preferred language to get started.'.tr,
         fontSize: 16.sp,
-        color: const Color(0xff555978),
+        color: const Color(0xff5E5E5E),
         fontWeight: FontWeight.w500,
       ),
     ],

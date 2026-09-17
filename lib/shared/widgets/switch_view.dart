@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:b21pdf/shared/widgets/asset_picture_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SwitchView extends StatefulWidget {
   const SwitchView({super.key});
@@ -36,15 +38,10 @@ class _SwitchState extends State<SwitchView> {
 
   @override
   Widget build(BuildContext context) {
-    return Switch(
-      value: switchEnabled,
-      onChanged: null,
-      thumbColor: WidgetStatePropertyAll(
-        switchEnabled ? Colors.white : const Color(0xfff5f5f5),
-      ),
-      trackColor: WidgetStatePropertyAll(
-        switchEnabled ? const Color(0xffFFBB00) : const Color(0xffc8cdd2),
-      ),
+    return AssetPictureView(
+      switchEnabled?'permissions/switch_on':"permissions/switch_off",
+      width: 44.w,
+      height: 22.h,
     );
   }
 }

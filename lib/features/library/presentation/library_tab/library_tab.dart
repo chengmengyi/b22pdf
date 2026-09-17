@@ -29,18 +29,13 @@ class _LibraryTabState
   Widget buildContent(BuildContext context, LibraryTabController controller) {
     return GetBuilder<LibraryTabController>(
       init: controller,
-      builder: (controller) => Container(
-        padding: EdgeInsets.only(left: 16.w, right: 16.w),
-        child: Column(
-          children: [
-            _buildHeader(controller),
-            SizedBox(height: 16.h),
-            _buildCategoryTabs(controller),
-            if (controller.showAddWidget) _buildAddWidgetBanner(),
-            SizedBox(height: 12.h),
-            _buildTabPages(controller),
-          ],
-        ),
+      builder: (controller) => Column(
+        children: [
+          _buildHeader(controller),
+          _buildCategoryTabs(controller),
+          // if (controller.showAddWidget) _buildAddWidgetBanner(),
+          _buildTabPages(controller),
+        ],
       ),
     );
   }
@@ -55,9 +50,15 @@ class _LibraryTabState
     ),
   );
 
-  Widget _buildCategoryTabs(LibraryTabController controller) => SizedBox(
+  Widget _buildCategoryTabs(LibraryTabController controller) => Container(
     width: double.infinity,
-    height: 28.h,
+    height: 43.h,
+    margin: EdgeInsets.all(12.w),
+    padding: EdgeInsets.all(5.w),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(2.w),
+    ),
     child: ListView.separated(
       itemCount: DocumentCategory.values.length,
       scrollDirection: Axis.horizontal,
@@ -69,172 +70,166 @@ class _LibraryTabState
             controller.selectCategory(category);
           },
           child: Container(
-            padding: EdgeInsets.only(left: 12.w,right: 12.w),
+            width: 76.w,
+            alignment: Alignment.center,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.w),
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Color(0xffE8EEF4),Color(0xffFFFFFF)]
-              ),
+              borderRadius: BorderRadius.circular(2.w),
+              color: isSelected?Colors.black:Color(0xffFFFAF6),
             ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AssetPictureView(
-                  "home/${isSelected ? category.selectedIcon : category.unselectedIcon}",
-                  width: 16.w,
-                  height: 16.w,
-                ),
-                SizedBox(width: 4.w),
-                LocalizedTextView(
-                  category.label.tr,
-                  fontSize: 14.sp,
-                  color: isSelected ? Colors.black : const Color(0xffA7B2BD),
-                  fontWeight: FontWeight.bold,
-                ),
-              ],
+            child: LocalizedTextView(
+              category.label.tr,
+              fontSize: 14.sp,
+              color: isSelected ? Colors.white : const Color(0xff5E5E5E),
+              fontWeight: FontWeight.bold,
             ),
           ),
         );
       },
       separatorBuilder: (BuildContext context, int index) =>
-          SizedBox(width: 8.w),
+          SizedBox(width: 6.w),
     ),
   );
 
-  Widget _buildAddWidgetBanner() => Stack(
-    alignment: Alignment.bottomLeft,
-    children: [
-      Container(
+  // Widget _buildAddWidgetBanner() => Stack(
+  //   alignment: Alignment.bottomLeft,
+  //   children: [
+  //     Container(
+  //       width: double.infinity,
+  //       height: 56.h,
+  //       margin: EdgeInsets.only(top: 8.h),
+  //       padding: EdgeInsets.only(left: 68.w, right: 16.w),
+  //       decoration: BoxDecoration(
+  //         color: const Color(0xffFFECB8),
+  //         borderRadius: BorderRadius.circular(28.w),
+  //       ),
+  //       child: Row(
+  //         children: [
+  //           SizedBox(width: 8.w),
+  //           Expanded(
+  //             child: LocalizedTextView(
+  //               "To access features instantly, add the widget!".tr,
+  //               fontSize: 14.sp,
+  //               color: Color(0xff07080E),
+  //               overflow: TextOverflow.ellipsis,
+  //               maxLines: 2,
+  //               fontWeight: FontWeight.w500,
+  //             ),
+  //           ),
+  //           SizedBox(width: 8.w),
+  //           TapGuardView(
+  //             onPressed: () {
+  //               HomeWidgetService.instance.openWidgetPicker();
+  //             },
+  //             child: Container(
+  //               padding: EdgeInsets.only(
+  //                 left: 16.w,
+  //                 right: 16.w,
+  //                 top: 4.h,
+  //                 bottom: 4.h,
+  //               ),
+  //               decoration: BoxDecoration(
+  //                 color: Colors.white,
+  //                 borderRadius: BorderRadius.circular(18.w),
+  //               ),
+  //               child: LocalizedTextView(
+  //                 "Grant".tr,
+  //                 fontSize: 14.sp,
+  //                 color: Colors.black,
+  //                 fontWeight: FontWeight.bold,
+  //               ),
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //     AssetPictureView(
+  //       "home_widget/add_widget_banner",
+  //       width: 64.w,
+  //       height: 64.w,
+  //     ),
+  //   ],
+  // );
+
+  Widget _buildHeader(LibraryTabController controller) => Container(
+    color: Color(0xffFFFAF6),
+    child: SafeArea(
+      top: true,
+      bottom: false,
+      child: Container(
         width: double.infinity,
-        height: 56.h,
-        margin: EdgeInsets.only(top: 8.h),
-        padding: EdgeInsets.only(left: 68.w, right: 16.w),
-        decoration: BoxDecoration(
-          color: const Color(0xffFFECB8),
-          borderRadius: BorderRadius.circular(28.w),
-        ),
-        child: Row(
-          children: [
-            SizedBox(width: 8.w),
-            Expanded(
-              child: LocalizedTextView(
-                "To access features instantly, add the widget!".tr,
-                fontSize: 14.sp,
-                color: Color(0xff07080E),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            SizedBox(width: 8.w),
-            TapGuardView(
-              onPressed: () {
-                HomeWidgetService.instance.openWidgetPicker();
-              },
-              child: Container(
-                padding: EdgeInsets.only(
-                  left: 16.w,
-                  right: 16.w,
-                  top: 4.h,
-                  bottom: 4.h,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(18.w),
-                ),
-                child: LocalizedTextView(
-                  "Grant".tr,
-                  fontSize: 14.sp,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
+        height: 60.h,
+        alignment: Alignment.centerLeft,
+        padding: EdgeInsets.only(left: 12.w,right: 12.w),
+        child: _inputWidget(controller),
+      ),
+    ),
+  );
+
+  _titleWidget(LibraryTabController controller)=>Row(
+    children: [
+      TapGuardView(
+        onPressed: (){
+          controller.runDebugActions();
+        },
+        child: LocalizedTextView(
+          "Files".tr,
+          fontSize: 28.sp,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontType: FontType.extra,
         ),
       ),
-      AssetPictureView(
-        "home_widget/add_widget_banner",
-        width: 64.w,
-        height: 64.w,
+      Spacer(),
+      TapGuardView(
+        onPressed: (){
+
+        },
+        child: AssetPictureView("common/search", width: 32.w, height: 32.w),
       ),
     ],
   );
 
-  Widget _buildHeader(LibraryTabController controller) => SafeArea(
-    top: true,
-    bottom: false,
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
+  _inputWidget(LibraryTabController controller)=>Container(
+    width: double.infinity,
+    height: 44.h,
+    alignment: Alignment.centerLeft,
+    padding: EdgeInsets.only(left: 10.w,right: 10.w),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(2.w),
+      border: Border.all(
+        width: 2.w,
+        color: Colors.black,
+      ),
+    ),
+    child: Row(
       children: [
-        Stack(
-          alignment: Alignment.bottomRight,
-          children: [
-            AssetPictureView("home/home_files_bg", width: 28.w, height: 20.w),
-            TapGuardView(
-              onPressed: (){
-                controller.runDebugActions();
-              },
-              child: LocalizedTextView(
-                "Files".tr,
-                fontSize: 32.sp,
-                color: Color(0xff07080E),
-                fontWeight: FontWeight.bold,
+        AssetPictureView("common/search", width: 28.w, height: 28.w),
+        SizedBox(width: 4.w,),
+        Expanded(
+          child: TextField(
+            enabled: true,
+            textAlign: TextAlign.left,
+            controller: controller.textEditingController,
+            textInputAction: TextInputAction.search,
+            style: TextStyle(fontSize: 14.sp, color: Color(0xff000000)),
+            onTap: () {
+              AnalyticsService.instance.trackEvent(
+                pointType: AnalyticsEvent.search_click,
+              );
+            },
+            decoration: InputDecoration(
+              counterText: '',
+              isCollapsed: true,
+              hintText: "Search...".tr,
+              hintStyle: TextStyle(
+                fontSize: 14.sp,
+                color: Color(0xff5E5E5E),
               ),
+              border: InputBorder.none,
             ),
-          ],
-        ),
-        SizedBox(height: 8.h),
-        Container(
-          width: double.infinity,
-          height: 46.h,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12.w),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.2),
-                blurRadius: 5,
-                offset: const Offset(0, -0.5),
-              ),
-            ],
-          ),
-          child: Row(
-            children: [
-              SizedBox(width: 12.w),
-              AssetPictureView("common/search", width: 24.w, height: 24.w),
-              SizedBox(width: 8.w),
-              Expanded(
-                child: TextField(
-                  enabled: true,
-                  textAlign: TextAlign.left,
-                  controller: controller.textEditingController,
-                  textInputAction: TextInputAction.search,
-                  style: TextStyle(fontSize: 16.sp, color: Color(0xff202326)),
-                  onTap: () {
-                    AnalyticsService.instance.trackEvent(
-                      pointType: AnalyticsEvent.search_click,
-                    );
-                  },
-                  decoration: InputDecoration(
-                    counterText: '',
-                    isCollapsed: true,
-                    hintText: "Search...".tr,
-                    hintStyle: TextStyle(
-                      fontSize: 16.sp,
-                      color: Color(0xffA1A1A1),
-                    ),
-                    border: InputBorder.none,
-                  ),
-                  onChanged: controller.updateFileSearchQuery,
-                  onSubmitted: controller.updateFileSearchQuery,
-                ),
-              ),
-              SizedBox(width: 12.w),
-            ],
+            onChanged: controller.updateFileSearchQuery,
+            onSubmitted: controller.updateFileSearchQuery,
           ),
         ),
       ],

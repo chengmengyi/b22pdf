@@ -39,9 +39,10 @@ class PermissionRationaleDialog
         children: [
           LocalizedTextView(
             "Permission Required".tr,
-            fontSize: 20.sp,
+            fontSize: 16.sp,
             color: Colors.black,
             fontWeight: FontWeight.bold,
+            fontType: FontType.extra,
           ),
           SizedBox(height: 12.h),
           Container(
@@ -54,8 +55,9 @@ class PermissionRationaleDialog
             ),
             child: LocalizedTextView(
               controller.buildPermissionMessage(),
-              fontSize: 14.sp,
+              fontSize: 12.sp,
               color: Color(0xff4B4D56),
+              fontType: FontType.semi,
             ),
           ),
           SizedBox(height: 20.h),
@@ -67,14 +69,15 @@ class PermissionRationaleDialog
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 24.w, right: 24.w),
               decoration: BoxDecoration(
-                color: Color(0xff8C69F3),
-                borderRadius: BorderRadius.circular(12.w),
+                color: Color(0xffC40000),
+                borderRadius: BorderRadius.circular(2.w),
               ),
               child: LocalizedTextView(
                 "Allow".tr,
                 fontSize: 16.sp,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
+                fontType: FontType.extra,
               ),
             ),
           ),
@@ -88,6 +91,7 @@ class PermissionRationaleDialog
               fontSize: 14.sp,
               color: const Color(0xff858C92),
               decoration: TextDecoration.underline,
+              fontType: FontType.extra,
             ),
           ),
         ],

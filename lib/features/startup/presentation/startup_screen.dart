@@ -16,55 +16,74 @@ class StartupScreen extends BaseScreen<StartupController> {
 
   @override
   Widget buildContent(BuildContext context, StartupController controller) {
-    return Column(
-      children: [
-        SizedBox(height: 160.h),
-        AssetPictureView('branding/app_logo', width: 88.w, height: 88.w),
-        SizedBox(height: 20.h),
-        LocalizedTextView(
-          'Your pocket file pro'.tr,
-          fontSize: 16.sp,
-          color: Color(0xff07080E),
-          fontWeight: FontWeight.bold,
-        ),
-        const Spacer(),
-        GetBuilder<StartupController>(
-          id: StartupController.progressUpdateId,
-          builder: (StartupController controller) {
-            return buildProgressIndicator(controller.progressValue);
-          },
-        ),
-        SizedBox(height: 120.h),
-      ],
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: Column(
+        children: [
+          SizedBox(height: 160.h),
+          AssetPictureView('branding/app_logo', width: 88.w, height: 88.w),
+          SizedBox(height: 20.h),
+          LocalizedTextView(
+            'Your pocket file pro'.tr,
+            fontSize: 18.sp,
+            color: Color(0xff0F172A),
+            fontWeight: FontWeight.w900,
+            fontType: FontType.extra,
+          ),
+          const Spacer(),
+          GetBuilder<StartupController>(
+            id: StartupController.progressUpdateId,
+            builder: (StartupController controller) {
+              return buildProgressIndicator(controller.progressValue);
+            },
+          ),
+          SizedBox(height: 120.h),
+        ],
+      ),
     );
   }
 
   Widget buildProgressIndicator(double progress) {
     final double safeProgress = progress.clamp(0.0, 1.0);
-    return Container(
-      width: double.infinity,
-      height: 12.h,
-      margin: EdgeInsets.symmetric(horizontal: 50.w),
-      child: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints box) {
-          final double trackWidth = box.maxWidth - 4.w;
-          return Container(
-            alignment: Alignment.centerLeft,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            LocalizedTextView(
+              "${(safeProgress*100).toInt()}",
+              fontSize: 32.sp,
+              color: Color(0xff970000),
+              fontWeight: FontWeight.w900,
+              fontType: FontType.black,
+            ),
+            LocalizedTextView(
+              "%",
+              fontSize: 18.sp,
+              color: Colors.black,
+              fontWeight: FontWeight.w900,
+              fontType: FontType.black,
+            ),
+          ],
+        ),
+        Container(
+          width: 222.w,
+          height: 12.h,
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+            color: Colors.black.withValues(alpha: 0.1),
+          ),
+          child: Container(
+            width: (222.w) * safeProgress,
+            height: 12.h,
             decoration: BoxDecoration(
-              color: const Color(0xffF5F7F9),
-              borderRadius: BorderRadius.circular(6.w),
+              color: Color(0xff970000),
             ),
-            child: Container(
-              width: trackWidth * safeProgress,
-              height: 8.h,
-              decoration: BoxDecoration(
-                color: Color(0xffCF251F),
-                borderRadius: BorderRadius.circular(4.w),
-              ),
-            ),
-          );
-        },
-      ),
+          ),
+        ),
+      ],
     );
   }
 }

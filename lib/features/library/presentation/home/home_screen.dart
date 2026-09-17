@@ -17,13 +17,11 @@ class HomeScreen extends BaseScreen<HomeController> {
   }
 
   @override
-  Color get navigationBarColor => Colors.white;
+  Color get navigationBarColor => Color(0xffFFFAF6);
 
   @override
   bool get resizeToAvoidBottomInset => false;
-
-  @override
-  Color get backgroundColor => Color(0xffF5F7F9);
+  
 
   @override
   Future<bool> canPopRoute(HomeController controller) =>
@@ -57,26 +55,36 @@ class HomeScreen extends BaseScreen<HomeController> {
       width: double.infinity,
       height: 64.h,
       decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.2),
-            blurRadius: 5,
-            offset: const Offset(0, -0.5),
-          ),
-        ],
+        color: Color(0xffFFFAF6),
       ),
       child: Row(
         children: [
           itemWidget(HomeTab.files, controller, context),
-          TapGuardView(
-            onPressed: () {
-              ImageImportService.instance.scanDocuments();
-            },
-            child: AssetPictureView(
-              'home/scan_action',
-              width: 48.w,
-              height: 48.w,
+          Expanded(
+            child: TapGuardView(
+              onPressed: () {
+                ImageImportService.instance.scanDocuments();
+              },
+              child: Container(
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    AssetPictureView(
+                      'home/scan_action',
+                      width: 32.w,
+                      height: 32.w,
+                    ),
+                    LocalizedTextView(
+                      "Scan".tr,
+                      fontSize: 10.sp,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontType: FontType.semi,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
           itemWidget(HomeTab.tools, controller, context),
@@ -96,22 +104,25 @@ class HomeScreen extends BaseScreen<HomeController> {
         onPressed: () {
           controller.onTabSelected(type, context);
         },
-        child: SizedBox.expand(
+        child: Container(
+          alignment: Alignment.center,
+          color: selected?Color(0xff970000):Color(0xffFFFAF6),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AssetPictureView(
                 selected ? type.iconSelected : type.iconUnselected,
-                width: 28.w,
-                height: 28.w,
+                width: 32.w,
+                height: 32.w,
               ),
               LocalizedTextView(
                 type.text.tr,
-                fontSize: 12.sp,
+                fontSize: 10.sp,
                 color: selected
-                    ? const Color(0xff8C69F3)
-                    : const Color(0xffA7B2BD),
+                    ? const Color(0xffFFFFFF)
+                    : const Color(0xff000000),
                 fontWeight: FontWeight.bold,
+                fontType: FontType.semi,
               ),
             ],
           ),

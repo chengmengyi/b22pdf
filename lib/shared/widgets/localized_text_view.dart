@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+enum FontType{
+  black,extra,medium,semi,
+}
+
 class LocalizedTextView extends StatelessWidget {
   const LocalizedTextView(
     this.value, {
@@ -15,6 +19,7 @@ class LocalizedTextView extends StatelessWidget {
     this.overflow,
     this.softWrap,
     this.decoration,
+    this.fontType,
   });
 
   final String value;
@@ -28,6 +33,7 @@ class LocalizedTextView extends StatelessWidget {
   final TextOverflow? overflow;
   final bool? softWrap;
   final TextDecoration? decoration;
+  final FontType? fontType;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +43,7 @@ class LocalizedTextView extends StatelessWidget {
       fontWeight: fontWeight,
       decoration: decoration,
       decorationColor: color,
+      fontFamily: fontType?.name,
     );
     return Text(
       translate ? value.tr : value,
