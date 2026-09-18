@@ -52,7 +52,7 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
           itemBuilder: (BuildContext context, int index) {
             final file = controller.files[index];
             return TapGuardView(
-              onPressed: (){
+              onPressed: () {
                 controller.onItemPressed(file);
               },
               child: Container(
@@ -68,7 +68,11 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
                   children: [
                     Row(
                       children: [
-                        AssetPictureView(controller.resolveFileIcon(file), width: 40.w, height: 40.w),
+                        AssetPictureView(
+                          controller.resolveFileIcon(file),
+                          width: 40.w,
+                          height: 40.w,
+                        ),
                         Spacer(),
                         AssetPictureView(
                           controller.isSelected(file)
@@ -127,10 +131,7 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
     decoration: BoxDecoration(
       color: Color(0xffFFFAF6),
       border: BoxBorder.fromLTRB(
-        top: BorderSide(
-          width: 2.w,
-          color: Colors.black,
-        ),
+        top: BorderSide(width: 2.w, color: Colors.black),
       ),
     ),
     child: TapGuardView(
@@ -142,18 +143,16 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
         height: 50.h,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Color(0xffC40000),
+          color: controller.selectedPaths.isEmpty
+              ? const Color(0xff5E5E5E)
+              : const Color(0xffC40000),
           borderRadius: BorderRadius.circular(2.w),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            AssetPictureView(
-              "common/icon_delete",
-              width: 18.w,
-              height: 18.w,
-            ),
-            SizedBox(width: 8.w,),
+            AssetPictureView("common/icon_delete", width: 18.w, height: 18.w),
+            SizedBox(width: 8.w),
             LocalizedTextView(
               "Delete".tr,
               fontSize: 16.sp,
@@ -186,8 +185,9 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   AssetPictureView(
-                    //"common/radio_selected"
-                    "common/radio_unselected",
+                    controller.allSelected
+                        ? "common/radio_selected"
+                        : "common/radio_unselected",
                     width: 28.w,
                     height: 28.w,
                   ),
@@ -200,7 +200,7 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
                 ],
               ),
             ),
-            SizedBox(width: 12.w,),
+            SizedBox(width: 12.w),
             Expanded(
               child: LocalizedTextView(
                 '{n} Selected'.tr.replaceAll(
@@ -213,7 +213,7 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
                 fontType: FontType.black,
               ),
             ),
-            SizedBox(width: 12.w,),
+            SizedBox(width: 12.w),
             TapGuardView(
               onPressed: () {
                 AppNavigator.backWithExitAd<void>();

@@ -43,10 +43,7 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
     decoration: BoxDecoration(
       color: Color(0xffFFFAF6),
       border: BoxBorder.fromLTRB(
-        top: BorderSide(
-          width: 2.w,
-          color: Colors.black,
-        ),
+        top: BorderSide(width: 2.w, color: Colors.black),
       ),
     ),
     child: Row(
@@ -56,11 +53,7 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              AssetPictureView(
-                "pdf_tools/rescan",
-                width: 28.w,
-                height: 28.w,
-              ),
+              AssetPictureView("pdf_tools/rescan", width: 28.w, height: 28.w),
               SizedBox(width: 4.h),
               LocalizedTextView(
                 "Retake".tr,
@@ -78,11 +71,7 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              AssetPictureView(
-                "pdf_tools/add_page",
-                width: 28.w,
-                height: 28.w,
-              ),
+              AssetPictureView("pdf_tools/add_page", width: 28.w, height: 28.w),
               SizedBox(width: 4.h),
               LocalizedTextView(
                 "Add".tr,
@@ -116,7 +105,7 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
                     width: 18.w,
                     height: 18.w,
                   ),
-                  SizedBox(width: 4.w,),
+                  SizedBox(width: 4.w),
                   LocalizedTextView(
                     "Save PDF".tr,
                     fontSize: 14.sp,
@@ -165,55 +154,48 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: _pagesWidget(),
+            child: _pagesWidget(controller),
           ),
         ],
       ),
     ),
   );
 
-  _pagesWidget()=>Container(
+  _pagesWidget(ImageSelectionController controller) => Container(
     margin: EdgeInsets.only(bottom: 20.h),
     decoration: BoxDecoration(
       color: Color(0xffF2E9D9).withValues(alpha: 0.85),
       borderRadius: BorderRadius.circular(2.w),
-      border: Border.all(
-        width: 1.w,
-        color: Colors.black,
-      ),
+      border: Border.all(width: 1.w, color: Colors.black),
     ),
     child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         TapGuardView(
-          onPressed: (){
-
-          },
-          child: AssetPictureView("editor/icon_reduce",width: 32.w,height: 32.w,),
+          onPressed: controller.selectedIndex > 0
+              ? controller.showPreviousPage
+              : null,
+          child: AssetPictureView(
+            "editor/icon_reduce",
+            width: 32.w,
+            height: 32.w,
+          ),
         ),
-        Container(
-          width: 1.w,
-          height: 16.h,
-          color: Colors.black,
-        ),
-        SizedBox(width: 24.w,),
+        Container(width: 1.w, height: 16.h, color: Colors.black),
+        SizedBox(width: 24.w),
         LocalizedTextView(
-          "1 / 3",
+          "${controller.imagePaths.isEmpty ? 0 : controller.selectedIndex + 1} / ${controller.imagePaths.length}",
           fontSize: 14.sp,
           color: Colors.black,
           fontType: FontType.medium,
         ),
-        SizedBox(width: 24.w,),
-        Container(
-          width: 1.w,
-          height: 16.h,
-          color: Colors.black,
-        ),
+        SizedBox(width: 24.w),
+        Container(width: 1.w, height: 16.h, color: Colors.black),
         TapGuardView(
-          onPressed: (){
-
-          },
-          child: AssetPictureView("editor/icon_add",width: 32.w,height: 32.w,),
+          onPressed: controller.selectedIndex < controller.imagePaths.length - 1
+              ? controller.showNextPage
+              : null,
+          child: AssetPictureView("editor/icon_add", width: 32.w, height: 32.w),
         ),
       ],
     ),

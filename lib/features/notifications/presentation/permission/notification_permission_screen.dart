@@ -50,9 +50,10 @@ class NotificationPermissionScreen
             ),
             SizedBox(height: 20.h),
             Container(
-              margin: EdgeInsets.only(left: 20.w,right: 20.w),
+              margin: EdgeInsets.only(left: 20.w, right: 20.w),
               child: LocalizedTextView(
-                "Enable Notifications To Get Instant Alerts When Your File Processing Is Complete.".tr,
+                "Enable Notifications To Get Instant Alerts When Your File Processing Is Complete."
+                    .tr,
                 fontSize: 14.sp,
                 color: Color(0xff5E5E5E),
                 fontWeight: FontWeight.w500,
@@ -69,7 +70,11 @@ class NotificationPermissionScreen
               ),
               child: Row(
                 children: [
-                  AssetPictureView('branding/app_logo', width: 48.w, height: 48.w),
+                  AssetPictureView(
+                    'branding/app_logo',
+                    width: 48.w,
+                    height: 48.w,
+                  ),
                   SizedBox(width: 8.w),
                   Expanded(
                     child: Column(
@@ -97,7 +102,7 @@ class NotificationPermissionScreen
                 ],
               ),
             ),
-            SizedBox(height: 12.h,),
+            SizedBox(height: 12.h),
             Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,

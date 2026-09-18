@@ -121,7 +121,7 @@ class OverlayPermissionScreen extends BaseScreen<OverlayPermissionController> {
             ),
             SizedBox(height: 36.h),
           ],
-        )
+        ),
       ],
     );
   }

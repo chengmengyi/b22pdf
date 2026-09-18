@@ -42,7 +42,7 @@ class _UtilitiesSectionState
 
   Widget _toolsWidget() => Container(
     width: double.infinity,
-    margin: EdgeInsets.only(top: 20.h,left: 12.w,right: 12.w),
+    margin: EdgeInsets.only(top: 20.h, left: 12.w, right: 12.w),
     child: Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +58,7 @@ class _UtilitiesSectionState
           width: double.infinity,
           height: 2.h,
           color: Colors.black,
-          margin: EdgeInsets.only(top: 12.h,bottom: 12.h),
+          margin: EdgeInsets.only(top: 12.h, bottom: 12.h),
         ),
         Row(
           children: [
@@ -85,13 +85,13 @@ class _UtilitiesSectionState
                       SizedBox(width: 2.w),
                       Expanded(
                         child: LocalizedTextView(
-                          "Scan to PDF",
+                          "Scan to PDF".tr,
                           fontSize: 12.sp,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontType: FontType.black,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -121,13 +121,13 @@ class _UtilitiesSectionState
                       SizedBox(width: 2.w),
                       Expanded(
                         child: LocalizedTextView(
-                          "Image to PDF",
+                          "Image to PDF".tr,
                           fontSize: 12.sp,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontType: FontType.black,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -157,7 +157,7 @@ class _UtilitiesSectionState
           width: double.infinity,
           height: 2.h,
           color: Colors.black,
-          margin: EdgeInsets.only(top: 12.h,bottom: 12.h),
+          margin: EdgeInsets.only(top: 12.h, bottom: 12.h),
         ),
         TapGuardView(
           onPressed: () {
@@ -167,7 +167,7 @@ class _UtilitiesSectionState
             width: double.infinity,
             height: 60.h,
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(left: 12.w,right: 12.w),
+            padding: EdgeInsets.only(left: 12.w, right: 12.w),
             decoration: BoxDecoration(
               color: Colors.white.withValues(alpha: 0.6),
               borderRadius: BorderRadius.circular(4.w),
@@ -220,7 +220,7 @@ class _UtilitiesSectionState
           width: double.infinity,
           height: 2.h,
           color: Colors.black,
-          margin: EdgeInsets.only(top: 12.h,bottom: 12.h),
+          margin: EdgeInsets.only(top: 12.h, bottom: 12.h),
         ),
         TapGuardView(
           onPressed: () {
@@ -277,7 +277,7 @@ class _UtilitiesSectionState
         width: double.infinity,
         height: 60.h,
         alignment: Alignment.centerLeft,
-        padding: EdgeInsets.only(left: 12.w,right: 12.w),
+        padding: EdgeInsets.only(left: 12.w, right: 12.w),
         child: LocalizedTextView(
           "Tools & Settings".tr,
           fontSize: 20.sp,

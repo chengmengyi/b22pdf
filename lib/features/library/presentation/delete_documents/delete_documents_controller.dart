@@ -11,6 +11,11 @@ class DeleteDocumentsController extends BaseController {
     (Get.arguments?['files'] as List?) ?? const [],
   );
   final Set<String> selectedPaths = <String>{};
+  bool get allSelected {
+    final paths = files.map((file) => file.path).whereType<String>().toSet();
+    return paths.isNotEmpty && selectedPaths.containsAll(paths);
+  }
+
   bool isSelected(FileToolsFileInfo file) => selectedPaths.contains(file.path);
   void onItemPressed(FileToolsFileInfo file) {
     final path = file.path;
@@ -22,7 +27,7 @@ class DeleteDocumentsController extends BaseController {
   }
 
   void onSelectAllPressed() {
-    if (selectedPaths.length == files.length) {
+    if (allSelected) {
       selectedPaths.clear();
     } else {
       selectedPaths.addAll(files.map((file) => file.path).whereType<String>());

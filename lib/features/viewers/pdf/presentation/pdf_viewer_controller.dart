@@ -16,14 +16,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 enum PdfEditType {
-  highlight('editor/highlight_tool',"editor/highlight_tool_sel"),
-  underline('editor/underline_tool',"editor/underline_tool_sel"),
-  strikeThrough('editor/strikethrough_tool',"editor/strikethrough_tool_sel"),
-  pen('editor/freehand_tool',"editor/freehand_tool_sel");
+  highlight('editor/highlight_tool', "editor/highlight_tool_sel"),
+  underline('editor/underline_tool', "editor/underline_tool_sel"),
+  strikeThrough('editor/strikethrough_tool', "editor/strikethrough_tool_sel"),
+  pen('editor/freehand_tool', "editor/freehand_tool_sel");
 
   final String iconUns;
   final String iconSel;
-  const PdfEditType(this.iconUns,this.iconSel);
+  const PdfEditType(this.iconUns, this.iconSel);
 }
 
 class PdfStroke {
@@ -194,10 +194,15 @@ class PdfViewerScreenController extends BaseController {
   }
 
   void navigateToPage(int pageNumber) {
+    if (pageNumber < 1 || pageNumber > pageCount) return;
     viewerController.jumpToPage(pageNumber);
     currentPage = pageNumber;
     update();
   }
+
+  void showPreviousPage() => navigateToPage(currentPage - 1);
+
+  void showNextPage() => navigateToPage(currentPage + 1);
 
   void beginPenStroke(Offset point) {
     if (!penMode || saving) return;

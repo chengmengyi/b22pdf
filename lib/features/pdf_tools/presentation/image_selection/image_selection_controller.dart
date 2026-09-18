@@ -45,6 +45,10 @@ class ImageSelectionController extends BaseController {
     update();
   }
 
+  void showPreviousPage() => selectImage(selectedIndex - 1);
+
+  void showNextPage() => selectImage(selectedIndex + 1);
+
   Future<void> onReplacePressed() async {
     final List<String> newPaths = await _pickImages();
     if (newPaths.isEmpty || imagePaths.isEmpty) return;

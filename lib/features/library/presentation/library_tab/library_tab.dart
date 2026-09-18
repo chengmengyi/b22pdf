@@ -74,7 +74,7 @@ class _LibraryTabState
             alignment: Alignment.center,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(2.w),
-              color: isSelected?Colors.black:Color(0xffFFFAF6),
+              color: isSelected ? Colors.black : Color(0xffFFFAF6),
             ),
             child: LocalizedTextView(
               category.label.tr,
@@ -159,16 +159,18 @@ class _LibraryTabState
         width: double.infinity,
         height: 60.h,
         alignment: Alignment.centerLeft,
-        padding: EdgeInsets.only(left: 12.w,right: 12.w),
-        child: _inputWidget(controller),
+        padding: EdgeInsets.only(left: 12.w, right: 12.w),
+        child: controller.isSearching
+            ? _inputWidget(controller)
+            : _titleWidget(controller),
       ),
     ),
   );
 
-  _titleWidget(LibraryTabController controller)=>Row(
+  _titleWidget(LibraryTabController controller) => Row(
     children: [
       TapGuardView(
-        onPressed: (){
+        onPressed: () {
           controller.runDebugActions();
         },
         child: LocalizedTextView(
@@ -181,36 +183,32 @@ class _LibraryTabState
       ),
       Spacer(),
       TapGuardView(
-        onPressed: (){
-
-        },
+        onPressed: controller.showSearchInput,
         child: AssetPictureView("common/search", width: 32.w, height: 32.w),
       ),
     ],
   );
 
-  _inputWidget(LibraryTabController controller)=>Container(
+  _inputWidget(LibraryTabController controller) => Container(
     width: double.infinity,
     height: 44.h,
     alignment: Alignment.centerLeft,
-    padding: EdgeInsets.only(left: 10.w,right: 10.w),
+    padding: EdgeInsets.only(left: 10.w, right: 10.w),
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(2.w),
-      border: Border.all(
-        width: 2.w,
-        color: Colors.black,
-      ),
+      border: Border.all(width: 2.w, color: Colors.black),
     ),
     child: Row(
       children: [
         AssetPictureView("common/search", width: 28.w, height: 28.w),
-        SizedBox(width: 4.w,),
+        SizedBox(width: 4.w),
         Expanded(
           child: TextField(
             enabled: true,
             textAlign: TextAlign.left,
             controller: controller.textEditingController,
+            focusNode: controller.searchFocusNode,
             textInputAction: TextInputAction.search,
             style: TextStyle(fontSize: 14.sp, color: Color(0xff000000)),
             onTap: () {
@@ -222,10 +220,7 @@ class _LibraryTabState
               counterText: '',
               isCollapsed: true,
               hintText: "Search...".tr,
-              hintStyle: TextStyle(
-                fontSize: 14.sp,
-                color: Color(0xff5E5E5E),
-              ),
+              hintStyle: TextStyle(fontSize: 14.sp, color: Color(0xff5E5E5E)),
               border: InputBorder.none,
             ),
             onChanged: controller.updateFileSearchQuery,

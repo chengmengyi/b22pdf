@@ -32,8 +32,10 @@ enum DocumentCategory {
 
 class LibraryTabController extends BaseController {
   final TextEditingController textEditingController = TextEditingController();
+  final FocusNode searchFocusNode = FocusNode();
   final PageController pageController = PageController();
   int selectedTabIndex = 0;
+  bool isSearching = false;
   bool showAddWidget = !InsertWidgetCache.readAdded();
   bool requestingStoragePermission = false;
 
@@ -65,9 +67,24 @@ class LibraryTabController extends BaseController {
     );
   }
 
-  void updateFileSearchQuery(String keyword) => AppEventBus.instance.publish(
-    AppEvent(type: AppEventType.fileSearch, stringValue: keyword),
-  );
+  void showSearchInput() {
+    isSearching = true;
+    update();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      searchFocusNode.requestFocus();
+    });
+  }
+
+  void updateFileSearchQuery(String keyword) {
+    AppEventBus.instance.publish(
+      AppEvent(type: AppEventType.fileSearch, stringValue: keyword),
+    );
+    if (keyword.isEmpty) {
+      isSearching = false;
+      searchFocusNode.unfocus();
+      update();
+    }
+  }
 
   @override
   bool subscribesToAppEvents() => true;
@@ -126,6 +143,7 @@ class LibraryTabController extends BaseController {
   @override
   void onClose() {
     textEditingController.dispose();
+    searchFocusNode.dispose();
     pageController.dispose();
     super.onClose();
   }

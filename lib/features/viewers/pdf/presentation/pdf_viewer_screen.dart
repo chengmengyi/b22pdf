@@ -20,6 +20,9 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
       controller.onSystemBackRequested();
 
   @override
+  Color get navigationBarColor => Color(0xffFFFAF6);
+
+  @override
   Widget buildContent(
     BuildContext context,
     PdfViewerScreenController controller,
@@ -109,10 +112,11 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
                       alignment: Alignment.bottomCenter,
                       child: _penPanel(controller),
                     ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: _pagesWidget(),
-                    ),
+                    if (controller.documentLoaded)
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: _pagesWidget(controller),
+                      ),
                   ],
                 ),
               ),
@@ -125,63 +129,53 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
     (point.dy / size.height).clamp(0, 1),
   );
 
-  _pagesWidget()=>Container(
+  _pagesWidget(PdfViewerScreenController controller) => Container(
     margin: EdgeInsets.only(bottom: 20.h),
     decoration: BoxDecoration(
       color: Color(0xffF2E9D9).withValues(alpha: 0.85),
       borderRadius: BorderRadius.circular(2.w),
-      border: Border.all(
-        width: 1.w,
-        color: Colors.black,
-      ),
+      border: Border.all(width: 1.w, color: Colors.black),
     ),
     child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         TapGuardView(
-          onPressed: (){
-
-          },
-          child: AssetPictureView("editor/icon_reduce",width: 32.w,height: 32.w,),
+          onPressed: controller.currentPage > 1
+              ? controller.showPreviousPage
+              : null,
+          child: AssetPictureView(
+            "editor/icon_reduce",
+            width: 32.w,
+            height: 32.w,
+          ),
         ),
-        Container(
-          width: 1.w,
-          height: 16.h,
-          color: Colors.black,
-        ),
-        SizedBox(width: 24.w,),
+        Container(width: 1.w, height: 16.h, color: Colors.black),
+        SizedBox(width: 24.w),
         LocalizedTextView(
-          "1 / 3",
+          "${controller.pageCount == 0 ? 0 : controller.currentPage} / ${controller.pageCount}",
           fontSize: 14.sp,
           color: Colors.black,
           fontType: FontType.medium,
         ),
-        SizedBox(width: 24.w,),
-        Container(
-          width: 1.w,
-          height: 16.h,
-          color: Colors.black,
-        ),
+        SizedBox(width: 24.w),
+        Container(width: 1.w, height: 16.h, color: Colors.black),
         TapGuardView(
-          onPressed: (){
-
-          },
-          child: AssetPictureView("editor/icon_add",width: 32.w,height: 32.w,),
+          onPressed: controller.currentPage < controller.pageCount
+              ? controller.showNextPage
+              : null,
+          child: AssetPictureView("editor/icon_add", width: 32.w, height: 32.w),
         ),
       ],
     ),
   );
 
-  _bottomFuncWidget(PdfViewerScreenController controller)=>Container(
+  _bottomFuncWidget(PdfViewerScreenController controller) => Container(
     width: double.infinity,
     height: 64.h,
     decoration: BoxDecoration(
       color: Color(0xffFFFAF6),
       border: BoxBorder.fromLTRB(
-        top: BorderSide(
-          width: 2.w,
-          color: Colors.black,
-        ),
+        top: BorderSide(width: 2.w, color: Colors.black),
       ),
     ),
     child: Row(
@@ -195,10 +189,10 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
               height: 64.h,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: selected?Color(0xff970000):Color(0xffFFFAF6),
+                color: selected ? Color(0xff970000) : Color(0xffFFFAF6),
               ),
               child: AssetPictureView(
-                selected?type.iconSel:type.iconUns,
+                selected ? type.iconSel : type.iconUns,
                 width: 28.w,
                 height: 28.w,
               ),
@@ -355,7 +349,7 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
     ),
   );
 
-  _redoSaveWidget(PdfViewerScreenController controller)=>Container(
+  _redoSaveWidget(PdfViewerScreenController controller) => Container(
     width: double.infinity,
     height: 44.h,
     color: Color(0xffFFFAF6),
