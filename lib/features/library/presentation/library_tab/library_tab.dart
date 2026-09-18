@@ -160,9 +160,35 @@ class _LibraryTabState
         height: 60.h,
         alignment: Alignment.centerLeft,
         padding: EdgeInsets.only(left: 12.w, right: 12.w),
-        child: controller.isSearching
-            ? _inputWidget(controller)
-            : _titleWidget(controller),
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 260),
+          reverseDuration: const Duration(milliseconds: 220),
+          switchInCurve: Curves.easeOutCubic,
+          switchOutCurve: Curves.easeInCubic,
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            final bool isSearchInput =
+                child.key == const ValueKey<String>('search-input');
+            return FadeTransition(
+              opacity: animation,
+              child: SlideTransition(
+                position: Tween<Offset>(
+                  begin: Offset(isSearchInput ? 1 : -0.15, 0),
+                  end: Offset.zero,
+                ).animate(animation),
+                child: child,
+              ),
+            );
+          },
+          child: controller.isSearching
+              ? KeyedSubtree(
+                  key: const ValueKey<String>('search-input'),
+                  child: _inputWidget(controller),
+                )
+              : KeyedSubtree(
+                  key: const ValueKey<String>('title'),
+                  child: _titleWidget(controller),
+                ),
+        ),
       ),
     ),
   );
