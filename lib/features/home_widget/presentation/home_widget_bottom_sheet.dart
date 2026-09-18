@@ -1,4 +1,5 @@
 import 'package:b21pdf/core/config/app_config.dart';
+import 'package:b21pdf/core/navigation/app_navigator.dart';
 import 'package:b21pdf/features/home_widget/presentation/home_widget_controller.dart';
 import 'package:b21pdf/features/home_widget/services/home_widget_service.dart';
 import 'package:b21pdf/core/presentation/controller_widget.dart';
@@ -21,146 +22,175 @@ class HomeWidgetBottomSheet extends ControllerWidget<HomeWidgetController> {
   Widget buildContent(BuildContext context, HomeWidgetController controller) {
     return Container(
       width: double.infinity,
+      padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.w),
-          topRight: Radius.circular(20.w),
-        ),
+        color: Color(0xffF5F2E9),
+        border: BoxBorder.fromLTRB(
+          top: BorderSide(
+            width: 4.w,
+            color: Color(0xffC40000),
+          )
+        )
       ),
-      child: Container(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            LocalizedTextView(
-              'Add Widget'.tr,
-              fontSize: 20.sp,
-              color: Color(0xff07080E),
-              fontWeight: FontWeight.w500,
-            ),
-            SizedBox(height: 10.h),
-            LocalizedTextView(
-              'Add widget with one click to open files'.tr,
-              fontSize: 14.sp,
-              color: const Color(0xff525759),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            SizedBox(height: 12.h),
-            _buildContentSection(),
-            SizedBox(height: 20.h),
-            TapGuardView(
-              onPressed: () {
-                controller.onAddPressed();
-              },
-              child: Container(
-                width: double.infinity,
-                height: 48.h,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Color(0xff8C69F3),
-                  borderRadius: BorderRadius.circular(16.w),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    AssetPictureView(
-                      "home_widget/add_action",
-                      width: 24.w,
-                      height: 24.w,
-                    ),
-                    SizedBox(width: 8.w),
-                    LocalizedTextView(
-                      "Add".tr,
-                      fontSize: 16.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ],
-                ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _titleWidget(),
+          SizedBox(height: 20.h),
+          _buildContentSection(),
+          SizedBox(height: 28.h),
+          TapGuardView(
+            onPressed: () {
+              controller.onAddPressed();
+            },
+            child: Container(
+              width: double.infinity,
+              height: 50.h,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Color(0xffC40000),
+                borderRadius: BorderRadius.circular(2.w),
+              ),
+              child: LocalizedTextView(
+                "+ ${"Add".tr}",
+                fontSize: 16.sp,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontType: FontType.black,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildContentSection() => Container(
     width: double.infinity,
+    padding: EdgeInsets.all(12.w),
     decoration: BoxDecoration(
-      color: Color(0xffF5F5F9),
-      borderRadius: BorderRadius.circular(16.w),
-      border: Border.all(width: 1.w, color: Color(0xffFFFFFF)),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black.withValues(alpha: 0.2),
-          blurRadius: 5,
-          offset: const Offset(0, -0.5),
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(2.w),
+    ),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AssetPictureView(
+              'branding/app_logo',
+              width: 20.w,
+              height: 20.w,
+            ),
+            SizedBox(width: 8.w),
+            Expanded(
+              child: LocalizedTextView(
+                AppConfig.applicationName.tr,
+                fontSize: 12.sp,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                overflow: TextOverflow.ellipsis,
+                fontType: FontType.semi,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 10.h,),
+        Container(
+          width: double.infinity,
+          height: 42.h,
+          decoration: BoxDecoration(
+            color: Color(0xffF5F2E9),
+            borderRadius: BorderRadius.circular(2.w),
+            border: Border.all(
+              width: 2.w,
+              color: Color(0xff000000),
+            ),
+          ),
+          child: Row(
+            children: [
+              SizedBox(width: 12.w),
+              AssetPictureView("common/search", width: 28.w, height: 28.w),
+              SizedBox(width: 8.w),
+              LocalizedTextView(
+                "Search...".tr,
+                fontSize: 12.sp,
+                color: Color(0xff5E5E5E),
+                fontType: FontType.semi,
+              ),
+            ],
+          ),
+        ),
+        SizedBox(height: 16.h),
+        MediaPaddingView(
+          child: MasonryGridView.count(
+            crossAxisCount: 4,
+            mainAxisSpacing: 0,
+            crossAxisSpacing: 8.w,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: InsertWidgetType.values.length,
+            itemBuilder: (BuildContext context, int index) {
+              var type = InsertWidgetType.values[index];
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AssetPictureView("home_widget/${type.icon}", width: 32.w, height: 32.w),
+                  SizedBox(height: 4.h),
+                  LocalizedTextView(
+                    type.text.tr,
+                    fontSize: 10.sp,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontType: FontType.medium,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              );
+            },
+          ),
         ),
       ],
     ),
-    child: Container(
-      margin: EdgeInsets.all(16.w),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
+  );
+
+  _titleWidget()=>Column(
+    mainAxisSize: MainAxisSize.min,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
         children: [
-          Container(
-            width: double.infinity,
-            height: 40.h,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20.w),
-            ),
-            child: Row(
-              children: [
-                SizedBox(width: 12.w),
-                AssetPictureView("common/search", width: 22.w, height: 22.w),
-                SizedBox(width: 8.w),
-                LocalizedTextView(
-                  "Search...".tr,
-                  fontSize: 16.sp,
-                  color: Color(0xffA1A1A1),
-                ),
-              ],
-            ),
+          LocalizedTextView(
+            'Add Widget'.tr,
+            fontSize: 16.sp,
+            color: Color(0xff000000),
+            fontWeight: FontWeight.w500,
+            fontType: FontType.black,
           ),
-          SizedBox(height: 16.h),
-          MediaPaddingView(
-            child: MasonryGridView.count(
-              crossAxisCount: 4,
-              mainAxisSpacing: 0,
-              crossAxisSpacing: 8.w,
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: InsertWidgetType.values.length,
-              itemBuilder: (BuildContext context, int index) {
-                var type = InsertWidgetType.values[index];
-                return Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    AssetPictureView("home_widget/${type.bgIcon}", width: double.infinity, height: 80.h),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        AssetPictureView("home_widget/${type.icon}", width: 36.w, height: 36.w),
-                        SizedBox(height: 4.h),
-                        LocalizedTextView(
-                          type.text.tr,
-                          fontSize: 12.sp,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ],
-                    ),
-                  ],
-                );
-              },
-            ),
+          Spacer(),
+          TapGuardView(
+            onPressed: (){
+              AppNavigator.back();
+            },
+            child: AssetPictureView("common/icon_close",width: 14.w,height: 14.w,),
           ),
         ],
       ),
-    ),
+      SizedBox(height: 10.h),
+      LocalizedTextView(
+        'Add widget with one click to open files'.tr,
+        fontSize: 14.sp,
+        color: const Color(0xff5E5E5E),
+        fontType: FontType.black,
+      ),
+      Container(
+        width: double.infinity,
+        height: 2.h,
+        color: Colors.black,
+        margin: EdgeInsets.only(top: 10.h),
+      )
+    ],
   );
 }

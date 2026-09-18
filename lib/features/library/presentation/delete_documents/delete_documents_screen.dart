@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_preview_file/flutter_preview_file.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 
 class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
@@ -20,6 +21,9 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
   }
 
   @override
+  Color get navigationBarColor => Color(0xffFFFAF6);
+
+  @override
   Widget buildContent(
     BuildContext context,
     DeleteDocumentsController controller,
@@ -29,92 +33,71 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
       builder: (controller) => Column(
         children: [
           _buildTitleSection(controller),
-          _buildContentSection(controller),
+          _buildLanguageList(controller),
+          _buildBottomSection(controller),
         ],
       ),
     );
   }
 
-  _buildContentSection(DeleteDocumentsController controller) => Expanded(
-    child: Container(
-      width: double.infinity,
-      height: double.infinity,
-      margin: EdgeInsets.only(top: 8.h),
-      color: Colors.white,
-      child: Column(
-        children: [
-          _buildLanguageList(controller),
-          _buildBottomSection(controller),
-        ],
-      ),
-    ),
-  );
-
   _buildLanguageList(DeleteDocumentsController controller) => Expanded(
-    child: MediaPaddingView(
-      child: ListView.separated(
-        itemCount: controller.files.length,
-        itemBuilder: (context, index) {
-          final file = controller.files[index];
-          return TapGuardView(
-            onPressed: () {
-              controller.onItemPressed(file);
-            },
-            child: Container(
-              width: double.infinity,
-              height: 72.h,
-              alignment: Alignment.centerLeft,
-              margin: EdgeInsets.only(left: 16.w, right: 16.w),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.w),
-              ),
-              child: Row(
-                children: [
-                  AssetPictureView(
-                    controller.isSelected(file)
-                        ? "common/radio_selected"
-                        : "common/radio_unselected",
-                    width: 20.w,
-                    height: 20.w,
-                  ),
-                  SizedBox(width: 12.w),
-                  AssetPictureView(
-                    controller.resolveFileIcon(file),
-                    width: 32.w,
-                    height: 32.w,
-                  ),
-                  SizedBox(width: 12.w),
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+    child: Container(
+      margin: EdgeInsets.all(12.w),
+      child: MediaPaddingView(
+        child: MasonryGridView.count(
+          crossAxisCount: 2,
+          mainAxisSpacing: 8.h,
+          crossAxisSpacing: 8.w,
+          itemCount: controller.files.length,
+          itemBuilder: (BuildContext context, int index) {
+            final file = controller.files[index];
+            return TapGuardView(
+              onPressed: (){
+                controller.onItemPressed(file);
+              },
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.8),
+                  borderRadius: BorderRadius.circular(2.w),
+                ),
+                padding: EdgeInsets.all(12.w),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
                       children: [
-                        LocalizedTextView(
-                          file.name ?? '',
-                          fontSize: 14.sp,
-                          color: Color(0xff07080E),
-                          fontWeight: FontWeight.w500,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        LocalizedTextView(
-                          _formatFileMetadata(file),
-                          fontSize: 12.sp,
-                          color: Color(0xff8E9091),
-                          overflow: TextOverflow.ellipsis,
+                        AssetPictureView(controller.resolveFileIcon(file), width: 40.w, height: 40.w),
+                        Spacer(),
+                        AssetPictureView(
+                          controller.isSelected(file)
+                              ? "common/radio_selected"
+                              : "common/radio_unselected",
+                          width: 28.w,
+                          height: 28.w,
                         ),
                       ],
                     ),
-                  ),
-                ],
+                    LocalizedTextView(
+                      file.name ?? '',
+                      fontSize: 14.sp,
+                      color: Color(0xff000000),
+                      overflow: TextOverflow.ellipsis,
+                      fontType: FontType.black,
+                    ),
+                    LocalizedTextView(
+                      _formatFileMetadata(file),
+                      fontSize: 10.sp,
+                      color: const Color(0xff5E5E5E),
+                      overflow: TextOverflow.ellipsis,
+                      fontType: FontType.medium,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
-        separatorBuilder: (BuildContext context, int index) => Container(
-          width: double.infinity,
-          height: 0.5.h,
-          color: Color(0xffF5F7F9),
-          margin: EdgeInsets.only(left: 16.w),
+            );
+          },
         ),
       ),
     ),
@@ -138,22 +121,17 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
 
   _buildBottomSection(DeleteDocumentsController controller) => Container(
     width: double.infinity,
-    height: 88.h,
+    height: 82.h,
     alignment: Alignment.center,
     padding: EdgeInsets.only(left: 16.w, right: 16.w),
     decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(12.w),
-        topRight: Radius.circular(12.w),
-      ),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black.withValues(alpha: 0.2),
-          blurRadius: 5,
-          offset: const Offset(0, -0.5),
+      color: Color(0xffFFFAF6),
+      border: BoxBorder.fromLTRB(
+        top: BorderSide(
+          width: 2.w,
+          color: Colors.black,
         ),
-      ],
+      ),
     ),
     child: TapGuardView(
       onPressed: () {
@@ -161,17 +139,29 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
       },
       child: Container(
         width: double.infinity,
-        height: 48.h,
+        height: 50.h,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Color(0xff8C69F3),
-          borderRadius: BorderRadius.circular(16.w),
+          color: Color(0xffC40000),
+          borderRadius: BorderRadius.circular(2.w),
         ),
-        child: LocalizedTextView(
-          "Delete".tr,
-          fontSize: 16.sp,
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AssetPictureView(
+              "common/icon_delete",
+              width: 18.w,
+              height: 18.w,
+            ),
+            SizedBox(width: 8.w,),
+            LocalizedTextView(
+              "Delete".tr,
+              fontSize: 16.sp,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontType: FontType.black,
+            ),
+          ],
         ),
       ),
     ),
@@ -179,26 +169,35 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
 
   _buildTitleSection(DeleteDocumentsController controller) => Container(
     width: double.infinity,
-    color: Colors.white,
+    color: Color(0xffFFFAF6),
     child: SafeArea(
       top: true,
       bottom: false,
       child: Container(
         width: double.infinity,
-        height: 44.h,
+        height: 54.h,
         alignment: Alignment.centerLeft,
-        padding: EdgeInsets.only(left: 16.w, right: 16.w),
+        padding: EdgeInsets.only(left: 10.w, right: 10.w),
         child: Row(
           children: [
             TapGuardView(
-              onPressed: () {
-                AppNavigator.backWithExitAd<void>();
-              },
-              child: LocalizedTextView(
-                "Cancel".tr,
-                fontSize: 14.sp,
-                color: Color(0xff9C9FAE),
-                fontWeight: FontWeight.w500,
+              onPressed: controller.onSelectAllPressed,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AssetPictureView(
+                    //"common/radio_selected"
+                    "common/radio_unselected",
+                    width: 28.w,
+                    height: 28.w,
+                  ),
+                  LocalizedTextView(
+                    "Select All".tr,
+                    fontSize: 12.sp,
+                    color: Color(0xff970000),
+                    fontType: FontType.medium,
+                  ),
+                ],
               ),
             ),
             SizedBox(width: 12.w,),
@@ -209,16 +208,22 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
                   controller.selectedPaths.length.toString(),
                 ),
                 fontSize: 16.sp,
-                color: Color(0xff242C3C),
+                color: Color(0xff1A1D22),
                 fontWeight: FontWeight.bold,
+                fontType: FontType.black,
               ),
             ),
+            SizedBox(width: 12.w,),
             TapGuardView(
-              onPressed: controller.onSelectAllPressed,
+              onPressed: () {
+                AppNavigator.backWithExitAd<void>();
+              },
               child: LocalizedTextView(
-                "Select All".tr,
-                fontSize: 14.sp,
-                color: Color(0xff30B667),
+                "Cancel".tr,
+                fontSize: 12.sp,
+                color: Color(0xff5E5E5E),
+                fontWeight: FontWeight.w500,
+                fontType: FontType.medium,
               ),
             ),
           ],

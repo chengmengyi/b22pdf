@@ -28,42 +28,13 @@ class _UtilitiesSectionState
     return GetBuilder<ToolsTabController>(
       init: controller,
       global: false,
-      builder: (controller) => Stack(
+      builder: (controller) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AssetPictureView(
-            "home/library_header_background",
-            width: double.infinity,
-            height: 140.h,
-          ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildTitleSection(),
-                SizedBox(height: 32.h,),
-                Expanded(
-                  child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Color(0xffF5F7F9),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12.w),
-                        topRight: Radius.circular(12.w),
-                      ),
-                    ),
-                    child: Column(
-                      children: [
-                        _toolsWidget(),
-                        _systemWidget(),
-                        _preferenceWidget(controller),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          _buildTitleSection(),
+          _toolsWidget(),
+          _systemWidget(),
+          _preferenceWidget(controller),
         ],
       ),
     );
@@ -71,29 +42,24 @@ class _UtilitiesSectionState
 
   Widget _toolsWidget() => Container(
     width: double.infinity,
-    padding: EdgeInsets.all(16.w),
+    margin: EdgeInsets.only(top: 20.h,left: 12.w,right: 12.w),
     child: Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AssetPictureView(
-              "pdf_tools/pdf_tool_icon",
-              width: 24.w,
-              height: 24.h,
-            ),
-            SizedBox(width: 4.w,),
-            LocalizedTextView(
-              "PDF tools".tr,
-              fontSize: 16.sp,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ],
+        LocalizedTextView(
+          "PDF tools".tr,
+          fontSize: 16.sp,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontType: FontType.black,
         ),
-        SizedBox(height: 12.h),
+        Container(
+          width: double.infinity,
+          height: 2.h,
+          color: Colors.black,
+          margin: EdgeInsets.only(top: 12.h,bottom: 12.h),
+        ),
         Row(
           children: [
             Expanded(
@@ -101,44 +67,31 @@ class _UtilitiesSectionState
                 onPressed: () {
                   ImageImportService.instance.scanDocuments();
                 },
-                child: SizedBox(
+                child: Container(
                   width: double.infinity,
-                  height: 72.h,
-                  child: Stack(
-                    alignment: Alignment.center,
+                  height: 68.h,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.6),
+                    borderRadius: BorderRadius.circular(2.w),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       AssetPictureView(
-                        "pdf_tools/pdf_tool_bg",
-                        width: double.infinity,
-                        height: 72.h,
+                        "pdf_tools/scan_to_pdf",
+                        width: 40.w,
+                        height: 40.h,
                       ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          AssetPictureView(
-                            "pdf_tools/scan_to_pdf",
-                            width: 60.w,
-                            height: 60.h,
-                          ),
-                          SizedBox(height: 2.w),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              LocalizedTextView(
-                                "Scan To".tr,
-                                fontSize: 14.sp,
-                                color: Color(0xff525759),
-                              ),
-                              LocalizedTextView(
-                                "PDF",
-                                fontSize: 18.sp,
-                                color: Color(0xff07080E),
-                                fontWeight: FontWeight.bold,
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
+                      SizedBox(width: 2.w),
+                      Expanded(
+                        child: LocalizedTextView(
+                          "Scan to PDF",
+                          fontSize: 12.sp,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontType: FontType.black,
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -150,44 +103,31 @@ class _UtilitiesSectionState
                 onPressed: () {
                   ImageImportService.instance.pickImages();
                 },
-                child: SizedBox(
+                child: Container(
                   width: double.infinity,
-                  height: 72.h,
-                  child: Stack(
-                    alignment: Alignment.center,
+                  height: 68.h,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.6),
+                    borderRadius: BorderRadius.circular(2.w),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       AssetPictureView(
-                        "pdf_tools/pdf_tool_bg",
-                        width: double.infinity,
-                        height: 72.h,
+                        "pdf_tools/image_to_pdf",
+                        width: 40.w,
+                        height: 40.h,
                       ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          AssetPictureView(
-                            "pdf_tools/image_to_pdf",
-                            width: 60.w,
-                            height: 60.h,
-                          ),
-                          SizedBox(height: 2.w),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              LocalizedTextView(
-                                "Image To".tr,
-                                fontSize: 14.sp,
-                                color: Color(0xff525759),
-                              ),
-                              LocalizedTextView(
-                                "PDF",
-                                fontSize: 18.sp,
-                                color: Color(0xff07080E),
-                                fontWeight: FontWeight.bold,
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
+                      SizedBox(width: 2.w),
+                      Expanded(
+                        child: LocalizedTextView(
+                          "Image to PDF",
+                          fontSize: 12.sp,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontType: FontType.black,
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -206,42 +146,38 @@ class _UtilitiesSectionState
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AssetPictureView(
-              "pdf_tools/set_icon",
-              width: 24.w,
-              height: 24.w,
-            ),
-            LocalizedTextView(
-              "System".tr,
-              fontSize: 16.sp,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ],
+        LocalizedTextView(
+          "System".tr,
+          fontSize: 16.sp,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontType: FontType.black,
         ),
-        SizedBox(height: 12.h),
+        Container(
+          width: double.infinity,
+          height: 2.h,
+          color: Colors.black,
+          margin: EdgeInsets.only(top: 12.h,bottom: 12.h),
+        ),
         TapGuardView(
           onPressed: () {
             HomeWidgetService.instance.openWidgetPicker();
           },
           child: Container(
             width: double.infinity,
-            height: 56.h,
+            height: 60.h,
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.only(left: 12.w,right: 12.w),
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12.w),
+              color: Colors.white.withValues(alpha: 0.6),
+              borderRadius: BorderRadius.circular(4.w),
             ),
             child: Row(
               children: [
                 AssetPictureView(
                   "pdf_tools/add_home_widget",
-                  width: 32.w,
-                  height: 32.w,
+                  width: 38.w,
+                  height: 38.w,
                 ),
                 SizedBox(width: 12.w),
                 Expanded(
@@ -250,6 +186,7 @@ class _UtilitiesSectionState
                     fontSize: 14.sp,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
+                    fontType: FontType.black,
                   ),
                 ),
                 AssetPictureView(
@@ -272,64 +209,56 @@ class _UtilitiesSectionState
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AssetPictureView(
-              "pdf_tools/per_icon",
-              width: 24.w,
-              height: 24.w,
-            ),
-            SizedBox(width: 8.w),
-            LocalizedTextView(
-              "Preference".tr,
-              fontSize: 14.sp,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ],
+        LocalizedTextView(
+          "Preference".tr,
+          fontSize: 16.sp,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontType: FontType.black,
         ),
-        SizedBox(height: 12.h),
+        Container(
+          width: double.infinity,
+          height: 2.h,
+          color: Colors.black,
+          margin: EdgeInsets.only(top: 12.h,bottom: 12.h),
+        ),
         TapGuardView(
           onPressed: () {
             controller.onChangeLanguagePressed();
           },
           child: Container(
             width: double.infinity,
-            height: 56.h,
+            height: 64.h,
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(left: 12.w,right: 12.w),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12.w),
-            ),
             child: Row(
               children: [
                 AssetPictureView(
                   "languages/language_icon",
-                  width: 38.w,
-                  height: 38.w,
+                  width: 24.w,
+                  height: 24.w,
                 ),
                 SizedBox(width: 12.w),
                 Expanded(
                   child: LocalizedTextView(
                     "App Language".tr,
-                    fontSize: 14.sp,
-                    color: Color(0xff07080E),
+                    fontSize: 16.sp,
+                    color: Color(0xff000000),
                     fontWeight: FontWeight.bold,
+                    fontType: FontType.black,
                   ),
                 ),
                 LocalizedTextView(
                   controller.currentLanguageName,
                   fontSize: 12.sp,
-                  color: Color(0xff8E9091),
+                  color: Color(0xff5E5E5E),
                   fontWeight: FontWeight.w500,
+                  fontType: FontType.medium,
                 ),
                 SizedBox(width: 4.w),
                 AssetPictureView(
-                  "navigation/chevron_right",
-                  width: 25.w,
-                  height: 25.w,
+                  "navigation/chevron_right2",
+                  width: 18.w,
+                  height: 18.w,
                 ),
               ],
             ),
@@ -339,16 +268,23 @@ class _UtilitiesSectionState
     ),
   );
 
-  Widget _buildTitleSection() => SafeArea(
-    top: true,
-    bottom: false,
-    child: Container(
-      margin: EdgeInsets.only(left: 16.w,top: 10.h),
-      child: LocalizedTextView(
-        "Tools & Settings".tr,
-        fontSize: 28.sp,
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
+  Widget _buildTitleSection() => Container(
+    color: Color(0xffFFFAF6),
+    child: SafeArea(
+      top: true,
+      bottom: false,
+      child: Container(
+        width: double.infinity,
+        height: 60.h,
+        alignment: Alignment.centerLeft,
+        padding: EdgeInsets.only(left: 12.w,right: 12.w),
+        child: LocalizedTextView(
+          "Tools & Settings".tr,
+          fontSize: 20.sp,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontType: FontType.black,
+        ),
       ),
     ),
   );

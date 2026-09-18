@@ -16,9 +16,6 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
   PdfViewerScreenController createController() => PdfViewerScreenController();
 
   @override
-  Color get navigationBarColor => Colors.white;
-
-  @override
   Future<bool> canPopRoute(PdfViewerScreenController controller) =>
       controller.onSystemBackRequested();
 
@@ -32,8 +29,9 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
     builder: (controller) => Column(
       children: [
         _buildTitleBar(controller),
+        _redoSaveWidget(controller),
         _buildMainContent(controller),
-        _buildBottomBar(controller),
+        _bottomFuncWidget(controller),
       ],
     ),
   );
@@ -111,6 +109,10 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
                       alignment: Alignment.bottomCenter,
                       child: _penPanel(controller),
                     ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: _pagesWidget(),
+                    ),
                   ],
                 ),
               ),
@@ -123,166 +125,98 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
     (point.dy / size.height).clamp(0, 1),
   );
 
-  Widget _buildBottomBar(PdfViewerScreenController controller) => Container(
-    width: double.infinity,
+  _pagesWidget()=>Container(
+    margin: EdgeInsets.only(bottom: 20.h),
     decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(12.w),
-        topRight: Radius.circular(12.w),
+      color: Color(0xffF2E9D9).withValues(alpha: 0.85),
+      borderRadius: BorderRadius.circular(2.w),
+      border: Border.all(
+        width: 1.w,
+        color: Colors.black,
       ),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black.withValues(alpha: 0.2),
-          blurRadius: 5,
-          offset: const Offset(0, -0.5),
+    ),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        TapGuardView(
+          onPressed: (){
+
+          },
+          child: AssetPictureView("editor/icon_reduce",width: 32.w,height: 32.w,),
+        ),
+        Container(
+          width: 1.w,
+          height: 16.h,
+          color: Colors.black,
+        ),
+        SizedBox(width: 24.w,),
+        LocalizedTextView(
+          "1 / 3",
+          fontSize: 14.sp,
+          color: Colors.black,
+          fontType: FontType.medium,
+        ),
+        SizedBox(width: 24.w,),
+        Container(
+          width: 1.w,
+          height: 16.h,
+          color: Colors.black,
+        ),
+        TapGuardView(
+          onPressed: (){
+
+          },
+          child: AssetPictureView("editor/icon_add",width: 32.w,height: 32.w,),
         ),
       ],
     ),
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        SizedBox(height: 8.h),
-        SizedBox(
-          height: 88.h,
-          child: ListView.separated(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            itemCount: controller.pageCount,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (_, index) {
-              final page = index + 1;
-              final Uint8List? bytes = controller.thumbnails[page];
-              return TapGuardView(
-                onPressed: () => controller.navigateToPage(page),
-                child: Container(
-                  width: 72.w,
-                  decoration: BoxDecoration(
-                    color: const Color(0xffF3F5F7),
-                    borderRadius: BorderRadius.circular(3.w),
-                    border: Border.all(
-                      width: page == controller.currentPage ? 2.w : 0.5.w,
-                      color: page == controller.currentPage
-                          ? const Color(0xffF7AD00)
-                          : const Color(0xffEBEBEB),
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      if (bytes != null)
-                        Positioned.fill(
-                          child: Padding(
-                            padding: EdgeInsets.all(4.w),
-                            child: Image.memory(bytes, fit: BoxFit.contain),
-                          ),
-                        ),
-                      Positioned(
-                        right: 2.w,
-                        bottom: 2.h,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.black54,
-                            borderRadius: BorderRadius.circular(2.w),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 5.w,
-                            vertical: 1.h,
-                          ),
-                          child: Text(
-                            '$page',
-                            style: TextStyle(
-                              fontSize: 10.sp,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-            separatorBuilder: (context, index) => SizedBox(width: 8.w),
-          ),
+  );
+
+  _bottomFuncWidget(PdfViewerScreenController controller)=>Container(
+    width: double.infinity,
+    height: 64.h,
+    decoration: BoxDecoration(
+      color: Color(0xffFFFAF6),
+      border: BoxBorder.fromLTRB(
+        top: BorderSide(
+          width: 2.w,
+          color: Colors.black,
         ),
-        SizedBox(height: 10.h),
-        Row(
-          children: [
-            SizedBox(width: 16.w),
-            TapGuardView(
-              onPressed: controller.onUndoPressed,
-              child: AssetPictureView('editor/undo', width: 24.w, height: 24.w),
-            ),
-            SizedBox(width: 16.w),
-            TapGuardView(
-              onPressed: controller.onRedoPressed,
-              child: AssetPictureView('editor/redo', width: 24.w, height: 24.w),
-            ),
-            const Spacer(),
-            TapGuardView(
-              onPressed: controller.onSavePressed,
-              child: Container(
-                width: 140.w,
-                height: 44.h,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: const Color(0xffF7AD00),
-                  borderRadius: BorderRadius.circular(12.w),
-                ),
-                child: LocalizedTextView(
-                  controller.saving ? 'Saving...'.tr : 'Save'.tr,
-                  fontSize: 16.sp,
-                  color: Color(0xff07080E),
-                  fontWeight: FontWeight.bold,
-                ),
+      ),
+    ),
+    child: Row(
+      children: PdfEditType.values.map((type) {
+        final selected = type == controller.selectedType;
+        return Expanded(
+          child: TapGuardView(
+            onPressed: () => controller.onAnnotationToolSelected(type),
+            child: Container(
+              width: double.infinity,
+              height: 64.h,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: selected?Color(0xff970000):Color(0xffFFFAF6),
+              ),
+              child: AssetPictureView(
+                selected?type.iconSel:type.iconUns,
+                width: 28.w,
+                height: 28.w,
               ),
             ),
-            SizedBox(width: 16.w),
-          ],
-        ),
-        SizedBox(height: 8.h,),
-        Container(
-          height: 48.h,
-          padding: EdgeInsets.only(left: 16.w,right: 16.w),
-          child: Row(
-            children: PdfEditType.values.map((type) {
-              final selected = type == controller.selectedType;
-              return Expanded(
-                child: TapGuardView(
-                  onPressed: () => controller.onAnnotationToolSelected(type),
-                  child: Container(
-                    width: double.infinity,
-                    height: 48.h,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.w),
-                      border: selected
-                          ? Border.all(width: 1.5.w, color: Color(0xff8C69F3))
-                          : null,
-                    ),
-                    child: AssetPictureView(
-                      selected?type.iconSel:type.iconUns,
-                      width: 28.w,
-                      height: 28.w,
-                    ),
-                  ),
-                ),
-              );
-            }).toList(),
           ),
-        ),
-        SizedBox(height: 8.h,),
-      ],
+        );
+      }).toList(),
     ),
   );
 
   Widget _buildTitleBar(PdfViewerScreenController controller) => Container(
     width: double.infinity,
-    color: Colors.white,
+    color: Color(0xffFFFAF6),
     child: SafeArea(
       top: true,
       bottom: false,
       child: SizedBox(
-        height: 44.h,
+        height: 54.h,
         child: Stack(
           children: [
             TapGuardView(
@@ -293,8 +227,8 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
                 child: Center(
                   child: AssetPictureView(
                     'navigation/back',
-                    width: 24.w,
-                    height: 24.w,
+                    width: 28.w,
+                    height: 28.w,
                   ),
                 ),
               ),
@@ -304,10 +238,11 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
                 padding: EdgeInsets.symmetric(horizontal: 52.w),
                 child: LocalizedTextView(
                   controller.fileName,
-                  fontSize: 18.sp,
+                  fontSize: 12.sp,
                   color: Colors.black,
                   fontWeight: FontWeight.w500,
                   overflow: TextOverflow.ellipsis,
+                  fontType: FontType.black,
                 ),
               ),
             ),
@@ -417,6 +352,47 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
           ),
         ),
       ),
+    ),
+  );
+
+  _redoSaveWidget(PdfViewerScreenController controller)=>Container(
+    width: double.infinity,
+    height: 44.h,
+    color: Color(0xffFFFAF6),
+    child: Row(
+      children: [
+        SizedBox(width: 16.w),
+        TapGuardView(
+          onPressed: controller.onUndoPressed,
+          child: AssetPictureView('editor/undo', width: 28.w, height: 28.w),
+        ),
+        SizedBox(width: 16.w),
+        TapGuardView(
+          onPressed: controller.onRedoPressed,
+          child: AssetPictureView('editor/redo', width: 28.w, height: 28.w),
+        ),
+        const Spacer(),
+        TapGuardView(
+          onPressed: controller.onSavePressed,
+          child: Container(
+            width: 82.w,
+            height: 32.h,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: const Color(0xff970000),
+              borderRadius: BorderRadius.circular(2.w),
+            ),
+            child: LocalizedTextView(
+              controller.saving ? 'Saving...'.tr : 'Save'.tr,
+              fontSize: 12.sp,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontType: FontType.medium,
+            ),
+          ),
+        ),
+        SizedBox(width: 16.w),
+      ],
     ),
   );
 }

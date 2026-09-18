@@ -25,20 +25,27 @@ class LanguagePickerBottomSheet
     global: false,
     builder: (controller) => Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16.w),
-          topRight: Radius.circular(16.w),
-        ),
+          color: Color(0xffF5F2E9),
+          border: BoxBorder.fromLTRB(
+              top: BorderSide(
+                width: 4.w,
+                color: Color(0xffC40000),
+              )
+          ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           _buildTitleSection(),
+          Container(
+            width: double.infinity,
+            height: 2.h,
+            color: Colors.black,
+            margin: EdgeInsets.only(top: 10.h,bottom: 10.h),
+          ),
           _buildContentSection(controller),
-          SizedBox(height: 12.h),
         ],
       ),
     ),
@@ -47,11 +54,6 @@ class LanguagePickerBottomSheet
   Widget _buildContentSection(LanguagePickerController controller) => Container(
     width: double.infinity,
     height: 448.h,
-    padding: EdgeInsets.all(16.w),
-    decoration: BoxDecoration(
-      color: Color(0xffF5F7F9),
-      borderRadius: BorderRadius.circular(12.w),
-    ),
     child: MediaPaddingView(
       child: ListView.builder(
         controller: controller.languageScrollController,
@@ -65,10 +67,6 @@ class LanguagePickerBottomSheet
               width: double.infinity,
               height: 56.h,
               padding: EdgeInsets.only(left: 12.w,right: 12.w),
-              decoration: BoxDecoration(
-                color: selected?Colors.white:null,
-                borderRadius: BorderRadius.circular(4.w),
-              ),
               child: Row(
                 children: [
                   AssetPictureView(item.icon, width: 32.w, height: 32.w),
@@ -85,8 +83,8 @@ class LanguagePickerBottomSheet
                     selected
                         ? 'common/radio_selected'
                         : 'common/radio_unselected',
-                    width: 20.w,
-                    height: 20.w,
+                    width: 28.w,
+                    height: 28.w,
                   ),
                 ],
               ),
@@ -97,31 +95,22 @@ class LanguagePickerBottomSheet
     ),
   );
 
-  Widget _buildTitleSection() => SizedBox(
-    width: double.infinity,
-    height: 56.h,
-    child: Stack(
-      children: [
-        Align(
-          child: LocalizedTextView(
-            'App Language'.tr,
-            fontSize: 20.sp,
-            color: Color(0xff07080E),
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: TapGuardView(
-            onPressed: AppNavigator.back,
-            child: AssetPictureView(
-              'navigation/close',
-              width: 24.w,
-              height: 24.w,
-            ),
-          ),
-        ),
-      ],
-    ),
+  Widget _buildTitleSection() => Row(
+    children: [
+      LocalizedTextView(
+        'App Language'.tr,
+        fontSize: 16.sp,
+        color: Color(0xff000000),
+        fontWeight: FontWeight.w500,
+        fontType: FontType.black,
+      ),
+      Spacer(),
+      TapGuardView(
+        onPressed: (){
+          AppNavigator.back();
+        },
+        child: AssetPictureView("common/icon_close",width: 14.w,height: 14.w,),
+      ),
+    ],
   );
 }

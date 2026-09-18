@@ -5,30 +5,25 @@ import 'package:b21pdf/core/navigation/app_navigator.dart';
 
 enum SortType {
   dateNew(
-    "Date(Newest First)",
-    "document_library/sort_newest",
-    "document_library/sort_newest_selected",
+    "Date",
+    "Newest First"
   ),
   dateOld(
-    "Date(Oldest First)",
-    "document_library/sort_oldest",
-    "document_library/sort_oldest_selected",
+    "Date",
+    "Oldest First"
   ),
   nameAZ(
-    "Name(A-Z)",
-    "document_library/sort_name_ascending",
-    "document_library/sort_name_ascending_selected",
+    "Name",
+    "A-Z"
   ),
   nameZA(
-    "Name(Z-A)",
-    "document_library/sort_name_descending",
-    "document_library/sort_name_descending_selected",
+    "Name",
+    "Z-A"
   );
 
   final String text;
-  final String icon;
-  final String iconVxe;
-  const SortType(this.text, this.icon, this.iconVxe);
+  final String desc;
+  const SortType(this.text,this.desc);
 }
 
 class DocumentSortController extends BaseController {

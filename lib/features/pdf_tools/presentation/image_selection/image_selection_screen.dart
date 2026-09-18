@@ -38,196 +38,97 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
 
   Widget _buildBottomBar(ImageSelectionController controller) => Container(
     width: double.infinity,
-    padding: EdgeInsets.only(left: 16.w, right: 16.w),
+    height: 66.h,
+    padding: EdgeInsets.only(left: 12.w, right: 12.w),
     decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(12.w),
-        topRight: Radius.circular(12.w),
-      ),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black.withValues(alpha: 0.2),
-          blurRadius: 5,
-          offset: const Offset(0, -0.5),
+      color: Color(0xffFFFAF6),
+      border: BoxBorder.fromLTRB(
+        top: BorderSide(
+          width: 2.w,
+          color: Colors.black,
         ),
-      ],
+      ),
     ),
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
+    child: Row(
       children: [
-        SizedBox(height: 8.h),
-        SizedBox(
-          height: 88.h,
-          child: ListView.separated(
-            controller: controller.thumbnailController,
-            itemCount: controller.imagePaths.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (_, index) {
-              final page = index + 1;
-              return TapGuardView(
-                onPressed: () {
-                  controller.selectImage(index);
-                },
-                child: Container(
-                  width: 72.w,
-                  height: 88.h,
-                  decoration: BoxDecoration(
-                    color: const Color(0xffF3F5F7),
-                    borderRadius: BorderRadius.circular(3.w),
-                    border: Border.all(
-                      width: 2.w,
-                      color: controller.selectedIndex == index
-                          ? const Color(0xffF7AD00)
-                          : const Color(0xffEBEBEB),
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned.fill(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(3.w),
-                          child: Image.file(
-                            File(controller.imagePaths[index]),
-                            fit: BoxFit.cover,
-                            errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        right: 0,
-                        bottom: 0,
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 5.w,
-                            vertical: 1.h,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.black54,
-                            borderRadius: BorderRadius.circular(2.w),
-                          ),
-                          child: Text(
-                            '$page',
-                            style: TextStyle(
-                              fontSize: 10.sp,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-            separatorBuilder: (context, index) => SizedBox(width: 8.w),
+        TapGuardView(
+          onPressed: controller.onReplacePressed,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AssetPictureView(
+                "pdf_tools/rescan",
+                width: 28.w,
+                height: 28.w,
+              ),
+              SizedBox(width: 4.h),
+              LocalizedTextView(
+                "Retake".tr,
+                fontSize: 12.sp,
+                color: Color(0xff333333),
+                fontWeight: FontWeight.w500,
+                fontType: FontType.medium,
+              ),
+            ],
           ),
         ),
-        SizedBox(height: 10.h),
-        Row(
-          children: [
-            TapGuardView(
-              onPressed: controller.onReplacePressed,
-              child: Container(
-                width: 64.w,
-                height: 64.w,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.w),
-                  border: Border.all(
-                    width: 1.w,
-                    color: Color(0xffCFD6DC),
-                  ),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    AssetPictureView(
-                      "pdf_tools/rescan",
-                      width: 24.w,
-                      height: 24.w,
-                    ),
-                    SizedBox(height: 4.h),
-                    LocalizedTextView(
-                      "Retake".tr,
-                      fontSize: 11.sp,
-                      color: Color(0xff525759),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ],
-                ),
+        SizedBox(width: 12.w),
+        TapGuardView(
+          onPressed: controller.onAddPressed,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AssetPictureView(
+                "pdf_tools/add_page",
+                width: 28.w,
+                height: 28.w,
               ),
-            ),
-            SizedBox(width: 12.w),
-            TapGuardView(
-              onPressed: controller.onAddPressed,
-              child: Container(
-                width: 64.w,
-                height: 64.w,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.w),
-                  border: Border.all(
-                    width: 1.w,
-                    color: Color(0xffCFD6DC),
-                  ),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    AssetPictureView(
-                      "pdf_tools/add_page",
-                      width: 24.w,
-                      height: 24.w,
-                    ),
-                    SizedBox(height: 4.h),
-                    LocalizedTextView(
-                      "Add".tr,
-                      fontSize: 11.sp,
-                      color: Color(0xff525759),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ],
-                ),
+              SizedBox(width: 4.h),
+              LocalizedTextView(
+                "Add".tr,
+                fontSize: 12.sp,
+                color: Color(0xff333333),
+                fontWeight: FontWeight.w500,
+                fontType: FontType.medium,
               ),
-            ),
-            SizedBox(width: 12.w),
-            Expanded(
-              child: TapGuardView(
-                onPressed: () {
-                  controller.onSavePressed();
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 64.h,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Color(0xffF7AD00),
-                    borderRadius: BorderRadius.circular(12.w),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      AssetPictureView(
-                        "common/confirm_white",
-                        width: 22.w,
-                        height: 22.w,
-                      ),
-                      SizedBox(width: 4.w,),
-                      LocalizedTextView(
-                        "Save PDF".tr,
-                        fontSize: 16.sp,
-                        color: Color(0xff07080E),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
-        SizedBox(height: 10.h),
+        SizedBox(width: 12.w),
+        Expanded(
+          child: TapGuardView(
+            onPressed: () {
+              controller.onSavePressed();
+            },
+            child: Container(
+              width: double.infinity,
+              height: 44.h,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Color(0xffC40000),
+                borderRadius: BorderRadius.circular(2.w),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AssetPictureView(
+                    "common/confirm_white",
+                    width: 18.w,
+                    height: 18.w,
+                  ),
+                  SizedBox(width: 4.w,),
+                  LocalizedTextView(
+                    "Save PDF".tr,
+                    fontSize: 14.sp,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontType: FontType.medium,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ],
     ),
   );
@@ -248,29 +149,84 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
           ),
         ],
       ),
-      child: PageView.builder(
-        controller: controller.pageController,
-        itemCount: controller.imagePaths.length,
-        onPageChanged: controller.onPageChanged,
-        itemBuilder: (_, int index) {
-          return Image.file(
-            File(controller.imagePaths[index]),
-            fit: BoxFit.contain,
-            errorBuilder: (_, _, _) => const SizedBox.shrink(),
-          );
-        },
+      child: Stack(
+        children: [
+          PageView.builder(
+            controller: controller.pageController,
+            itemCount: controller.imagePaths.length,
+            onPageChanged: controller.onPageChanged,
+            itemBuilder: (_, int index) {
+              return Image.file(
+                File(controller.imagePaths[index]),
+                fit: BoxFit.contain,
+                errorBuilder: (_, _, _) => const SizedBox.shrink(),
+              );
+            },
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: _pagesWidget(),
+          ),
+        ],
       ),
+    ),
+  );
+
+  _pagesWidget()=>Container(
+    margin: EdgeInsets.only(bottom: 20.h),
+    decoration: BoxDecoration(
+      color: Color(0xffF2E9D9).withValues(alpha: 0.85),
+      borderRadius: BorderRadius.circular(2.w),
+      border: Border.all(
+        width: 1.w,
+        color: Colors.black,
+      ),
+    ),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        TapGuardView(
+          onPressed: (){
+
+          },
+          child: AssetPictureView("editor/icon_reduce",width: 32.w,height: 32.w,),
+        ),
+        Container(
+          width: 1.w,
+          height: 16.h,
+          color: Colors.black,
+        ),
+        SizedBox(width: 24.w,),
+        LocalizedTextView(
+          "1 / 3",
+          fontSize: 14.sp,
+          color: Colors.black,
+          fontType: FontType.medium,
+        ),
+        SizedBox(width: 24.w,),
+        Container(
+          width: 1.w,
+          height: 16.h,
+          color: Colors.black,
+        ),
+        TapGuardView(
+          onPressed: (){
+
+          },
+          child: AssetPictureView("editor/icon_add",width: 32.w,height: 32.w,),
+        ),
+      ],
     ),
   );
 
   Widget _buildTitleBar(ImageSelectionController controller) => Container(
     width: double.infinity,
-    color: Colors.white,
+    color: Color(0xffFFFAF6),
     child: SafeArea(
       top: true,
       bottom: false,
       child: SizedBox(
-        height: 44.h,
+        height: 54.h,
         child: Stack(
           children: [
             TapGuardView(
@@ -281,8 +237,8 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
                 child: Center(
                   child: AssetPictureView(
                     'navigation/back',
-                    width: 24.w,
-                    height: 24.w,
+                    width: 28.w,
+                    height: 28.w,
                   ),
                 ),
               ),

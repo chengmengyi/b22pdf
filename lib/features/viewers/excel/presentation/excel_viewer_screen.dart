@@ -14,8 +14,6 @@ class ExcelViewerScreen extends BaseScreen<ExcelViewerController> {
   const ExcelViewerScreen({super.key});
   @override
   ExcelViewerController createController() => ExcelViewerController();
-  @override
-  Color get navigationBarColor => Colors.white;
 
   @override
   Future<bool> canPopRoute(ExcelViewerController controller) async {
@@ -81,7 +79,7 @@ class ExcelViewerScreen extends BaseScreen<ExcelViewerController> {
             onTap: controller.onEditPressed,
             color: controller.isEditing
                 ? const Color(0xff858C92)
-                : const Color(0xffF7AD00),
+                : const Color(0xff970000),
           ),
         ),
         if (controller.isEditing) SizedBox(width: 8.w),
@@ -90,7 +88,7 @@ class ExcelViewerScreen extends BaseScreen<ExcelViewerController> {
             child: _buildActionButton(
               text: controller.isSaving ? 'Saving...'.tr : 'Save'.tr,
               onTap: controller.onSavePressed,
-              color: const Color(0xffF7AD00),
+              color: const Color(0xff970000),
             ),
           ),
       ],
@@ -107,24 +105,26 @@ class ExcelViewerScreen extends BaseScreen<ExcelViewerController> {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(12.w),
+        borderRadius: BorderRadius.circular(2.w),
       ),
       child: LocalizedTextView(
         text,
         fontSize: 16.sp,
         color: Colors.white,
         fontWeight: FontWeight.bold,
+        fontType: FontType.medium,
       ),
     ),
   );
+
   Widget _buildTitleBar(ExcelViewerController controller) => Container(
     width: double.infinity,
-    color: Colors.white,
+    color: Color(0xffFFFAF6),
     child: SafeArea(
       top: true,
       bottom: false,
       child: SizedBox(
-        height: 44.h,
+        height: 54.h,
         child: Stack(
           children: [
             TapGuardView(
@@ -135,8 +135,8 @@ class ExcelViewerScreen extends BaseScreen<ExcelViewerController> {
                 child: Center(
                   child: AssetPictureView(
                     'navigation/back',
-                    width: 24.w,
-                    height: 24.w,
+                    width: 28.w,
+                    height: 28.w,
                   ),
                 ),
               ),
@@ -146,10 +146,11 @@ class ExcelViewerScreen extends BaseScreen<ExcelViewerController> {
                 padding: EdgeInsets.symmetric(horizontal: 52.w),
                 child: LocalizedTextView(
                   controller.fileName,
-                  fontSize: 18.sp,
+                  fontSize: 12.sp,
                   color: Colors.black,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w500,
                   overflow: TextOverflow.ellipsis,
+                  fontType: FontType.black,
                 ),
               ),
             ),

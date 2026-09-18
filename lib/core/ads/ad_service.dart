@@ -34,45 +34,6 @@ class AdService implements FlutterPdfAdListener {
   final Set<AdScene> _noReloadAfterCloseAdScenes = <AdScene>{
     AdScene.pr_new_launch,
   };
-  final Map<AdScene, Set<AdPlacement>> _adSceneAllowedPosIdsMap =
-      <AdScene, Set<AdPlacement>>{
-        AdScene.pr_new_launch: <AdPlacement>{AdPlacement.pr_new_open},
-        AdScene.pr_launch: <AdPlacement>{
-          AdPlacement.pr_open_cold,
-          AdPlacement.pr_open_hot,
-          AdPlacement.pr_open_noti,
-          AdPlacement.pr_open_pop,
-          AdPlacement.pr_open_file,
-          AdPlacement.pr_open_mediapop,
-          AdPlacement.pr_permission_open,
-        },
-        AdScene.pr_ban1: <AdPlacement>{
-          AdPlacement.pr_new_lan_nat,
-          AdPlacement.pr_main_banner1,
-        },
-        AdScene.pr_ban2: <AdPlacement>{
-          AdPlacement.pr_main_banner2,
-          AdPlacement.unload_nat1,
-        },
-        AdScene.pr_ban3: <AdPlacement>{AdPlacement.pr_main_banner3},
-        AdScene.pr_user_use: <AdPlacement>{
-          AdPlacement.pr_up_int,
-          AdPlacement.pr_down_int,
-          AdPlacement.pr_sc_pdf,
-          AdPlacement.pr_w_pdf,
-          AdPlacement.pr_img_pdf,
-          AdPlacement.pr_refresh,
-          AdPlacement.pr_search_int,
-          AdPlacement.pr_read_int,
-        },
-        AdScene.pr_exit: <AdPlacement>{
-          AdPlacement.pr_readback,
-          AdPlacement.pr_exit_app,
-          AdPlacement.unload_1,
-          AdPlacement.unload_2,
-          AdPlacement.pr_comment,
-        },
-      };
 
   Future<void> initialize() async {
     _configureStartupPreloadScenes();
@@ -118,11 +79,6 @@ class AdService implements FlutterPdfAdListener {
     AdScene adScene, {
     AdPlacement? adPosId,
   }) async {
-    final AdPlacement resolvedAdPosId =
-        adPosId ?? _resolveStartupPlacement(adScene);
-    if (!_isPlacementAllowedForScene(adScene, resolvedAdPosId)) {
-      return;
-    }
     try {
       await _loadStartupSceneWithoutShield(adScene);
     } catch (_) {
@@ -138,9 +94,6 @@ class AdService implements FlutterPdfAdListener {
     required AdScene adScene,
     required AdPlacement adPosId,
   }) async {
-    if (!_isPlacementAllowedForScene(adScene, adPosId)) {
-      return;
-    }
     try {
       await FlutterPdfAdPlugins.instance.loadPlacement<AdScene>(
         adScene,
@@ -168,9 +121,6 @@ class AdService implements FlutterPdfAdListener {
     required AdScene adScene,
     required AdPlacement adPosId,
   }) async {
-    if (!_isPlacementAllowedForScene(adScene, adPosId)) {
-      return null;
-    }
     return FlutterPdfAdPlugins.instance.buildCachedAdWidget<AdScene>(
       adScene,
       adPosId: adPosId,
@@ -193,38 +143,10 @@ class AdService implements FlutterPdfAdListener {
   }
 
   Future<void> _loadStartupSceneWithoutShield(AdScene adScene) async {
-    if (adScene != AdScene.pr_ban2 && adScene != AdScene.pr_exit) {
-      await FlutterPdfAdPlugins.instance.loadPlacement<AdScene>(
-        adScene,
-        placementLabelBuilder: (AdScene adPlacement) => adPlacement.name,
-      );
-      return;
-    }
     await FlutterPdfAdPlugins.instance.loadPlacement<AdScene>(
       adScene,
       placementLabelBuilder: (AdScene adPlacement) => adPlacement.name,
     );
-  }
-
-  bool _isPlacementAllowedForScene(AdScene adScene, AdPlacement adPosId) {
-    return _matchesSceneAndPlacement(adScene, adPosId);
-  }
-
-  bool _matchesSceneAndPlacement(AdScene adScene, AdPlacement adPosId) {
-    final Set<AdPlacement>? allowedAdPosIds = _adSceneAllowedPosIdsMap[adScene];
-    if (allowedAdPosIds == null) {
-      return true;
-    }
-    return allowedAdPosIds.contains(adPosId);
-  }
-
-  AdPlacement _resolveStartupPlacement(AdScene adScene) {
-    final Set<AdPlacement>? allowedAdPosIds = _adSceneAllowedPosIdsMap[adScene];
-    if (allowedAdPosIds == null || allowedAdPosIds.isEmpty) {
-      return _adSceneAllowedPosIdsMap[adScene]?.first ??
-          AdPlacement.pr_open_cold;
-    }
-    return allowedAdPosIds.first;
   }
 
   void _configureStartupPreloadScenes() {
@@ -249,7 +171,6 @@ class AdService implements FlutterPdfAdListener {
     if (adConfigMap is Map) {
       adConfigMap.forEach((dynamic configSceneKey, dynamic configListValue) {
         final AdScene? configAdScene = _findSceneByConfigKey('$configSceneKey');
-        print("kk=configAdScene==${configAdScene}===${configSceneKey}");
         if (configAdScene == null || configListValue is! List) {
           return;
         }
@@ -265,10 +186,8 @@ class AdService implements FlutterPdfAdListener {
             AdInfoBean.fromPlacementJson(Map<String, dynamic>.from(configItem)),
           );
         }
-        print("kk=sceneAdConfigs==${sceneAdConfigs.length}");
       });
     }
-    print("kk=refreshRemoteAdConfig==${parsedAdConfig}");
     FlutterPdfAdPlugins.instance.updateConfigs<AdScene>(
       parsedAdConfig,
       placementLabelBuilder: (AdScene adScene) => adScene.name,
@@ -349,12 +268,6 @@ class AdService implements FlutterPdfAdListener {
       return false;
     }
     if (!await isPlacementEnabled(adPosId)) {
-      return false;
-    }
-    if (!_isPlacementAllowedForScene(adScene, adPosId)) {
-      debugPrint(
-        'showLifecycleAd _isPlacementAllowedForScene scene=$adScene, posid=$adPosId',
-      );
       return false;
     }
     if (!ignoreCooldown &&
@@ -501,15 +414,6 @@ class AdService implements FlutterPdfAdListener {
     required AdScene adScene,
     required AdPlacement adPosId,
   }) async {
-    if (!_matchesSceneAndPlacement(adScene, adPosId)) {
-      debugPrint(
-        'HasAvailableCachedAd _matchesSceneAndPlacement scene=$adScene, posid=$adPosId',
-      );
-      return false;
-    }
-    if (!_isPlacementAllowedForScene(adScene, adPosId)) {
-      return false;
-    }
     try {
       final AdInfoBean? cachedAdInfo = await FlutterPdfAdPlugins.instance
           .getAvailableCachedAdInfo<AdScene>(adScene);
