@@ -26,96 +26,98 @@ class PdfTaskProgressScreen extends BaseScreen<PdfTaskProgressController> {
         children: [
           _buildTitleBar(controller),
           SizedBox(height: 62.h),
-          LottieWidget(name: "merge",width: 240.w,height: 240.w,repeat: true,),
+          AssetPictureView("pdf_tools/icon_progressing",width: 94.w,height: 94.w,),
+          SizedBox(height: 20.h),
           LocalizedTextView(
             'PDF Merging...'.tr,
-            fontSize: 24.sp,
+            fontSize: 20.sp,
             color: Colors.black,
             fontWeight: FontWeight.bold,
+            fontType: FontType.black,
           ),
           SizedBox(height: 12.h),
           LocalizedTextView(
             'Please do not close the app.'.tr,
             fontSize: 14.sp,
-            color: Color(0xff525759),
+            color: Color(0xff5E5E5E),
             fontWeight: FontWeight.w500,
+            fontType: FontType.black,
           ),
+          Spacer(),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              LocalizedTextView(
+                "${controller.progressPercent}",
+                fontSize: 32.sp,
+                color: Color(0xff970000),
+                fontWeight: FontWeight.w900,
+                fontType: FontType.black,
+              ),
+              LocalizedTextView(
+                "%",
+                fontSize: 18.sp,
+                color: Colors.black,
+                fontWeight: FontWeight.w900,
+                fontType: FontType.black,
+              ),
+            ],
+          ),
+          SizedBox(height: 20.h,),
+          Container(
+            width: 222.w,
+            height: 12.h,
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+              color: Colors.black.withValues(alpha: 0.1),
+            ),
+            child: Container(
+              width: (222.w) * controller.progress,
+              height: 12.h,
+              decoration: BoxDecoration(
+                color: Color(0xff970000),
+              ),
+            ),
+          ),
+          SizedBox(height: 20.h),
           LocalizedTextView(
             'Processed {current}/{total} images'.tr
                 .replaceAll('{current}', '${controller.processedCount}')
                 .replaceAll('{total}', '${controller.imagePaths.length}'),
             fontSize: 14.sp,
-            color: Color(0xff525759),
+            color: Color(0xff5E5E5E),
             fontWeight: FontWeight.w500,
+            fontType: FontType.black,
           ),
-          SizedBox(height: 62.h),
-          Container(
-            margin: EdgeInsets.only(left: 62.w, right: 62.w),
-            child: LayoutBuilder(
-              builder: (context, bc) {
-                var maxWidth = bc.maxWidth;
-                return Container(
-                  width: double.infinity,
-                  height: 12.h,
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    color: Color(0xffF5F7F9),
-                    borderRadius: BorderRadius.circular(6.w),
-                  ),
-                  child: Container(
-                    width: maxWidth * controller.progress,
-                    height: 12.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6.w),
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Color(0xffF8B7FF),Color(0xff9A95F9)]
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-          SizedBox(height: 8.h),
-          LocalizedTextView(
-            "${controller.progressPercent}%",
-            fontSize: 14.sp,
-            color: Color(0xff8C69F3),
-            fontWeight: FontWeight.bold,
-          ),
+          SizedBox(height: 75.h,),
         ],
       ),
     );
   }
 
-  Widget _buildTitleBar(PdfTaskProgressController controller) => Container(
-    width: double.infinity,
-    color: Colors.white,
-    child: SafeArea(
-      top: true,
-      bottom: false,
-      child: SizedBox(
-        height: 44.h,
-        child: Stack(
-          children: [
-            TapGuardView(
-              onPressed: controller.onBackPressed,
-              child: SizedBox(
-                width: 44.w,
-                height: 44.h,
-                child: Center(
-                  child: AssetPictureView(
-                    'navigation/back',
-                    width: 24.w,
-                    height: 24.w,
-                  ),
+  Widget _buildTitleBar(PdfTaskProgressController controller) => SafeArea(
+    top: true,
+    bottom: false,
+    child: SizedBox(
+      width: double.infinity,
+      height: 44.h,
+      child: Stack(
+        children: [
+          TapGuardView(
+            onPressed: controller.onBackPressed,
+            child: SizedBox(
+              width: 44.w,
+              height: 44.h,
+              child: Center(
+                child: AssetPictureView(
+                  'navigation/back',
+                  width: 24.w,
+                  height: 24.w,
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     ),
   );

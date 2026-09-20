@@ -120,6 +120,7 @@ final class AppTranslations extends Translations {
       'Uninstall': 'Uninstall',
       'Uninstall reason': 'Uninstall reason',
       'New version coming soon!': 'New version coming soon!',
+      'New Version Coming Soon!': 'New Version Coming Soon!',
       'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!':
           'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!',
       'Continue using for free': 'Continue using for free',
@@ -178,6 +179,9 @@ final class AppTranslations extends Translations {
       'Preference': 'Preference',
       'App Language': 'App Language',
       'Tools & Settings': 'Tools & Settings',
+      'Unlock Your PDF is Full Potential!':
+          'Unlock Your PDF is Full Potential!',
+      'GO SETTING': 'GO SETTING',
       'This app has an update': 'This app has an update',
       'This App Has An Update.': 'This App Has An Update.',
       'Please upgrade to enjoy the latest functions.':
@@ -305,6 +309,7 @@ final class AppTranslations extends Translations {
       'Uninstall': 'Désinstaller',
       'Uninstall reason': 'Motif de désinstallation',
       'New version coming soon!': 'Une nouvelle version arrive bientôt !',
+      'New Version Coming Soon!': 'Une nouvelle version arrive bientôt !',
       'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!':
           'Nous avons bien reçu votre avis ! Il nous est précieux. Nous améliorons continuellement l’expérience et une nouvelle version sera bientôt disponible. Restez avec nous !',
       'Continue using for free': 'Continuer gratuitement',
@@ -365,6 +370,9 @@ final class AppTranslations extends Translations {
       'Preference': 'Préférences',
       'App Language': 'Langue de l’application',
       'Tools & Settings': 'Outils et paramètres',
+      'Unlock Your PDF is Full Potential!':
+          'Libérez tout le potentiel de vos PDF !',
+      'GO SETTING': 'OUVRIR LES RÉGLAGES',
       'This app has an update': 'Cette application a une mise à jour',
       'This App Has An Update.': 'Une mise à jour est disponible.',
       'Please upgrade to enjoy the latest functions.':
@@ -492,6 +500,7 @@ final class AppTranslations extends Translations {
       'Uninstall': 'アンインストール',
       'Uninstall reason': 'アンインストールの理由',
       'New version coming soon!': '新しいバージョンを近日公開！',
+      'New Version Coming Soon!': '新しいバージョンを近日公開！',
       'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!':
           'ご意見を受け付けました。いただいた情報は私たちにとって大切です。より良い製品体験を目指して改善を続けており、新しいバージョンも近日公開予定です。ぜひ引き続きご利用ください。',
       'Continue using for free': '無料で使い続ける',
@@ -543,6 +552,8 @@ final class AppTranslations extends Translations {
       'Preference': '設定',
       'App Language': 'アプリの言語',
       'Tools & Settings': 'ツールと設定',
+      'Unlock Your PDF is Full Potential!': 'PDFの可能性を最大限に引き出そう！',
+      'GO SETTING': '設定を開く',
       'This app has an update': 'アプリの更新があります',
       'This App Has An Update.': 'アプリの更新があります。',
       'Please upgrade to enjoy the latest functions.': '最新機能を利用するには更新してください。',
@@ -660,6 +671,7 @@ final class AppTranslations extends Translations {
       'Uninstall': '삭제',
       'Uninstall reason': '삭제 이유',
       'New version coming soon!': '새 버전이 곧 출시됩니다!',
+      'New Version Coming Soon!': '새 버전이 곧 출시됩니다!',
       'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!':
           '소중한 의견이 접수되었습니다. 보내주신 정보는 제품 개선에 큰 도움이 됩니다. 더 나은 사용 경험을 위해 계속 개선 중이며 새 버전도 곧 출시됩니다. 계속 함께해 주세요!',
       'Continue using for free': '무료로 계속 사용',
@@ -712,6 +724,8 @@ final class AppTranslations extends Translations {
       'Preference': '환경설정',
       'App Language': '앱 언어',
       'Tools & Settings': '도구 및 설정',
+      'Unlock Your PDF is Full Potential!': 'PDF의 모든 기능을 활용하세요!',
+      'GO SETTING': '설정으로 이동',
       'This app has an update': '앱 업데이트가 있습니다',
       'This App Has An Update.': '앱 업데이트가 있습니다.',
       'Please upgrade to enjoy the latest functions.': '최신 기능을 이용하려면 업데이트하세요.',
@@ -831,6 +845,7 @@ final class AppTranslations extends Translations {
       'Uninstall': 'Deinstallieren',
       'Uninstall reason': 'Deinstallationsgrund',
       'New version coming soon!': 'Eine neue Version kommt bald!',
+      'New Version Coming Soon!': 'Eine neue Version kommt bald!',
       'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!':
           'Ihr Feedback ist bei uns eingegangen und sehr wichtig. Wir verbessern das Produkterlebnis kontinuierlich und veröffentlichen bald eine neue Version. Bleiben Sie bei uns!',
       'Continue using for free': 'Kostenlos weiterverwenden',
@@ -891,6 +906,9 @@ final class AppTranslations extends Translations {
       'Preference': 'Einstellungen',
       'App Language': 'App-Sprache',
       'Tools & Settings': 'Werkzeuge und Einstellungen',
+      'Unlock Your PDF is Full Potential!':
+          'Schöpfen Sie das volle Potenzial Ihrer PDFs aus!',
+      'GO SETTING': 'ZU DEN EINSTELLUNGEN',
       'This app has an update': 'Für diese App ist ein Update verfügbar',
       'This App Has An Update.': 'Für diese App ist ein Update verfügbar.',
       'Please upgrade to enjoy the latest functions.':
@@ -1022,6 +1040,7 @@ final class AppTranslations extends Translations {
       'Uninstall': 'Desinstalar',
       'Uninstall reason': 'Motivo de desinstalación',
       'New version coming soon!': '¡Pronto llegará una nueva versión!',
+      'New Version Coming Soon!': '¡Pronto llegará una nueva versión!',
       'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!':
           'Hemos recibido tus comentarios y son muy importantes. Seguimos mejorando la experiencia del producto y pronto lanzaremos una nueva versión. ¡Quédate con nosotros!',
       'Continue using for free': 'Seguir usando gratis',
@@ -1083,6 +1102,9 @@ final class AppTranslations extends Translations {
       'Preference': 'Preferencias',
       'App Language': 'Idioma de la aplicación',
       'Tools & Settings': 'Herramientas y ajustes',
+      'Unlock Your PDF is Full Potential!':
+          '¡Desbloquea todo el potencial de tus PDF!',
+      'GO SETTING': 'IR A AJUSTES',
       'This app has an update': 'Esta aplicación tiene una actualización',
       'This App Has An Update.': 'Hay una actualización para esta aplicación.',
       'Please upgrade to enjoy the latest functions.':
@@ -1212,6 +1234,7 @@ final class AppTranslations extends Translations {
       'Uninstall': 'Disinstalla',
       'Uninstall reason': 'Motivo della disinstallazione',
       'New version coming soon!': 'Una nuova versione è in arrivo!',
+      'New Version Coming Soon!': 'Una nuova versione è in arrivo!',
       'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!':
           'Abbiamo ricevuto il tuo feedback ed è molto importante. Miglioriamo continuamente l’esperienza del prodotto e presto lanceremo una nuova versione. Resta con noi!',
       'Continue using for free': 'Continua a usare gratis',
@@ -1272,6 +1295,9 @@ final class AppTranslations extends Translations {
       'Preference': 'Preferenze',
       'App Language': 'Lingua dell’app',
       'Tools & Settings': 'Strumenti e impostazioni',
+      'Unlock Your PDF is Full Potential!':
+          'Sfrutta tutto il potenziale dei tuoi PDF!',
+      'GO SETTING': 'VAI ALLE IMPOSTAZIONI',
       'This app has an update': 'È disponibile un aggiornamento',
       'This App Has An Update.': 'È disponibile un aggiornamento.',
       'Please upgrade to enjoy the latest functions.':
@@ -1400,6 +1426,7 @@ final class AppTranslations extends Translations {
       'Uninstall': 'Desinstalar',
       'Uninstall reason': 'Motivo da desinstalação',
       'New version coming soon!': 'Uma nova versão será lançada em breve!',
+      'New Version Coming Soon!': 'Uma nova versão será lançada em breve!',
       'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!':
           'Recebemos seu feedback e ele é muito importante. Continuamos aprimorando a experiência do produto e uma nova versão será lançada em breve. Fique conosco!',
       'Continue using for free': 'Continuar usando grátis',
@@ -1462,6 +1489,9 @@ final class AppTranslations extends Translations {
       'Preference': 'Preferências',
       'App Language': 'Idioma do aplicativo',
       'Tools & Settings': 'Ferramentas e configurações',
+      'Unlock Your PDF is Full Potential!':
+          'Desbloqueie todo o potencial dos seus PDFs!',
+      'GO SETTING': 'IR PARA CONFIGURAÇÕES',
       'This app has an update': 'Este aplicativo tem uma atualização',
       'This App Has An Update.': 'Há uma atualização para este aplicativo.',
       'Please upgrade to enjoy the latest functions.':
@@ -1592,6 +1622,7 @@ final class AppTranslations extends Translations {
       'Uninstall': 'Удалить',
       'Uninstall reason': 'Причина удаления',
       'New version coming soon!': 'Скоро выйдет новая версия!',
+      'New Version Coming Soon!': 'Скоро выйдет новая версия!',
       'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!':
           'Мы получили ваш отзыв, и он очень важен для нас. Мы постоянно улучшаем приложение, и скоро выйдет новая версия. Оставайтесь с нами!',
       'Continue using for free': 'Продолжить бесплатно',
@@ -1653,6 +1684,8 @@ final class AppTranslations extends Translations {
       'Preference': 'Настройки',
       'App Language': 'Язык приложения',
       'Tools & Settings': 'Инструменты и настройки',
+      'Unlock Your PDF is Full Potential!': 'Раскройте весь потенциал PDF!',
+      'GO SETTING': 'ПЕРЕЙТИ В НАСТРОЙКИ',
       'This app has an update': 'Доступно обновление приложения',
       'This App Has An Update.': 'Доступно обновление приложения.',
       'Please upgrade to enjoy the latest functions.':
@@ -1778,6 +1811,7 @@ final class AppTranslations extends Translations {
       'Uninstall': '解除安裝',
       'Uninstall reason': '解除安裝原因',
       'New version coming soon!': '新版本即將推出！',
+      'New Version Coming Soon!': '新版本即將推出！',
       'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!':
           '我們已收到您的意見，這些資訊對我們非常重要。我們正持續改善產品體驗，新版本也即將推出，請繼續支持我們！',
       'Continue using for free': '繼續免費使用',
@@ -1829,6 +1863,8 @@ final class AppTranslations extends Translations {
       'Preference': '偏好設定',
       'App Language': '應用程式語言',
       'Tools & Settings': '工具與設定',
+      'Unlock Your PDF is Full Potential!': '解鎖 PDF 的完整功能！',
+      'GO SETTING': '前往設定',
       'This app has an update': '此應用程式有可用更新',
       'This App Has An Update.': '此應用程式有可用更新。',
       'Please upgrade to enjoy the latest functions.': '請更新以使用最新功能。',
@@ -1942,6 +1978,7 @@ final class AppTranslations extends Translations {
       'Uninstall': '卸载',
       'Uninstall reason': '卸载原因',
       'New version coming soon!': '新版本即将上线！',
+      'New Version Coming Soon!': '新版本即将上线！',
       'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!':
           '我们已收到您的反馈，这些信息对我们非常重要。我们正在持续优化产品体验，新版本也即将上线，请继续支持我们！',
       'Continue using for free': '继续免费使用',
@@ -1993,6 +2030,8 @@ final class AppTranslations extends Translations {
       'Preference': '偏好设置',
       'App Language': '应用语言',
       'Tools & Settings': '工具与设置',
+      'Unlock Your PDF is Full Potential!': '解锁 PDF 的全部功能！',
+      'GO SETTING': '前往设置',
       'This app has an update': '此应用有可用更新',
       'This App Has An Update.': '此应用有可用更新。',
       'Please upgrade to enjoy the latest functions.': '请更新以使用最新功能。',
@@ -2108,6 +2147,7 @@ final class AppTranslations extends Translations {
       'Uninstall': 'إلغاء التثبيت',
       'Uninstall reason': 'سبب إلغاء التثبيت',
       'New version coming soon!': 'إصدار جديد قريبًا!',
+      'New Version Coming Soon!': 'إصدار جديد قريبًا!',
       'Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!':
           'لقد تلقينا ملاحظاتك وهي مهمة جدًا لنا. نواصل تحسين تجربة المنتج وسيتم إطلاق إصدار جديد قريبًا. ابق معنا!',
       'Continue using for free': 'متابعة الاستخدام مجانًا',
@@ -2162,6 +2202,8 @@ final class AppTranslations extends Translations {
       'Preference': 'التفضيلات',
       'App Language': 'لغة التطبيق',
       'Tools & Settings': 'الأدوات والإعدادات',
+      'Unlock Your PDF is Full Potential!': 'أطلق العنان لإمكانات PDF الكاملة!',
+      'GO SETTING': 'الانتقال إلى الإعدادات',
       'This app has an update': 'يتوفر تحديث لهذا التطبيق',
       'This App Has An Update.': 'يتوفر تحديث لهذا التطبيق.',
       'Please upgrade to enjoy the latest functions.':

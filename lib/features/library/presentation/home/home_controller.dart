@@ -52,9 +52,8 @@ class HomeController extends BaseController {
         adPosId: AdPlacement.pr_exit_app,
       );
     }
-    final bool? canExitNextTime = await AppNavigator.showBottomSheet<bool>(
+    final bool? canExitNextTime = await AppNavigator.showDialog<bool>(
       child: const RatingDialog(),
-      dismissible: false,
     );
     if (canExitNextTime == true) {
       _canExitAfterComment = true;

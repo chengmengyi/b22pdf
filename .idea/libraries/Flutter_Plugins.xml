@@ -56,8 +56,8 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/fluttertoast-9.1.0" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_remote_config-6.5.3" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.5" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_add_widget_plugins-0.0.4" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/app_settings-6.1.1" />
+      <root url="file://$PROJECT_DIR$/../plugins/flutter_add_widget_plugins" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_pdf_risk_control_plugins-0.0.2" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/photo_manager-3.5.0" />
     </CLASSES>

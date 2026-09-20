@@ -16,14 +16,18 @@ class PdfTaskResultController extends BaseController {
     return (fileInfo.path ?? '').split(Platform.pathSeparator).last;
   }
 
-  String get fileDetail {
+  String get fileDetailTime {
     final DateTime date = DateTime.fromMillisecondsSinceEpoch(
       fileInfo.updateTime ?? DateTime.now().millisecondsSinceEpoch,
     );
     final String dateText =
         '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+    return '$dateText';
+  }
+
+  String get fileDetailSize {
     final double size = (fileInfo.size ?? 0) / 1024 / 1024;
-    return '$dateText | ${size.toStringAsFixed(1)}M';
+    return '${size.toStringAsFixed(1)}M';
   }
 
   void onBackPressed() => AppNavigator.backWithExitAd<void>();

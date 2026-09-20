@@ -39,13 +39,7 @@ class RatingController extends BaseController {
   }
 
   Future<void> onClosePressed() async {
-    if (_closingDialog) {
-      return;
-    }
-    _closingDialog = true;
-    if (Get.isBottomSheetOpen == true) {
-      AppNavigator.back<bool>(result: false);
-    }
+    AppNavigator.back<bool>(result: false);
   }
 
   Future<void> _openGooglePlay() async {

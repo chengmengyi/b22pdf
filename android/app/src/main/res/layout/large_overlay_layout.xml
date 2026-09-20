@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:text="Continue reading"
-                    android:textColor="#F7AD00"
+                    android:textColor="#000000"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -87,7 +87,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
+                android:layout_height="134dp"
                 android:layout_marginTop="16dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/large_overlay_image" />
@@ -107,11 +107,16 @@
 
         <ImageView
             android:id="@+id/close_img"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/overlay_close_button" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#970000"
+            />
     </RelativeLayout>
 </RelativeLayout>

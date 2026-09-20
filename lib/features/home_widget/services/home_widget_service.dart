@@ -40,7 +40,6 @@ class HomeWidgetService {
       items: _widgetInfoList,
       layoutName: "insert_widget_layout",
       searchText: "Search".tr,
-      itemLayout: "insert_widget_item_layout",
     );
     await InsertWidgetCache.saveAdded(true);
     AppEventBus.instance.publish(AppEvent(type: AppEventType.widgetAdded));

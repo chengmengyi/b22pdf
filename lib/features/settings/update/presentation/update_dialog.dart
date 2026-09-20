@@ -15,88 +15,73 @@ class UpdateDialog extends CenterDialog<UpdateController> {
 
   @override
   Widget buildDialog(BuildContext context, UpdateController controller) {
-    return Container(
-      width: double.infinity,
-      height: 400.h,
-      margin: EdgeInsets.only(left: 28.w, right: 28.w),
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          AssetPictureView(
-            "feedback/update_dialog_background",
-            width: double.infinity,
-            height: 400.h,
+    return Stack(
+      alignment: Alignment.topCenter,
+      children: [
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.only(left: 30.w,right: 30.w,top: 84.h,bottom: 30.h),
+          margin: EdgeInsets.only(left: 16.w,right: 16.w,top: 74.h),
+          decoration: BoxDecoration(
+            color: Color(0xffF5F2E9),
+            borderRadius: BorderRadius.circular(2.w),
           ),
-          Container(
-            width: double.infinity,
-            margin: EdgeInsets.only(left: 16.w,right: 16.w),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // LocalizedTextView(
-                //   "New version coming soon!".tr,
-                //   fontSize: 20.sp,
-                //   color: Colors.black,
-                //   fontWeight: FontWeight.bold,
-                // ),
-                // SizedBox(height: 12.h),
-                Container(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              LocalizedTextView(
+                "New Version Coming Soon!".tr,
+                fontSize: 14.sp,
+                color: Colors.black,
+                fontType: FontType.extra,
+              ),
+              SizedBox(height: 20.h,),
+              LocalizedTextView(
+                "Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!"
+                    .tr,
+                fontSize: 14.sp,
+                color: Color(0xff5E5E5E),
+              ),
+              SizedBox(height: 12.h),
+              TapGuardView(
+                onPressed: controller.onContinueUsingPressed,
+                child: Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(8.w),
+                  height: 46.h,
+                  alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.w),
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.topCenter,
-                      colors: [Color(0xffFFFFFF),Color(0xffE1E8FF)],
-                    ),
+                    color: Color(0xffC40000),
+                    borderRadius: BorderRadius.circular(2.w),
                   ),
                   child: LocalizedTextView(
-                    "Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!"
-                        .tr,
-                    fontSize: 14.sp,
-                    color: Color(0xff4B5156),
+                    "Continue using for free".tr,
+                    fontSize: 16.sp,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontType: FontType.extra,
                   ),
                 ),
-                SizedBox(height: 12.h),
-                TapGuardView(
-                  onPressed: controller.onContinueUsingPressed,
-                  child: Container(
-                    width: double.infinity,
-                    height: 48.h,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.w),
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Color(0xff8C69F3), Color(0xff4F29D9)],
-                      ),
-                    ),
-                    child: LocalizedTextView(
-                      "Continue using for free".tr,
-                      fontSize: 16.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+              ),
+              SizedBox(height: 12.h),
+              TapGuardView(
+                onPressed: controller.onLeaveAnywayPressed,
+                child: LocalizedTextView(
+                  "Leave anyway".tr,
+                  fontSize: 14.sp,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                  fontType: FontType.extra,
                 ),
-                SizedBox(height: 12.h),
-                TapGuardView(
-                  onPressed: controller.onLeaveAnywayPressed,
-                  child: LocalizedTextView(
-                    "Leave anyway".tr,
-                    fontSize: 14.sp,
-                    color: Color(0xff6A73A2),
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                SizedBox(height: 12.h),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+        AssetPictureView(
+          "feedback/update_dialog_background",
+          width: 240.w,
+          height: 145.h,
+        ),
+      ],
     );
   }
 }

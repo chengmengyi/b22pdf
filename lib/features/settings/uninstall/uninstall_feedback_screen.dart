@@ -23,7 +23,7 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
   }
 
   @override
-  Color get navigationBarColor => Colors.white;
+  Color get navigationBarColor => Color(0xffFFFAF6);
 
   @override
   Widget buildContent(
@@ -35,8 +35,10 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
         _buildTitleSection(controller),
         SizedBox(height: 8.h),
         _buildContentSection(controller),
-        _buildBottomSection(controller),
+        SizedBox(height: 8.h),
         _buildNativeAd(),
+        SizedBox(height: 8.h),
+        _buildBottomSection(controller),
       ],
     );
   }
@@ -54,9 +56,7 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
   Widget _buildContentSection(UninstallFeedbackController controller) =>
       Expanded(
         child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          color: Colors.white,
+          padding: EdgeInsets.only(left: 12.w,right: 12.w),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -77,9 +77,8 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
                           },
                           child: Container(
                             width: double.infinity,
-                            height: 48.h,
+                            height: 60.h,
                             alignment: Alignment.centerLeft,
-                            padding: EdgeInsets.only(left: 16.w, right: 16.w),
                             child: Row(
                               children: [
                                 Expanded(
@@ -89,6 +88,7 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.w500,
                                     overflow: TextOverflow.ellipsis,
+                                    fontType: FontType.extra,
                                   ),
                                 ),
                                 SizedBox(width: 16.w),
@@ -96,8 +96,8 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
                                   selected
                                       ? "common/radio_selected"
                                       : "common/radio_unselected",
-                                  width: 20.w,
-                                  height: 20.w,
+                                  width: 28.w,
+                                  height: 28.w,
                                 ),
                               ],
                             ),
@@ -107,8 +107,8 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
                       separatorBuilder: (BuildContext context, int index) =>
                           Container(
                             width: double.infinity,
-                            height: 0.5.h,
-                            color: Color(0xffEBEBEB),
+                            height: 2.h,
+                            color: Color(0xffC9C6C0),
                           ),
                     ),
                   ),
@@ -119,8 +119,8 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
                   padding: EdgeInsets.all(16.w),
                   margin: EdgeInsets.only(left: 16.w, right: 16.w),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.w),
-                    border: Border.all(width: 0.5.w, color: Color(0xffEBEBEB)),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(2.w),
                   ),
                   child: TextField(
                     textAlign: TextAlign.start,
@@ -151,47 +151,61 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
         ),
       );
 
-  Widget _buildBottomSection(UninstallFeedbackController controller) => Column(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      TapGuardView(
-        onPressed: controller.onNoUninstallPressed,
-        child: Container(
-          width: double.infinity,
-          height: 50.h,
-          alignment: Alignment.center,
-          margin: EdgeInsets.only(left: 34.w, right: 34.w),
-          decoration: BoxDecoration(
-            color: Color(0xff8C69F3),
-            borderRadius: BorderRadius.circular(16.w),
+  Widget _buildBottomSection(UninstallFeedbackController controller) => Container(
+    width: double.infinity,
+    padding: EdgeInsets.all(20.w),
+    decoration: BoxDecoration(
+      color: Color(0xffFFFAF6),
+      border: BoxBorder.fromLTRB(
+        top: BorderSide(
+          width: 2.w,
+          color: Colors.black,
+        ),
+      ),
+    ),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        TapGuardView(
+          onPressed: controller.onNoUninstallPressed,
+          child: Container(
+            width: double.infinity,
+            height: 46.h,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Color(0xffC40000),
+              borderRadius: BorderRadius.circular(2.w),
+            ),
+            child: LocalizedTextView(
+              "Don't uninstall for now".tr,
+              fontSize: 16.sp,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontType: FontType.extra,
+            ),
           ),
+        ),
+        SizedBox(height: 14.h),
+        TapGuardView(
+          onPressed: () {
+            controller.onUninstallPressed();
+          },
           child: LocalizedTextView(
-            "Don't uninstall for now".tr,
-            fontSize: 16.sp,
-            color: Colors.white,
+            "Uninstall".tr,
+            fontSize: 14.sp,
+            color: Colors.black,
             fontWeight: FontWeight.bold,
+            fontType: FontType.black,
           ),
         ),
-      ),
-      SizedBox(height: 14.h),
-      TapGuardView(
-        onPressed: () {
-          controller.onUninstallPressed();
-        },
-        child: LocalizedTextView(
-          "Uninstall".tr,
-          fontSize: 16.sp,
-          color: Color(0xff8E9091),
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    ],
+      ],
+    ),
   );
 
   Widget _buildTitleSection(UninstallFeedbackController controller) =>
       Container(
         width: double.infinity,
-        color: Colors.white,
+        color: Color(0xffFFFAF6),
         child: SafeArea(
           top: true,
           bottom: false,
@@ -207,9 +221,9 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
                     height: 44.h,
                     alignment: Alignment.center,
                     child: AssetPictureView(
-                      "navigation/close",
-                      width: 24.w,
-                      height: 24.w,
+                      "navigation/back",
+                      width: 28.w,
+                      height: 28.w,
                     ),
                   ),
                 ),
@@ -218,9 +232,10 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
                     margin: EdgeInsets.only(left: 44.w, right: 44.w),
                     child: LocalizedTextView(
                       "Uninstall reason".tr,
-                      fontSize: 18.sp,
+                      fontSize: 16.sp,
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
+                      fontType: FontType.extra,
                     ),
                   ),
                 ),

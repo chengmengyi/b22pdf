@@ -54,7 +54,7 @@
     <ImageView
         android:id="@+id/fln_notify_large_img"
         android:layout_width="match_parent"
-        android:layout_height="118dp"
+        android:layout_height="110dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/large_notice_picture"
         android:clipToOutline="true"
@@ -69,7 +69,7 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="14dp"/>
     <TextView
         android:id="@+id/fln_notify_debug_action"
         android:layout_width="0dp"

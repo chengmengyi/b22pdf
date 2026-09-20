@@ -7,6 +7,23 @@
     android:layout_height="wrap_content"
     android:background="@drawable/insert_widget_bg_res">
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/notice_logo"/>
+        <TextView
+            android:id="@+id/app_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PDF Reader"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#1A1D22"
+            android:layout_marginLeft="8dp"/>
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:paddingLeft="12dp"
@@ -15,17 +32,17 @@
         android:gravity="center_vertical"
         android:background="@drawable/widget_search_bg2">
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:src="@drawable/search"/>
         <TextView
             android:id="@+id/searchTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Search..."
-            android:textSize="16sp"
-            android:textColor="#555978"
-            android:layout_marginLeft="8dp"/>
+            android:textSize="12sp"
+            android:textColor="#5E5E5E"
+            android:layout_marginLeft="4dp"/>
     </LinearLayout>
     <GridView
         android:id="@+id/gridView"
