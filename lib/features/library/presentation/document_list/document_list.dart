@@ -42,7 +42,7 @@ class _DocumentsListSectionState
       global: false,
       builder: (controller) {
         return Container(
-          margin: EdgeInsets.only(left: 12.w,right: 12.w),
+          margin: EdgeInsets.only(left: 12.w, right: 12.w),
           child: Column(
             children: [
               _buildSortControls(controller),
@@ -163,25 +163,64 @@ class _DocumentsListSectionState
         : 0;
     final int itemCount = controller.visibleFiles.length + nativeAdCount;
     controller.syncNativeAdListState(itemCount);
-    return MasonryGridView.count(
-      crossAxisCount: 2,
-      mainAxisSpacing: 8.h,
-      crossAxisSpacing: 8.w,
-      itemCount: itemCount,
-      itemBuilder: (BuildContext context, int index) {
-        if (canShowNativeAd && controller.isNativeAdIndex(index)) {
-          return _buildNativeAdSlot(
-            controller: controller,
-            listIndex: index,
-            showNativeAd: controller.activeNativeAdIndex == index,
-          );
-        }
-        final int fileIndex = canShowNativeAd
-            ? controller.fileIndexFromListIndex(index)
-            : index;
-        final file = controller.visibleFiles[fileIndex];
-        return _buildFileItem(controller, file);
-      },
+    final int groupCount =
+        (controller.visibleFiles.length +
+            DocumentListController.nativeAdInterval -
+            1) ~/
+        DocumentListController.nativeAdInterval;
+    return CustomScrollView(
+      slivers: [
+        SliverList.builder(
+          itemCount: groupCount,
+          itemBuilder: (BuildContext context, int groupIndex) {
+            return _buildFileGroup(
+              controller: controller,
+              groupIndex: groupIndex,
+              canShowNativeAd: canShowNativeAd,
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildFileGroup({
+    required DocumentListController controller,
+    required int groupIndex,
+    required bool canShowNativeAd,
+  }) {
+    final int interval = DocumentListController.nativeAdInterval;
+    final int startIndex = groupIndex * interval;
+    final int remainingFiles = controller.visibleFiles.length - startIndex;
+    final int fileCount = remainingFiles < interval ? remainingFiles : interval;
+    final bool showAdAfterGroup = canShowNativeAd && fileCount == interval;
+    final int nativeAdListIndex = (groupIndex + 1) * (interval + 1) - 1;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        StaggeredGrid.count(
+          crossAxisCount: 2,
+          mainAxisSpacing: 8.h,
+          crossAxisSpacing: 8.w,
+          children: List<Widget>.generate(fileCount, (int offset) {
+            final file = controller.visibleFiles[startIndex + offset];
+            return StaggeredGridTile.fit(
+              crossAxisCellCount: 1,
+              child: _buildFileItem(controller, file),
+            );
+          }),
+        ),
+        if (showAdAfterGroup)
+          Padding(
+            padding: EdgeInsets.only(top: 8.h),
+            child: _buildNativeAdSlot(
+              controller: controller,
+              listIndex: nativeAdListIndex,
+              showNativeAd: controller.activeNativeAdIndex == nativeAdListIndex,
+            ),
+          ),
+      ],
     );
   }
 

@@ -47,13 +47,13 @@ class UserEligibilityService {
       afAppId: "",
       distinctId: distinctId,
       clockUrl: AppConfig.clockEndpoint,
-      cloakWhiteKey: 'blest',
+      cloakWhiteKey: 'donor',
       cloakData: <String, dynamic>{
-        'famine': await FlutterTbaInfo.instance.getBundleId(),
-        'gratuity': Platform.isAndroid ? 'attain' : 'ho',
-        'prolix': await FlutterTbaInfo.instance.getAppVersion(),
-        'newcomer': distinctId,
-        'cortical': DateTime.now().millisecondsSinceEpoch,
+        'caribou': await FlutterTbaInfo.instance.getBundleId(),
+        'lewd': Platform.isAndroid ? 'accuracy' : 'triable',
+        'avenue': await FlutterTbaInfo.instance.getAppVersion(),
+        'puffin': distinctId,
+        'infernal': DateTime.now().millisecondsSinceEpoch,
       },
       requestCallback: RequestCallback(
         requestAfCallback: RequestAfCallback(
@@ -130,10 +130,10 @@ class UserEligibilityService {
       ipConfig: FlutterPdfRiskControlIpConfig(
         requestUrl: AppConfig.riskUrl,
         requestData: <String, String>{
-          'aape': await FlutterTbaInfo.instance.getAndroidId(),
+          'azebra': await FlutterTbaInfo.instance.getAndroidId(),
         },
-        riskResultKey: 'bcat',
-        decryptCode: 67,
+        riskResultKey: 'bduck',
+        decryptCode: 68,
       ),
       callback: FlutterPdfRiskControlCallback(
         onUploadSessionRisk: (Map<String, int> riskSummary) {},

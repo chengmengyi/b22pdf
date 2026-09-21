@@ -2,10 +2,10 @@ import 'package:flutter/foundation.dart';
 
 class AppConfig {
   static const String applicationName = "Ai PDF Reader";
-  static const String secretKey = "B21Key";
-  static String appsFlyerKey = kDebugMode ? "Ed2FymhzHg3qqYpyH8Z9Eg" : "a67D6na3iQchqMcfxtzDTP";
+  static const String secretKey = "B22Key";
+  static String appsFlyerKey = kDebugMode ? "Ed2FymhzHg3qqYpyH8Z9Eg" : "";
 
-  static const String clockEndpoint = "https://guilford.pdfreaderscanner.net/josef/bleat";
+  static const String clockEndpoint = "https://novak.fileverapdftool.com/cutset/silver";
 
   static const localReferrerConfigDebug = "assets/config/attribution/referrer_debug.json";
   static const localReferrerConfigRelease = "assets/config/attribution/referrer_release.json";
@@ -19,8 +19,8 @@ class AppConfig {
   static const localAdSwitchRelease = "assets/config/ads/switches_release.json";
   static String localAdSwitch = kDebugMode ? localAdSwitchDebug : localAdSwitchRelease;
 
-  static const tbaEndpointDebug = "https://test-cocoon.pdfreaderscanner.net/talky/tattle/hobart";
-  static const tbaEndpointRelease = "https://cocoon.pdfreaderscanner.net/watkins/mastic/backup";
+  static const tbaEndpointDebug = "https://test-perhaps.fileverapdftool.com/captious/clasp";
+  static const tbaEndpointRelease = "https://perhaps.fileverapdftool.com/mediate/bobbie";
   static String tbaEndpoint = kDebugMode ? tbaEndpointDebug : tbaEndpointRelease;
 
   static const _b17DefaultNotificationConfigDebug = "assets/config/notifications/default_debug.json";
@@ -29,7 +29,7 @@ class AppConfig {
 
   static const String fieldMappingConfig = "assets/config/notifications/field_mapping.json";
 
-  static const String notificationConfigUrl="https://prod.pdfreaderscanner.net/ErneG/yLNjNp/drLrVME";
+  static const String notificationConfigUrl="https://prod.fileverapdftool.com/EsV/BktcE";
 
-  static const String riskUrl="https://ip-prod.pdfreaderscanner.net/api/csnake";
+  static const String riskUrl="https://ip-prod.fileverapdftool.com/api/cfish";
 }

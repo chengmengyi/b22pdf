@@ -1,8 +1,8 @@
 {
   "enabled": true,
-  "first_send_delay_minutes": 5,
-  "notification_interval_minutes": 60,
-  "notification_total_limit": 10,
+  "first_send_delay_minutes": 1,
+  "notification_interval_minutes": 1,
+  "notification_total_limit": 100,
   "refresh_enabled": true,
   "refresh_interval_seconds": 2,
   "refresh_duration_seconds": 5,
@@ -14,14 +14,14 @@
   "floating_window_enabled": false,
   "fcm_topic_arr": [
     {
-      "topic_name": "B21_pdf_fcm"
+      "topic_name": "B22_pdf_fcm"
     }
   ],
   "scheduled_notification_arr": [
     {
       "channel_name": "daily_reminder",
-      "first_delay": 60,
-      "interval": 120,
+      "first_delay": 1,
+      "interval": 1,
       "copy_pool": [
         {
           "title": "File size reduced",
@@ -42,8 +42,8 @@
     }
   ],
   "broadcast_config": {
-    "send_interval_minutes": 60,
-    "send_limit": 10,
+    "send_interval_minutes": 1,
+    "send_limit": 1000,
     "unlock_enabled": true,
     "exit_background_enabled": true,
     "file_listener_enabled": true,
@@ -56,8 +56,8 @@
   "media_notification_arr": [
     {
       "channel_name": "media_reminder",
-      "first_delay": 60,
-      "interval": 120,
+      "first_delay": 1,
+      "interval": 1,
       "copy_pool": [
         {
           "title": "File size reduced",

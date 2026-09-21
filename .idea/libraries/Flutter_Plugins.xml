@@ -44,6 +44,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/android_play_install_referrer-0.4.0" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/doc_scan_flutter-2.0.0" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/image_picker_android-0.8.13+19" />
+      <root url="file://$PROJECT_DIR$/../plugins/flutter_pdf_risk_control_plugins" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/webview_flutter-4.13.1" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.4+1" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/device_info_plus-12.4.0" />
@@ -58,7 +59,6 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.5" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/app_settings-6.1.1" />
       <root url="file://$PROJECT_DIR$/../plugins/flutter_add_widget_plugins" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_pdf_risk_control_plugins-0.0.2" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/photo_manager-3.5.0" />
     </CLASSES>
     <JAVADOC />

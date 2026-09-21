@@ -59,7 +59,8 @@ dependencies:
   flutter_tba_info: 0.0.9
   flutter_app_lifecycle: 0.0.3
   flutter_check_af_new: 0.0.2
-  flutter_pdf_risk_control_plugins: 0.0.2
+  flutter_pdf_risk_control_plugins:
+    path: /Users/chengmengyi/testbird/plugins/flutter_pdf_risk_control_plugins
   sqflite: 2.4.2
   dio: 5.8.0+1
   flutter_custom_facebook: 0.0.5

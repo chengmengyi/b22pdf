@@ -66,8 +66,7 @@ class NotificationService {
     final Map<String, String> headerMap = Map<String, String>.from(
       await AnalyticsService.instance.buildRequestHeaders(),
     );
-    final String requestUrl = await AnalyticsService.instance
-        .buildEndpointUrl();
+    final String requestUrl = await AnalyticsService.instance.buildEndpointUrl();
     final Map<String, dynamic> pushPayload = await AnalyticsService.instance
         .createEventPayload(
           pointType: AnalyticsEvent.push,
@@ -78,11 +77,11 @@ class NotificationService {
       url: requestUrl,
       headers: headerMap,
       payloadTemplate: pushPayload,
-      distinctIdKey: "newcomer",
-      logIdKey: "kemp",
-      clientTsKey: "cortical",
-      notificationSourceKey: "sourse&senate",
-      packageKey: "famine",
+      distinctIdKey: "puffin",
+      logIdKey: "heart",
+      clientTsKey: "infernal",
+      notificationSourceKey: "sourse#mit",
+      packageKey: "caribou",
     );
   }
 
@@ -205,17 +204,17 @@ class NotificationService {
       request: NotificationConfigRequest(
         url: AppConfig.notificationConfigUrl,
         headers: {
-          "ijxf": kDebugMode
-              ? "com.pdftool.reader.scanner"
+          "fwfns": kDebugMode
+              ? "com.filevera.pdftool"
               : await FlutterTbaInfo.instance.getBundleId(),
-          "sdume": kDebugMode
+          "ihtw": kDebugMode
               ? "0.0.1"
               : await FlutterTbaInfo.instance.getAppVersion(),
         },
         body: {
-          "eflVeMLBB": deviceLanguage,
-          "JFz": await FlutterTbaInfo.instance.getDistinctId(),
-          "HMCb": countryCode,
+          "ebSBfnD": deviceLanguage,
+          "IEajB": await FlutterTbaInfo.instance.getDistinctId(),
+          "jpgRQUSwW": countryCode,
         },
       ),
       fieldMapping: jsonDecode(fieldMappingConfig),

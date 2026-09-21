@@ -14,7 +14,7 @@
   "floating_window_enabled": false,
   "fcm_topic_arr": [
     {
-      "topic_name": "B21_pdf_fcm"
+      "topic_name": "B22_pdf_fcm"
     }
   ],
   "scheduled_notification_arr": [

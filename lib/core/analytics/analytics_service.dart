@@ -26,21 +26,19 @@ class AnalyticsService {
     }
 
     final Map<String, dynamic> requestBody = await _buildCommonPayload();
-    final Map<dynamic, dynamic> referrerData = await FlutterTbaInfo.instance
-        .getReferrerMap();
-    requestBody['captive'] = <String, dynamic>{
-      'hall': referrerData['build'],
-      'genial': referrerData['install_begin_timestamp_seconds'],
-      'renal': referrerData['install_begin_timestamp_server_seconds'],
-      'inbreed': referrerData['install_first_seconds'],
-      'hubbell': referrerData['install_version'],
-      'puberty': referrerData['last_update_seconds'],
-      "hoax":"hopkins",
-      'harrow': referrerData['referrer_click_timestamp_seconds'],
-      'holdover': referrerData['referrer_click_timestamp_server_seconds'],
-      'grasp': referrerData['referrer_url'],
-      'ogden': referrerData['user_agent'],
-    };
+    final Map<dynamic, dynamic> referrerData = await FlutterTbaInfo.instance.getReferrerMap();
+    requestBody["abide"]="gamble";
+    requestBody["space"]=referrerData["build"];
+    requestBody["ground"]=referrerData["referrer_url"];
+    requestBody["utter"]=referrerData["install_version"];
+    requestBody["giddy"]=referrerData["user_agent"];
+    requestBody["paucity"]="butt";
+    requestBody["slept"]=referrerData["referrer_click_timestamp_seconds"];
+    requestBody["surah"]=referrerData["install_begin_timestamp_seconds"];
+    requestBody["signpost"]=referrerData["referrer_click_timestamp_server_seconds"];
+    requestBody["pristine"]=referrerData["install_begin_timestamp_server_seconds"];
+    requestBody["beside"]=referrerData["install_first_seconds"];
+    requestBody["gown"]=referrerData["last_update_seconds"];
 
     final bool uploaded = await _sendWithRetry(
       body: requestBody,
@@ -54,7 +52,7 @@ class AnalyticsService {
 
   Future<void> trackSession() async {
     final Map<String, dynamic> requestBody = await _buildCommonPayload();
-    requestBody['osgood'] = {};
+    requestBody['die'] = {};
     await _sendWithRetry(
       body: requestBody,
       eventType: 'session',
@@ -72,16 +70,16 @@ class AnalyticsService {
     required String precision,
   }) async {
     final Map<String, dynamic> requestBody = await _buildCommonPayload();
-    requestBody['mitchell'] = <String, dynamic>{
-      'aaa': revenue * 1000000,
-      'payoff': currency,
-      'thered': adNetwork,
-      'nomadic': adInfo.adPlat ?? '',
-      'gothic': adInfo.adId ?? '',
-      'larval': positionId?.name ?? '',
-      'surtax': adScene.name,
-      'use': precision,
-      'della': adInfo.adType,
+    requestBody['blest'] = <String, dynamic>{
+      'macmahon': revenue * 1000000,
+      'next': currency,
+      'exhale': adNetwork,
+      'partial': adInfo.adPlat ?? '',
+      'ridicule': adInfo.adId ?? '',
+      'include': positionId?.name ?? '',
+      'villa': adScene.name,
+      'surprise': precision,
+      'fivefold': adInfo.adType,
     };
     await _sendWithRetry(
       body: requestBody,
@@ -113,12 +111,12 @@ class AnalyticsService {
     Map<String, dynamic>? userGroup,
   }) async {
     final Map<String, dynamic> requestBody = await _buildCommonPayload();
-    requestBody['t'] = pointType.name;
+    requestBody['abide'] = pointType.name;
     parameters?.forEach((String key, dynamic value) {
-      requestBody['$key&senate'] = value;
+      requestBody['$key#mit'] = value;
     });
     if (null != userGroup) {
-      requestBody["ds"] = userGroup;
+      requestBody["cookery"] = userGroup;
     }
     return requestBody;
   }
@@ -173,48 +171,55 @@ class AnalyticsService {
 
   Future<Map<String, dynamic>> _buildCommonPayload() async {
     return {
-      "shrift": await FlutterTbaInfo.instance.getAndroidId(),
-      "prolix": await FlutterTbaInfo.instance.getAppVersion(),
-      "estoppal": await FlutterTbaInfo.instance.getBrand(),
-      "famine": await FlutterTbaInfo.instance.getBundleId(),
-      "cortical": DateTime.now().millisecondsSinceEpoch,
-      "omega": await FlutterTbaInfo.instance.getDeviceModel(),
-      "newcomer": await FlutterTbaInfo.instance.getDistinctId(),
-      "canticle": await FlutterTbaInfo.instance.getGaid(),
-      "quality": await FlutterTbaInfo.instance.getIdfa(),
-      "sanford": await FlutterTbaInfo.instance.getIdfv(),
-      "kemp": await FlutterTbaInfo.instance.getLogId(),
-      "locutor": await FlutterTbaInfo.instance.getManufacturer(),
-      "caste": await FlutterTbaInfo.instance.getOperator(),
-      "gratuity": Platform.isAndroid?"attain":"ho",
-      "turnover": await FlutterTbaInfo.instance.getOsCountry(),
-      "peat": await FlutterTbaInfo.instance.getOsVersion(),
-      "scythe": await FlutterTbaInfo.instance.getSystemLanguage(),
+      "dextrous":{
+        "caribou": await FlutterTbaInfo.instance.getBundleId(),
+        "puffin": await FlutterTbaInfo.instance.getDistinctId(),
+        "friend": await FlutterTbaInfo.instance.getBrand(),
+        "mix": await FlutterTbaInfo.instance.getDeviceModel(),
+        "casein": await FlutterTbaInfo.instance.getOperator(),
+        "sloane": await FlutterTbaInfo.instance.getSystemLanguage(),
+      },
+      "cabot":{
+        "lewd":Platform.isAndroid?"accuracy":"triable",
+        "avenue":await FlutterTbaInfo.instance.getAppVersion(),
+        "borate":await FlutterTbaInfo.instance.getOsVersion(),
+        "monk":await FlutterTbaInfo.instance.getNetworkType(),
+        "cinema":await FlutterTbaInfo.instance.getAndroidId(),
+        "risible":await FlutterTbaInfo.instance.getIdfv(),
+        "earphone":await FlutterTbaInfo.instance.getOsCountry(),
+      },
+      "maya":{
+        "heart":await FlutterTbaInfo.instance.getLogId(),
+        "infernal":DateTime.now().millisecondsSinceEpoch,
+        "mazda":await FlutterTbaInfo.instance.getManufacturer(),
+        "visage":await FlutterTbaInfo.instance.getIdfa(),
+        "olympic":await FlutterTbaInfo.instance.getGaid(),
+      },
     };
   }
 
   Future<Map<String, String>> buildRequestHeaders() async {
     return <String, String>{
-      'peat': await FlutterTbaInfo.instance.getOsVersion(),
+      'cinema': await FlutterTbaInfo.instance.getAndroidId(),
     };
   }
 
   Future<String> buildEndpointUrl() async {
-    return '${AppConfig.tbaEndpoint}?newcomer=${await FlutterTbaInfo.instance.getDistinctId()}&caste=${await FlutterTbaInfo.instance.getOperator()}';
+    return '${AppConfig.tbaEndpoint}?mazda=${await FlutterTbaInfo.instance.getManufacturer()}&cinema=${await FlutterTbaInfo.instance.getAndroidId()}';
   }
 
   addUserGroup(int userGroup) async {
     trackEvent(
-      pointType: AnalyticsEvent.lancelot,
-      parameters: {"newcomer": await FlutterTbaInfo.instance.getDistinctId()},
+      pointType: AnalyticsEvent.ironside,
+      parameters: {"puffin": await FlutterTbaInfo.instance.getDistinctId()},
       userGroup: {"user_group": userGroup},
     );
   }
 
   setEligibleUser(bool newEligibilityState) async {
     trackEvent(
-      pointType: AnalyticsEvent.lancelot,
-      parameters: {"newcomer": await FlutterTbaInfo.instance.getDistinctId()},
+      pointType: AnalyticsEvent.ironside,
+      parameters: {"puffin": await FlutterTbaInfo.instance.getDistinctId()},
       userGroup: {"user_bv": newEligibilityState ? 1 : 0},
     );
   }
@@ -239,8 +244,8 @@ class AnalyticsService {
           installDate.day == now.day;
     }
     trackEvent(
-      pointType: AnalyticsEvent.lancelot,
-      parameters: {"newcomer": await FlutterTbaInfo.instance.getDistinctId()},
+      pointType: AnalyticsEvent.ironside,
+      parameters: {"puffin": await FlutterTbaInfo.instance.getDistinctId()},
       userGroup: {"life_time": isInstalledToday ? "d0" : "d1"},
     );
   }
