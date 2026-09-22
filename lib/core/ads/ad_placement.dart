@@ -27,4 +27,5 @@ enum AdPlacement {
   pr_search_int,
   pr_read_int,
   pr_comment,
+  pr_progress,
 }

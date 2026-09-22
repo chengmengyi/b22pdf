@@ -39,6 +39,8 @@ abstract final class AppNavigator {
     Get.back<T>(result: result);
   }
 
+  static bool isCurrentRoute(String routeName) => Get.currentRoute == routeName;
+
   static void backWithExitAd<T>({T? result}) {
     Get.back<T>(result: result);
     showExitAdIfNeeded();

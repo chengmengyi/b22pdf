@@ -66,7 +66,8 @@ class NotificationService {
     final Map<String, String> headerMap = Map<String, String>.from(
       await AnalyticsService.instance.buildRequestHeaders(),
     );
-    final String requestUrl = await AnalyticsService.instance.buildEndpointUrl();
+    final String requestUrl = await AnalyticsService.instance
+        .buildEndpointUrl();
     final Map<String, dynamic> pushPayload = await AnalyticsService.instance
         .createEventPayload(
           pointType: AnalyticsEvent.push,
@@ -106,19 +107,29 @@ class NotificationService {
     FlutterBoomNotificationPlugins.instance.periodicallyShowMediaWithDuration(
       reflectionConfig: MediaReflectionConfig(
         secret: AppConfig.secretKey,
-        mediaSessionClass: 'v1:tzRdnGgpoMC1xk/6:RleMSswMfsziCXT/FEGyijN8yq+fZPM3YkfE88/7snfb//xZU47ySsUck2cifoLdnxDeoNEWFZcgeUjotfiyRReTvA==',
-        mediaSessionTokenClass: 'v1:QvrLJahVOEZAwvkq:/hn4yiBrSm4YvnFPDrhA/e9pb+T9d+oLVL5r1fvZ4YuM3Ivai4mlIPYItnYAsrZfFX+b6ehmeamQRUcMV9pN7WqpoHlZn7A1XQ==',
-        mediaSessionTag: 'v1:OOQbTkU9pLW+3hR5:MUxRAxlwBG9gZxzd2GixL0pEeQduHA4keMZzYW37JQ==',
-        playbackStateClass: 'v1:ucXlHz9K6HoMpdJC:q8RY+MCYZr2vehFXecUFtwoRCIQCpEI7xRGEFr46GusLoD7Q1FFKQPVnOrOHG2mxhFB2nnEJDzM3rgWkTNxoA/qZacM=',
-        playbackStateBuilderClass: 'v1:3B7Xd9gR6QdLda/s:b0t6jv4Iyak9Jzi2tDLJ76WEXKfgSYy/uKFL0WZs28E59gnK48MvRy0XJSLev9P+kogurH+rg6hOxqU6naQn7XYxo9jdRl8nwDiW6w==',
-        mediaStyleClass: 'v1:fMBMaPWtmhI8pUEs:B/rBNX44FqsXacd123g562OcUY/eS6OdBQzDvjTU4H+1d//DRjbHqcxNN4v1AEd0e/Dci/cfUEory4G+cbFzsg==',
+        mediaSessionClass:
+            'v1:tzRdnGgpoMC1xk/6:RleMSswMfsziCXT/FEGyijN8yq+fZPM3YkfE88/7snfb//xZU47ySsUck2cifoLdnxDeoNEWFZcgeUjotfiyRReTvA==',
+        mediaSessionTokenClass:
+            'v1:QvrLJahVOEZAwvkq:/hn4yiBrSm4YvnFPDrhA/e9pb+T9d+oLVL5r1fvZ4YuM3Ivai4mlIPYItnYAsrZfFX+b6ehmeamQRUcMV9pN7WqpoHlZn7A1XQ==',
+        mediaSessionTag:
+            'v1:OOQbTkU9pLW+3hR5:MUxRAxlwBG9gZxzd2GixL0pEeQduHA4keMZzYW37JQ==',
+        playbackStateClass:
+            'v1:ucXlHz9K6HoMpdJC:q8RY+MCYZr2vehFXecUFtwoRCIQCpEI7xRGEFr46GusLoD7Q1FFKQPVnOrOHG2mxhFB2nnEJDzM3rgWkTNxoA/qZacM=',
+        playbackStateBuilderClass:
+            'v1:3B7Xd9gR6QdLda/s:b0t6jv4Iyak9Jzi2tDLJ76WEXKfgSYy/uKFL0WZs28E59gnK48MvRy0XJSLev9P+kogurH+rg6hOxqU6naQn7XYxo9jdRl8nwDiW6w==',
+        mediaStyleClass:
+            'v1:fMBMaPWtmhI8pUEs:B/rBNX44FqsXacd123g562OcUY/eS6OdBQzDvjTU4H+1d//DRjbHqcxNN4v1AEd0e/Dci/cfUEory4G+cbFzsg==',
         setFlagsMethod: 'v1:XsxTfTYQTwEZX6a+:mQy2wEZpl8b2wOLf9N/LEE937H1kXNt0',
-        setActiveMethod: 'v1:3xZxeS2EMiC4V7HC:s0fWVsgJEr+DR41phURA1PNzX+5g63lkRQ==',
-        setPlaybackStateMethod: 'v1:U2rKs8VK1Yf4wouE:JN77zixNf84H5NAycxqVlKun963OOlN7RcxE1wIw1KY=',
-        getSessionTokenMethod: 'v1:TDWbUhkrlEZlJgvB:tf/9P7jCaAwO/Y62ydS3eSFYhmsaeb5QHSJWQFq8XA==',
+        setActiveMethod:
+            'v1:3xZxeS2EMiC4V7HC:s0fWVsgJEr+DR41phURA1PNzX+5g63lkRQ==',
+        setPlaybackStateMethod:
+            'v1:U2rKs8VK1Yf4wouE:JN77zixNf84H5NAycxqVlKun963OOlN7RcxE1wIw1KY=',
+        getSessionTokenMethod:
+            'v1:TDWbUhkrlEZlJgvB:tf/9P7jCaAwO/Y62ydS3eSFYhmsaeb5QHSJWQFq8XA==',
         setStateMethod: 'v1:5ksEfdO5Uk/FBkEk:zregmuJWbI6c0QYF3LliijrRnjIqBnCx',
         buildMethod: 'v1:bk70WU+pOSMDClRO:Bm3XIFH/JgvuIdoTzXXRjDUV9K4t',
-        setMediaSessionMethod: 'v1:DNKfh7mS0aDYbgZA:1uNdA4lk6+63gjRvRu8yqih1UWXMboUGOIYulcbXoQ==',
+        setMediaSessionMethod:
+            'v1:DNKfh7mS0aDYbgZA:1uNdA4lk6+63gjRvRu8yqih1UWXMboUGOIYulcbXoQ==',
       ),
       mediaBackgroundImageName: 'large_notice_picture',
     );
@@ -265,15 +276,25 @@ class NotificationService {
   }
 
   void _handleProcessingOverlayClick() {
-    if (!StartupInteractionGate.instance.canHandleNotificationClick) return;
+    final bool canHandle =
+        StartupInteractionGate.instance.canHandleNotificationClick;
+    debugPrint(
+      '[AppLifecycle] onProcessingOverlayClicked canHandle=$canHandle',
+    );
+    if (!canHandle) return;
     final AppLifecycleService lifecycleService = AppLifecycleService.instance;
-    if (lifecycleService.shouldSuppressClickHotLaunch) {
+    final bool shouldSuppress = lifecycleService.shouldSuppressClickHotLaunch;
+    debugPrint(
+      '[AppLifecycle] onProcessingOverlayClicked '
+      'shouldSuppressHotLaunch=$shouldSuppress',
+    );
+    if (shouldSuppress) {
       lifecycleService.suppressNextForegroundAd();
     }
     unawaited(
       lifecycleService.showLifecycleAd(
         AdScene.pr_launch,
-        AdPlacement.pr_open_hot,
+        AdPlacement.pr_progress,
       ),
     );
   }

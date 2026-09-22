@@ -22,6 +22,7 @@ class AppLifecycleService {
   AppLifecycleService._();
 
   static final AppLifecycleService instance = AppLifecycleService._();
+  static const Duration _openAdLoadingTimeout = Duration(seconds: 16);
   int hotLaunchCooldownSeconds = 3;
   bool observerStarted = false, _appIsBack = false;
   bool _appIsForeground = true;
@@ -34,6 +35,10 @@ class AppLifecycleService {
       !_appIsForeground || _appIsBack || _waitingForegroundLaunchSource;
 
   void suppressNextForegroundAd() {
+    _log(
+      'suppressNextForegroundAd foreground=$_appIsForeground '
+      'appIsBack=$_appIsBack waitingSource=$_waitingForegroundLaunchSource',
+    );
     _suppressNextHotLaunch = true;
     _appIsBack = false;
   }
@@ -45,6 +50,7 @@ class AppLifecycleService {
     _suppressNextHotLaunch = false;
     _appIsBack = false;
     ActiveLaunchSourceService.instance.clear();
+    _log('foreground ad suppression consumed');
     return true;
   }
 
@@ -56,6 +62,11 @@ class AppLifecycleService {
     FlutterAppLifecycle.instance.setCallObserver(
       AppStateObserver(
         call: (bool inBackground) {
+          _log(
+            'lifecycle callback inBackground=$inBackground '
+            'foreground=$_appIsForeground appIsBack=$_appIsBack '
+            'suppress=$_suppressNextHotLaunch',
+          );
           AppEventBus.instance.publish(
             AppEvent(
               type: AppEventType.appLifecycle,
@@ -75,33 +86,45 @@ class AppLifecycleService {
   void _onAppBackgrounded() {
     _appIsForeground = false;
     _appIsBack = true;
+    _log('entered background');
   }
 
   Future<void> _onAppForegrounded() async {
     _appIsForeground = true;
+    _log(
+      'foreground handler start appIsBack=$_appIsBack '
+      'suppress=$_suppressNextHotLaunch',
+    );
     OverlayService.instance.closeTimerOverlay();
     if (!_appIsBack && !_suppressNextHotLaunch) {
+      _log('foreground handler skipped: no background transition');
       return;
     }
     if (_consumeForegroundAdSuppression()) {
+      _log('foreground handler stopped: suppression before delay');
       return;
     }
     if (!_appIsBack) {
+      _log('foreground handler stopped: appIsBack=false before delay');
       return;
     }
     await Future<void>.delayed(const Duration(milliseconds: 120));
     if (_consumeForegroundAdSuppression()) {
+      _log('foreground handler stopped: suppression after delay');
       return;
     }
     if (!_appIsBack) {
+      _log('foreground handler stopped: appIsBack=false after delay');
       return;
     }
 
     final bool openedFromTimerOverlay = await _waitForForegroundClickSource();
     if (_consumeForegroundAdSuppression()) {
+      _log('foreground handler stopped: suppression after source wait');
       return;
     }
     if (!_appIsBack) {
+      _log('foreground handler stopped: appIsBack=false after source wait');
       return;
     }
 
@@ -109,21 +132,26 @@ class AppLifecycleService {
     final LaunchSource? source = ActiveLaunchSourceService.instance
         .consumeLaunchSource();
     if (_consumeForegroundAdSuppression()) {
+      _log('foreground handler stopped: suppression after source consume');
       return;
     }
     _appIsBack = false;
     if (openedFromTimerOverlay) {
+      _log('foreground handler trigger position=pr_open_pop');
       showLifecycleAd(AdScene.pr_launch, AdPlacement.pr_open_pop);
       return;
     }
     if (source == null) {
+      _log('foreground handler trigger position=pr_open_hot');
       showLifecycleAd(AdScene.pr_launch, AdPlacement.pr_open_hot);
       return;
     }
     switch (source.type) {
       case LaunchSourceType.notification:
+        _log('foreground handler notification source: no resume ad');
         return;
       case LaunchSourceType.quickAction:
+        _log('foreground handler trigger position=unload_1');
         showLifecycleAd(AdScene.pr_exit, AdPlacement.unload_1);
     }
   }
@@ -152,7 +180,16 @@ class AppLifecycleService {
   }
 
   Future<void> showLifecycleAd(AdScene adScene, AdPlacement positionId) async {
+    _log(
+      'showLifecycleAd start scene=${adScene.name} '
+      'position=${positionId.name} foreground=$_appIsForeground '
+      'showing=$_showingLifecycleAd loading=$_openAdLoadingActive',
+    );
     if (_showingLifecycleAd || _openAdLoadingActive || !_appIsForeground) {
+      _log(
+        'showLifecycleAd skipped: showing=$_showingLifecycleAd '
+        'loading=$_openAdLoadingActive foreground=$_appIsForeground',
+      );
       return;
     }
     _showingLifecycleAd = true;
@@ -160,6 +197,7 @@ class AppLifecycleService {
       await _prepareAndShowLifecycleAd(adScene, positionId);
     } finally {
       _showingLifecycleAd = false;
+      _log('showLifecycleAd finished position=${positionId.name}');
     }
   }
 
@@ -167,27 +205,12 @@ class AppLifecycleService {
     AdScene adScene,
     AdPlacement positionId,
   ) async {
-    final int lastOpenAdCloseTime = LastOpenAdCloseTime.readTime();
-    final int hotCooldownMs = hotLaunchCooldownSeconds * 1000;
-    if (DateTime.now().millisecondsSinceEpoch - lastOpenAdCloseTime <
-        hotCooldownMs) {
-      return;
-    }
-
     final FlutterPdfAdPlugins adPlugin = FlutterPdfAdPlugins.instance;
-    if (positionId == AdPlacement.pr_open_hot) {
-      if (adPlugin.isShowingAd()) {
-        return;
-      }
-    } else {
-      final bool closed = await adPlugin.closeFullScreenAdAndWait(
-        timeout: const Duration(seconds: 3),
+    if (!await _prepareCurrentFullScreenAd(adPlugin, positionId)) {
+      _log(
+        'showLifecycleAd stopped during fullscreen preparation '
+        'position=${positionId.name} foreground=$_appIsForeground',
       );
-      if (!closed) {
-        return;
-      }
-    }
-    if (!_appIsForeground) {
       return;
     }
 
@@ -195,57 +218,166 @@ class AppLifecycleService {
       adScene: adScene,
       adPosId: positionId,
     );
+    _log('cache result position=${positionId.name} cached=$hasCachedAd');
     if (!_appIsForeground) {
+      _log('showLifecycleAd stopped after cache check: app is background');
       return;
     }
     if (hasCachedAd) {
-      await AdService.instance.showCachedAd(
-        adScene: adScene,
-        adPosId: positionId,
-        ignoreCooldown: positionId != AdPlacement.pr_open_hot,
+      unawaited(
+        _showCachedLifecycleAd(
+          adScene: adScene,
+          positionId: positionId,
+          uploadChance: true,
+          source: 'direct',
+        ),
       );
       return;
     }
 
+    if (AppNavigator.isCurrentRoute(AppRoutes.openAdLoadingRoute)) {
+      _log('open-ad loading route already active');
+      return;
+    }
     AdService.instance.trackAdOpportunity(
       adScene: adScene,
       adPosId: positionId,
     );
+    dynamic loadingResult;
     _openAdLoadingActive = true;
     try {
-      final dynamic loadingResult = await AppNavigator.pushNamed<dynamic>(
+      final Future<dynamic>? loadingFuture = AppNavigator.pushNamed<dynamic>(
         routeName: AppRoutes.openAdLoadingRoute,
         arguments: <String, dynamic>{'adScene': adScene, 'adPosId': positionId},
       );
-      final bool cacheReady = loadingResult == true;
-      if (!cacheReady || !_appIsForeground) {
+      if (loadingFuture == null) {
+        _log('open-ad loading route was not opened');
         return;
       }
-      await WidgetsBinding.instance.endOfFrame;
-      if (!_appIsForeground) {
-        return;
-      }
-
-      if (positionId == AdPlacement.pr_open_hot) {
-        if (adPlugin.isShowingAd()) {
-          return;
-        }
-      } else {
-        final bool closed = await adPlugin.closeFullScreenAdAndWait(
-          timeout: const Duration(seconds: 3),
+      _log('open-ad loading route opened position=${positionId.name}');
+      try {
+        loadingResult = await loadingFuture.timeout(
+          _openAdLoadingTimeout,
+          onTimeout: () {
+            _log('open-ad loading route timed out position=${positionId.name}');
+            if (AppNavigator.isCurrentRoute(AppRoutes.openAdLoadingRoute)) {
+              AppNavigator.back<bool>(result: false);
+            }
+            return false;
+          },
         );
-        if (!closed) {
-          return;
+      } catch (error) {
+        _log(
+          'open-ad loading route failed position=${positionId.name} '
+          'error=$error',
+        );
+        if (AppNavigator.isCurrentRoute(AppRoutes.openAdLoadingRoute)) {
+          AppNavigator.back<bool>(result: false);
         }
+        return;
       }
-      await AdService.instance.showCachedAd(
-        adScene: adScene,
-        adPosId: positionId,
-        uploadChance: false,
-        ignoreCooldown: positionId != AdPlacement.pr_open_hot,
-      );
     } finally {
       _openAdLoadingActive = false;
+      _log('open-ad loading state released position=${positionId.name}');
     }
+
+    final bool cacheReady = loadingResult == true;
+    _log(
+      'open-ad loading route finished position=${positionId.name} '
+      'cacheReady=$cacheReady foreground=$_appIsForeground',
+    );
+    if (!cacheReady || !_appIsForeground) {
+      _log(
+        'showLifecycleAd stopped after loading route '
+        'cacheReady=$cacheReady foreground=$_appIsForeground',
+      );
+      return;
+    }
+    await WidgetsBinding.instance.endOfFrame;
+    if (!_appIsForeground) {
+      _log('showLifecycleAd stopped after route pop: app is background');
+      return;
+    }
+
+    if (!await _prepareCurrentFullScreenAd(adPlugin, positionId)) {
+      _log(
+        'showLifecycleAd stopped before loaded ad presentation '
+        'position=${positionId.name}',
+      );
+      return;
+    }
+    unawaited(
+      _showCachedLifecycleAd(
+        adScene: adScene,
+        positionId: positionId,
+        uploadChance: false,
+        source: 'loaded',
+      ),
+    );
+  }
+
+  Future<void> _showCachedLifecycleAd({
+    required AdScene adScene,
+    required AdPlacement positionId,
+    required bool uploadChance,
+    required String source,
+  }) async {
+    final bool? shown = await AdService.instance.showCachedAd(
+      adScene: adScene,
+      adPosId: positionId,
+      uploadChance: uploadChance,
+      ignoreCooldown: positionId != AdPlacement.pr_open_hot,
+    );
+    _log(
+      '$source cached ad completed position=${positionId.name} shown=$shown',
+    );
+  }
+
+  Future<bool> _prepareCurrentFullScreenAd(
+    FlutterPdfAdPlugins adPlugin,
+    AdPlacement positionId,
+  ) async {
+    if (!_appIsForeground) {
+      _log(
+        'fullscreen preparation skipped: app is background '
+        'position=${positionId.name}',
+      );
+      return false;
+    }
+    if (positionId == AdPlacement.pr_open_hot) {
+      final bool adShowing = adPlugin.isShowingAd();
+      final bool cooldownActive = _isHotLaunchCooldownActive();
+      if (adShowing || cooldownActive) {
+        _log(
+          'hot lifecycle ad skipped: adShowing=$adShowing '
+          'cooldown=$cooldownActive',
+        );
+        return false;
+      }
+      return true;
+    }
+    if (!adPlugin.isShowingAd()) {
+      _log('fullscreen preparation: no current ad to close');
+      return true;
+    }
+    final bool closed = await adPlugin.closeFullScreenAdAndWait(
+      timeout: const Duration(seconds: 3),
+    );
+    _log(
+      'close current fullscreen result=$closed '
+      'position=${positionId.name} foreground=$_appIsForeground',
+    );
+    return closed && _appIsForeground;
+  }
+
+  bool _isHotLaunchCooldownActive() {
+    final int lastOpenAdCloseTime = LastOpenAdCloseTime.readTime();
+    final int hotCooldownMs = hotLaunchCooldownSeconds * 1000;
+    return DateTime.now().millisecondsSinceEpoch - lastOpenAdCloseTime <
+        hotCooldownMs;
+  }
+
+  void _log(String message) {
+    debugPrint('[AppLifecycle] $message');
   }
 }
