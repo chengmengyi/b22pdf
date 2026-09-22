@@ -1,4 +1,5 @@
 import 'package:b21pdf/core/config/app_config.dart';
+import 'package:b21pdf/core/overlay/overlay_service.dart';
 import 'package:b21pdf/features/onboarding/services/onboarding_coordinator.dart';
 import 'package:b21pdf/core/navigation/app_routes.dart';
 import 'package:b21pdf/core/navigation/app_navigator.dart';
@@ -28,6 +29,7 @@ class OverlayPermissionController extends BaseController {
             overlayPermissionGuideLayout: 'overlay_layout',
           );
       if (permissionGranted) {
+        OverlayService.instance.showProgressOverlay();
         openNotificationPermissionScreen();
       }
     } finally {

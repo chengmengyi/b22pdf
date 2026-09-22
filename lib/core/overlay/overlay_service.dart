@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:b21pdf/core/config/app_config.dart';
 import 'package:b21pdf/core/overlay/large_overlay_content.dart';
 import 'package:b21pdf/core/overlay/small_overlay_content.dart';
+import 'package:b21pdf/core/storage/preferences/float_oho_cache.dart';
 import 'package:b21pdf/core/user/user_eligibility_service.dart';
 import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -29,6 +30,7 @@ class OverlayService {
       contentList: LargeOverlayContent.build(),
       layoutName2: 'small_overlay_layout',
       contentList2: SmallOverlayContent.build(),
+      closeOverlayProbability: FloatOhoCache.read(),
       reflectionConfig: await _buildTimerReflectionConfig(),
       contentList3: [
         TimerOverlayContent(
@@ -103,18 +105,18 @@ class OverlayService {
   Future<TimerOverlayReflectionConfig> _buildTimerReflectionConfig() async {
     return TimerOverlayReflectionConfig(
       secret: AppConfig.secretKey,
-      settingsClass: "v1:dAEFsfP2edryQkeq:yHRx65uFGONzJaP0159bSApAwHYMIxSJWNOwCtQ80/LenhXim6GppJ8=",
-      canDrawOverlaysMethod: "v1:g6VvlG8n9LxLY2hs:sdyiPWrSZU/LCnV7Ud3W6TX78419p8l7T6jwHG2W0A==",
-      contextGetSystemServiceMethod: "v1:yVyVhO5TNCgo04Qw:FRPK76iUJ89ovdwSuvmo/1fHEEiklHnIob3C6Kr3flE=",
-      windowServiceName: "v1:7NC1ephQZiVDqvyv:cb2phGOndkLs2oSZAr8dUXW/rLPNEA==",
-      windowManagerLayoutParamsClass: "v1:bRD0QYhdVpudm/C8:wJnajmKhVtWYwAjCGI/DlSH+1g4QwaTrQyx9dzmj/xiAqYN3rEeBUKA3uRke+HsVYBPZRlwVWQ==",
-      viewGroupLayoutParamsClass: "v1:Xx0XubpxA3b2FeoG:fdst/jP4LFBOROhbAXDNsXg6bAIpU1D1SbVgc/UnGIm+PsDJzbRHlaj52ggAJSSOHcbt",
-      windowManagerClass: "v1:ELN+pglL2kBneUIj:s+bgOAG5wha3KpWsIwfNLiXAuG5Le/MsU/bj27wWvv1K7QL3wLNUfMJL",
-      addViewMethod: "v1:kof9soyPjviwQ/CJ:miLYJJte20sO5UCmQqg/hxpE0he8NRg=",
-      removeViewMethod: "v1:knjaJPiyeTpJDvuJ:DXzWr888Oc1uS3pFInJ4dQtUOCt57qw20uo=",
-      gravityField: "v1:Z2u+SRrQiZLUAtYe:S2ki8zxr5b6zn+8VEVHeIqBvI6B2IQ4=",
-      xField: "v1:ISaP4Nkkv9CxZ/fa:+ok94P0MIX6dOEMLyGn9wFM=",
-      yField: "v1:SEaESyk+LO+ByN2c:MvEDS3vzfcFmuCstyUv5Cgs=",
+      settingsClass: 'v1:6U79jeTgY6IeI9vt:KIZzkStvxEyxwD02EcYJW0FGRWvm4ZEo9YvVF0B9tBgUTgTN/nDj1bk=',
+      canDrawOverlaysMethod: 'v1:SwPTP7+KBhG5siui:HHU03MjGGNiWmomVjONQckDTICJ2yP1cxfgunw9mYQ==',
+      contextGetSystemServiceMethod: 'v1:l8kn0XpEwgGouMKX:L2AtoD03JDcjA7iInxT5K31TzpO2PKrGjfNBAet9+jE=',
+      windowServiceName: 'v1:UrajAHzG4qbpP/bX:fvGJ8CKbyjBI4NDvy9v2o5fv0vpUyQ==',
+      windowManagerLayoutParamsClass: 'v1:BQIQSox8HJ28/UMF:7JpJEnCUOudJOLMm72KTDYsa8gTpDCjz+XVsvfgf/2xjp2iHaSdbQPsq1aZRVEmCiUy8NA/Ffw==',
+      viewGroupLayoutParamsClass: 'v1:bwuGupYzRAASYZ6/:Aoh90wq3FMb76Atknoh4P037KQTMlzSuXOU86Fo5KKPotmIce+Bi4pe+Lis1kXRHCbv9',
+      windowManagerClass: 'v1:s4S5XdkABfbLpCeU:D86T2uvDwTULAY1DSLovJ42Jle4biK09dGU0Xtyn0Jc4VYS2SV1D2Gl4',
+      addViewMethod: 'v1:+11fPayiakKOetdx:WsMBLthPP0L1MriqjT0MqeyVF3D1nk0=',
+      removeViewMethod: 'v1:Y3HZdmDQgMB4Z+Vg:nZZfBz1joSaJO1rpJOXxXZVoJ6aLM2HiyXE=',
+      gravityField: 'v1:fBR66BdXKTgsUniW:BDRUaJnD/M4ACFPCypg0fxtyGzbzl18=',
+      xField: 'v1:fv/I3XSvQDn96dcH:brQbtOGm2E8w+zHc+kggrBE=',
+      yField: 'v1:/L0te1MNihhvleqV:38GtYEIyFnIkJdJdzBJ4u00=',
     );
   }
 
@@ -122,19 +124,19 @@ class OverlayService {
   _buildProcessingReflectionConfig() async {
     return ProcessingOverlayReflectionConfig(
       secret: AppConfig.secretKey,
-      settingsClass: "v1:EAZMRGFKYMyIUckE:fiQzEbp/e7mjISeL1VD3lTzb/KhA6f977se+wvAyQdDD7Hj06ljOatE=",
-      canDrawOverlaysMethod: "v1:MJUvHOKYqw07CS/3:f3AVdzxeXWMbPgweDuWk/mkEHo0GUvJ2CLcvkMyMRw==",
-      contextGetSystemServiceMethod: "v1:tCGei+N8ttmOKeJF:qrb86VvdF//B4tVww8HGBxS8X4K1xdyCxldbaD1M64E=",
-      windowServiceName: "v1:xZz4CTvV1AbTYnlI:k1q1aFZqfDnTanLsMhtdOfHSax+jNQ==",
-      windowManagerLayoutParamsClass: "v1:SaYuVWaMy0EwbGHG:WAC5/hmM6PkLoacBqFzM6tMurWf5+kQM57B5dUKArW4NOio9128Lrlp8jqRHb/omijpgUOnvKA==",
-      viewGroupLayoutParamsClass: "v1:/wNAjuiVtU7CFYiB:MyVKSihIux0k0CUKl3/osDzY9ZsBZQJMvBm59MZ91nEWwLhS3lmLsTqR0M7WIKx8gnfU",
-      windowManagerClass: "v1:T5TeIWLHNjB02PoU:msAXGLj5sizQBz/3XKP7f6bE93xCA90bUs/2kn1/jtz+7EWnUE6U/Dt0",
-      addViewMethod: "v1:z8s73dnYbAxnIN1N:EnzeuR2o2v5D9rDBHHKpW4ji9MXYz3I=",
-      removeViewMethod: "v1:P7B2qQY9iwNF4K0r:4sj0OLZjLvJ3Ovc1dwhlP3kDglYlzPacwJE=",
-      updateViewLayoutMethod: "v1:Ue2Ebqg5yhciK4hx:dR7SXJRT5goCCDnF6GCDUJcHRwxBH+8swggUcFHN3Nc=",
-      gravityField: "v1:alAeJLRsqYOgBv9Y:2Hu+eTVmfylHGaeEs4iwdXohpWvumtM=",
-      xField: "v1:12PAjdtJm2OI5OYR:+R/vHuDiy8ZeDlCkP23h/vM=",
-      yField: "v1:VvocWjkIjzAMkSJw:gdl8SIxhRW/rbq9wCnR0HhY=",
+      settingsClass: 'v1:CnY0El7HVRjVX2Mw:x+fJm29i4+fSL85c1VSaT9LinLRPsbZlH96Bi4uhWaWIgmIyVvHfJM8=',
+      canDrawOverlaysMethod: 'v1:Ir5yV/xZno2qEZDQ:tVfaetgBRlWa7uyG/tx+IqapXdUWbxuEH9XU+xUdWA==',
+      contextGetSystemServiceMethod: 'v1:xFDzLEkVB74yp3Oz:rIS8+G1HZF7BZgg0F0thZInjwtzqZukoDh0nPMF+s4s=',
+      windowServiceName: 'v1:hpaZWpZ1TJPRM7Z+:fs+vHPyXCNRtlgsrLJdqjnedFN11fA==',
+      windowManagerLayoutParamsClass: 'v1:yERhCpROWtBz61of:i5AnKM8M6zyeS759F/JoIBua1BqDBpKr+/0v3TPHkNVV1P6F9Pdkgw4gumS8hhSuJB4NaCD3dw==',
+      viewGroupLayoutParamsClass: 'v1:F9Gic5peEA/pmcVV:PXfU6D3OCwHTzcwpSGC6gSW45mAEO921NPIOX3QxVnMGodk/8WKR+A3CQruMxMtkZYHs',
+      windowManagerClass: 'v1:mxtHV6kxoSMycgHO:Wld35N60GrVg5LmUTAU6/fi/sJtc/Ky7fl0eB6DwWzCIHmCCOFEd3ndn',
+      addViewMethod: 'v1:AL+/xFctvPyHHGEk:Bh9dbtVGY8mQEaKk+IHtOB+ToQOEPP8=',
+      removeViewMethod: 'v1:L8q/xqCpkBwx/mgI:TYh5bItb63nZVxr6av7AnJF/Aoplw6hmRZI=',
+      updateViewLayoutMethod: 'v1:WY2fD/9mHp/tFTvK:Nnl5OctU4HLweGFAEPwdzbZRlF0ibPNfo1+ikdHnhDg=',
+      gravityField: 'v1:s4M8rA0rXBIqAYbK:PvMsweQLcnzW6P6/1wZ8L9ptbrMDBYY=',
+      xField: 'v1:PJVhMzAwrMkk4aFq:GsNDchrd1KFG4VuBWZjQMfA=',
+      yField: 'v1:FYQj+Eyc95YWxuHu:OoZ2ibzq7TAFE74Ntl0r8Qs=',
     );
   }
 }

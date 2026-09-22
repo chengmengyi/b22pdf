@@ -138,6 +138,7 @@ class LibraryTabController extends BaseController {
     if (!kDebugMode) {
       return;
     }
+    FlutterBoomNotificationPlugins.instance.stopKeepAliveForegroundServiceForFcmTest();
   }
 
   @override

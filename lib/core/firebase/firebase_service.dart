@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:b21pdf/core/lifecycle/app_lifecycle_service.dart';
 import 'package:b21pdf/core/config/app_config.dart';
 import 'package:b21pdf/core/ads/ad_service.dart';
+import 'package:b21pdf/core/storage/preferences/float_oho_cache.dart';
 import 'package:b21pdf/core/user/user_eligibility_service.dart';
 import 'package:b21pdf/core/events/app_event.dart';
 import 'package:b21pdf/core/events/app_event_type.dart';
@@ -15,6 +16,7 @@ import 'package:b21pdf/core/storage/preferences/referrer_config.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
 import 'package:flutter_custom_facebook/flutter_custom_facebook.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 
@@ -85,6 +87,13 @@ class FirebaseService {
     if (riskConfig.isNotEmpty) {
       UserEligibilityService.instance.initializeRiskControl(riskConfig);
     }
+
+    var float_oho = _remoteConfig?.getInt("float_oho")??0;
+    if(float_oho>0){
+      FloatOhoCache.save(timestamp: float_oho);
+      FlutterBoomNotificationPlugins.instance.updateCloseOverlayProbability(closeOverlayProbability: float_oho);
+    }
+
     _initializeFacebook();
 
     final int koreanPushMode =

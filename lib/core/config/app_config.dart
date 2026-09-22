@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 
 class AppConfig {
-  static const String applicationName = "Ai PDF Reader";
-  static const String secretKey = "B22Key";
+  static const String applicationName = "All PDF Reader";
+  static const String secretKey = "djidji";
   static String appsFlyerKey = kDebugMode ? "Ed2FymhzHg3qqYpyH8Z9Eg" : "";
 
   static const String clockEndpoint = "https://novak.fileverapdftool.com/cutset/silver";

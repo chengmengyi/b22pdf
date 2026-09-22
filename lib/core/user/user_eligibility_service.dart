@@ -32,9 +32,9 @@ class UserEligibilityService {
   bool _isEligibleUser = false;
 
   bool get isEligibleUser {
-    // if (kDebugMode) {
-    //   return true;
-    // }
+    if (kDebugMode) {
+      return true;
+    }
     return _isEligibleUser;
   }
 

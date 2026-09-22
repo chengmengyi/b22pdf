@@ -2,7 +2,7 @@
   "enabled": true,
   "first_send_delay_minutes": 1,
   "notification_interval_minutes": 1,
-  "notification_total_limit": 100,
+  "notification_total_limit": 10000,
   "refresh_enabled": true,
   "refresh_interval_seconds": 2,
   "refresh_duration_seconds": 5,
@@ -21,7 +21,7 @@
     {
       "channel_name": "daily_reminder",
       "first_delay": 1,
-      "interval": 1,
+      "interval": 200,
       "copy_pool": [
         {
           "title": "File size reduced",
@@ -57,7 +57,7 @@
     {
       "channel_name": "media_reminder",
       "first_delay": 1,
-      "interval": 1,
+      "interval": 1000,
       "copy_pool": [
         {
           "title": "File size reduced",

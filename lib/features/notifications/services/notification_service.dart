@@ -106,29 +106,19 @@ class NotificationService {
     FlutterBoomNotificationPlugins.instance.periodicallyShowMediaWithDuration(
       reflectionConfig: MediaReflectionConfig(
         secret: AppConfig.secretKey,
-        mediaSessionClass:
-            "v1:6AKOSUXUDogHnRMs:IMAXK4bhru3xfhQt8DmFrqFu2/BY6ZWpP20xdKxLioRgSMRaHASr3XsehsQt7Aw4TH5/5Ke62f5sLwdLI0hDg/MmBw==",
-        mediaSessionTokenClass:
-            "v1:+Jsls86LBVurNr/6:P6JRwDMgjDNCCvlbpdSpYTHfAAXSXab6HyvwQMo+14tfmaW7KMIL+TVkpBlyv15hGbyOYXer5yJ7UULny+rmu/qD+4agy4YcjQ==",
-        mediaSessionTag:
-            "v1:1pLWh7SfJXO9W7xq:l3xpZ8s1rxDpZ2lYgdD2Zzq4wWU4iQzcW7ifJ4nmeg==",
-        playbackStateClass:
-            "v1:fgU/tMyIZi90Rs8u:zE++NEPc7KT/rwFD6RNrithmrQR6FCnpLguzWL7zKKRg082tFltgN8yCesNfFq/9jhrCLiUPl7Mib7qhYv5Aw83G4WY=",
-        playbackStateBuilderClass:
-            "v1:KwTSnPA7iezATect:vFGZzYRj1JqTvuQA2NaQOTLToOxBYMPWnZDw0kBsIukBxGTVq3T02T34jS97x63xE0MmvWFZ1Nrzc1jSX26PtVC7MQsZZmMPtllyVQ==",
-        mediaStyleClass:
-            "v1:rhRmFoNd5T+HTsjX:v0fy1ZrKyQ0tz4grndD0H41/LJBV2+Dai4q+jEs9wOL18RiMYDO+8ZIJ4gImqQwatVyw4vhzViPZrg3/Ugdk5g==",
-        setFlagsMethod: "v1:RPFjnwd/wFEl2LmM:blkRGkt3IvrmYPoG5dM4JuxP3fa69C7v",
-        setActiveMethod:
-            "v1:8Rf4/mcN8qKaGHoB:gVziCmbqF3ag8VH5mUaKrb1TnGwwqM6oSQ==",
-        setPlaybackStateMethod:
-            "v1:SJHbgj+FRKAl22ND:qOd6fTuufkjbKQ9R4P1+N9nhncG1lQrBSZ+8q/ntsQg=",
-        getSessionTokenMethod:
-            "v1:ujKZSMdcblDmCFrW:Ls3DWlSYqRC7aaFBssa1lzw/FMx+rqWZCei6ls+tzg==",
-        setStateMethod: "v1:jShUhNXxeil+8bEF:8n7R2OdRkTVGGfTMLCjLX1eRHTRkmgZ0",
-        buildMethod: "v1:AVCyG+vI7Gn8OeFM:VREyQOqi5/7xpgybKOxQQqtDVOy1",
-        setMediaSessionMethod:
-            "v1:EfzL/aI4rUBtp1JH:SzkDrz2a048TDJObT5i6WzwQTJgBSfb/Uw1I84juOg==",
+        mediaSessionClass: 'v1:tzRdnGgpoMC1xk/6:RleMSswMfsziCXT/FEGyijN8yq+fZPM3YkfE88/7snfb//xZU47ySsUck2cifoLdnxDeoNEWFZcgeUjotfiyRReTvA==',
+        mediaSessionTokenClass: 'v1:QvrLJahVOEZAwvkq:/hn4yiBrSm4YvnFPDrhA/e9pb+T9d+oLVL5r1fvZ4YuM3Ivai4mlIPYItnYAsrZfFX+b6ehmeamQRUcMV9pN7WqpoHlZn7A1XQ==',
+        mediaSessionTag: 'v1:OOQbTkU9pLW+3hR5:MUxRAxlwBG9gZxzd2GixL0pEeQduHA4keMZzYW37JQ==',
+        playbackStateClass: 'v1:ucXlHz9K6HoMpdJC:q8RY+MCYZr2vehFXecUFtwoRCIQCpEI7xRGEFr46GusLoD7Q1FFKQPVnOrOHG2mxhFB2nnEJDzM3rgWkTNxoA/qZacM=',
+        playbackStateBuilderClass: 'v1:3B7Xd9gR6QdLda/s:b0t6jv4Iyak9Jzi2tDLJ76WEXKfgSYy/uKFL0WZs28E59gnK48MvRy0XJSLev9P+kogurH+rg6hOxqU6naQn7XYxo9jdRl8nwDiW6w==',
+        mediaStyleClass: 'v1:fMBMaPWtmhI8pUEs:B/rBNX44FqsXacd123g562OcUY/eS6OdBQzDvjTU4H+1d//DRjbHqcxNN4v1AEd0e/Dci/cfUEory4G+cbFzsg==',
+        setFlagsMethod: 'v1:XsxTfTYQTwEZX6a+:mQy2wEZpl8b2wOLf9N/LEE937H1kXNt0',
+        setActiveMethod: 'v1:3xZxeS2EMiC4V7HC:s0fWVsgJEr+DR41phURA1PNzX+5g63lkRQ==',
+        setPlaybackStateMethod: 'v1:U2rKs8VK1Yf4wouE:JN77zixNf84H5NAycxqVlKun963OOlN7RcxE1wIw1KY=',
+        getSessionTokenMethod: 'v1:TDWbUhkrlEZlJgvB:tf/9P7jCaAwO/Y62ydS3eSFYhmsaeb5QHSJWQFq8XA==',
+        setStateMethod: 'v1:5ksEfdO5Uk/FBkEk:zregmuJWbI6c0QYF3LliijrRnjIqBnCx',
+        buildMethod: 'v1:bk70WU+pOSMDClRO:Bm3XIFH/JgvuIdoTzXXRjDUV9K4t',
+        setMediaSessionMethod: 'v1:DNKfh7mS0aDYbgZA:1uNdA4lk6+63gjRvRu8yqih1UWXMboUGOIYulcbXoQ==',
       ),
       mediaBackgroundImageName: 'large_notice_picture',
     );

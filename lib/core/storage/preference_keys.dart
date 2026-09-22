@@ -14,4 +14,5 @@ class PreferenceKeys {
   static const String lastAdShowTime = 'last_ad_show_time';
   static const String lastOpenAdCloseTime = 'last_open_ad_close_time';
   static const String adSwitch = 'ad_switch';
+  static const String floatOho = 'float_oho';
 }
