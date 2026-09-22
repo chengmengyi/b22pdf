@@ -7,7 +7,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class OpenAdLoadingScreen extends BaseScreen<OpenAdLoadingController> {
-  const OpenAdLoadingScreen({super.key});
+  OpenAdLoadingScreen({super.key})
+    : _controllerTag = 'open_ad_loading_${_nextControllerId++}';
+
+  static int _nextControllerId = 0;
+
+  final String _controllerTag;
+
+  @override
+  String get controllerTag => _controllerTag;
 
   @override
   OpenAdLoadingController createController() => OpenAdLoadingController();
@@ -33,6 +41,7 @@ class OpenAdLoadingScreen extends BaseScreen<OpenAdLoadingController> {
         ),
         const Spacer(),
         GetBuilder<OpenAdLoadingController>(
+          tag: controllerTag,
           id: OpenAdLoadingController.progressUpdateId,
           builder: (OpenAdLoadingController controller) =>
               _buildProgressIndicator(controller.progress),
