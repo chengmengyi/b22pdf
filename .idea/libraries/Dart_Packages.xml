@@ -289,6 +289,20 @@
             </list>
           </value>
         </entry>
+        <entry key="firebase_crashlytics">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_crashlytics-5.2.4/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="firebase_crashlytics_platform_interface">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_crashlytics_platform_interface-3.8.24/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="firebase_remote_config">
           <value>
             <list>
@@ -383,14 +397,14 @@
         <entry key="flutter_pdf_ad_plugins">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../plugins/flutter_pdf_ad_plugins/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_pdf_ad_plugins-0.2.9/lib" />
             </list>
           </value>
         </entry>
         <entry key="flutter_pdf_risk_control_plugins">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_pdf_risk_control_plugins-0.0.2/lib" />
+              <option value="$PROJECT_DIR$/../plugins/flutter_pdf_risk_control_plugins/lib" />
             </list>
           </value>
         </entry>
@@ -404,7 +418,7 @@
         <entry key="flutter_preview_file">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_preview_file-0.0.8/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_preview_file-0.0.9/lib" />
             </list>
           </value>
         </entry>
@@ -1236,6 +1250,8 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_core-4.11.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_core_platform_interface-7.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_core_web-3.9.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_crashlytics-5.2.4/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_crashlytics_platform_interface-3.8.24/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_remote_config-6.5.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_remote_config_platform_interface-3.0.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_remote_config_web-1.10.10/lib" />
@@ -1245,9 +1261,9 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_custom_facebook-0.0.5/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_html-3.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_lints-6.0.0/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_pdf_risk_control_plugins-0.0.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_pdf_ad_plugins-0.2.9/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.35/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_preview_file-0.0.8/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_preview_file-0.0.9/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_screenutil-5.9.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_staggered_grid_view-0.7.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_tba_info-0.0.9/lib" />
@@ -1364,7 +1380,7 @@
       <root url="file://$USER_HOME$/flutter3.44.2/packages/flutter_web_plugins/lib" />
       <root url="file://$PROJECT_DIR$/../plugins/flutter_add_widget_plugins/lib" />
       <root url="file://$PROJECT_DIR$/../plugins/flutter_boom_notification_plugins/lib" />
-      <root url="file://$PROJECT_DIR$/../plugins/flutter_pdf_ad_plugins/lib" />
+      <root url="file://$PROJECT_DIR$/../plugins/flutter_pdf_risk_control_plugins/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

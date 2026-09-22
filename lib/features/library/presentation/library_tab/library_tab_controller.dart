@@ -13,6 +13,7 @@ import 'package:b21pdf/core/events/app_event_type.dart';
 import 'package:b21pdf/core/events/app_event_bus.dart';
 import 'package:b21pdf/core/permissions/permission_service.dart';
 import 'package:b21pdf/core/storage/preferences/insert_widget_cache.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -138,7 +139,7 @@ class LibraryTabController extends BaseController {
     if (!kDebugMode) {
       return;
     }
-    FlutterBoomNotificationPlugins.instance.stopKeepAliveForegroundServiceForFcmTest();
+    FirebaseCrashlytics.instance.crash();
   }
 
   @override
