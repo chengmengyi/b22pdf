@@ -1,13 +1,13 @@
-import 'package:b21pdf/core/config/app_config.dart';
-import 'package:b21pdf/core/ads/ad_service.dart';
-import 'package:b21pdf/core/user/user_eligibility_service.dart';
-import 'package:b21pdf/core/firebase/firebase_service.dart';
-import 'package:b21pdf/features/settings/language/app_translations.dart';
-import 'package:b21pdf/features/startup/services/initial_launch_source_service.dart';
-import 'package:b21pdf/features/shortcuts/services/shortcut_service.dart';
-import 'package:b21pdf/core/navigation/app_routes.dart';
-import 'package:b21pdf/core/analytics/analytics_service.dart';
-import 'package:b21pdf/core/overlay/overlay_service.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_configuration_pson/b22_application_manifest_pfbi.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_orchestrator_ngkh.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_identity_fjwe/b22_audience_qualification_orchestrator_tcus.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_cloud_gjhk/b22_cloud_orchestrator_utoj.dart';
+import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_language_jdlb/b22_application_lexicon_evae.dart';
+import 'package:b22_document_workspace_kmzm/b22_launch_dehs/b22_startup_ppmh/b22_operations_zxfh/b22_first_entry_origin_orchestrator_wwrf.dart';
+import 'package:b22_document_workspace_kmzm/b22_workspace_wbvi/b22_shortcuts_itti/b22_operations_iwxd/b22_quick_action_orchestrator_ijhz.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_destinations_crke.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_orchestrator_bvsc.dart';
+import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_floating_overlay_zkry/b22_floating_layer_orchestrator_hqqb.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,29 +16,39 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import 'package:b21pdf/features/notifications/services/notification_service.dart';
+import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_operations_ancs/b22_alert_orchestrator_qrqj.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await GetStorage.init();
-  await InitialLaunchSourceService.instance.initialize();
-  FirebaseService.instance.initialize();
-  AdService.instance.initialize();
-  await ShortcutService.instance.initialize();
-  UserEligibilityService.instance.initializeAttribution();
-  final Locale initialLocale = AppTranslations.resolveInitialLocale();
-  NotificationService.instance.initialize(requestPermission: true);
-  AnalyticsService.instance.trackInstall();
-  NotificationService.instance.trackInitialNotificationEvent();
-  OverlayService.instance.closeTimerOverlay();
-  runApp(PdfApplication(initialLocale: initialLocale));
+  await B22FirstEntryOriginOrchestratorJicy.instance.b22InitializeLwsd();
+  B22CloudOrchestratorRhpr.b22InstanceBbui.b22InitializePbli();
+  B22PromotionOrchestratorAzwq.instance.b22InitializeYjdz();
+  await B22QuickActionOrchestratorYmez.instance.b22InitializeKqab();
+  B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm
+      .b22InitializeAttributionGcmr();
+  final Locale b22InitialLocaleFoyu =
+      B22ApplicationLexiconNofd.b22ResolveInitialLocaleYfpt();
+  B22AlertOrchestratorNazk.b22InstanceOxzc.b22InitializeJrwh(
+    b22RequestPermissionTulq: true,
+  );
+  B22TelemetryOrchestratorNqon.instance.b22TrackInstallHdny();
+  B22AlertOrchestratorNazk.b22InstanceOxzc
+      .b22TrackInitialNotificationEventKvcs();
+  B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr.b22CloseTimerOverlayZifz();
+  runApp(
+    B22FeaturePdfApplicationNgqh(b22InitialLocaleJuhu: b22InitialLocaleFoyu),
+  );
 }
 
-class PdfApplication extends StatelessWidget {
-  const PdfApplication({super.key, required this.initialLocale});
+class B22FeaturePdfApplicationNgqh extends StatelessWidget {
+  const B22FeaturePdfApplicationNgqh({
+    super.key,
+    required this.b22InitialLocaleJuhu,
+  });
 
-  final Locale initialLocale;
+  final Locale b22InitialLocaleJuhu;
 
   @override
   Widget build(BuildContext context) {
@@ -51,17 +61,17 @@ class PdfApplication extends StatelessWidget {
           damping: 20.0,
         ),
         child: GetMaterialApp(
-          title: AppConfig.applicationName,
+          title: B22ApplicationManifestPdpm.b22ApplicationNameBjnh,
           enableLog: true,
           darkTheme: ThemeData.dark(),
           themeMode: ThemeMode.system,
           debugShowCheckedModeBanner: false,
-          translations: AppTranslations(),
-          locale: initialLocale,
-          fallbackLocale: AppTranslations.fallbackLocale,
-          supportedLocales: AppTranslations.supportedLocales,
-          initialRoute: AppRoutes.launcherRoute,
-          getPages: AppRoutes.pages,
+          translations: B22ApplicationLexiconNofd(),
+          locale: b22InitialLocaleJuhu,
+          fallbackLocale: B22ApplicationLexiconNofd.b22FallbackLocaleGbqu,
+          supportedLocales: B22ApplicationLexiconNofd.supportedLocales,
+          initialRoute: B22ApplicationDestinationsMcbk.b22LauncherRouteFstc,
+          getPages: B22ApplicationDestinationsMcbk.b22PagesMdxd,
           defaultTransition: Transition.rightToLeft,
           localizationsDelegates: const [
             RefreshLocalizations.delegate,
@@ -69,12 +79,12 @@ class PdfApplication extends StatelessWidget {
             GlobalMaterialLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          builder: (BuildContext context, Widget? widget) {
+          builder: (BuildContext b22ContextYtha, Widget? b22WidgetCqzx) {
             return MediaQuery(
               data: MediaQuery.of(
-                context,
+                b22ContextYtha,
               ).copyWith(textScaler: const TextScaler.linear(1.0)),
-              child: widget ?? const SizedBox.shrink(),
+              child: b22WidgetCqzx ?? const SizedBox.shrink(),
             );
           },
         ),

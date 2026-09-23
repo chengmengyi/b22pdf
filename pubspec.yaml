@@ -1,4 +1,4 @@
-name: b21pdf
+name: b22_document_workspace_kmzm
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -98,24 +98,26 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/config/ads/
-   - assets/config/attribution/
-   - assets/config/notifications/
-   - assets/documents/
-   - assets/images/ads/
-   - assets/images/branding/
-   - assets/images/common/
-   - assets/images/document_library/
-   - assets/images/editor/
-   - assets/images/feedback/
-   - assets/images/home/
-   - assets/images/home_widget/
-   - assets/images/languages/
-   - assets/images/languages/flags/
-   - assets/images/navigation/
-   - assets/images/pdf_tools/
-   - assets/images/permissions/
-   - assets/lottie/
+    - assets/b22_access_media_ydmf/b22_permission_guides_nmul/
+    - assets/b22_brand_identity_hvdt/b22_document_badges_oqwu/
+    - assets/b22_conversion_media_xzqz/b22_tool_actions_wwfr/
+    - assets/b22_conversion_media_xzqz/b22_workflow_status_pjra/
+    - assets/b22_demo_library_kfgc/b22_reference_documents_abdz/
+    - assets/b22_engagement_media_aquq/b22_feedback_prompts_ptmx/
+    - assets/b22_localization_media_vmzp/b22_language_guides_rnat/
+    - assets/b22_localization_media_vmzp/b22_locale_flags_gxbm/
+    - assets/b22_monetization_media_pgct/b22_native_ad_surfaces_fxri/
+    - assets/b22_motion_sequences_qnev/b22_document_processing_plaj/
+    - assets/b22_preview_media_dzro/b22_annotation_controls_kigz/
+    - assets/b22_runtime_registry_mokl/b22_acquisition_rules_apvl/
+    - assets/b22_runtime_registry_mokl/b22_advertising_rules_tnui/
+    - assets/b22_runtime_registry_mokl/b22_notification_rules_ihsi/
+    - assets/b22_shared_controls_ybsz/b22_common_actions_lskr/
+    - assets/b22_shared_controls_ybsz/b22_navigation_actions_dmkw/
+    - assets/b22_typography_pack_zdok/b22_anybody_family_uqqy/
+    - assets/b22_widget_extension_media_btai/b22_widget_resources_csgz/
+    - assets/b22_workspace_media_vwug/b22_home_shell_xfaq/
+    - assets/b22_workspace_media_vwug/b22_library_actions_pxds/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -132,16 +134,16 @@ flutter:
   fonts:
     - family: black
       fonts:
-        - asset: assets/ttf/Anybody_Expanded-Black.ttf
+        - asset: assets/b22_typography_pack_zdok/b22_anybody_family_uqqy/b22_anybody_expanded_black_fkda.ttf
     - family: extra
       fonts:
-        - asset: assets/ttf/Anybody_Expanded-ExtraBold.ttf
+        - asset: assets/b22_typography_pack_zdok/b22_anybody_family_uqqy/b22_anybody_expanded_extra_bold_ahnc.ttf
     - family: medium
       fonts:
-        - asset: assets/ttf/Anybody_Expanded-Medium.ttf
+        - asset: assets/b22_typography_pack_zdok/b22_anybody_family_uqqy/b22_anybody_expanded_medium_qidi.ttf
     - family: semi
       fonts:
-        - asset: assets/ttf/Anybody_Expanded-SemiBold.ttf
+        - asset: assets/b22_typography_pack_zdok/b22_anybody_family_uqqy/b22_anybody_expanded_semi_bold_cupa.ttf
 
   # fonts:
   #   - family: Schyler
