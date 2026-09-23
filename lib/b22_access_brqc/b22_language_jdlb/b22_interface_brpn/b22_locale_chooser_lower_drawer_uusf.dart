@@ -106,7 +106,7 @@ class B22LocaleChooserLowerDrawerGtjc
   Widget b22BuildTitleSectionHqjf() => Row(
     children: [
       B22TranslatedLabelComponentJklc(
-        'App Language'.tr,
+        'b22_app_language_cmhv'.tr,
         b22FontSizeIafw: 16.sp,
         b22ColorZcbj: Color(0xff000000),
         b22FontWeightPcyy: FontWeight.w500,

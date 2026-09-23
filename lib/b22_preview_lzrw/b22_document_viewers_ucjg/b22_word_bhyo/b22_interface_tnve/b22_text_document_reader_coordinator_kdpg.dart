@@ -71,7 +71,7 @@ class B22TextDocumentReaderCoordinatorXnjj
         size: b22StatQpus.size,
         updateTime: b22StatQpus.modified.millisecondsSinceEpoch,
       );
-      Fluttertoast.showToast(msg: 'Saved successfully'.tr);
+      Fluttertoast.showToast(msg: 'b22_saved_successfully_dzom'.tr);
     } catch (b22ErrorIdck) {
       Fluttertoast.showToast(msg: '$b22ErrorIdck');
     }

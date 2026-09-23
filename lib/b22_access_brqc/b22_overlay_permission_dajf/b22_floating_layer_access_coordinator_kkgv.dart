@@ -27,8 +27,8 @@ class B22FloatingLayerAccessCoordinatorNjpi
       final bool b22PermissionGrantedUsta = await FlutterBoomNotificationPlugins
           .instance
           .requestOverlayPermission(
-            title: 'Almost there! Unlock your full potential'.tr,
-            desc: 'Find {n} below and toggle the switch to ON.'.tr,
+            title: 'b22_almost_there_unlock_your_full_xhhm'.tr,
+            desc: 'b22_find_n_below_and_toggle_jhdc'.tr,
             overlayPermissionGuideLayout: 'overlay_layout',
           );
       if (b22PermissionGrantedUsta) {

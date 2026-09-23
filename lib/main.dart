@@ -22,14 +22,17 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await GetStorage.init();
+  await B22ApplicationLexiconNofd.b22InitializeEncryptedLexiconRxye();
+  final Locale b22InitialLocaleFoyu =
+      B22ApplicationLexiconNofd.b22ResolveInitialLocaleYfpt();
+  Get.locale = b22InitialLocaleFoyu;
+  Get.fallbackLocale = B22ApplicationLexiconNofd.b22FallbackLocaleGbqu;
   await B22FirstEntryOriginOrchestratorJicy.instance.b22InitializeLwsd();
   B22CloudOrchestratorRhpr.b22InstanceBbui.b22InitializePbli();
   B22PromotionOrchestratorAzwq.instance.b22InitializeYjdz();
   await B22QuickActionOrchestratorYmez.instance.b22InitializeKqab();
   B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm
       .b22InitializeAttributionGcmr();
-  final Locale b22InitialLocaleFoyu =
-      B22ApplicationLexiconNofd.b22ResolveInitialLocaleYfpt();
   B22AlertOrchestratorNazk.b22InstanceOxzc.b22InitializeJrwh(
     b22RequestPermissionTulq: true,
   );

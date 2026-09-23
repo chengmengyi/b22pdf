@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_configuration_pson/b22_application_manifest_pfbi.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_router_cbkk.dart';
 import 'package:b22_document_workspace_kmzm/b22_shared_midp/b22_interface_ruov/b22_coordinator_module_jrix.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_overlay_permission_dajf/b22_floating_layer_access_nudge_coordinator_ucai.dart';
@@ -57,7 +56,7 @@ class B22FloatingLayerAccessNudgeMeau
                 children: [
                   Expanded(
                     child: B22TranslatedLabelComponentJklc(
-                      'Unlock Your PDF is Full Potential!'.tr,
+                      'b22_unlock_your_pdf_is_full_ybrt'.tr,
                       b22FontSizeIafw: 16.sp,
                       b22ColorZcbj: Color(0xff000000),
                       b22FontWeightPcyy: FontWeight.w500,
@@ -90,7 +89,7 @@ class B22FloatingLayerAccessNudgeMeau
                     SizedBox(width: 8.w),
                     Expanded(
                       child: B22TranslatedLabelComponentJklc(
-                        B22ApplicationManifestPdpm.b22ApplicationNameBjnh.tr,
+                        'b22_application_name_vqtr'.tr,
                         b22FontSizeIafw: 12.sp,
                         b22ColorZcbj: Colors.black,
                         b22FontWeightPcyy: FontWeight.bold,
@@ -115,7 +114,7 @@ class B22FloatingLayerAccessNudgeMeau
                       borderRadius: BorderRadius.circular(2.w),
                     ),
                     child: B22TranslatedLabelComponentJklc(
-                      'GO SETTING'.tr,
+                      'b22_go_setting_zxrd'.tr,
                       b22FontSizeIafw: 16.sp,
                       b22ColorZcbj: Colors.white,
                       b22FontWeightPcyy: FontWeight.bold,
@@ -128,7 +127,7 @@ class B22FloatingLayerAccessNudgeMeau
                 b22OnPressedXvbd:
                     b22ControllerKoor.b22ContinueWithoutPermissionQmrd,
                 b22ChildWksr: B22TranslatedLabelComponentJklc(
-                  'Later'.tr,
+                  'b22_later_voor'.tr,
                   b22FontSizeIafw: 14.sp,
                   b22ColorZcbj: const Color(0xff7B7B7B),
                   b22FontWeightPcyy: FontWeight.bold,

@@ -70,8 +70,8 @@ class B22SpreadsheetReaderPageFkwp
                   File(
                         b22ControllerEiok.b22FileInfoFjvl.path ?? '',
                       ).existsSync()
-                      ? 'Preview unavailable'.tr
-                      : 'File not found'.tr,
+                      ? 'b22_preview_unavailable_dlyi'.tr
+                      : 'b22_file_not_found_ygdu'.tr,
                 ),
               ),
             ),
@@ -86,8 +86,10 @@ class B22SpreadsheetReaderPageFkwp
         Expanded(
           child: b22BuildActionButtonSpls(
             b22TextFfgi: b22ControllerRbsw.isSaving
-                ? 'Saving...'.tr
-                : (b22ControllerRbsw.isEditing ? 'Cancel'.tr : 'Edit'.tr),
+                ? 'b22_saving_ijrs'.tr
+                : (b22ControllerRbsw.isEditing
+                      ? 'b22_cancel_mdzi'.tr
+                      : 'b22_edit_dzer'.tr),
             b22OnTapHwho: b22ControllerRbsw.b22OnEditPressedSowt,
             b22ColorKmcb: b22ControllerRbsw.isEditing
                 ? const Color(0xff858C92)
@@ -99,8 +101,8 @@ class B22SpreadsheetReaderPageFkwp
           Expanded(
             child: b22BuildActionButtonSpls(
               b22TextFfgi: b22ControllerRbsw.isSaving
-                  ? 'Saving...'.tr
-                  : 'Save'.tr,
+                  ? 'b22_saving_ijrs'.tr
+                  : 'b22_save_blpm'.tr,
               b22OnTapHwho: b22ControllerRbsw.b22OnSavePressedIkfp,
               b22ColorKmcb: const Color(0xff970000),
             ),

@@ -68,7 +68,7 @@ class B22SpreadsheetReaderCoordinatorWmkr extends B22FoundationCoordinatorXsba {
         size: b22StatFddx.size,
         updateTime: b22StatFddx.modified.millisecondsSinceEpoch,
       );
-      Fluttertoast.showToast(msg: 'Saved successfully'.tr);
+      Fluttertoast.showToast(msg: 'b22_saved_successfully_dzom'.tr);
     } catch (b22ErrorMarb) {
       Fluttertoast.showToast(msg: '$b22ErrorMarb');
     }

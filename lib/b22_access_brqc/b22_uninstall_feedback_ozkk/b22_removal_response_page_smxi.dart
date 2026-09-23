@@ -141,8 +141,7 @@ class B22RemovalResponsePageDhiz
                 decoration: InputDecoration(
                   counterText: '',
                   isCollapsed: true,
-                  hintText:
-                      'Please enter the reason for uninstalling All PDF'.tr,
+                  hintText: 'b22_please_enter_the_reason_for_molp'.tr,
                   hintStyle: TextStyle(
                     fontSize: 12.sp,
                     color: const Color(0xFFB2B2B2),
@@ -183,7 +182,7 @@ class B22RemovalResponsePageDhiz
               borderRadius: BorderRadius.circular(2.w),
             ),
             child: B22TranslatedLabelComponentJklc(
-              "Don't uninstall for now".tr,
+              'b22_don_t_uninstall_for_now_bpcd'.tr,
               b22FontSizeIafw: 16.sp,
               b22ColorZcbj: Colors.white,
               b22FontWeightPcyy: FontWeight.bold,
@@ -197,7 +196,7 @@ class B22RemovalResponsePageDhiz
             b22ControllerXkwr.b22OnUninstallPressedYgmr();
           },
           b22ChildWksr: B22TranslatedLabelComponentJklc(
-            "Uninstall".tr,
+            'b22_uninstall_waqq'.tr,
             b22FontSizeIafw: 14.sp,
             b22ColorZcbj: Colors.black,
             b22FontWeightPcyy: FontWeight.bold,
@@ -238,7 +237,7 @@ class B22RemovalResponsePageDhiz
               child: Container(
                 margin: EdgeInsets.only(left: 44.w, right: 44.w),
                 child: B22TranslatedLabelComponentJklc(
-                  "Uninstall reason".tr,
+                  'b22_uninstall_reason_mrhl'.tr,
                   b22FontSizeIafw: 16.sp,
                   b22ColorZcbj: Colors.black,
                   b22FontWeightPcyy: FontWeight.w500,

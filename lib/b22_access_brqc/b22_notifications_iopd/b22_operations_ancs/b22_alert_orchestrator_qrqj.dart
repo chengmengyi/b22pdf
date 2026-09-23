@@ -94,10 +94,10 @@ class B22AlertOrchestratorNazk {
 
   void b22InitializeShortcutNotificationNtfl() {
     FlutterBoomNotificationPlugins.instance.showPersistentShortcutNotification(
-      homeText: 'Home'.tr,
-      mergeText: 'Scan'.tr,
-      importText: 'Word To PDF'.tr,
-      convertText: 'Image To PDF'.tr,
+      homeText: 'b22_home_fdyl'.tr,
+      mergeText: 'b22_scan_tbqg'.tr,
+      importText: 'b22_word_to_pdf_zmcn'.tr,
+      convertText: 'b22_image_to_pdf_veiz'.tr,
       homeIcon: 'home_func',
       mergeIcon: 'scan_func',
       importIcon: 'word_func',
@@ -162,7 +162,7 @@ class B22AlertOrchestratorNazk {
 
   void b22UpdateNewFileNotificationTextBclm() {
     FlutterBoomNotificationPlugins.instance.setGalleryImageNotificationInfo(
-      title: 'You have a new file.'.tr,
+      title: 'b22_you_have_a_new_file_egds'.tr,
     );
   }
 
@@ -175,7 +175,7 @@ class B22AlertOrchestratorNazk {
       customLayout: AndroidCustomNotificationLayout(
         smallLayoutName: 'small_notice_layout',
         bigLayoutName: 'large_notice_layout',
-        actionText: 'Check'.tr,
+        actionText: 'b22_check_knsl'.tr,
       ),
       showMedia: true,
       config: await b22BuildNotificationConfigEces(),
@@ -333,8 +333,8 @@ class B22AlertOrchestratorNazk {
     }
     await FlutterBoomNotificationPlugins.instance.show(
       id: b22GenerateNotificationIdGgpj(),
-      title: "Continue viewing PDF".tr,
-      body: "Continue viewing PDF".tr,
+      title: 'b22_continue_viewing_pdf_zbcg'.tr,
+      body: 'b22_continue_viewing_pdf_zbcg'.tr,
       payload: LocalNotificationPayload.local,
     );
   }

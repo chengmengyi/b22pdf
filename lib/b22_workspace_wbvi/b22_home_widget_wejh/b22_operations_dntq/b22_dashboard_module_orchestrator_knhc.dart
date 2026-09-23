@@ -8,10 +8,10 @@ import 'package:flutter_add_widget_plugins/flutter_add_widget_plugins.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 enum B22InstallModuleKindBmus {
-  home("Home", "b22_home_tool_divg"),
-  merge("Scan", "b22_merge_tool_liwu"),
-  import("Word to PDF", "b22_import_tool_eigf"),
-  convert("Image to PDF", "b22_convert_tool_yuob");
+  home('b22_home_fdyl', "b22_home_tool_divg"),
+  merge('b22_scan_tbqg', "b22_merge_tool_liwu"),
+  import('b22_word_to_pdf_iuwp', "b22_import_tool_eigf"),
+  convert('b22_image_to_pdf_krtw', "b22_convert_tool_yuob");
 
   final String b22TextVubl;
   final String b22IconUuzk;
@@ -41,7 +41,7 @@ class B22DashboardModuleOrchestratorKvty {
     await FlutterAddWidgetPlugins.instance.addWidget(
       items: b22WidgetInfoListDdsu,
       layoutName: "insert_widget_layout",
-      searchText: "Search".tr,
+      searchText: 'b22_search_cvln'.tr,
     );
     await B22InstallModuleStoreLldu.b22SaveAddedPupj(true);
     B22ApplicationSignalHubQzvk.instance.b22PublishQwoy(

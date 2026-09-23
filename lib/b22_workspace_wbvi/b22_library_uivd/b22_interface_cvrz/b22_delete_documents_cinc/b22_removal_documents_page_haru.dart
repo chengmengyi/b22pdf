@@ -164,7 +164,7 @@ class B22RemovalDocumentsPageFvnv
             ),
             SizedBox(width: 8.w),
             B22TranslatedLabelComponentJklc(
-              "Delete".tr,
+              'b22_delete_xejt'.tr,
               b22FontSizeIafw: 16.sp,
               b22ColorZcbj: Colors.white,
               b22FontWeightPcyy: FontWeight.bold,
@@ -204,7 +204,7 @@ class B22RemovalDocumentsPageFvnv
                     b22HeightUsfn: 28.w,
                   ),
                   B22TranslatedLabelComponentJklc(
-                    "Select All".tr,
+                    'b22_select_all_gjow'.tr,
                     b22FontSizeIafw: 12.sp,
                     b22ColorZcbj: Color(0xff970000),
                     b22FontTypeQdme: B22FontKindGnzs.b22MediumElwt,
@@ -215,7 +215,7 @@ class B22RemovalDocumentsPageFvnv
             SizedBox(width: 12.w),
             Expanded(
               child: B22TranslatedLabelComponentJklc(
-                '{n} Selected'.tr.replaceAll(
+                'b22_n_selected_fuvl'.tr.replaceAll(
                   '{n}',
                   b22ControllerQdub.b22SelectedPathsWufp.length.toString(),
                 ),
@@ -231,7 +231,7 @@ class B22RemovalDocumentsPageFvnv
                 B22ApplicationRouterJfva.b22BackWithExitAdBkvf<void>();
               },
               b22ChildWksr: B22TranslatedLabelComponentJklc(
-                "Cancel".tr,
+                'b22_cancel_mdzi'.tr,
                 b22FontSizeIafw: 12.sp,
                 b22ColorZcbj: Color(0xff5E5E5E),
                 b22FontWeightPcyy: FontWeight.w500,

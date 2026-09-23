@@ -13,13 +13,13 @@ class B22RemovalResponseCoordinatorMxgc extends B22FoundationCoordinatorXsba {
   TextEditingController b22TextEditingControllerFqls = TextEditingController();
   int b22SelectedReasonIndexOano = -1;
   final List<String> b22ReasonListTjby = <String>[
-    'Hard to use',
-    'Frequent ad interference',
-    'Poor PDF reading experience',
-    'Too many notifications',
-    "Editing features don't meet needs",
-    'Phone has built-in PDF tools',
-    'Other (Please specify)',
+    'b22_hard_to_use_ufnk',
+    'b22_frequent_ad_interference_bgjx',
+    'b22_poor_pdf_reading_experience_iiqo',
+    'b22_too_many_notifications_plgt',
+    'b22_editing_features_don_t_meet_vhch',
+    'b22_phone_has_built_in_pdf_zaik',
+    'b22_other_please_specify_ahcn',
   ];
 
   void b22OnUninstallPressedYgmr() {

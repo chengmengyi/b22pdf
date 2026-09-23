@@ -42,7 +42,7 @@ class B22LaunchPromotionWaitingPageXbsa
         ),
         SizedBox(height: 20.h),
         B22TranslatedLabelComponentJklc(
-          'Your pocket file pro'.tr,
+          'b22_your_pocket_file_pro_bwdt'.tr,
           b22FontSizeIafw: 16.sp,
           b22ColorZcbj: const Color(0xff07080E),
           b22FontWeightPcyy: FontWeight.bold,

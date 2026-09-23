@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 class B22ApplicationManifestPdpm {
   static const String b22ApplicationNameBjnh = "All PDF Reader";
   static const String b22SecretKeyCkpi = "djidji";
+  static const String b22EncryptedLexiconAssetZqsa =
+      "assets/b22_runtime_registry_mokl/b22_language_catalog_vncm/b22_encrypted_lexicon_qzfj.json";
   static String b22AppsFlyerKeyBwxr = kDebugMode
       ? "Ed2FymhzHg3qqYpyH8Z9Eg"
       : "";

@@ -123,7 +123,7 @@ class B22FileOrderingLowerDrawerFkmq
               child: Container(
                 margin: EdgeInsets.only(left: 20.w),
                 child: B22TranslatedLabelComponentJklc(
-                  "Sort By".tr,
+                  'b22_sort_by_uflo'.tr,
                   b22FontSizeIafw: 20.sp,
                   b22ColorZcbj: Color(0xff000000),
                   b22FontWeightPcyy: FontWeight.bold,

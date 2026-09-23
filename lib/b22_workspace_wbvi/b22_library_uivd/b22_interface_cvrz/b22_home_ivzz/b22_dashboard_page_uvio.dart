@@ -82,7 +82,7 @@ class B22DashboardPageLkpx
                       b22HeightUsfn: 32.w,
                     ),
                     B22TranslatedLabelComponentJklc(
-                      "Scan".tr,
+                      'b22_scan_tbqg'.tr,
                       b22FontSizeIafw: 10.sp,
                       b22ColorZcbj: Colors.black,
                       b22FontWeightPcyy: FontWeight.bold,

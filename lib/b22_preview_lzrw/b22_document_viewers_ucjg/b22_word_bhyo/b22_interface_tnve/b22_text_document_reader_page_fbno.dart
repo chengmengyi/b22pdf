@@ -71,8 +71,8 @@ class B22TextDocumentReaderPageBzae
                   File(
                         b22ControllerGscd.b22FileInfoSlga.path ?? '',
                       ).existsSync()
-                      ? 'Preview unavailable'.tr
-                      : 'File not found'.tr,
+                      ? 'b22_preview_unavailable_dlyi'.tr
+                      : 'b22_file_not_found_ygdu'.tr,
                 ),
               ),
             ),
@@ -88,8 +88,10 @@ class B22TextDocumentReaderPageBzae
         Expanded(
           child: b22BuildActionButtonUksy(
             b22TextZzfg: b22ControllerDidc.isSaving
-                ? 'Saving...'.tr
-                : (b22ControllerDidc.isEditing ? 'Cancel'.tr : 'Edit'.tr),
+                ? 'b22_saving_ijrs'.tr
+                : (b22ControllerDidc.isEditing
+                      ? 'b22_cancel_mdzi'.tr
+                      : 'b22_edit_dzer'.tr),
             b22OnTapLhry: b22ControllerDidc.b22OnEditPressedBpdn,
             b22ColorDnow: b22ControllerDidc.isEditing
                 ? const Color(0xff858C92)
@@ -101,8 +103,8 @@ class B22TextDocumentReaderPageBzae
           Expanded(
             child: b22BuildActionButtonUksy(
               b22TextZzfg: b22ControllerDidc.isSaving
-                  ? 'Saving...'.tr
-                  : 'Save'.tr,
+                  ? 'b22_saving_ijrs'.tr
+                  : 'b22_save_blpm'.tr,
               b22OnTapLhry: b22ControllerDidc.b22OnSavePressedJvet,
               b22ColorDnow: const Color(0xff970000),
             ),

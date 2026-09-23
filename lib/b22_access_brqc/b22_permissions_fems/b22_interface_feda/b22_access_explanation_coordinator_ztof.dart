@@ -10,12 +10,12 @@ class B22AccessExplanationCoordinatorGnhw extends B22FoundationCoordinatorXsba {
   String b22BuildPermissionMessageEmen() {
     if (b22PermissionBmoh == Permission.storage ||
         b22PermissionBmoh == Permission.manageExternalStorage) {
-      return 'Please allow storage access to continue.'.tr;
+      return 'b22_please_allow_storage_access_to_itrf'.tr;
     }
     if (b22PermissionBmoh == Permission.camera) {
-      return 'Please allow camera access to continue.'.tr;
+      return 'b22_please_allow_camera_access_to_kcbh'.tr;
     }
-    return 'Please allow access to continue.'.tr;
+    return 'b22_please_allow_access_to_continue_nwjo'.tr;
   }
 
   void b22OnAllowPressedTfnn() =>

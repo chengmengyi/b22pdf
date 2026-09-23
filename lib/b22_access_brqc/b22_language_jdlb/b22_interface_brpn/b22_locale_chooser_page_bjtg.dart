@@ -123,7 +123,7 @@ class B22LocaleChooserPagePkgi
         borderRadius: BorderRadius.circular(2.w),
       ),
       child: B22TranslatedLabelComponentJklc(
-        'OK'.tr,
+        'b22_ok_tvxa'.tr,
         b22FontSizeIafw: 16.sp,
         b22ColorZcbj: Colors.white,
         b22FontWeightPcyy: FontWeight.bold,
@@ -144,7 +144,7 @@ class B22LocaleChooserPagePkgi
             height: 54.h,
             alignment: Alignment.center,
             child: B22TranslatedLabelComponentJklc(
-              'Choose Language'.tr,
+              'b22_choose_language_dnqy'.tr,
               b22FontSizeIafw: 16.sp,
               b22ColorZcbj: const Color(0xff1A1D22),
               b22FontWeightPcyy: FontWeight.bold,
@@ -155,7 +155,7 @@ class B22LocaleChooserPagePkgi
       ),
       SizedBox(height: 20.h),
       B22TranslatedLabelComponentJklc(
-        'Choose your preferred language to get started.'.tr,
+        'b22_choose_your_preferred_language_to_kdzv'.tr,
         b22FontSizeIafw: 16.sp,
         b22ColorZcbj: const Color(0xff5E5E5E),
         b22FontWeightPcyy: FontWeight.w500,

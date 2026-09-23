@@ -15,12 +15,12 @@ import 'package:flutter/cupertino.dart';
 
 enum B22DashboardSectionVbai {
   b22FilesClnr(
-    'Files',
+    'b22_files_ljcq',
     'b22_workspace_media_vwug/b22_home_shell_xfaq/b22_library_tab_selected_geel',
     'b22_workspace_media_vwug/b22_home_shell_xfaq/b22_library_tab_unselected_xama',
   ),
   b22ToolsSoju(
-    'Tools',
+    'b22_tools_qsaq',
     'b22_workspace_media_vwug/b22_home_shell_xfaq/b22_tools_tab_selected_ndvb',
     'b22_workspace_media_vwug/b22_home_shell_xfaq/b22_tools_tab_unselected_ebkw',
   );

@@ -1,4 +1,3 @@
-import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_configuration_pson/b22_application_manifest_pfbi.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_interface_ozan/b22_permission_uawu/b22_alert_access_coordinator_ypyk.dart';
 import 'package:b22_document_workspace_kmzm/b22_shared_midp/b22_interface_ruov/b22_foundation_page_tzjf.dart';
 import 'package:b22_document_workspace_kmzm/b22_shared_midp/b22_widgets_dhud/b22_resource_image_component_qfzh.dart';
@@ -42,7 +41,7 @@ class B22AlertAccessPageNwlv
             ),
             SizedBox(height: 24.h),
             B22TranslatedLabelComponentJklc(
-              "Stay Update".tr,
+              'b22_stay_update_keim'.tr,
               b22FontSizeIafw: 20.sp,
               b22ColorZcbj: Color(0xff07080E),
               b22FontWeightPcyy: FontWeight.bold,
@@ -52,8 +51,7 @@ class B22AlertAccessPageNwlv
             Container(
               margin: EdgeInsets.only(left: 20.w, right: 20.w),
               child: B22TranslatedLabelComponentJklc(
-                "Enable Notifications To Get Instant Alerts When Your File Processing Is Complete."
-                    .tr,
+                'b22_enable_notifications_to_get_instant_vclz'.tr,
                 b22FontSizeIafw: 14.sp,
                 b22ColorZcbj: Color(0xff5E5E5E),
                 b22FontWeightPcyy: FontWeight.w500,
@@ -82,7 +80,7 @@ class B22AlertAccessPageNwlv
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         B22TranslatedLabelComponentJklc(
-                          B22ApplicationManifestPdpm.b22ApplicationNameBjnh.tr,
+                          'b22_application_name_vqtr'.tr,
                           b22FontSizeIafw: 14.sp,
                           b22ColorZcbj: Colors.black,
                           b22FontWeightPcyy: FontWeight.bold,
@@ -90,7 +88,7 @@ class B22AlertAccessPageNwlv
                           b22FontTypeQdme: B22FontKindGnzs.b22ExtraFyuc,
                         ),
                         B22TranslatedLabelComponentJklc(
-                          "All notifications".tr,
+                          'b22_all_notifications_ernr'.tr,
                           b22FontSizeIafw: 12.sp,
                           b22ColorZcbj: Color(0xff979796),
                           b22FontTypeQdme: B22FontKindGnzs.b22SemiOvoq,
@@ -110,13 +108,13 @@ class B22AlertAccessPageNwlv
                 //1.Tap The Toggle Switch Above
                 // 2.Allow Notifications In System Settings
                 B22TranslatedLabelComponentJklc(
-                  '1.Tap The Toggle Switch Above'.tr,
+                  'b22_1_tap_the_toggle_switch_kzft'.tr,
                   b22FontSizeIafw: 14.sp,
                   b22ColorZcbj: const Color(0xff5E5E5E),
                   b22FontWeightPcyy: FontWeight.w500,
                 ),
                 B22TranslatedLabelComponentJklc(
-                  '2.Allow Notifications In System Settings'.tr,
+                  'b22_2_allow_notifications_in_system_oues'.tr,
                   b22FontSizeIafw: 14.sp,
                   b22ColorZcbj: const Color(0xff5E5E5E),
                   b22FontWeightPcyy: FontWeight.w500,
@@ -139,7 +137,7 @@ class B22AlertAccessPageNwlv
                     borderRadius: BorderRadius.circular(2.w),
                   ),
                   child: B22TranslatedLabelComponentJklc(
-                    'Update now'.tr,
+                    'b22_update_now_jcyj'.tr,
                     b22FontSizeIafw: 16.sp,
                     b22ColorZcbj: Colors.white,
                     b22FontWeightPcyy: FontWeight.bold,
@@ -152,7 +150,7 @@ class B22AlertAccessPageNwlv
             B22TouchGuardComponentKong(
               b22OnPressedXvbd: b22ControllerTykm.b22OnLaterPressedGjhp,
               b22ChildWksr: B22TranslatedLabelComponentJklc(
-                'Later'.tr,
+                'b22_later_voor'.tr,
                 b22FontSizeIafw: 14.sp,
                 b22ColorZcbj: const Color(0xff525759),
                 b22DecorationEtco: TextDecoration.underline,

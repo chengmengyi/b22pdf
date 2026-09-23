@@ -110,6 +110,7 @@ flutter:
     - assets/b22_preview_media_dzro/b22_annotation_controls_kigz/
     - assets/b22_runtime_registry_mokl/b22_acquisition_rules_apvl/
     - assets/b22_runtime_registry_mokl/b22_advertising_rules_tnui/
+    - assets/b22_runtime_registry_mokl/b22_language_catalog_vncm/
     - assets/b22_runtime_registry_mokl/b22_notification_rules_ihsi/
     - assets/b22_shared_controls_ybsz/b22_common_actions_lskr/
     - assets/b22_shared_controls_ybsz/b22_navigation_actions_dmkw/

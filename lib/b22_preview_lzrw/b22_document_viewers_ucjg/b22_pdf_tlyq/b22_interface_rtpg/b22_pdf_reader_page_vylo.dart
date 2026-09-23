@@ -102,7 +102,7 @@ class B22PdfReaderPageFneh
                           const Center(child: CircularProgressIndicator()),
                       messageBuilder: (_, message) => Center(
                         child: B22TranslatedLabelComponentJklc(
-                          'Preview unavailable'.tr,
+                          'b22_preview_unavailable_dlyi'.tr,
                         ),
                       ),
                     ),
@@ -313,7 +313,7 @@ class B22PdfReaderPageFneh
               Row(
                 children: [
                   B22TranslatedLabelComponentJklc(
-                    'Color'.tr,
+                    'b22_color_lwjm'.tr,
                     b22FontSizeIafw: 12.sp,
                     b22ColorZcbj: const Color(0xff1A1D22),
                     b22FontWeightPcyy: FontWeight.bold,
@@ -358,7 +358,7 @@ class B22PdfReaderPageFneh
               Row(
                 children: [
                   B22TranslatedLabelComponentJklc(
-                    'Width'.tr,
+                    'b22_width_lskj'.tr,
                     b22FontSizeIafw: 12.sp,
                     b22ColorZcbj: const Color(0xff1A1D22),
                     b22FontWeightPcyy: FontWeight.bold,
@@ -428,7 +428,9 @@ class B22PdfReaderPageFneh
               borderRadius: BorderRadius.circular(2.w),
             ),
             child: B22TranslatedLabelComponentJklc(
-              b22ControllerHbbw.b22SavingIjsl ? 'Saving...'.tr : 'Save'.tr,
+              b22ControllerHbbw.b22SavingIjsl
+                  ? 'b22_saving_ijrs'.tr
+                  : 'b22_save_blpm'.tr,
               b22FontSizeIafw: 12.sp,
               b22ColorZcbj: Colors.white,
               b22FontWeightPcyy: FontWeight.bold,

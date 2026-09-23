@@ -39,15 +39,14 @@ class B22UpgradePanelEjrf
             mainAxisSize: MainAxisSize.min,
             children: [
               B22TranslatedLabelComponentJklc(
-                "New Version Coming Soon!".tr,
+                'b22_new_version_coming_soon_srit'.tr,
                 b22FontSizeIafw: 14.sp,
                 b22ColorZcbj: Colors.black,
                 b22FontTypeQdme: B22FontKindGnzs.b22ExtraFyuc,
               ),
               SizedBox(height: 20.h),
               B22TranslatedLabelComponentJklc(
-                "Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!"
-                    .tr,
+                'b22_your_feedback_has_been_received_hnca'.tr,
                 b22FontSizeIafw: 14.sp,
                 b22ColorZcbj: Color(0xff5E5E5E),
               ),
@@ -64,7 +63,7 @@ class B22UpgradePanelEjrf
                     borderRadius: BorderRadius.circular(2.w),
                   ),
                   child: B22TranslatedLabelComponentJklc(
-                    "Continue using for free".tr,
+                    'b22_continue_using_for_free_bkfv'.tr,
                     b22FontSizeIafw: 16.sp,
                     b22ColorZcbj: Colors.white,
                     b22FontWeightPcyy: FontWeight.bold,
@@ -76,7 +75,7 @@ class B22UpgradePanelEjrf
               B22TouchGuardComponentKong(
                 b22OnPressedXvbd: b22ControllerJrma.b22OnLeaveAnywayPressedOgjc,
                 b22ChildWksr: B22TranslatedLabelComponentJklc(
-                  "Leave anyway".tr,
+                  'b22_leave_anyway_rsxz'.tr,
                   b22FontSizeIafw: 14.sp,
                   b22ColorZcbj: Colors.black,
                   b22FontWeightPcyy: FontWeight.w500,

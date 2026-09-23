@@ -63,7 +63,7 @@ class B22PictureChooserPageVaxe
               ),
               SizedBox(width: 4.h),
               B22TranslatedLabelComponentJklc(
-                "Retake".tr,
+                'b22_retake_hkla'.tr,
                 b22FontSizeIafw: 12.sp,
                 b22ColorZcbj: Color(0xff333333),
                 b22FontWeightPcyy: FontWeight.w500,
@@ -85,7 +85,7 @@ class B22PictureChooserPageVaxe
               ),
               SizedBox(width: 4.h),
               B22TranslatedLabelComponentJklc(
-                "Add".tr,
+                'b22_add_hibq'.tr,
                 b22FontSizeIafw: 12.sp,
                 b22ColorZcbj: Color(0xff333333),
                 b22FontWeightPcyy: FontWeight.w500,
@@ -118,7 +118,7 @@ class B22PictureChooserPageVaxe
                   ),
                   SizedBox(width: 4.w),
                   B22TranslatedLabelComponentJklc(
-                    "Save PDF".tr,
+                    'b22_save_pdf_yqps'.tr,
                     b22FontSizeIafw: 14.sp,
                     b22ColorZcbj: Colors.white,
                     b22FontWeightPcyy: FontWeight.bold,

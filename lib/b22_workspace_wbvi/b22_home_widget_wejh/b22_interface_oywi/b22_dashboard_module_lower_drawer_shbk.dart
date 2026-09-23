@@ -1,4 +1,3 @@
-import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_configuration_pson/b22_application_manifest_pfbi.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_router_cbkk.dart';
 import 'package:b22_document_workspace_kmzm/b22_workspace_wbvi/b22_home_widget_wejh/b22_interface_oywi/b22_dashboard_module_coordinator_nfgt.dart';
 import 'package:b22_document_workspace_kmzm/b22_workspace_wbvi/b22_home_widget_wejh/b22_operations_dntq/b22_dashboard_module_orchestrator_knhc.dart';
@@ -54,7 +53,7 @@ class B22DashboardModuleLowerDrawerWjqk
                 borderRadius: BorderRadius.circular(2.w),
               ),
               child: B22TranslatedLabelComponentJklc(
-                "+ ${"Add".tr}",
+                "+ ${'b22_add_hibq'.tr}",
                 b22FontSizeIafw: 16.sp,
                 b22ColorZcbj: Colors.white,
                 b22FontWeightPcyy: FontWeight.bold,
@@ -89,7 +88,7 @@ class B22DashboardModuleLowerDrawerWjqk
             SizedBox(width: 8.w),
             Expanded(
               child: B22TranslatedLabelComponentJklc(
-                B22ApplicationManifestPdpm.b22ApplicationNameBjnh.tr,
+                'b22_application_name_vqtr'.tr,
                 b22FontSizeIafw: 12.sp,
                 b22ColorZcbj: Colors.black,
                 b22FontWeightPcyy: FontWeight.bold,
@@ -118,7 +117,7 @@ class B22DashboardModuleLowerDrawerWjqk
               ),
               SizedBox(width: 8.w),
               B22TranslatedLabelComponentJklc(
-                "Search...".tr,
+                'b22_search_cbvd'.tr,
                 b22FontSizeIafw: 12.sp,
                 b22ColorZcbj: Color(0xff5E5E5E),
                 b22FontTypeQdme: B22FontKindGnzs.b22SemiOvoq,
@@ -170,7 +169,7 @@ class B22DashboardModuleLowerDrawerWjqk
       Row(
         children: [
           B22TranslatedLabelComponentJklc(
-            'Add Widget'.tr,
+            'b22_add_widget_thxs'.tr,
             b22FontSizeIafw: 16.sp,
             b22ColorZcbj: Color(0xff000000),
             b22FontWeightPcyy: FontWeight.w500,
@@ -191,7 +190,7 @@ class B22DashboardModuleLowerDrawerWjqk
       ),
       SizedBox(height: 10.h),
       B22TranslatedLabelComponentJklc(
-        'Add widget with one click to open files'.tr,
+        'b22_add_widget_with_one_click_qajn'.tr,
         b22FontSizeIafw: 14.sp,
         b22ColorZcbj: const Color(0xff5E5E5E),
         b22FontTypeQdme: B22FontKindGnzs.b22BlackWgka,

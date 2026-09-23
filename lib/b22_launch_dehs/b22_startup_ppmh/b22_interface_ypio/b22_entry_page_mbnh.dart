@@ -32,7 +32,7 @@ class B22EntryPageAwcy extends B22FoundationPageNhfc<B22EntryCoordinatorVdiw> {
           ),
           SizedBox(height: 20.h),
           B22TranslatedLabelComponentJklc(
-            'Your pocket file pro'.tr,
+            'b22_your_pocket_file_pro_bwdt'.tr,
             b22FontSizeIafw: 18.sp,
             b22ColorZcbj: Color(0xff0F172A),
             b22FontWeightPcyy: FontWeight.w900,

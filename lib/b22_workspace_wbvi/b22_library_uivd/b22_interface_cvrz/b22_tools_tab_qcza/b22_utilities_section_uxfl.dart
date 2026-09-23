@@ -56,7 +56,7 @@ class B22FeatureUtilitiesSectionStatePxpq
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         B22TranslatedLabelComponentJklc(
-          "PDF tools".tr,
+          'b22_pdf_tools_htwn'.tr,
           b22FontSizeIafw: 16.sp,
           b22ColorZcbj: Colors.black,
           b22FontWeightPcyy: FontWeight.bold,
@@ -94,7 +94,7 @@ class B22FeatureUtilitiesSectionStatePxpq
                       SizedBox(width: 2.w),
                       Expanded(
                         child: B22TranslatedLabelComponentJklc(
-                          "Scan to PDF".tr,
+                          'b22_scan_to_pdf_ymhu'.tr,
                           b22FontSizeIafw: 12.sp,
                           b22ColorZcbj: Colors.black,
                           b22FontWeightPcyy: FontWeight.bold,
@@ -131,7 +131,7 @@ class B22FeatureUtilitiesSectionStatePxpq
                       SizedBox(width: 2.w),
                       Expanded(
                         child: B22TranslatedLabelComponentJklc(
-                          "Image to PDF".tr,
+                          'b22_image_to_pdf_krtw'.tr,
                           b22FontSizeIafw: 12.sp,
                           b22ColorZcbj: Colors.black,
                           b22FontWeightPcyy: FontWeight.bold,
@@ -157,7 +157,7 @@ class B22FeatureUtilitiesSectionStatePxpq
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         B22TranslatedLabelComponentJklc(
-          "System".tr,
+          'b22_system_lwwl'.tr,
           b22FontSizeIafw: 16.sp,
           b22ColorZcbj: Colors.black,
           b22FontWeightPcyy: FontWeight.bold,
@@ -193,7 +193,7 @@ class B22FeatureUtilitiesSectionStatePxpq
                 SizedBox(width: 12.w),
                 Expanded(
                   child: B22TranslatedLabelComponentJklc(
-                    "Add Widget".tr,
+                    'b22_add_widget_thxs'.tr,
                     b22FontSizeIafw: 14.sp,
                     b22ColorZcbj: Colors.black,
                     b22FontWeightPcyy: FontWeight.bold,
@@ -223,7 +223,7 @@ class B22FeatureUtilitiesSectionStatePxpq
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         B22TranslatedLabelComponentJklc(
-          "Preference".tr,
+          'b22_preference_oqew'.tr,
           b22FontSizeIafw: 16.sp,
           b22ColorZcbj: Colors.black,
           b22FontWeightPcyy: FontWeight.bold,
@@ -253,7 +253,7 @@ class B22FeatureUtilitiesSectionStatePxpq
                 SizedBox(width: 12.w),
                 Expanded(
                   child: B22TranslatedLabelComponentJklc(
-                    "App Language".tr,
+                    'b22_app_language_cmhv'.tr,
                     b22FontSizeIafw: 16.sp,
                     b22ColorZcbj: Color(0xff000000),
                     b22FontWeightPcyy: FontWeight.bold,
@@ -292,7 +292,7 @@ class B22FeatureUtilitiesSectionStatePxpq
         alignment: Alignment.centerLeft,
         padding: EdgeInsets.only(left: 12.w, right: 12.w),
         child: B22TranslatedLabelComponentJklc(
-          "Tools & Settings".tr,
+          'b22_tools_settings_hrkc'.tr,
           b22FontSizeIafw: 20.sp,
           b22ColorZcbj: Colors.black,
           b22FontWeightPcyy: FontWeight.bold,

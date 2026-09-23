@@ -1,4 +1,3 @@
-import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_configuration_pson/b22_application_manifest_pfbi.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_overlay_permission_dajf/b22_floating_layer_access_coordinator_kkgv.dart';
 import 'package:b22_document_workspace_kmzm/b22_shared_midp/b22_interface_ruov/b22_foundation_page_tzjf.dart';
 import 'package:b22_document_workspace_kmzm/b22_shared_midp/b22_widgets_dhud/b22_resource_image_component_qfzh.dart';
@@ -42,14 +41,14 @@ class B22FloatingLayerAccessPageIemy
             ),
             SizedBox(height: 24.h),
             B22TranslatedLabelComponentJklc(
-              'This App Has An Update.'.tr,
+              'b22_this_app_has_an_update_ijxn'.tr,
               b22FontSizeIafw: 16.sp,
               b22ColorZcbj: Colors.black,
               b22FontTypeQdme: B22FontKindGnzs.b22BlackWgka,
             ),
             SizedBox(height: 24.h),
             B22TranslatedLabelComponentJklc(
-              'Please upgrade to enjoy the latest functions.'.tr,
+              'b22_please_upgrade_to_enjoy_the_aptb'.tr,
               b22FontSizeIafw: 14.sp,
               b22ColorZcbj: const Color(0xff5E5E5E),
               b22FontWeightPcyy: FontWeight.w500,
@@ -73,7 +72,7 @@ class B22FloatingLayerAccessPageIemy
                   SizedBox(width: 8.w),
                   Expanded(
                     child: B22TranslatedLabelComponentJklc(
-                      B22ApplicationManifestPdpm.b22ApplicationNameBjnh.tr,
+                      'b22_application_name_vqtr'.tr,
                       b22FontSizeIafw: 12.sp,
                       b22ColorZcbj: Colors.black,
                       b22FontWeightPcyy: FontWeight.bold,
@@ -99,7 +98,7 @@ class B22FloatingLayerAccessPageIemy
                     borderRadius: BorderRadius.circular(2.w),
                   ),
                   child: B22TranslatedLabelComponentJklc(
-                    'Update Now'.tr,
+                    'b22_update_now_unzr'.tr,
                     b22FontSizeIafw: 16.sp,
                     b22ColorZcbj: Colors.white,
                     b22FontWeightPcyy: FontWeight.bold,
@@ -112,7 +111,7 @@ class B22FloatingLayerAccessPageIemy
             B22TouchGuardComponentKong(
               b22OnPressedXvbd: b22ControllerCjhp.b22OnLaterPressedZntd,
               b22ChildWksr: B22TranslatedLabelComponentJklc(
-                'Later'.tr,
+                'b22_later_voor'.tr,
                 b22FontSizeIafw: 14.sp,
                 b22ColorZcbj: const Color(0xff4b5156),
                 b22DecorationEtco: TextDecoration.underline,

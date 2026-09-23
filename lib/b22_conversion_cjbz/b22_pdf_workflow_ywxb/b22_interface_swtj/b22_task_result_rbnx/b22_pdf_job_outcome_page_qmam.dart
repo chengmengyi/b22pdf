@@ -35,7 +35,7 @@ class B22PdfJobOutcomePageGfpb
         ),
         SizedBox(height: 20.h),
         B22TranslatedLabelComponentJklc(
-          'Success!'.tr,
+          'b22_success_chib'.tr,
           b22FontSizeIafw: 20.sp,
           b22ColorZcbj: Colors.black,
           b22FontWeightPcyy: FontWeight.bold,
@@ -43,7 +43,7 @@ class B22PdfJobOutcomePageGfpb
         ),
         SizedBox(height: 8.h),
         B22TranslatedLabelComponentJklc(
-          'Your file is ready'.tr,
+          'b22_your_file_is_ready_tepb'.tr,
           b22FontSizeIafw: 14.sp,
           b22ColorZcbj: Color(0xff5E5E5E),
           b22FontWeightPcyy: FontWeight.w500,
@@ -81,7 +81,7 @@ class B22PdfJobOutcomePageGfpb
           borderRadius: BorderRadius.circular(2.w),
         ),
         child: B22TranslatedLabelComponentJklc(
-          "Open".tr,
+          'b22_open_azmj'.tr,
           b22FontSizeIafw: 16.sp,
           b22ColorZcbj: Colors.white,
           b22FontWeightPcyy: FontWeight.bold,

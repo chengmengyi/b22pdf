@@ -6,18 +6,14 @@ class B22ExpandedFloatingLayerPanelWpzr {
 
   static List<TimerOverlayContent> build() => <TimerOverlayContent>[
     TimerOverlayContent(
-      title: 'Still working on your file...'.tr,
-      subtitle:
-          'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.'
-              .tr,
-      button: 'Check'.tr,
+      title: 'b22_still_working_on_your_file_fqhi'.tr,
+      subtitle: 'b22_your_pdf_is_almost_ready_sysa'.tr,
+      button: 'b22_check_knsl'.tr,
     ),
     TimerOverlayContent(
-      title: 'Still reading?'.tr,
-      subtitle:
-          "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!"
-              .tr,
-      button: 'Check'.tr,
+      title: 'b22_still_reading_ouzk'.tr,
+      subtitle: 'b22_you_left_off_on_page_qtel'.tr,
+      button: 'b22_check_knsl'.tr,
     ),
   ];
 }

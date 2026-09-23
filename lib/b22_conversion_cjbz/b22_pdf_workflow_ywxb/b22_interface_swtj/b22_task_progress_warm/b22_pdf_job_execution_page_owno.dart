@@ -34,7 +34,7 @@ class B22PdfJobExecutionPageNjsk
           ),
           SizedBox(height: 20.h),
           B22TranslatedLabelComponentJklc(
-            'PDF Merging...'.tr,
+            'b22_pdf_merging_sesn'.tr,
             b22FontSizeIafw: 20.sp,
             b22ColorZcbj: Colors.black,
             b22FontWeightPcyy: FontWeight.bold,
@@ -42,7 +42,7 @@ class B22PdfJobExecutionPageNjsk
           ),
           SizedBox(height: 12.h),
           B22TranslatedLabelComponentJklc(
-            'Please do not close the app.'.tr,
+            'b22_please_do_not_close_the_fnor'.tr,
             b22FontSizeIafw: 14.sp,
             b22ColorZcbj: Color(0xff5E5E5E),
             b22FontWeightPcyy: FontWeight.w500,
@@ -84,7 +84,7 @@ class B22PdfJobExecutionPageNjsk
           ),
           SizedBox(height: 20.h),
           B22TranslatedLabelComponentJklc(
-            'Processed {current}/{total} images'.tr
+            'b22_processed_current_total_images_yyow'.tr
                 .replaceAll('{current}', '${b22ControllerWprf.processedCount}')
                 .replaceAll(
                   '{total}',

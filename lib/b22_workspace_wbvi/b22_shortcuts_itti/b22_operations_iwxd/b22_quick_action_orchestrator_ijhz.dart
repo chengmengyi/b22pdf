@@ -86,10 +86,11 @@ class B22QuickActionOrchestratorYmez {
   Future<void> b22UpdateShortcutsKket() async {
     final b22LocaleOnkr =
         B22ApplicationLexiconNofd.b22ResolveInitialLocaleYfpt();
-    final b22LocaleKeyCwwu = b22LocaleOnkr.toString();
-    final b22UninstallTitleGuae =
-        B22ApplicationLexiconNofd().keys[b22LocaleKeyCwwu]?['Uninstall'] ??
-        'Uninstall';
+    final String b22UninstallTitleGuae =
+        B22ApplicationLexiconNofd.b22ResolveTextForLocaleJzsv(
+          b22LocaleVfvb: b22LocaleOnkr,
+          b22KeyDwnr: 'b22_uninstall_waqq',
+        );
     await b22QuickActionsHtmg.setShortcutItems(<ShortcutItem>[
       ShortcutItem(
         type: b22UninstallTypeUwfu,

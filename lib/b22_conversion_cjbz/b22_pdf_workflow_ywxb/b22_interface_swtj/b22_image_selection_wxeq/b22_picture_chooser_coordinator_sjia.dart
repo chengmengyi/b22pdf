@@ -82,7 +82,7 @@ class B22PictureChooserCoordinatorYvnf extends B22FoundationCoordinatorXsba {
   Future<void> b22OnSavePressedUysx() async {
     if (b22ImagePathsVrel.isEmpty) return;
     if (b22ImagePathsVrel.length > 100) {
-      Fluttertoast.showToast(msg: 'Max 100 images allowed'.tr);
+      Fluttertoast.showToast(msg: 'b22_max_100_images_allowed_uesn'.tr);
       return;
     }
     final Permission b22PermissionCxro =

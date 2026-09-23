@@ -125,7 +125,7 @@ class B22ArchiveSectionStateLqyu
   //           SizedBox(width: 8.w),
   //           Expanded(
   //             child: LocalizedTextView(
-  //               "To access features instantly, add the widget!".tr,
+  //               "b22_to_access_features_instantly_add_kncq".tr,
   //               fontSize: 14.sp,
   //               color: Color(0xff07080E),
   //               overflow: TextOverflow.ellipsis,
@@ -150,7 +150,7 @@ class B22ArchiveSectionStateLqyu
   //                 borderRadius: BorderRadius.circular(18.w),
   //               ),
   //               child: LocalizedTextView(
-  //                 "Grant".tr,
+  //                 "b22_grant_hylo".tr,
   //                 fontSize: 14.sp,
   //                 color: Colors.black,
   //                 fontWeight: FontWeight.bold,
@@ -221,7 +221,7 @@ class B22ArchiveSectionStateLqyu
           b22ControllerVzwz.b22RunDebugActionsXknl();
         },
         b22ChildWksr: B22TranslatedLabelComponentJklc(
-          "Files".tr,
+          'b22_files_ljcq'.tr,
           b22FontSizeIafw: 28.sp,
           b22ColorZcbj: Colors.black,
           b22FontWeightPcyy: FontWeight.bold,
@@ -276,7 +276,7 @@ class B22ArchiveSectionStateLqyu
             decoration: InputDecoration(
               counterText: '',
               isCollapsed: true,
-              hintText: "Search...".tr,
+              hintText: 'b22_search_cbvd'.tr,
               hintStyle: TextStyle(fontSize: 14.sp, color: Color(0xff5E5E5E)),
               border: InputBorder.none,
             ),

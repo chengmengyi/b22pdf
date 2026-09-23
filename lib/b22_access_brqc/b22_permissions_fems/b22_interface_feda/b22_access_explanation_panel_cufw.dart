@@ -38,7 +38,7 @@ class B22AccessExplanationPanelPulh
         mainAxisSize: MainAxisSize.min,
         children: [
           B22TranslatedLabelComponentJklc(
-            "Permission Required".tr,
+            'b22_permission_required_ldme'.tr,
             b22FontSizeIafw: 16.sp,
             b22ColorZcbj: Colors.black,
             b22FontWeightPcyy: FontWeight.bold,
@@ -73,7 +73,7 @@ class B22AccessExplanationPanelPulh
                 borderRadius: BorderRadius.circular(2.w),
               ),
               child: B22TranslatedLabelComponentJklc(
-                "Allow".tr,
+                'b22_allow_wipn'.tr,
                 b22FontSizeIafw: 16.sp,
                 b22ColorZcbj: Colors.white,
                 b22FontWeightPcyy: FontWeight.bold,
@@ -87,7 +87,7 @@ class B22AccessExplanationPanelPulh
               b22ControllerWrle.b22OnLaterPressedOpfw();
             },
             b22ChildWksr: B22TranslatedLabelComponentJklc(
-              'Later'.tr,
+              'b22_later_voor'.tr,
               b22FontSizeIafw: 14.sp,
               b22ColorZcbj: const Color(0xff858C92),
               b22DecorationEtco: TextDecoration.underline,

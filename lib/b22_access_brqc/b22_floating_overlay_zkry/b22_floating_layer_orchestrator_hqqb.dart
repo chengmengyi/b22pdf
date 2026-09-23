@@ -27,9 +27,9 @@ class B22FloatingLayerOrchestratorJbeq {
     }
     await b22PluginHiby.setTimerOverlayInfo(
       layoutName: 'large_overlay_layout',
-      lastPdfSubtitleTemplate: "You were on page {n}. Let's finish it!".tr,
-      lastPdfButtonText: 'Open'.tr,
-      continueReadingStr: 'Continue Reading'.tr,
+      lastPdfSubtitleTemplate: 'b22_last_pdf_page_resume_xmka'.tr,
+      lastPdfButtonText: 'b22_open_azmj'.tr,
+      continueReadingStr: 'b22_continue_reading_fjse'.tr,
       contentList: B22ExpandedFloatingLayerPanelWpzr.build(),
       layoutName2: 'small_overlay_layout',
       contentList2: B22CompactFloatingLayerPanelJvcs.build(),
@@ -37,22 +37,22 @@ class B22FloatingLayerOrchestratorJbeq {
       reflectionConfig: await b22BuildTimerReflectionConfigYlcs(),
       contentList3: [
         TimerOverlayContent(
-          title: 'Home'.tr,
+          title: 'b22_home_fdyl'.tr,
           subtitle: 'home_func',
           button: "",
         ),
         TimerOverlayContent(
-          title: 'Scan'.tr,
+          title: 'b22_scan_tbqg'.tr,
           subtitle: 'scan_func',
           button: "",
         ),
         TimerOverlayContent(
-          title: 'Word To PDF'.tr,
+          title: 'b22_word_to_pdf_zmcn'.tr,
           subtitle: 'word_func',
           button: "",
         ),
         TimerOverlayContent(
-          title: 'Image To PDF'.tr,
+          title: 'b22_image_to_pdf_veiz'.tr,
           subtitle: 'image_func',
           button: "",
         ),
@@ -68,8 +68,8 @@ class B22FloatingLayerOrchestratorJbeq {
   Future<bool> b22RequestOverlayPermissionEvau() async {
     if (!Platform.isAndroid) return true;
     return b22PluginHiby.requestOverlayPermission(
-      title: 'Almost there! Unlock your full potential:'.tr,
-      desc: 'Find {n} below and toggle the switch to ON.'.tr,
+      title: 'b22_almost_there_unlock_colon_owpz'.tr,
+      desc: 'b22_find_n_below_and_toggle_jhdc'.tr,
       overlayPermissionGuideLayout: 'overlay_layout',
     );
   }

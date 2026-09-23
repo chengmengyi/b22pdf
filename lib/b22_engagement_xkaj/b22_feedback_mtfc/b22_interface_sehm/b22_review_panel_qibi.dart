@@ -45,7 +45,7 @@ class B22ReviewPanelPomf
               mainAxisSize: MainAxisSize.min,
               children: [
                 B22TranslatedLabelComponentJklc(
-                  "Enjoying PDF Reader?".tr,
+                  'b22_enjoying_pdf_reader_vrtb'.tr,
                   b22FontSizeIafw: 16.sp,
                   b22ColorZcbj: Colors.black,
                   b22FontWeightPcyy: FontWeight.bold,
@@ -53,8 +53,7 @@ class B22ReviewPanelPomf
                 ),
                 SizedBox(height: 10.h),
                 B22TranslatedLabelComponentJklc(
-                  "Your 5-star rating helps us improve! It only takes a few seconds of your time."
-                      .tr,
+                  'b22_your_5_star_rating_helps_adap'.tr,
                   b22FontSizeIafw: 14.sp,
                   b22ColorZcbj: Color(0xff5E5E5E),
                   b22FontTypeQdme: B22FontKindGnzs.b22MediumElwt,
@@ -105,7 +104,7 @@ class B22ReviewPanelPomf
                       borderRadius: BorderRadius.circular(2.w),
                     ),
                     child: B22TranslatedLabelComponentJklc(
-                      "Rate Us 5 Stars".tr,
+                      'b22_rate_us_5_stars_vkbp'.tr,
                       b22FontSizeIafw: 16.sp,
                       b22ColorZcbj: Colors.white,
                       b22FontWeightPcyy: FontWeight.bold,

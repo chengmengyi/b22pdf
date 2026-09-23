@@ -156,7 +156,7 @@ class B22PdfReaderPageCoordinatorIiyu extends B22FoundationCoordinatorXsba {
     b22SelectedTypeFzcz = b22TypeCcth;
     b22ViewerControllerWvqa.annotationMode = PdfAnnotationMode.none;
     if (b22SelectedLinesOrha.isEmpty) {
-      Fluttertoast.showToast(msg: 'Please select text first'.tr);
+      Fluttertoast.showToast(msg: 'b22_please_select_text_first_zuiy'.tr);
       update();
       return;
     }
@@ -331,7 +331,7 @@ class B22PdfReaderPageCoordinatorIiyu extends B22FoundationCoordinatorXsba {
       await File(b22FileInfoOqvs.path!).writeAsBytes(b22BytesUlfi, flush: true);
       b22PenStrokesGztj.clear();
       b22RedoStrokesSjuz.clear();
-      Fluttertoast.showToast(msg: 'Saved successfully'.tr);
+      Fluttertoast.showToast(msg: 'b22_saved_successfully_dzom'.tr);
     } catch (b22ErrorDsbo) {
       Fluttertoast.showToast(msg: '$b22ErrorDsbo');
     } finally {

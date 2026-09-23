@@ -6,23 +6,21 @@ class B22CompactFloatingLayerPanelJvcs {
 
   static List<TimerOverlayContent> build() => <TimerOverlayContent>[
     TimerOverlayContent(
-      title: 'Pending Documents'.tr,
-      subtitle: 'You have documents waiting for your attention.'.tr,
-      button: 'View Now'.tr,
-      button2: 'Later'.tr,
+      title: 'b22_pending_documents_hhpv'.tr,
+      subtitle: 'b22_you_have_documents_waiting_for_cpaj'.tr,
+      button: 'b22_view_now_raad'.tr,
+      button2: 'b22_later_voor'.tr,
     ),
     TimerOverlayContent(
-      title: 'Files Awaiting You'.tr,
-      subtitle:
-          'There are some files ready for your review. Shall we take a look?'
-              .tr,
-      button: 'Open Files'.tr,
-      button2: 'Later'.tr,
+      title: 'b22_files_awaiting_you_tagv'.tr,
+      subtitle: 'b22_there_are_some_files_ready_zbgy'.tr,
+      button: 'b22_open_files_clrs'.tr,
+      button2: 'b22_later_voor'.tr,
     ),
     TimerOverlayContent(
-      title: 'New Documents'.tr,
-      subtitle: 'You have pending files to handle.'.tr,
-      button: 'Review'.tr,
+      title: 'b22_new_documents_tscw'.tr,
+      subtitle: 'b22_you_have_pending_files_to_xkjk'.tr,
+      button: 'b22_review_jgvz'.tr,
     ),
   ];
 }

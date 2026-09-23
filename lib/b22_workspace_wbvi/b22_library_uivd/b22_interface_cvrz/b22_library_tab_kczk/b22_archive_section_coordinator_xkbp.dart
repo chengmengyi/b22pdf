@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_operations_ancs/b22_alert_orchestrator_qrqj.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_orchestrator_ngkh.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_context_fgxs.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_slot_ngdi.dart';
@@ -21,10 +20,10 @@ import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plug
 import 'package:permission_handler/permission_handler.dart';
 
 enum B22FileCategoryVdhm {
-  all("All"),
-  pdf("PDF"),
-  word("Word"),
-  excel("Excel");
+  all('b22_all_wdxs'),
+  pdf('b22_pdf_xfex'),
+  word('b22_word_gugm'),
+  excel('b22_excel_kpqs');
 
   final String b22LabelOamr;
 

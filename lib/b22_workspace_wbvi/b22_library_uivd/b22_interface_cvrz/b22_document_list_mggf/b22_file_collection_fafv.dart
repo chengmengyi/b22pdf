@@ -76,7 +76,7 @@ class B22DocumentsCollectionSectionStateCzwj
               b22ControllerIiiv.b22RunDebugActionsDopn();
             },
             b22ChildWksr: B22TranslatedLabelComponentJklc(
-              "Local Storage".tr,
+              'b22_local_storage_ciab'.tr,
               b22FontSizeIafw: 16.sp,
               b22ColorZcbj: Color(0xff333333),
               b22FontWeightPcyy: FontWeight.bold,
@@ -100,7 +100,7 @@ class B22DocumentsCollectionSectionStateCzwj
               ),
               SizedBox(width: 2.w),
               B22TranslatedLabelComponentJklc(
-                "Sort".tr,
+                'b22_sort_hqcl'.tr,
                 b22FontSizeIafw: 10.sp,
                 b22ColorZcbj: Color(0xff334155),
                 b22FontWeightPcyy: FontWeight.w500,
@@ -124,7 +124,7 @@ class B22DocumentsCollectionSectionStateCzwj
               ),
               SizedBox(width: 2.w),
               B22TranslatedLabelComponentJklc(
-                "Select".tr,
+                'b22_select_evcg'.tr,
                 b22FontSizeIafw: 10.sp,
                 b22ColorZcbj: Color(0xff334155),
                 b22FontWeightPcyy: FontWeight.w500,
@@ -383,7 +383,7 @@ class B22DocumentsCollectionSectionStateCzwj
           ),
           SizedBox(height: 16.h),
           B22TranslatedLabelComponentJklc(
-            'No files found'.tr,
+            'b22_no_files_found_jbgl'.tr,
             b22FontSizeIafw: 18.sp,
             b22ColorZcbj: Colors.black,
             b22FontWeightPcyy: FontWeight.bold,
@@ -405,7 +405,7 @@ class B22DocumentsCollectionSectionStateCzwj
                 ),
               ),
               child: B22TranslatedLabelComponentJklc(
-                'Try again'.tr,
+                'b22_try_again_itaf'.tr,
                 b22FontSizeIafw: 14.sp,
                 b22ColorZcbj: Colors.white,
                 b22FontWeightPcyy: FontWeight.bold,
@@ -432,14 +432,14 @@ class B22DocumentsCollectionSectionStateCzwj
       ),
       SizedBox(height: 12.h),
       B22TranslatedLabelComponentJklc(
-        "No permissions granted".tr,
+        'b22_no_permissions_granted_dqwz'.tr,
         b22FontSizeIafw: 16.sp,
         b22ColorZcbj: Color(0xff1A1D22),
         b22FontTypeQdme: B22FontKindGnzs.b22ExtraFyuc,
       ),
       SizedBox(height: 6.h),
       B22TranslatedLabelComponentJklc(
-        "Permission is required to access all files".tr,
+        'b22_permission_is_required_to_access_mbpc'.tr,
         b22FontSizeIafw: 12.sp,
         b22ColorZcbj: Color(0xff7B7B7B),
         b22FontTypeQdme: B22FontKindGnzs.b22MediumElwt,
@@ -458,7 +458,7 @@ class B22DocumentsCollectionSectionStateCzwj
             borderRadius: BorderRadius.circular(2.w),
           ),
           child: B22TranslatedLabelComponentJklc(
-            "Go to settings".tr,
+            'b22_go_to_settings_bijb'.tr,
             b22FontSizeIafw: 16.sp,
             b22ColorZcbj: Colors.white,
             b22FontWeightPcyy: FontWeight.bold,
