@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_orchestrator_ngkh.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_context_fgxs.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_slot_ngdi.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_identity_fjwe/b22_audience_qualification_orchestrator_tcus.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_lifecycle_wopk/b22_application_lifecycle_orchestrator_xzfv.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_qdxm.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_kind_lqge.dart';
@@ -287,6 +288,10 @@ class B22EntryCoordinatorVdiw extends B22FoundationCoordinatorXsba
 
   @override
   void onClose() {
+    B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.user_type,
+      b22ParametersErwm: {"user": B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.isEligibleUser?"1":"0"},
+    );
     B22ApplicationLifecycleOrchestratorPhic.b22InstanceGfkl
         .b22StartObservingLifecycleJdlg();
     B22EntryInputGateKjfv.b22InstanceHthn.b22MarkLauncherClosedVsfc();

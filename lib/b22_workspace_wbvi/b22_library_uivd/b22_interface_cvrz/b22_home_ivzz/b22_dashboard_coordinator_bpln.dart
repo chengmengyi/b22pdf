@@ -55,10 +55,6 @@ class B22DashboardCoordinatorNjxu extends B22FoundationCoordinatorXsba {
       b22PointTypeDrbi: B22TelemetrySignalDbrq.page_view,
       b22ParametersErwm: {"page": "file"},
     );
-    B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.user_type,
-      b22ParametersErwm: {"user": B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.isEligibleUser?"1":"0"},
-    );
     B22AlertOrchestratorNazk.b22InstanceOxzc.b22InitializeJrwh(
       b22RequestPermissionTulq: true,
     );
