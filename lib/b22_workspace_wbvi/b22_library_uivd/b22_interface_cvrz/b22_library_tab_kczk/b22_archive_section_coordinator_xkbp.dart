@@ -13,7 +13,6 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_ht
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_hub_deqw.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_permissions_fems/b22_access_orchestrator_hlvl.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_install_module_store_tsjc.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -152,7 +151,8 @@ class B22ArchiveSectionCoordinatorMvvw extends B22FoundationCoordinatorXsba {
     if (!kDebugMode) {
       return;
     }
-    FirebaseCrashlytics.instance.crash();
+    var s = await B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.b22LoadReferrerConfigFgau();
+    print(s);
   }
 
   @override

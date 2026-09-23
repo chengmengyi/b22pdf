@@ -289,20 +289,6 @@
             </list>
           </value>
         </entry>
-        <entry key="firebase_crashlytics">
-          <value>
-            <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_crashlytics-5.2.4/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="firebase_crashlytics_platform_interface">
-          <value>
-            <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_crashlytics_platform_interface-3.8.24/lib" />
-            </list>
-          </value>
-        </entry>
         <entry key="firebase_remote_config">
           <value>
             <list>
@@ -1250,8 +1236,6 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_core-4.11.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_core_platform_interface-7.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_core_web-3.9.0/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_crashlytics-5.2.4/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_crashlytics_platform_interface-3.8.24/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_remote_config-6.5.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_remote_config_platform_interface-3.0.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_remote_config_web-1.10.10/lib" />
