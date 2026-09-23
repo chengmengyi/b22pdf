@@ -32,8 +32,7 @@ Future<void> main() async {
   B22CloudOrchestratorRhpr.b22InstanceBbui.b22InitializePbli();
   B22PromotionOrchestratorAzwq.instance.b22InitializeYjdz();
   await B22QuickActionOrchestratorYmez.instance.b22InitializeKqab();
-  B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm
-      .b22InitializeAttributionGcmr();
+  B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.b22InitializeAttributionGcmr();
   B22AlertOrchestratorNazk.b22InstanceOxzc.b22InitializeJrwh(
     b22RequestPermissionTulq: true,
   );

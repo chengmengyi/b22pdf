@@ -62,12 +62,21 @@ class B22AlertOrchestratorNazk {
   }
 
   startSessionBackground()async{
-    // var header = await B22TelemetryOrchestratorNqon.instance.b22BuildRequestHeadersAwcm();
-    // final String url = await B22TelemetryOrchestratorNqon.instance.b22BuildEndpointUrlWwbz();
-    // await B22TelemetryOrchestratorNqon.instance.b22CreateEventPayloadAwjl(
-    //   b22PointTypeSktl: B22TelemetrySignalDbrq.b22PushPsgo,
-    //   b22ParametersNfej: {'sourse': "local"},
-    // );
+    var header = await B22TelemetryOrchestratorNqon.instance.b22BuildRequestHeadersAwcm();
+    final String url = await B22TelemetryOrchestratorNqon.instance.b22BuildEndpointUrlWwbz();
+    var map = await B22TelemetryOrchestratorNqon.instance.b22CreateEventPayloadAwjl(
+      b22PointTypeSktl: B22TelemetrySignalDbrq.session_bac,
+    );
+    FlutterBoomNotificationPlugins.instance.startSessionBackground(
+      enabled: true,
+      url: url,
+      headers: header,
+      payloadTemplate: map,
+      distinctIdKey: "puffin",
+      logIdKey: "heart",
+      clientTsKey: "infernal",
+      packageKey: "caribou",
+    );
   }
 
   Future<bool> b22HasNotificationPermissionAqao() async {

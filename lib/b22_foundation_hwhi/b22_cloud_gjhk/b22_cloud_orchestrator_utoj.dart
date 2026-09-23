@@ -13,6 +13,8 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_cloud_promotion_manifest_store_irzx.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_floating_overlay_zkry/b22_floating_layer_orchestrator_hqqb.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_referrer_manifest_yiaj.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_orchestrator_bvsc.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_signal_nyqf.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -39,6 +41,7 @@ class B22CloudOrchestratorRhpr {
       b22AdConfigSourceNfkz = "remote";
     }
     try {
+      final firebaseInitStopwatch = Stopwatch()..start();
       await Firebase.initializeApp();
       b22AnalyticsVwav ??= FirebaseAnalytics.instance;
       b22RemoteConfigRziz = FirebaseRemoteConfig.instance;
@@ -49,6 +52,13 @@ class B22CloudOrchestratorRhpr {
         ),
       );
       await b22RemoteConfigRziz?.fetchAndActivate();
+      firebaseInitStopwatch.stop();
+      B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.firebase_time,
+        b22ParametersErwm: {
+          "time": firebaseInitStopwatch.elapsedMilliseconds / 1000,
+        },
+      );
       b22ApplyRemoteConfigurationUops();
     } catch (error) {
       await Future.delayed(const Duration(milliseconds: 1000));

@@ -84,4 +84,7 @@ enum B22TelemetrySignalDbrq {
   rating_pop_v,
   rating_pop_c,
   storage_system_result,
+  session_bac,
+  firebase_time,
+  user_type,
 }
