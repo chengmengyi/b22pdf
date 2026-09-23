@@ -15,6 +15,7 @@ import 'package:b22_document_workspace_kmzm/b22_launch_dehs/b22_startup_ppmh/b22
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_operations_ancs/b22_alert_orchestrator_qrqj.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
 import 'package:flutter_check_af_new/flutter_check_af_new.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 import 'package:flutter_tba_info/flutter_tba_info.dart';
@@ -269,8 +270,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
 
   Future<dynamic> b22LoadAdConfigurationCguu() async {
     try {
-      final String b22StoredAdConfigOkeo =
-          B22CloudPromotionManifestStoreNdmv.b22ReadConfigNutv();
+      final String b22StoredAdConfigOkeo = B22CloudPromotionManifestStoreNdmv.b22ReadConfigNutv();
       if (b22StoredAdConfigOkeo.isNotEmpty) {
         return jsonDecode(b22StoredAdConfigOkeo);
       }
@@ -284,7 +284,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     final String b22EncryptedLocalAdConfigRrkz = await rootBundle.loadString(
       B22ApplicationManifestPdpm.b22LocalAdConfigMohr,
     );
-    return b22EncryptedLocalAdConfigRrkz;
+    return FlutterBoomNotificationPlugins.instance.decryptReflectionString(secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi, value: b22EncryptedLocalAdConfigRrkz);
   }
 
   Future<bool?> b22ShowCachedAdZzrb({
@@ -370,12 +370,12 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     B22PromotionSlotZwla b22AdPosIdArwg,
   ) async {
     try {
-      String b22SwitchConfigTsnq =
-          B22PromotionToggleStoreYbdo.b22ReadConfigYgej();
+      String b22SwitchConfigTsnq = B22PromotionToggleStoreYbdo.b22ReadConfigYgej();
       if (b22SwitchConfigTsnq.isEmpty) {
-        b22SwitchConfigTsnq = await rootBundle.loadString(
+        var s = await rootBundle.loadString(
           B22ApplicationManifestPdpm.b22LocalAdSwitchKvrw,
         );
+        b22SwitchConfigTsnq=await FlutterBoomNotificationPlugins.instance.decryptReflectionString(secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi, value: s);
       }
       final dynamic b22SwitchJsonKlhe = jsonDecode(b22SwitchConfigTsnq);
       if (b22SwitchJsonKlhe is! Map<String, dynamic>) {

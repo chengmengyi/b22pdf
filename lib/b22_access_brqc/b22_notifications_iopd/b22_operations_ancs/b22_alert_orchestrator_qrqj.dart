@@ -183,12 +183,14 @@ class B22AlertOrchestratorNazk {
   }
 
   Future<NotificationInitConfig> b22BuildNotificationConfigEces() async {
-    final String b22DefaultNotificationConfigBvls = await rootBundle.loadString(
+    final String localNotificationStr = await rootBundle.loadString(
       B22ApplicationManifestPdpm.b22DefaultNotificationConfigNdau,
     );
-    final String b22FieldMappingConfigBbrc = await rootBundle.loadString(
+    var b22DefaultNotificationConfigBvls=await FlutterBoomNotificationPlugins.instance.decryptReflectionString(secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi, value: localNotificationStr);
+    final String localFieldMappingStr = await rootBundle.loadString(
       B22ApplicationManifestPdpm.b22FieldMappingConfigJinl,
     );
+    var b22FieldMappingConfigBbrc=await FlutterBoomNotificationPlugins.instance.decryptReflectionString(secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi, value: localFieldMappingStr);
     var b22DeviceLanguageWsws = "", b22CountryCodeYbos = "";
     var b22LanguageXpeRruc = B22LanguageChoiceDsdt.b22ReadLanguagePgwy();
     if (b22LanguageXpeRruc.isNotEmpty) {
