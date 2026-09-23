@@ -1,4 +1,4 @@
-enum B22EntryOriginKindOxpi { b22NotificationIoxk, b22QuickActionRagz }
+enum B22EntryOriginKindOxpi { notification, quickAction }
 
 class B22EntryOriginTekr {
   const B22EntryOriginTekr({
@@ -23,14 +23,14 @@ class B22ActiveEntryOriginOrchestratorIonc {
 
   void recordNotificationLaunch(String b22PayloadCvbn) {
     b22PendingSourceCjoq = B22EntryOriginTekr(
-      b22TypeSskh: B22EntryOriginKindOxpi.b22NotificationIoxk,
+      b22TypeSskh: B22EntryOriginKindOxpi.notification,
       b22PayloadFpvt: b22PayloadCvbn,
     );
   }
 
   void b22RecordShortcutLaunchUizb(String b22ShortcutTypeLzzz) {
     b22PendingSourceCjoq = B22EntryOriginTekr(
-      b22TypeSskh: B22EntryOriginKindOxpi.b22QuickActionRagz,
+      b22TypeSskh: B22EntryOriginKindOxpi.quickAction,
       b22QuickActionTypeGlgz: b22ShortcutTypeLzzz,
     );
   }

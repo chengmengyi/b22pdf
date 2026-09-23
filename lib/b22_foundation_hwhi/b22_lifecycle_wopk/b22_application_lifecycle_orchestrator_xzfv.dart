@@ -165,10 +165,10 @@ class B22ApplicationLifecycleOrchestratorPhic {
       return;
     }
     switch (b22SourceBsoy.b22TypeSskh) {
-      case B22EntryOriginKindOxpi.b22NotificationIoxk:
+      case B22EntryOriginKindOxpi.notification:
         b22LogRaft('foreground handler notification source: no resume ad');
         return;
-      case B22EntryOriginKindOxpi.b22QuickActionRagz:
+      case B22EntryOriginKindOxpi.quickAction:
         b22LogRaft('foreground handler trigger position=unload_1');
         b22ShowLifecycleAdJfbv(
           B22PromotionContextSuaj.pr_exit,

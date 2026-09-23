@@ -128,7 +128,7 @@ class B22SpreadsheetReaderPageFkwp
         b22FontSizeIafw: 16.sp,
         b22ColorZcbj: Colors.white,
         b22FontWeightPcyy: FontWeight.bold,
-        b22FontTypeQdme: B22FontKindGnzs.b22MediumElwt,
+        b22FontTypeQdme: B22FontKindGnzs.medium,
       ),
     ),
   );
@@ -168,7 +168,7 @@ class B22SpreadsheetReaderPageFkwp
                   b22ColorZcbj: Colors.black,
                   b22FontWeightPcyy: FontWeight.w500,
                   b22OverflowUwxb: TextOverflow.ellipsis,
-                  b22FontTypeQdme: B22FontKindGnzs.b22BlackWgka,
+                  b22FontTypeQdme: B22FontKindGnzs.black,
                 ),
               ),
             ),

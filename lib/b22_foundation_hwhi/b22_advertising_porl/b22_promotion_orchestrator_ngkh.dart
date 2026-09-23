@@ -329,7 +329,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
           );
       if (!b22HasCachedAdEfrv) {
         B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-          b22PointTypeDrbi: B22TelemetrySignalDbrq.b22ShowAdNoCacheNihq,
+          b22PointTypeDrbi: B22TelemetrySignalDbrq.show_ad_no_cache,
           b22ParametersErwm: {
             "ad_context": b22AdSceneHfhk.name,
             "ad_pos_id": b22AdPosIdEjxk.name,
@@ -393,7 +393,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     required B22PromotionSlotZwla b22AdPosIdEbwa,
   }) {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22AdChanceVisn,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_chance,
       b22ParametersErwm: {
         "ad_context": b22AdSceneGiep.name,
         "ad_pos_id": b22AdPosIdEbwa.name,
@@ -506,7 +506,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
       return;
     }
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22AdClickMypx,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_click,
       b22ParametersErwm: {
         "ad_context": b22AdPlacementEcoo.name,
         "ad_format": b22AdInfoYnqi.adType,
@@ -539,7 +539,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
       return;
     }
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22AdCloseRodc,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_close,
       b22ParametersErwm: {
         "ad_context": b22AdPlacementKlcs.name,
         "ad_format": b22AdInfoFzbh.adType,
@@ -581,14 +581,14 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     }
     if (b22RevenueStgv >= 0.01) {
       B22CloudOrchestratorRhpr.b22InstanceBbui.b22LogAnalyticsEventKass(
-        b22NameIebq: B22TelemetrySignalDbrq.b22PrTotal001RevenueBmxi.name,
+        b22NameIebq: B22TelemetrySignalDbrq.pr_total_001_revenue.name,
         b22ParametersTazs: {
           "currency": b22CurrencyCodeFqwi,
           "value": b22RevenueStgv,
         },
       );
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.b22PrTotal001RevenueBmxi,
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.pr_total_001_revenue,
         b22ParametersErwm: {
           "ad_context": b22AdPlacementOpyz.name,
           "ad_pos_id": b22AdPosIdHuvs.name,
@@ -617,14 +617,14 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     );
 
     B22CloudOrchestratorRhpr.b22InstanceBbui.b22LogAnalyticsEventKass(
-      b22NameIebq: B22TelemetrySignalDbrq.b22AdImpressionRevenueVcyn.name,
+      b22NameIebq: B22TelemetrySignalDbrq.ad_impression_revenue.name,
       b22ParametersTazs: {
         "currency": b22CurrencyCodeFqwi,
         "value": b22RevenueStgv,
       },
     );
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22AdImpressionRevenueVcyn,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_impression_revenue,
       b22ParametersErwm: {
         "ad_context": b22AdPlacementOpyz.name,
         "ad_pos_id": b22AdPosIdHuvs.name,
@@ -661,7 +661,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
       return;
     }
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22AdLoadFailSmyx,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_load_fail,
       b22ParametersErwm: {
         "ad_context": b22AdPlacementFwjb.name,
         "ad_format": b22AdInfoTddb.adType,
@@ -680,7 +680,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
       return;
     }
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22AdRequestPlfv,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_request,
       b22ParametersErwm: {
         "ad_context": b22AdPlacementYkmc.name,
         "ad_format": b22AdInfoEefm.adType,
@@ -702,7 +702,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
       return;
     }
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22AdLoadSuccessIrqt,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_load_success,
       b22ParametersErwm: {
         "ad_context": b22AdPlacementEuvh.name,
         "ad_format": b22AdInfoCsbx.adType,
@@ -730,7 +730,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
       return;
     }
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22AdShowFailNzji,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_show_fail,
       b22ParametersErwm: {
         "ad_context": b22AdPlacementMzvx.name,
         "ad_format": b22AdInfoSpms.adType,
@@ -762,7 +762,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
       b22AdPosIdLlho: b22AdPosIdOdlw,
     );
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22AdShowClve,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_show,
       b22ParametersErwm: {
         "ad_context": b22AdPlacementFhpl.name,
         "ad_format": b22AdInfoApvf.adType,
@@ -795,7 +795,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
   @override
   void onAdmobInitialized() {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22SdkInitializationMnez,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.sdk_initialization,
     );
   }
 
@@ -808,7 +808,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
   @override
   void onUmpConsentCanRequestAds(bool b22CanRequestAdsDufa) {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22CanRequestAdsIfsm,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.can_request_ads,
       b22ParametersErwm: {"canRequest": b22CanRequestAdsDufa ? 1 : 0},
     );
   }
@@ -816,7 +816,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
   @override
   void onUmpConsentFlowComplete(UmpConsentResult b22ResultBvof) {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22ConsentStatusUpdateXbyz,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.consent_status_update,
       b22ParametersErwm: {
         "countryCode": b22ResultBvof.countryCode,
         "requiresCmpByLocale": b22ResultBvof.requiresCmpByLocale,
@@ -836,7 +836,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     bool b22RequiresCmpByLocaleWnbt,
   ) {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22ConsentFlowTriggerWixg,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.consent_flow_trigger,
       b22ParametersErwm: {
         "countryCode": b22CountryCodeHmfa,
         "requiresCmp": b22RequiresCmpByLocaleWnbt,
@@ -847,21 +847,21 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
   @override
   void onUmpConsentFormShow() {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22ConsentUiShowWpwq,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.consent_ui_show,
     );
   }
 
   @override
   void onUmpFormLoad() {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22UmpFormLoadNmpu,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ump_form_load,
     );
   }
 
   @override
   void onUmpFormRequest() {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22UmpFormRequestEixo,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ump_form_request,
     );
   }
 

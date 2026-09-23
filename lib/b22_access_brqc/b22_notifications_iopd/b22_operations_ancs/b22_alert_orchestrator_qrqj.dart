@@ -49,16 +49,25 @@ class B22AlertOrchestratorNazk {
     if (b22RequestPermissionTulq) {
       await Permission.notification.request();
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.b22StorageSystemResultDext,
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.storage_system_result,
         b22ParametersErwm: {
           "open": (await b22HasNotificationPermissionAqao()) ? 1 : 0,
         },
       );
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.b22PushGuideViewNzyw,
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.push_guide_view,
         b22ParametersErwm: {"show_type": "system"},
       );
     }
+  }
+
+  startSessionBackground()async{
+    // var header = await B22TelemetryOrchestratorNqon.instance.b22BuildRequestHeadersAwcm();
+    // final String url = await B22TelemetryOrchestratorNqon.instance.b22BuildEndpointUrlWwbz();
+    // await B22TelemetryOrchestratorNqon.instance.b22CreateEventPayloadAwjl(
+    //   b22PointTypeSktl: B22TelemetrySignalDbrq.b22PushPsgo,
+    //   b22ParametersNfej: {'sourse': "local"},
+    // );
   }
 
   Future<bool> b22HasNotificationPermissionAqao() async {
@@ -76,7 +85,7 @@ class B22AlertOrchestratorNazk {
         .b22BuildEndpointUrlWwbz();
     final Map<String, dynamic> b22PushPayloadHxas =
         await B22TelemetryOrchestratorNqon.instance.b22CreateEventPayloadAwjl(
-          b22PointTypeSktl: B22TelemetrySignalDbrq.b22PushPsgo,
+          b22PointTypeSktl: B22TelemetrySignalDbrq.push,
           b22ParametersNfej: {'sourse': "local"},
         );
     FlutterBoomNotificationPlugins.instance.configureNativePushReporting(
@@ -267,7 +276,7 @@ class B22AlertOrchestratorNazk {
     if (!B22EntryInputGateKjfv.b22InstanceHthn.canHandleNotificationClick)
       return;
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22FloatClickAdbd,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.float_click,
       b22ParametersErwm: <String, dynamic>{
         'float_type': b22EventBtld.clickType,
       },
@@ -350,7 +359,7 @@ class B22AlertOrchestratorNazk {
             .b22TimerOverlayClickEventEvqt;
     if (b22TimerOverlayClickEventZdrm != null) {
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.b22FloatClickAdbd,
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.float_click,
         b22ParametersErwm: <String, dynamic>{
           'float_type': b22TimerOverlayClickEventZdrm.clickType,
         },
@@ -390,14 +399,14 @@ class B22AlertOrchestratorNazk {
 
   void b22TrackNotificationClickHlms(String? b22EventSourceMkfk) {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22InformCUpvf,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.inform_c,
       b22ParametersErwm: {'sourse': b22EventSourceMkfk},
     );
   }
 
   void b22TrackNotificationImpressionScoo(String b22EventSourceSoqp) {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22PushPsgo,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.push,
       b22ParametersErwm: {'sourse': b22EventSourceSoqp},
     );
   }

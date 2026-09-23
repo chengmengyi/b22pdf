@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-enum B22ReloadOutcomeAmuz { b22SucceededYjce, b22FailedVmei, b22NoMoreDataWqwz }
+enum B22ReloadOutcomeAmuz { succeeded, failed, noMoreData }
 
 void startRefresh(RefreshController b22ControllerJjgz) {
   if (b22ControllerJjgz.isRefresh) {
@@ -20,10 +20,10 @@ void completeRefresh(
 ) {
   if (b22ControllerGqqh.isRefresh) {
     switch (b22OutcomeRjlc) {
-      case B22ReloadOutcomeAmuz.b22SucceededYjce:
-      case B22ReloadOutcomeAmuz.b22NoMoreDataWqwz:
+      case B22ReloadOutcomeAmuz.succeeded:
+      case B22ReloadOutcomeAmuz.noMoreData:
         b22ControllerGqqh.refreshCompleted(resetFooterState: true);
-      case B22ReloadOutcomeAmuz.b22FailedVmei:
+      case B22ReloadOutcomeAmuz.failed:
         b22ControllerGqqh.refreshFailed();
     }
   }
@@ -32,11 +32,11 @@ void completeRefresh(
     return;
   }
   switch (b22OutcomeRjlc) {
-    case B22ReloadOutcomeAmuz.b22SucceededYjce:
+    case B22ReloadOutcomeAmuz.succeeded:
       b22ControllerGqqh.loadComplete();
-    case B22ReloadOutcomeAmuz.b22FailedVmei:
+    case B22ReloadOutcomeAmuz.failed:
       b22ControllerGqqh.loadFailed();
-    case B22ReloadOutcomeAmuz.b22NoMoreDataWqwz:
+    case B22ReloadOutcomeAmuz.noMoreData:
       b22ControllerGqqh.loadNoData();
   }
 }

@@ -28,9 +28,9 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
 enum B22FileCollectionStatePblk {
-  b22NoPermissionIphf,
-  b22LoadingQnsm,
-  b22LoadedHfay,
+  noPermission,
+  loading,
+  loaded,
 }
 
 class B22FileCollectionCoordinatorFigm extends B22FoundationCoordinatorXsba {
@@ -45,7 +45,7 @@ class B22FileCollectionCoordinatorFigm extends B22FoundationCoordinatorXsba {
   Timer? b22ScrollIdleTimerMpyp;
   Timer? b22NativeAdRefreshTimerRshc;
   B22FileCollectionStatePblk b22ListStateTnnh =
-      B22FileCollectionStatePblk.b22LoadingQnsm;
+      B22FileCollectionStatePblk.loading;
   List<FileToolsFileInfo> b22AllFilesYbzz = [];
   List<FileToolsFileInfo> b22VisibleFilesIdkf = [];
   FileToolsFileInfo? b22DemoFileInfoYgam;
@@ -78,7 +78,7 @@ class B22FileCollectionCoordinatorFigm extends B22FoundationCoordinatorXsba {
       (b22ItemTmwi) =>
           b22ItemTmwi.name ==
           B22FileOrderingStoreAikr.b22ReadSortNameMggu(b22TypeTtjd.name),
-      orElse: () => B22OrderingKindDybz.b22DateNewWyvg,
+      orElse: () => B22OrderingKindDybz.dateNew,
     );
     super.onInit();
     b22ScrollControllerCiup.addListener(b22HandleScrollLzpj);
@@ -282,14 +282,14 @@ class B22FileCollectionCoordinatorFigm extends B22FoundationCoordinatorXsba {
     final b22PermissionVsor = await b22ResolveRequiredStoragePermissionFxme();
     if (!await b22PermissionVsor.isGranted) {
       await b22PrepareDemoFileVsrd();
-      b22ListStateTnnh = B22FileCollectionStatePblk.b22NoPermissionIphf;
+      b22ListStateTnnh = B22FileCollectionStatePblk.noPermission;
       b22RefreshControllerOxrn.refreshCompleted();
       update();
       return;
     }
     b22LoadingFilesVsxz = true;
     if (b22ShowLoadingOicj) {
-      b22ListStateTnnh = B22FileCollectionStatePblk.b22LoadingQnsm;
+      b22ListStateTnnh = B22FileCollectionStatePblk.loading;
       update();
     }
     try {
@@ -302,7 +302,7 @@ class B22FileCollectionCoordinatorFigm extends B22FoundationCoordinatorXsba {
         await b22PrepareDemoFileVsrd();
       }
       b22HasLoadedFilesWihb = true;
-      b22ListStateTnnh = B22FileCollectionStatePblk.b22LoadedHfay;
+      b22ListStateTnnh = B22FileCollectionStatePblk.loaded;
     } finally {
       b22LoadingFilesVsxz = false;
       b22RefreshControllerOxrn.refreshCompleted();
@@ -326,19 +326,19 @@ class B22FileCollectionCoordinatorFigm extends B22FoundationCoordinatorXsba {
   void b22SortFilesGbiv() {
     b22AllFilesYbzz.sort((b22LeftHqqs, b22RightTxdi) {
       switch (b22SortTypeUjob) {
-        case B22OrderingKindDybz.b22DateNewWyvg:
+        case B22OrderingKindDybz.dateNew:
           return (b22RightTxdi.updateTime ?? 0).compareTo(
             b22LeftHqqs.updateTime ?? 0,
           );
-        case B22OrderingKindDybz.b22DateOldSaca:
+        case B22OrderingKindDybz.dateOld:
           return (b22LeftHqqs.updateTime ?? 0).compareTo(
             b22RightTxdi.updateTime ?? 0,
           );
-        case B22OrderingKindDybz.b22NameAZQwad:
+        case B22OrderingKindDybz.nameAZ:
           return (b22LeftHqqs.name ?? '').toLowerCase().compareTo(
             (b22RightTxdi.name ?? '').toLowerCase(),
           );
-        case B22OrderingKindDybz.b22NameZAIywj:
+        case B22OrderingKindDybz.nameZA:
           return (b22RightTxdi.name ?? '').toLowerCase().compareTo(
             (b22LeftHqqs.name ?? '').toLowerCase(),
           );
@@ -413,7 +413,7 @@ class B22FileCollectionCoordinatorFigm extends B22FoundationCoordinatorXsba {
     };
     if (b22RouteNameAhaj == null) return;
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22EditorEntryQbqj,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.editor_entry,
     );
     B22ApplicationRouterJfva.b22PushNamedWarf(
       b22RouteNameHlpz: b22RouteNameAhaj,

@@ -110,7 +110,7 @@ class B22LocaleChooserLowerDrawerGtjc
         b22FontSizeIafw: 16.sp,
         b22ColorZcbj: Color(0xff000000),
         b22FontWeightPcyy: FontWeight.w500,
-        b22FontTypeQdme: B22FontKindGnzs.b22BlackWgka,
+        b22FontTypeQdme: B22FontKindGnzs.black,
       ),
       Spacer(),
       B22TouchGuardComponentKong(

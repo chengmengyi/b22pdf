@@ -225,7 +225,7 @@ class B22ArchiveSectionStateLqyu
           b22FontSizeIafw: 28.sp,
           b22ColorZcbj: Colors.black,
           b22FontWeightPcyy: FontWeight.bold,
-          b22FontTypeQdme: B22FontKindGnzs.b22ExtraFyuc,
+          b22FontTypeQdme: B22FontKindGnzs.extra,
         ),
       ),
       Spacer(),
@@ -270,7 +270,7 @@ class B22ArchiveSectionStateLqyu
             style: TextStyle(fontSize: 14.sp, color: Color(0xff000000)),
             onTap: () {
               B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-                b22PointTypeDrbi: B22TelemetrySignalDbrq.b22SearchClickBcdq,
+                b22PointTypeDrbi: B22TelemetrySignalDbrq.search_click,
               );
             },
             decoration: InputDecoration(

@@ -48,7 +48,7 @@ class B22ArchiveSectionCoordinatorMvvw extends B22FoundationCoordinatorXsba {
 
   void b22SelectCategoryGtlv(B22FileCategoryVdhm b22CategoryMwsa) {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22FileFilterClickOgtp,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.file_filter_click,
     );
     b22PageControllerMpft.animateToPage(
       b22CategoryMwsa.index,
@@ -116,7 +116,7 @@ class B22ArchiveSectionCoordinatorMvvw extends B22FoundationCoordinatorXsba {
           .b22RequestPermissionVmnw(b22PermissionUlwh: b22PermissionChof);
       if (b22ResultRyur.b22IsShowPermissionAdTkie) {
         B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-          b22PointTypeDrbi: B22TelemetrySignalDbrq.b22StorageAuthClickIhnh,
+          b22PointTypeDrbi: B22TelemetrySignalDbrq.storage_auth_click,
         );
         if (B22AudienceQualificationOrchestratorCaap
             .b22InstanceWcsm

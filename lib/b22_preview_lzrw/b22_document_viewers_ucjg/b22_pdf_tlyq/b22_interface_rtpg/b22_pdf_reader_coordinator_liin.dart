@@ -16,19 +16,19 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 enum B22PdfEditKindMfnt {
-  b22HighlightWgxm(
+  highlight(
     'b22_preview_media_dzro/b22_annotation_controls_kigz/b22_highlight_tool_aleh',
     "b22_preview_media_dzro/b22_annotation_controls_kigz/b22_highlight_tool_sel_byjk",
   ),
-  b22UnderlineDsti(
+  underline(
     'b22_preview_media_dzro/b22_annotation_controls_kigz/b22_underline_tool_ieef',
     "b22_preview_media_dzro/b22_annotation_controls_kigz/b22_underline_tool_sel_evmv",
   ),
-  b22StrikeThroughCiuz(
+  strikeThrough(
     'b22_preview_media_dzro/b22_annotation_controls_kigz/b22_strikethrough_tool_pqeq',
     "b22_preview_media_dzro/b22_annotation_controls_kigz/b22_strikethrough_tool_sel_ooon",
   ),
-  b22PenOmpc(
+  pen(
     'b22_preview_media_dzro/b22_annotation_controls_kigz/b22_freehand_tool_vbbk',
     "b22_preview_media_dzro/b22_annotation_controls_kigz/b22_freehand_tool_sel_ound",
   );
@@ -93,7 +93,7 @@ class B22PdfReaderPageCoordinatorIiyu extends B22FoundationCoordinatorXsba {
     return (b22FileInfoOqvs.path ?? '').split(Platform.pathSeparator).last;
   }
 
-  bool get penMode => b22SelectedTypeFzcz == B22PdfEditKindMfnt.b22PenOmpc;
+  bool get penMode => b22SelectedTypeFzcz == B22PdfEditKindMfnt.pen;
 
   @override
   void onInit() {
@@ -144,7 +144,7 @@ class B22PdfReaderPageCoordinatorIiyu extends B22FoundationCoordinatorXsba {
   }
 
   void b22OnAnnotationToolSelectedHfci(B22PdfEditKindMfnt b22TypeCcth) {
-    if (b22TypeCcth == B22PdfEditKindMfnt.b22PenOmpc) {
+    if (b22TypeCcth == B22PdfEditKindMfnt.pen) {
       b22OnPenPressedAevq();
       return;
     }
@@ -161,13 +161,13 @@ class B22PdfReaderPageCoordinatorIiyu extends B22FoundationCoordinatorXsba {
       return;
     }
     final Annotation b22AnnotationPien = switch (b22TypeCcth) {
-      B22PdfEditKindMfnt.b22HighlightWgxm => HighlightAnnotation(
+      B22PdfEditKindMfnt.highlight => HighlightAnnotation(
         textBoundsCollection: b22SelectedLinesOrha,
       ),
-      B22PdfEditKindMfnt.b22UnderlineDsti => UnderlineAnnotation(
+      B22PdfEditKindMfnt.underline => UnderlineAnnotation(
         textBoundsCollection: b22SelectedLinesOrha,
       ),
-      B22PdfEditKindMfnt.b22StrikeThroughCiuz => StrikethroughAnnotation(
+      B22PdfEditKindMfnt.strikeThrough => StrikethroughAnnotation(
         textBoundsCollection: b22SelectedLinesOrha,
       ),
       _ => throw StateError('Unsupported text annotation type'),
@@ -180,7 +180,7 @@ class B22PdfReaderPageCoordinatorIiyu extends B22FoundationCoordinatorXsba {
     if (!b22DocumentLoadedCxey || b22SavingIjsl) return;
     final b22EnablePenKlnb = !penMode;
     b22SelectedTypeFzcz = b22EnablePenKlnb
-        ? B22PdfEditKindMfnt.b22PenOmpc
+        ? B22PdfEditKindMfnt.pen
         : null;
     b22DraftPointsWhrf = <Offset>[];
     b22ViewerControllerWvqa.annotationMode = PdfAnnotationMode.none;
@@ -282,7 +282,7 @@ class B22PdfReaderPageCoordinatorIiyu extends B22FoundationCoordinatorXsba {
     update();
     try {
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.b22EditorSaveClickQazi,
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.editor_save_click,
       );
       List<int> b22BytesUlfi = await b22ViewerControllerWvqa.saveDocument();
       if (b22PenStrokesGztj.isNotEmpty) {

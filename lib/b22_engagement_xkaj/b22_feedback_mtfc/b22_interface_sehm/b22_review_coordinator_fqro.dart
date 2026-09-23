@@ -20,7 +20,7 @@ class B22ReviewCoordinatorErib extends B22FoundationCoordinatorXsba {
   void onInit() {
     super.onInit();
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22RatingPopVWwpv,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.rating_pop_v,
     );
   }
 
@@ -33,7 +33,7 @@ class B22ReviewCoordinatorErib extends B22FoundationCoordinatorXsba {
     b22StarCountGjde = 5;
     update(<Object>[b22StarBuilderIdWxss]);
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22RatingPopCRazw,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.rating_pop_c,
     );
     await b22OpenGooglePlayTgek();
   }

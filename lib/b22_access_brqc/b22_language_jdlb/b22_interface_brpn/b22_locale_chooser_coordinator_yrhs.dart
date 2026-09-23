@@ -19,7 +19,7 @@ class B22LocaleChooserCoordinatorAegb extends B22FoundationCoordinatorXsba {
   void onInit() {
     super.onInit();
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22LangSelectViewVqcp,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.lang_select_view,
     );
     final b22InitialLocaleCgpd =
         B22LanguageUtilitiesDnum.b22InitialLocaleJyav();
@@ -71,7 +71,7 @@ class B22LocaleChooserCoordinatorAegb extends B22FoundationCoordinatorXsba {
 
   Future<void> b22OnOkPressedUnsz() async {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22LangSelectClickNcob,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.lang_select_click,
     );
     await B22ApplicationLexiconNofd.b22SelectLanguageXuyq(
       b22SelectedLanguageTjxp.b22LocaleGrtn,

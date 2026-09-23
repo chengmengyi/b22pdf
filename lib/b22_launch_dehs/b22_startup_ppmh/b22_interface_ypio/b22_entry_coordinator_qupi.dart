@@ -244,7 +244,7 @@ class B22EntryCoordinatorVdiw extends B22FoundationCoordinatorXsba
       B22PromotionContextSuaj.pr_user_use,
     );
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22AppLaunchResultPqnd,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.app_launch_result,
     );
     var b22ResultMtpd = await B22QuickActionOrchestratorYmez.instance
         .b22HandlePendingColdStartShortcutVffa();

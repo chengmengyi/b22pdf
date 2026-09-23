@@ -19,7 +19,7 @@ final class B22PictureIngestOrchestratorIybt {
   }) async {
     if (b22OpenResultKhoq) {
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.b22ToolScanWocc,
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.tool_scan,
       );
     }
     if (!await Permission.camera.isGranted) {
@@ -40,7 +40,7 @@ final class B22PictureIngestOrchestratorIybt {
     if (b22OpenResultKhoq) {
       b22OpenImageSelectionTihs(
         b22PathsIsgq,
-        B22PictureInputOriginVwda.b22ScanPzjp,
+        B22PictureInputOriginVwda.scan,
       );
     }
     return b22PathsIsgq;
@@ -51,7 +51,7 @@ final class B22PictureIngestOrchestratorIybt {
   }) async {
     if (b22OpenResultBhrs) {
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.b22ToolImageToPdfSuio,
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.tool_image_to_pdf,
       );
     }
     final List<XFile> b22ImageListWbgx = await ImagePicker().pickMultiImage();
@@ -61,7 +61,7 @@ final class B22PictureIngestOrchestratorIybt {
     if (b22OpenResultBhrs) {
       b22OpenImageSelectionTihs(
         b22PathsGnde,
-        B22PictureInputOriginVwda.b22ChooseUgax,
+        B22PictureInputOriginVwda.choose,
       );
     }
     return b22PathsGnde;

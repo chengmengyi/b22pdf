@@ -11,7 +11,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-enum B22PictureInputOriginVwda { b22ScanPzjp, b22ChooseUgax }
+enum B22PictureInputOriginVwda { scan, choose }
 
 class B22PictureChooserCoordinatorYvnf extends B22FoundationCoordinatorXsba {
   final List<String> b22ImagePathsVrel = List<String>.from(
@@ -19,7 +19,7 @@ class B22PictureChooserCoordinatorYvnf extends B22FoundationCoordinatorXsba {
   );
   final B22PictureInputOriginVwda b22SourceDgio =
       Get.arguments?['source'] as B22PictureInputOriginVwda? ??
-      B22PictureInputOriginVwda.b22ChooseUgax;
+      B22PictureInputOriginVwda.choose;
   final PageController b22PageControllerNxbn = PageController();
   final ScrollController b22ThumbnailControllerJumj = ScrollController();
   int b22SelectedIndexAjvl = 0;
@@ -68,11 +68,11 @@ class B22PictureChooserCoordinatorYvnf extends B22FoundationCoordinatorXsba {
 
   Future<List<String>> b22PickImagesEhzf() {
     return switch (b22SourceDgio) {
-      B22PictureInputOriginVwda.b22ScanPzjp =>
+      B22PictureInputOriginVwda.scan =>
         B22PictureIngestOrchestratorIybt.b22InstancePyok.b22ScanDocumentsNogs(
           b22OpenResultKhoq: false,
         ),
-      B22PictureInputOriginVwda.b22ChooseUgax =>
+      B22PictureInputOriginVwda.choose =>
         B22PictureIngestOrchestratorIybt.b22InstancePyok.b22PickImagesNwpc(
           b22OpenResultBhrs: false,
         ),

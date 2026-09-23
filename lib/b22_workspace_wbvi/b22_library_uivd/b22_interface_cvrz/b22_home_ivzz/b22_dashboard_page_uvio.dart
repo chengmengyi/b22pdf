@@ -61,7 +61,7 @@ class B22DashboardPageLkpx
       child: Row(
         children: [
           b22ItemWidgetBcar(
-            B22DashboardSectionVbai.b22FilesClnr,
+            B22DashboardSectionVbai.files,
             b22ControllerSeai,
             b22ContextBcig,
           ),
@@ -86,7 +86,7 @@ class B22DashboardPageLkpx
                       b22FontSizeIafw: 10.sp,
                       b22ColorZcbj: Colors.black,
                       b22FontWeightPcyy: FontWeight.bold,
-                      b22FontTypeQdme: B22FontKindGnzs.b22SemiOvoq,
+                      b22FontTypeQdme: B22FontKindGnzs.semi,
                     ),
                   ],
                 ),
@@ -94,7 +94,7 @@ class B22DashboardPageLkpx
             ),
           ),
           b22ItemWidgetBcar(
-            B22DashboardSectionVbai.b22ToolsSoju,
+            B22DashboardSectionVbai.tools,
             b22ControllerSeai,
             b22ContextBcig,
           ),
@@ -135,7 +135,7 @@ class B22DashboardPageLkpx
                     ? const Color(0xffFFFFFF)
                     : const Color(0xff000000),
                 b22FontWeightPcyy: FontWeight.bold,
-                b22FontTypeQdme: B22FontKindGnzs.b22SemiOvoq,
+                b22FontTypeQdme: B22FontKindGnzs.semi,
               ),
             ],
           ),

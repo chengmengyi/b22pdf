@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-enum B22FontKindGnzs { b22BlackWgka, b22ExtraFyuc, b22MediumElwt, b22SemiOvoq }
+enum B22FontKindGnzs { black, extra, medium, semi }
 
 class B22TranslatedLabelComponentJklc extends StatelessWidget {
   const B22TranslatedLabelComponentJklc(

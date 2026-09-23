@@ -81,7 +81,7 @@ class B22DocumentsCollectionSectionStateCzwj
               b22ColorZcbj: Color(0xff333333),
               b22FontWeightPcyy: FontWeight.bold,
               b22OverflowUwxb: TextOverflow.ellipsis,
-              b22FontTypeQdme: B22FontKindGnzs.b22ExtraFyuc,
+              b22FontTypeQdme: B22FontKindGnzs.extra,
             ),
           ),
         ),
@@ -104,7 +104,7 @@ class B22DocumentsCollectionSectionStateCzwj
                 b22FontSizeIafw: 10.sp,
                 b22ColorZcbj: Color(0xff334155),
                 b22FontWeightPcyy: FontWeight.w500,
-                b22FontTypeQdme: B22FontKindGnzs.b22SemiOvoq,
+                b22FontTypeQdme: B22FontKindGnzs.semi,
               ),
             ],
           ),
@@ -128,7 +128,7 @@ class B22DocumentsCollectionSectionStateCzwj
                 b22FontSizeIafw: 10.sp,
                 b22ColorZcbj: Color(0xff334155),
                 b22FontWeightPcyy: FontWeight.w500,
-                b22FontTypeQdme: B22FontKindGnzs.b22SemiOvoq,
+                b22FontTypeQdme: B22FontKindGnzs.semi,
               ),
             ],
           ),
@@ -141,15 +141,15 @@ class B22DocumentsCollectionSectionStateCzwj
     B22FileCollectionCoordinatorFigm b22ControllerPocx,
   ) => Expanded(
     child: switch (b22ControllerPocx.b22ListStateTnnh) {
-      B22FileCollectionStatePblk.b22NoPermissionIphf =>
+      B22FileCollectionStatePblk.noPermission =>
         b22BuildDemoDocumentEmptyStateUcbb(
           b22ControllerVwrg: b22ControllerPocx,
           b22EmptyWidgetMyxl: b22BuildPermissionRequiredStateIvdt(
             b22ControllerPocx,
           ),
         ),
-      B22FileCollectionStatePblk.b22LoadingQnsm => b22BuildLoadingStateJrla(),
-      B22FileCollectionStatePblk.b22LoadedHfay =>
+      B22FileCollectionStatePblk.loading => b22BuildLoadingStateJrla(),
+      B22FileCollectionStatePblk.loaded =>
         b22ControllerPocx.b22VisibleFilesIdkf.isEmpty
             ? b22BuildDemoDocumentEmptyStateUcbb(
                 b22ControllerVwrg: b22ControllerPocx,
@@ -337,14 +337,14 @@ class B22DocumentsCollectionSectionStateCzwj
               b22FontSizeIafw: 14.sp,
               b22ColorZcbj: Color(0xff000000),
               b22OverflowUwxb: TextOverflow.ellipsis,
-              b22FontTypeQdme: B22FontKindGnzs.b22BlackWgka,
+              b22FontTypeQdme: B22FontKindGnzs.black,
             ),
             B22TranslatedLabelComponentJklc(
               b22FormatFileMetadataDxxd(b22FileTeng),
               b22FontSizeIafw: 10.sp,
               b22ColorZcbj: const Color(0xff5E5E5E),
               b22OverflowUwxb: TextOverflow.ellipsis,
-              b22FontTypeQdme: B22FontKindGnzs.b22MediumElwt,
+              b22FontTypeQdme: B22FontKindGnzs.medium,
             ),
           ],
         ),
@@ -435,14 +435,14 @@ class B22DocumentsCollectionSectionStateCzwj
         'b22_no_permissions_granted_dqwz'.tr,
         b22FontSizeIafw: 16.sp,
         b22ColorZcbj: Color(0xff1A1D22),
-        b22FontTypeQdme: B22FontKindGnzs.b22ExtraFyuc,
+        b22FontTypeQdme: B22FontKindGnzs.extra,
       ),
       SizedBox(height: 6.h),
       B22TranslatedLabelComponentJklc(
         'b22_permission_is_required_to_access_mbpc'.tr,
         b22FontSizeIafw: 12.sp,
         b22ColorZcbj: Color(0xff7B7B7B),
-        b22FontTypeQdme: B22FontKindGnzs.b22MediumElwt,
+        b22FontTypeQdme: B22FontKindGnzs.medium,
       ),
       SizedBox(height: 34.h),
       B22TouchGuardComponentKong(
@@ -462,7 +462,7 @@ class B22DocumentsCollectionSectionStateCzwj
             b22FontSizeIafw: 16.sp,
             b22ColorZcbj: Colors.white,
             b22FontWeightPcyy: FontWeight.bold,
-            b22FontTypeQdme: B22FontKindGnzs.b22SemiOvoq,
+            b22FontTypeQdme: B22FontKindGnzs.semi,
           ),
         ),
       ),

@@ -23,6 +23,7 @@ Future<void> main() async {
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await GetStorage.init();
   await B22ApplicationLexiconNofd.b22InitializeEncryptedLexiconRxye();
+  B22AlertOrchestratorNazk.b22InstanceOxzc.startSessionBackground();
   final Locale b22InitialLocaleFoyu =
       B22ApplicationLexiconNofd.b22ResolveInitialLocaleYfpt();
   Get.locale = b22InitialLocaleFoyu;

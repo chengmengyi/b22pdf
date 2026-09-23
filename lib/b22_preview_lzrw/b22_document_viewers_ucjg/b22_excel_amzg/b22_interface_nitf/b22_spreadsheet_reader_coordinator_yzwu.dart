@@ -59,7 +59,7 @@ class B22SpreadsheetReaderCoordinatorWmkr extends B22FoundationCoordinatorXsba {
     if (!isEditing || isSaving) return;
     try {
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.b22EditorSaveClickQazi,
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.editor_save_click,
       );
       await b22ExcelControllerYwlo.save();
       final b22PathAqkk = b22FileInfoFjvl.path ?? '';

@@ -18,14 +18,14 @@ class B22AlertAccessCoordinatorVaez extends B22FoundationCoordinatorXsba {
   void onInit() {
     super.onInit();
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22PushGuideViewNzyw,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.push_guide_view,
       b22ParametersErwm: {"show_type": "secondary"},
     );
   }
 
   Future<void> b22OnUpdatePressedAsvc() async {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22PushGuideClickXcde,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.push_guide_click,
       b22ParametersErwm: {"state": "turn_on"},
     );
     b22WaitingSettingsLwlv = true;
@@ -35,7 +35,7 @@ class B22AlertAccessCoordinatorVaez extends B22FoundationCoordinatorXsba {
 
   void b22OnLaterPressedGjhp() {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22PushGuideClickXcde,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.push_guide_click,
       b22ParametersErwm: {"state": "later"},
     );
     b22ToNextPageHifj();

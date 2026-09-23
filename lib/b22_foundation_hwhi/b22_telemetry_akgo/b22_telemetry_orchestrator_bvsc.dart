@@ -225,7 +225,7 @@ class B22TelemetryOrchestratorNqon {
 
   b22AddUserGroupBsqx(int b22UserGroupLnle) async {
     b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22IronsideTpiz,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ironside,
       b22ParametersErwm: {
         "puffin": await FlutterTbaInfo.instance.getDistinctId(),
       },
@@ -235,7 +235,7 @@ class B22TelemetryOrchestratorNqon {
 
   b22SetEligibleUserOotf(bool b22NewEligibilityStateVfxa) async {
     b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22IronsideTpiz,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ironside,
       b22ParametersErwm: {
         "puffin": await FlutterTbaInfo.instance.getDistinctId(),
       },
@@ -268,7 +268,7 @@ class B22TelemetryOrchestratorNqon {
           b22InstallDateTxdm.day == b22NowHgnl.day;
     }
     b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22IronsideTpiz,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ironside,
       b22ParametersErwm: {
         "puffin": await FlutterTbaInfo.instance.getDistinctId(),
       },

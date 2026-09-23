@@ -62,7 +62,7 @@ class B22TextDocumentReaderCoordinatorXnjj
     if (!isEditing || isSaving) return;
     try {
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.b22EditorSaveClickQazi,
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.editor_save_click,
       );
       await b22WordControllerWnao.save();
       final b22PathVjgh = b22FileInfoSlga.path ?? '';

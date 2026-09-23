@@ -62,12 +62,12 @@ class B22AudienceQualificationOrchestratorCaap {
         requestAfCallback: RequestAfCallback(
           startRequestAf: () {
             B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-              b22PointTypeDrbi: B22TelemetrySignalDbrq.b22AfReqXhkh,
+              b22PointTypeDrbi: B22TelemetrySignalDbrq.af_req,
             );
           },
           requestSuccess: (bool b22IsAttributedUserDkjk, String b22AfStrTiqb) {
             B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-              b22PointTypeDrbi: B22TelemetrySignalDbrq.b22AfSucPjoi,
+              b22PointTypeDrbi: B22TelemetrySignalDbrq.af_suc,
               b22ParametersErwm: {
                 //adj_user：【0】【1】，对应【黑名单用户】【自然量用户】
                 "af_user": b22IsAttributedUserDkjk ? 1 : 0,
@@ -82,12 +82,12 @@ class B22AudienceQualificationOrchestratorCaap {
           firstRequestAfB: () {},
           startAfSuccess: () {
             B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-              b22PointTypeDrbi: B22TelemetrySignalDbrq.b22StartAfSucBaub,
+              b22PointTypeDrbi: B22TelemetrySignalDbrq.start_af_suc,
             );
           },
           startAfFail: (int b22CodeAmrb, String b22MsgXusb) {
             B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-              b22PointTypeDrbi: B22TelemetrySignalDbrq.b22StartAfFailIaye,
+              b22PointTypeDrbi: B22TelemetrySignalDbrq.start_af_fail,
               b22ParametersErwm: {"code": b22CodeAmrb, "msg": b22MsgXusb},
             );
           },
@@ -95,12 +95,12 @@ class B22AudienceQualificationOrchestratorCaap {
         requestCloakCallback: RequestCloakCallback(
           startRequestCloak: () {
             B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-              b22PointTypeDrbi: B22TelemetrySignalDbrq.b22CloakReqKjjt,
+              b22PointTypeDrbi: B22TelemetrySignalDbrq.cloak_req,
             );
           },
           requestSuccess: (bool b22IsAllowedUserWsvb) {
             B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-              b22PointTypeDrbi: B22TelemetrySignalDbrq.b22CloakSucDnjh,
+              b22PointTypeDrbi: B22TelemetrySignalDbrq.cloak_suc,
               b22ParametersErwm: {
                 //cloak_user：【0】【1】，对应【黑名单用户】【自然量用户】
                 "cloak_user": b22IsAllowedUserWsvb ? 1 : 0,
@@ -112,7 +112,7 @@ class B22AudienceQualificationOrchestratorCaap {
         requestReferrerCallback: RequestReferrerCallback(
           startRequestReferrer: () {
             B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-              b22PointTypeDrbi: B22TelemetrySignalDbrq.b22ReferrerReqYriq,
+              b22PointTypeDrbi: B22TelemetrySignalDbrq.referrer_req,
             );
           },
           requestSuccess: (String b22ReferrerVcej) {
@@ -142,7 +142,7 @@ class B22AudienceQualificationOrchestratorCaap {
         onUploadSessionRisk: (Map<String, int> riskSummary) {},
         onPdfRiskDetected: (FlutterPdfRiskControlTag b22RiskTagAbhz) {
           B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-            b22PointTypeDrbi: B22TelemetrySignalDbrq.b22RiskControlChyf,
+            b22PointTypeDrbi: B22TelemetrySignalDbrq.risk_control,
             //type：vpn、root、sim、simulator、googleplay、developer、ip
             b22ParametersErwm: {"risk_type": b22RiskTagAbhz.name},
           );
@@ -234,7 +234,7 @@ class B22AudienceQualificationOrchestratorCaap {
           }
         }
         B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-          b22PointTypeDrbi: B22TelemetrySignalDbrq.b22RefferSucDari,
+          b22PointTypeDrbi: B22TelemetrySignalDbrq.reffer_suc,
           b22ParametersErwm: {
             "reffer_info": b22ReferrerUknx,
             "reffer_user": b22ReferrerUserLehy,
@@ -242,7 +242,7 @@ class B22AudienceQualificationOrchestratorCaap {
         );
       } else {
         B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-          b22PointTypeDrbi: B22TelemetrySignalDbrq.b22RefferSucDari,
+          b22PointTypeDrbi: B22TelemetrySignalDbrq.reffer_suc,
           b22ParametersErwm: {
             "reffer_info": b22ReferrerUknx,
             "reffer_user": "list is empty",
@@ -251,7 +251,7 @@ class B22AudienceQualificationOrchestratorCaap {
       }
     } catch (e) {
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.b22RefferSucDari,
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.reffer_suc,
         b22ParametersErwm: {
           "reffer_info": b22ReferrerUknx,
           "reffer_user": "error",

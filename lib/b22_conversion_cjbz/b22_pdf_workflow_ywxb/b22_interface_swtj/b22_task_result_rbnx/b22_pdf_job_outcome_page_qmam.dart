@@ -39,7 +39,7 @@ class B22PdfJobOutcomePageGfpb
           b22FontSizeIafw: 20.sp,
           b22ColorZcbj: Colors.black,
           b22FontWeightPcyy: FontWeight.bold,
-          b22FontTypeQdme: B22FontKindGnzs.b22BlackWgka,
+          b22FontTypeQdme: B22FontKindGnzs.black,
         ),
         SizedBox(height: 8.h),
         B22TranslatedLabelComponentJklc(
@@ -47,7 +47,7 @@ class B22PdfJobOutcomePageGfpb
           b22FontSizeIafw: 14.sp,
           b22ColorZcbj: Color(0xff5E5E5E),
           b22FontWeightPcyy: FontWeight.w500,
-          b22FontTypeQdme: B22FontKindGnzs.b22BlackWgka,
+          b22FontTypeQdme: B22FontKindGnzs.black,
         ),
         SizedBox(height: 44.h),
         b22InfoWidgetIcml(b22ControllerRirq),
@@ -85,7 +85,7 @@ class B22PdfJobOutcomePageGfpb
           b22FontSizeIafw: 16.sp,
           b22ColorZcbj: Colors.white,
           b22FontWeightPcyy: FontWeight.bold,
-          b22FontTypeQdme: B22FontKindGnzs.b22ExtraFyuc,
+          b22FontTypeQdme: B22FontKindGnzs.extra,
         ),
       ),
     ),
@@ -117,7 +117,7 @@ class B22PdfJobOutcomePageGfpb
           b22FontSizeIafw: 18.sp,
           b22ColorZcbj: Colors.black,
           b22FontWeightPcyy: FontWeight.bold,
-          b22FontTypeQdme: B22FontKindGnzs.b22ExtraFyuc,
+          b22FontTypeQdme: B22FontKindGnzs.extra,
         ),
         Row(
           children: [
@@ -131,7 +131,7 @@ class B22PdfJobOutcomePageGfpb
               b22ControllerPgvc.fileDetailSize,
               b22FontSizeIafw: 12.sp,
               b22ColorZcbj: Color(0xff333333),
-              b22FontTypeQdme: B22FontKindGnzs.b22SemiOvoq,
+              b22FontTypeQdme: B22FontKindGnzs.semi,
             ),
             SizedBox(width: 16.w),
             B22ResourceImageComponentXjch(
@@ -144,7 +144,7 @@ class B22PdfJobOutcomePageGfpb
               b22ControllerPgvc.fileDetailTime,
               b22FontSizeIafw: 12.sp,
               b22ColorZcbj: Color(0xff333333),
-              b22FontTypeQdme: B22FontKindGnzs.b22SemiOvoq,
+              b22FontTypeQdme: B22FontKindGnzs.semi,
             ),
           ],
         ),

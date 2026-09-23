@@ -14,12 +14,12 @@ import 'package:b22_document_workspace_kmzm/b22_shared_midp/b22_interface_ruov/b
 import 'package:flutter/cupertino.dart';
 
 enum B22DashboardSectionVbai {
-  b22FilesClnr(
+  files(
     'b22_files_ljcq',
     'b22_workspace_media_vwug/b22_home_shell_xfaq/b22_library_tab_selected_geel',
     'b22_workspace_media_vwug/b22_home_shell_xfaq/b22_library_tab_unselected_xama',
   ),
-  b22ToolsSoju(
+  tools(
     'b22_tools_qsaq',
     'b22_workspace_media_vwug/b22_home_shell_xfaq/b22_tools_tab_selected_ndvb',
     'b22_workspace_media_vwug/b22_home_shell_xfaq/b22_tools_tab_unselected_ebkw',
@@ -52,7 +52,7 @@ class B22DashboardCoordinatorNjxu extends B22FoundationCoordinatorXsba {
   void onInit() {
     super.onInit();
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22PageViewKvza,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.page_view,
       b22ParametersErwm: {"page": "file"},
     );
     B22AlertOrchestratorNazk.b22InstanceOxzc.b22InitializeJrwh(
@@ -91,12 +91,12 @@ class B22DashboardCoordinatorNjxu extends B22FoundationCoordinatorXsba {
     }
     if (b22TabIndexPvys == 0) {
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.b22PageViewKvza,
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.page_view,
         b22ParametersErwm: {"page": "file"},
       );
     } else if (b22TabIndexPvys == 1) {
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.b22PageViewKvza,
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.page_view,
         b22ParametersErwm: {"page": "tools"},
       );
     }

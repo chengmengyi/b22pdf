@@ -22,7 +22,7 @@ class B22FloatingLayerAccessNudgeCoordinatorQkdz
   void onInit() {
     super.onInit();
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22FloatPopViewTmrg,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.float_pop_view,
     );
   }
 
@@ -30,7 +30,7 @@ class B22FloatingLayerAccessNudgeCoordinatorQkdz
     if (b22HandlingActionQyma) return;
     b22HandlingActionQyma = true;
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22FloatPopClickZcme,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.float_pop_click,
       b22ParametersErwm: <String, dynamic>{'button': 'open'},
     );
     await B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr
@@ -43,7 +43,7 @@ class B22FloatingLayerAccessNudgeCoordinatorQkdz
     if (b22HandlingActionQyma) return;
     b22HandlingActionQyma = true;
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-      b22PointTypeDrbi: B22TelemetrySignalDbrq.b22FloatPopClickZcme,
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.float_pop_click,
       b22ParametersErwm: <String, dynamic>{'button': 'later'},
     );
     b22ClosePromptLmha();
