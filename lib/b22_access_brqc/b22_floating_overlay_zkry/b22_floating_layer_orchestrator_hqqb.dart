@@ -26,34 +26,34 @@ class B22FloatingLayerOrchestratorJbeq {
       return;
     }
     await b22PluginHiby.setTimerOverlayInfo(
-      layoutName: 'large_overlay_layout',
+      layoutName: 'b22_expanded_overlay_panel_layout_jvbo',
       lastPdfSubtitleTemplate: 'b22_last_pdf_page_resume_xmka'.tr,
       lastPdfButtonText: 'b22_open_azmj'.tr,
       continueReadingStr: 'b22_continue_reading_fjse'.tr,
       contentList: B22ExpandedFloatingLayerPanelWpzr.build(),
-      layoutName2: 'small_overlay_layout',
+      layoutName2: 'b22_compact_overlay_panel_layout_uyhd',
       contentList2: B22CompactFloatingLayerPanelJvcs.build(),
       closeOverlayProbability: B22FloatingOhoStoreHxpr.b22ReadUzvw(),
       reflectionConfig: await b22BuildTimerReflectionConfigYlcs(),
       contentList3: [
         TimerOverlayContent(
           title: 'b22_home_fdyl'.tr,
-          subtitle: 'home_func',
+          subtitle: 'b22_home_shortcut_icon_clta',
           button: "",
         ),
         TimerOverlayContent(
           title: 'b22_scan_tbqg'.tr,
-          subtitle: 'scan_func',
+          subtitle: 'b22_scan_shortcut_icon_mfzi',
           button: "",
         ),
         TimerOverlayContent(
           title: 'b22_word_to_pdf_zmcn'.tr,
-          subtitle: 'word_func',
+          subtitle: 'b22_word_conversion_icon_otcr',
           button: "",
         ),
         TimerOverlayContent(
           title: 'b22_image_to_pdf_veiz'.tr,
-          subtitle: 'image_func',
+          subtitle: 'b22_image_conversion_icon_ajfk',
           button: "",
         ),
       ],
@@ -70,7 +70,7 @@ class B22FloatingLayerOrchestratorJbeq {
     return b22PluginHiby.requestOverlayPermission(
       title: 'b22_almost_there_unlock_colon_owpz'.tr,
       desc: 'b22_find_n_below_and_toggle_jhdc'.tr,
-      overlayPermissionGuideLayout: 'overlay_layout',
+      overlayPermissionGuideLayout: 'b22_overlay_permission_guide_layout_rpfa',
     );
   }
 

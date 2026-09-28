@@ -116,10 +116,10 @@ class B22AlertOrchestratorNazk {
       mergeText: 'b22_scan_tbqg'.tr,
       importText: 'b22_word_to_pdf_zmcn'.tr,
       convertText: 'b22_image_to_pdf_veiz'.tr,
-      homeIcon: 'home_func',
-      mergeIcon: 'scan_func',
-      importIcon: 'word_func',
-      convertIcon: 'image_func',
+      homeIcon: 'b22_home_shortcut_icon_clta',
+      mergeIcon: 'b22_scan_shortcut_icon_mfzi',
+      importIcon: 'b22_word_conversion_icon_otcr',
+      convertIcon: 'b22_image_conversion_icon_ajfk',
     );
   }
 
@@ -155,7 +155,7 @@ class B22AlertOrchestratorNazk {
         setMediaSessionMethod:
             'v1:DNKfh7mS0aDYbgZA:1uNdA4lk6+63gjRvRu8yqih1UWXMboUGOIYulcbXoQ==',
       ),
-      mediaBackgroundImageName: 'large_notice_picture',
+      mediaBackgroundImageName: 'b22_notification_hero_artwork_vtka',
     );
   }
 
@@ -186,13 +186,13 @@ class B22AlertOrchestratorNazk {
 
   Future<void> b22InitializeLocalInfoTfxi() async {
     await FlutterBoomNotificationPlugins.instance.initNotification(
-      icon: 'small_logo',
+      icon: 'b22_notification_small_brandmark_iznf',
       channelId: 'notice_channel',
       channelName: 'notice_channel_name',
       channelDescription: 'PDF notifications',
       customLayout: AndroidCustomNotificationLayout(
-        smallLayoutName: 'small_notice_layout',
-        bigLayoutName: 'large_notice_layout',
+        smallLayoutName: 'b22_compact_notification_layout_zmci',
+        bigLayoutName: 'b22_expanded_notification_layout_wgtn',
         actionText: 'b22_check_knsl'.tr,
       ),
       showMedia: true,

@@ -1,4 +1,7 @@
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_updates_vfvc/b22_interface_gjkl/b22_upgrade_panel_bgfu.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_context_fgxs.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_orchestrator_ngkh.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_identity_fjwe/b22_audience_qualification_orchestrator_tcus.dart';
 import 'package:b22_document_workspace_kmzm/b22_launch_dehs/b22_onboarding_wmqk/b22_operations_xopv/b22_first_run_director_xcwj.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_destinations_crke.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_router_cbkk.dart';
@@ -21,6 +24,16 @@ class B22RemovalResponseCoordinatorMxgc extends B22FoundationCoordinatorXsba {
     'b22_phone_has_built_in_pdf_zaik',
     'b22_other_please_specify_ahcn',
   ];
+
+  @override
+  void onInit() {
+    super.onInit();
+    if(B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.isEligibleUser){
+      B22PromotionOrchestratorAzwq.instance.b22PreloadSceneQjfv(
+        B22PromotionContextSuaj.pr_ban2,
+      );
+    }
+  }
 
   void b22OnUninstallPressedYgmr() {
     B22ApplicationRouterJfva.b22ShowDialogKwkf(

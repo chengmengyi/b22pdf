@@ -29,7 +29,8 @@ class B22FloatingLayerAccessCoordinatorNjpi
           .requestOverlayPermission(
             title: 'b22_almost_there_unlock_your_full_xhhm'.tr,
             desc: 'b22_find_n_below_and_toggle_jhdc'.tr,
-            overlayPermissionGuideLayout: 'overlay_layout',
+            overlayPermissionGuideLayout:
+                'b22_overlay_permission_guide_layout_rpfa',
           );
       if (b22PermissionGrantedUsta) {
         B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr

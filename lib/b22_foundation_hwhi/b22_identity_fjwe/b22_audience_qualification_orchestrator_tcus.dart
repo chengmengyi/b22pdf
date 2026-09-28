@@ -28,7 +28,7 @@ import 'package:flutter_tba_info/flutter_tba_info.dart';
 
 class B22AudienceQualificationOrchestratorCaap {
   B22AudienceQualificationOrchestratorCaap._();
-  static final B22AudienceQualificationOrchestratorCaap b22InstanceWcsm =
+  static final b22InstanceWcsm =
       B22AudienceQualificationOrchestratorCaap._();
 
   bool b22IsEligibleUserOvsb = false;

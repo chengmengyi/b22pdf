@@ -383,7 +383,7 @@
         <entry key="flutter_pdf_ad_plugins">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_pdf_ad_plugins-0.2.9/lib" />
+              <option value="$PROJECT_DIR$/../plugins/flutter_pdf_ad_plugins/lib" />
             </list>
           </value>
         </entry>
@@ -1245,7 +1245,6 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_custom_facebook-0.0.5/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_html-3.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_lints-6.0.0/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_pdf_ad_plugins-0.2.9/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.35/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_preview_file-0.0.9/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_screenutil-5.9.3/lib" />
@@ -1364,6 +1363,7 @@
       <root url="file://$USER_HOME$/flutter3.44.2/packages/flutter_web_plugins/lib" />
       <root url="file://$PROJECT_DIR$/../plugins/flutter_add_widget_plugins/lib" />
       <root url="file://$PROJECT_DIR$/../plugins/flutter_boom_notification_plugins/lib" />
+      <root url="file://$PROJECT_DIR$/../plugins/flutter_pdf_ad_plugins/lib" />
       <root url="file://$PROJECT_DIR$/../plugins/flutter_pdf_risk_control_plugins/lib" />
     </CLASSES>
     <JAVADOC />

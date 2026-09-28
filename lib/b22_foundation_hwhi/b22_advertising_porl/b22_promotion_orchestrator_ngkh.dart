@@ -75,7 +75,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
           headline: headline,
         );
       },
-      smallNativeAdLayoutName: 'native_ad_layout',
+      smallNativeAdLayoutName: 'b22_native_promotion_layout_dkqs',
     );
     await b22PreloadStartupAdScenesLtcj();
   }

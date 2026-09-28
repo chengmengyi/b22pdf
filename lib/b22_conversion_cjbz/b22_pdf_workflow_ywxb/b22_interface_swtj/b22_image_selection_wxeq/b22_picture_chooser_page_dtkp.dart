@@ -51,81 +51,89 @@ class B22PictureChooserPageVaxe
     ),
     child: Row(
       children: [
-        B22TouchGuardComponentKong(
-          b22OnPressedXvbd: b22ControllerTprx.b22OnReplacePressedQrex,
-          b22ChildWksr: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              B22ResourceImageComponentXjch(
-                "b22_conversion_media_xzqz/b22_tool_actions_wwfr/b22_rescan_action_ftzp",
-                b22WidthKbfi: 28.w,
-                b22HeightUsfn: 28.w,
-              ),
-              SizedBox(width: 4.h),
-              B22TranslatedLabelComponentJklc(
-                'b22_retake_hkla'.tr,
-                b22FontSizeIafw: 12.sp,
-                b22ColorZcbj: Color(0xff333333),
-                b22FontWeightPcyy: FontWeight.w500,
-                b22FontTypeQdme: B22FontKindGnzs.medium,
-              ),
-            ],
-          ),
-        ),
-        SizedBox(width: 12.w),
-        B22TouchGuardComponentKong(
-          b22OnPressedXvbd: b22ControllerTprx.b22OnAddPressedIkhb,
-          b22ChildWksr: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              B22ResourceImageComponentXjch(
-                "b22_conversion_media_xzqz/b22_tool_actions_wwfr/b22_page_add_action_dfwv",
-                b22WidthKbfi: 28.w,
-                b22HeightUsfn: 28.w,
-              ),
-              SizedBox(width: 4.h),
-              B22TranslatedLabelComponentJklc(
-                'b22_add_hibq'.tr,
-                b22FontSizeIafw: 12.sp,
-                b22ColorZcbj: Color(0xff333333),
-                b22FontWeightPcyy: FontWeight.w500,
-                b22FontTypeQdme: B22FontKindGnzs.medium,
-              ),
-            ],
+        Expanded(
+          child: B22TouchGuardComponentKong(
+            b22OnPressedXvbd: b22ControllerTprx.b22OnReplacePressedQrex,
+            b22ChildWksr: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                B22ResourceImageComponentXjch(
+                  "b22_conversion_media_xzqz/b22_tool_actions_wwfr/b22_rescan_action_ftzp",
+                  b22WidthKbfi: 28.w,
+                  b22HeightUsfn: 28.w,
+                ),
+                SizedBox(width: 4.h),
+                Expanded(
+                  child: B22TranslatedLabelComponentJklc(
+                    'b22_retake_hkla'.tr,
+                    b22FontSizeIafw: 12.sp,
+                    b22ColorZcbj: Color(0xff333333),
+                    b22FontWeightPcyy: FontWeight.w500,
+                    b22FontTypeQdme: B22FontKindGnzs.medium,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         SizedBox(width: 12.w),
         Expanded(
           child: B22TouchGuardComponentKong(
-            b22OnPressedXvbd: () {
-              b22ControllerTprx.b22OnSavePressedUysx();
-            },
-            b22ChildWksr: Container(
-              width: double.infinity,
-              height: 44.h,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Color(0xffC40000),
-                borderRadius: BorderRadius.circular(2.w),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  B22ResourceImageComponentXjch(
-                    "b22_shared_controls_ybsz/b22_common_actions_lskr/b22_confirm_action_light_rqzj",
-                    b22WidthKbfi: 18.w,
-                    b22HeightUsfn: 18.w,
+            b22OnPressedXvbd: b22ControllerTprx.b22OnAddPressedIkhb,
+            b22ChildWksr: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                B22ResourceImageComponentXjch(
+                  "b22_conversion_media_xzqz/b22_tool_actions_wwfr/b22_page_add_action_dfwv",
+                  b22WidthKbfi: 28.w,
+                  b22HeightUsfn: 28.w,
+                ),
+                SizedBox(width: 4.h),
+                Expanded(
+                  child: B22TranslatedLabelComponentJklc(
+                    'b22_add_hibq'.tr,
+                    b22FontSizeIafw: 12.sp,
+                    b22ColorZcbj: Color(0xff333333),
+                    b22FontWeightPcyy: FontWeight.w500,
+                    b22FontTypeQdme: B22FontKindGnzs.medium,
                   ),
-                  SizedBox(width: 4.w),
-                  B22TranslatedLabelComponentJklc(
+                ),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(width: 12.w),
+        B22TouchGuardComponentKong(
+          b22OnPressedXvbd: () {
+            b22ControllerTprx.b22OnSavePressedUysx();
+          },
+          b22ChildWksr: Container(
+            width: 138.w,
+            height: 44.h,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Color(0xffC40000),
+              borderRadius: BorderRadius.circular(2.w),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                B22ResourceImageComponentXjch(
+                  "b22_shared_controls_ybsz/b22_common_actions_lskr/b22_confirm_action_light_rqzj",
+                  b22WidthKbfi: 18.w,
+                  b22HeightUsfn: 18.w,
+                ),
+                SizedBox(width: 4.w),
+                Expanded(
+                  child: B22TranslatedLabelComponentJklc(
                     'b22_save_pdf_yqps'.tr,
                     b22FontSizeIafw: 14.sp,
                     b22ColorZcbj: Colors.white,
                     b22FontWeightPcyy: FontWeight.bold,
                     b22FontTypeQdme: B22FontKindGnzs.medium,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

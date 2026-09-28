@@ -95,7 +95,7 @@ class B22QuickActionOrchestratorYmez {
       ShortcutItem(
         type: b22UninstallTypeUwfu,
         localizedTitle: b22UninstallTitleGuae,
-        icon: "uninstall_icon",
+        icon: "b22_uninstall_shortcut_icon_fqyn",
       ),
     ]);
   }
