@@ -428,10 +428,9 @@ packages:
   flutter_pdf_ad_plugins:
     dependency: "direct main"
     description:
-      name: flutter_pdf_ad_plugins
-      sha256: "22bf5237a9c1d2e095e265990ebac93602636b1e1872941dd7629d6c143b8f7d"
-      url: "https://pub.dev"
-    source: hosted
+      path: "/Users/chengmengyi/testbird/plugins/flutter_pdf_ad_plugins"
+      relative: false
+    source: path
     version: "0.2.9"
   flutter_pdf_risk_control_plugins:
     dependency: "direct main"

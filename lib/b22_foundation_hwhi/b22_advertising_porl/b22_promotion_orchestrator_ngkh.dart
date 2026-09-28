@@ -18,6 +18,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
 import 'package:flutter_check_af_new/flutter_check_af_new.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
+import 'package:flutter_pdf_risk_control_plugins/flutter_pdf_risk_control_plugins.dart';
 import 'package:flutter_tba_info/flutter_tba_info.dart';
 import 'package:appsflyer_sdk_plus/appsflyer_sdk.dart';
 
@@ -68,6 +69,11 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
       distinctId: await FlutterTbaInfo.instance.getDistinctId(),
       fengKongLogic: () {
         return false;
+      },
+      nativeAdHeadlineCallback: ({required String? headline, required bool isNextGenAdmob})  {
+        FlutterPdfRiskControlPlugins.instance.checkTestAdUser(
+          headline: headline,
+        );
       },
       smallNativeAdLayoutName: 'native_ad_layout',
     );
