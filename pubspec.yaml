@@ -55,20 +55,16 @@ dependencies:
   firebase_remote_config: 6.5.3
   firebase_core: 4.11.0
   firebase_analytics: 12.4.3
-  flutter_pdf_ad_plugins:
-    path: /Users/chengmengyi/testbird/plugins/flutter_pdf_ad_plugins
+  flutter_pdf_ad_plugins: 0.3.0
   flutter_tba_info: 0.0.9
   flutter_app_lifecycle: 0.0.3
   flutter_check_af_new: 0.0.2
-  flutter_pdf_risk_control_plugins:
-    path: /Users/chengmengyi/testbird/plugins/flutter_pdf_risk_control_plugins
+  flutter_pdf_risk_control_plugins: 0.0.3
   sqflite: 2.4.2
   dio: 5.8.0+1
   flutter_custom_facebook: 0.0.5
-  flutter_boom_notification_plugins:
-    path: /Users/chengmengyi/testbird/plugins/flutter_boom_notification_plugins
-  flutter_add_widget_plugins:
-    path: /Users/chengmengyi/testbird/plugins/flutter_add_widget_plugins
+  flutter_boom_notification_plugins: 0.0.5
+  flutter_add_widget_plugins: 0.0.5
   url_launcher: 6.3.2
   visibility_detector: 0.4.0+2
   path_provider: 2.1.6
