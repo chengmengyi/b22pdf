@@ -1,3 +1,5 @@
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_orchestrator_bvsc.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_signal_nyqf.dart';
 import 'package:b22_document_workspace_kmzm/b22_workspace_wbvi/b22_library_uivd/b22_interface_cvrz/b22_tools_tab_qcza/b22_utilities_section_coordinator_khxl.dart';
 import 'package:b22_document_workspace_kmzm/b22_workspace_wbvi/b22_home_widget_wejh/b22_operations_dntq/b22_dashboard_module_orchestrator_knhc.dart';
 import 'package:b22_document_workspace_kmzm/b22_conversion_cjbz/b22_pdf_workflow_ywxb/b22_operations_tqim/b22_picture_ingest_orchestrator_wuuu.dart';
@@ -171,6 +173,9 @@ class B22FeatureUtilitiesSectionStatePxpq
         ),
         B22TouchGuardComponentKong(
           b22OnPressedXvbd: () {
+            B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+              b22PointTypeDrbi: B22TelemetrySignalDbrq.widget_tool_click,
+            );
             B22DashboardModuleOrchestratorKvty.b22InstanceVpeq
                 .b22OpenWidgetPickerZojb();
           },
