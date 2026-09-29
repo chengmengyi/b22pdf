@@ -369,9 +369,10 @@ packages:
   flutter_add_widget_plugins:
     dependency: "direct main"
     description:
-      path: "/Users/chengmengyi/testbird/plugins/flutter_add_widget_plugins"
-      relative: false
-    source: path
+      name: flutter_add_widget_plugins
+      sha256: "303c913fabe3983a6efee143145b2f3c5e1b939a6c7b697f5754a8691cc2b616"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.5"
   flutter_app_lifecycle:
     dependency: "direct main"
@@ -384,9 +385,10 @@ packages:
   flutter_boom_notification_plugins:
     dependency: "direct main"
     description:
-      path: "/Users/chengmengyi/testbird/plugins/flutter_boom_notification_plugins"
-      relative: false
-    source: path
+      name: flutter_boom_notification_plugins
+      sha256: "45ea42ee2d9f0499a7667d9f5e2f1aa7b7c21a29bb4ae684c4fe2ae9ac0de156"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.5"
   flutter_check_af_new:
     dependency: "direct main"
@@ -428,16 +430,18 @@ packages:
   flutter_pdf_ad_plugins:
     dependency: "direct main"
     description:
-      path: "/Users/chengmengyi/testbird/plugins/flutter_pdf_ad_plugins"
-      relative: false
-    source: path
-    version: "0.2.9"
+      name: flutter_pdf_ad_plugins
+      sha256: "635d06b50dc5d798ec3388a1a76a3765eb36a4a76df93fa8b95f15d24a0b4c75"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.0"
   flutter_pdf_risk_control_plugins:
     dependency: "direct main"
     description:
-      path: "/Users/chengmengyi/testbird/plugins/flutter_pdf_risk_control_plugins"
-      relative: false
-    source: path
+      name: flutter_pdf_risk_control_plugins
+      sha256: fe6c161eadf27210faaf5e276962cc1392c1c6222d4af245e8ee8981647b16d4
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.3"
   flutter_plugin_android_lifecycle:
     dependency: transitive

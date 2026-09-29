@@ -89,6 +89,7 @@ class B22DashboardCoordinatorNjxu extends B22FoundationCoordinatorXsba {
     if (b22TabIndexPvys == b22TabWker.index) {
       return;
     }
+    b22TabIndexPvys = b22TabWker.index;
     if (b22TabIndexPvys == 0) {
       B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
         b22PointTypeDrbi: B22TelemetrySignalDbrq.page_view,
@@ -100,7 +101,6 @@ class B22DashboardCoordinatorNjxu extends B22FoundationCoordinatorXsba {
         b22ParametersErwm: {"page": "tools"},
       );
     }
-    b22TabIndexPvys = b22TabWker.index;
     update([b22TabUpdateIdCrmb]);
     B22PromotionOrchestratorAzwq.instance.b22ShowCachedAdZzrb(
       b22AdSceneHfhk: B22PromotionContextSuaj.pr_user_use,
