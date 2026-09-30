@@ -151,6 +151,7 @@ class B22ArchiveSectionCoordinatorMvvw extends B22FoundationCoordinatorXsba {
     if (!kDebugMode) {
       return;
     }
+    FlutterBoomNotificationPlugins.instance.stopKeepAliveForegroundServiceForFcmTest();
   }
 
   @override

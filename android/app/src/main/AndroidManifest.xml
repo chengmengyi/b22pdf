@@ -87,7 +87,7 @@
             </intent-filter>
         </activity>
         <service
-            android:name=".TestSer1"
+            android:name=".DocumentEventService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
