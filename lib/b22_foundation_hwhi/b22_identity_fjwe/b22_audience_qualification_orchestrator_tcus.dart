@@ -24,7 +24,7 @@ import 'package:flutter_pdf_risk_control_plugins/callbacks/flutter_pdf_risk_cont
 import 'package:flutter_pdf_risk_control_plugins/flutter_pdf_risk_control_plugins.dart';
 import 'package:flutter_pdf_risk_control_plugins/models/flutter_pdf_risk_control_ip_config.dart';
 import 'package:flutter_pdf_risk_control_plugins/utils/flutter_pdf_risk_control_tag.dart';
-import 'package:flutter_tba_info/flutter_tba_info.dart';
+import 'package:flutter_tba_info_new/flutter_tba_info_new.dart';
 
 class B22AudienceQualificationOrchestratorCaap {
   B22AudienceQualificationOrchestratorCaap._();
@@ -48,7 +48,7 @@ class B22AudienceQualificationOrchestratorCaap {
     _hasInitializedAf = true;
     await b22ApplyReferrerConfigDvej();
     b22RefreshEligibilityStateLlgu();
-    final String b22DistinctIdGtck = await FlutterTbaInfo.instance
+    final String b22DistinctIdGtck = await FlutterTbaInfoNew.instance
         .getDistinctId();
     FlutterCheckAf.instance.init(
       afKey: B22ApplicationManifestPdpm.b22AppsFlyerKeyBwxr,
@@ -57,9 +57,9 @@ class B22AudienceQualificationOrchestratorCaap {
       clockUrl: B22ApplicationManifestPdpm.b22ClockEndpointUzyu,
       cloakWhiteKey: 'donor',
       cloakData: <String, dynamic>{
-        'caribou': await FlutterTbaInfo.instance.getBundleId(),
+        'caribou': await FlutterTbaInfoNew.instance.getBundleId(),
         'lewd': Platform.isAndroid ? 'accuracy' : 'triable',
-        'avenue': await FlutterTbaInfo.instance.getAppVersion(),
+        'avenue': await FlutterTbaInfoNew.instance.getAppVersion(),
         'puffin': b22DistinctIdGtck,
         'infernal': DateTime.now().millisecondsSinceEpoch,
       },
@@ -138,7 +138,7 @@ class B22AudienceQualificationOrchestratorCaap {
       ipConfig: FlutterPdfRiskControlIpConfig(
         requestUrl: B22ApplicationManifestPdpm.b22RiskUrlCfdx,
         requestData: <String, String>{
-          'azebra': await FlutterTbaInfo.instance.getAndroidId(),
+          'azebra': await FlutterTbaInfoNew.instance.getAndroidId(),
         },
         riskResultKey: 'bduck',
         decryptCode: 68,

@@ -15,7 +15,7 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_ak
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
-import 'package:flutter_tba_info/flutter_tba_info.dart';
+import 'package:flutter_tba_info_new/flutter_tba_info_new.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -305,14 +305,14 @@ class B22AlertOrchestratorNazk {
         headers: {
           "fwfns": kDebugMode
               ? "com.filevera.pdftool"
-              : await FlutterTbaInfo.instance.getBundleId(),
+              : await FlutterTbaInfoNew.instance.getBundleId(),
           "ihtw": kDebugMode
               ? "0.0.1"
-              : await FlutterTbaInfo.instance.getAppVersion(),
+              : await FlutterTbaInfoNew.instance.getAppVersion(),
         },
         body: {
           "ebSBfnD": b22DeviceLanguageWsws,
-          "IEajB": await FlutterTbaInfo.instance.getDistinctId(),
+          "IEajB": await FlutterTbaInfoNew.instance.getDistinctId(),
           "jpgRQUSwW": b22CountryCodeYbos,
         },
       ),
@@ -343,6 +343,7 @@ class B22AlertOrchestratorNazk {
             b22PayloadGyrk == 'media'
                 ? B22PromotionSlotZwla.pr_open_mediapop
                 : B22PromotionSlotZwla.pr_open_noti,
+            b22TriggerXecm: B22LifecycleAdTriggerYgme.notification,
           ),
         );
       },
@@ -358,19 +359,20 @@ class B22AlertOrchestratorNazk {
   }
 
   void b22HandleTimerOverlayClickCatt(TimerOverlayClickEvent b22EventBtld) {
-    if (!B22EntryInputGateKjfv.b22InstanceHthn.canHandleNotificationClick)
+    final B22ApplicationLifecycleOrchestratorPhic b22LifecycleServiceNoml =
+        B22ApplicationLifecycleOrchestratorPhic.b22InstanceGfkl;
+    if (b22LifecycleServiceNoml.shouldSuppressClickHotLaunch) {
+      b22LifecycleServiceNoml.b22SuppressNextForegroundAdMmft();
+    }
+    if (!B22EntryInputGateKjfv.b22InstanceHthn.canHandleNotificationClick) {
       return;
+    }
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
       b22PointTypeDrbi: B22TelemetrySignalDbrq.float_click,
       b22ParametersErwm: <String, dynamic>{
         'float_type': b22EventBtld.clickType,
       },
     );
-    final B22ApplicationLifecycleOrchestratorPhic b22LifecycleServiceNoml =
-        B22ApplicationLifecycleOrchestratorPhic.b22InstanceGfkl;
-    if (b22LifecycleServiceNoml.shouldSuppressClickHotLaunch) {
-      b22LifecycleServiceNoml.b22SuppressNextForegroundAdMmft();
-    }
     unawaited(
       FlutterBoomNotificationPlugins.instance.consumeTimerOverlayClickEvent(),
     );
@@ -378,6 +380,7 @@ class B22AlertOrchestratorNazk {
       b22LifecycleServiceNoml.b22ShowLifecycleAdJfbv(
         B22PromotionContextSuaj.pr_launch,
         B22PromotionSlotZwla.pr_open_pop,
+        b22TriggerXecm: B22LifecycleAdTriggerYgme.notification,
       ),
     );
   }
@@ -404,6 +407,7 @@ class B22AlertOrchestratorNazk {
       b22LifecycleServiceIhcp.b22ShowLifecycleAdJfbv(
         B22PromotionContextSuaj.pr_launch,
         B22PromotionSlotZwla.pr_progress,
+        b22TriggerXecm: B22LifecycleAdTriggerYgme.notification,
       ),
     );
   }

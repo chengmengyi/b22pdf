@@ -19,7 +19,7 @@ import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plug
 import 'package:flutter_check_af_new/flutter_check_af_new.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 import 'package:flutter_pdf_risk_control_plugins/flutter_pdf_risk_control_plugins.dart';
-import 'package:flutter_tba_info/flutter_tba_info.dart';
+import 'package:flutter_tba_info_new/flutter_tba_info_new.dart';
 
 class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
   static final B22PromotionOrchestratorAzwq b22AdUtilsInstanceAsde =
@@ -65,7 +65,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     );
     await b22RefreshRemoteAdConfigXndd();
     await FlutterPdfAdPlugins.instance.initPlugins(
-      distinctId: await FlutterTbaInfo.instance.getDistinctId(),
+      distinctId: await FlutterTbaInfoNew.instance.getDistinctId(),
       fengKongLogic: () {
         return false;
       },
@@ -114,6 +114,22 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
       await FlutterPdfAdPlugins.instance.loadPlacement<B22PromotionContextSuaj>(
         b22AdSceneRvij,
         force: true,
+        placementLabelBuilder: (B22PromotionContextSuaj b22SceneStvb) =>
+            b22SceneStvb.name,
+      );
+    } catch (_) {}
+  }
+
+  Future<void> b22LoadPlacementCwio({
+    required B22PromotionContextSuaj b22AdSceneRvij,
+    required B22PromotionSlotZwla b22AdPosIdIjec,
+  }) async {
+    if (!await b22IsPlacementEnabledWiqd(b22AdPosIdIjec)) {
+      return;
+    }
+    try {
+      await FlutterPdfAdPlugins.instance.loadPlacement<B22PromotionContextSuaj>(
+        b22AdSceneRvij,
         placementLabelBuilder: (B22PromotionContextSuaj b22SceneStvb) =>
             b22SceneStvb.name,
       );

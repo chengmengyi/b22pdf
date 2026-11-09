@@ -6,7 +6,7 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_m
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_signal_nyqf.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_orchestrator_bvsc.dart';
 import 'package:b22_document_workspace_kmzm/b22_shared_midp/b22_interface_ruov/b22_foundation_coordinator_owyg.dart';
-import 'package:flutter_tba_info/flutter_tba_info.dart';
+import 'package:flutter_tba_info_new/flutter_tba_info_new.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -43,7 +43,7 @@ class B22ReviewCoordinatorErib extends B22FoundationCoordinatorXsba {
   }
 
   Future<void> b22OpenGooglePlayTgek() async {
-    final String b22PackageNameRmwi = await FlutterTbaInfo.instance
+    final String b22PackageNameRmwi = await FlutterTbaInfoNew.instance
         .getBundleId();
     final Uri b22MarketUriSkcr = Uri.parse(
       'market://details?id=$b22PackageNameRmwi',

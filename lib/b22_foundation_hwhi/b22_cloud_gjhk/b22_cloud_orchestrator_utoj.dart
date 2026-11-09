@@ -3,12 +3,14 @@ import 'dart:convert';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_lifecycle_wopk/b22_application_lifecycle_orchestrator_xzfv.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_configuration_pson/b22_application_manifest_pfbi.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_orchestrator_ngkh.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_ad_click_delay_dhid.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_floating_oho_store_jvlw.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_identity_fjwe/b22_audience_qualification_orchestrator_tcus.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_qdxm.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_kind_lqge.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_hub_deqw.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_operations_ancs/b22_alert_orchestrator_qrqj.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_loading_delay_djiwfe.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_promotion_toggle_store_wqpw.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_cloud_promotion_manifest_store_irzx.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_floating_overlay_zkry/b22_floating_layer_orchestrator_hqqb.dart';
@@ -74,6 +76,15 @@ class B22CloudOrchestratorRhpr {
   }
 
   void b22ApplyRemoteConfigurationUops() {
+    var ad_click_delay = b22RemoteConfigRziz?.getInt("ad_click_delay") ?? 0;
+    if (ad_click_delay > 0) {
+      B22AdClickDelayDhid.b22SaveOaaq(b22TimestampAvvh: ad_click_delay);
+    }
+    var loading_delay = b22RemoteConfigRziz?.getInt("loading_delay") ?? 0;
+    if (loading_delay > 0) {
+      B22LoadingDelayDjiwfe.b22SaveOaaq(b22TimestampAvvh: loading_delay);
+    }
+
     final int b22OpenCooldownBihw =
         b22RemoteConfigRziz?.getInt('new_op_cd') ?? 0;
     if (b22OpenCooldownBihw > 0) {
@@ -142,13 +153,12 @@ class B22CloudOrchestratorRhpr {
       );
     }
 
-    final int b22HotLaunchCooldownPygh =
-        b22RemoteConfigRziz?.getInt("cd_hot") ?? 0;
+    final int b22HotLaunchCooldownPygh = b22RemoteConfigRziz?.getInt("cd_hot") ?? 0;
     if (b22HotLaunchCooldownPygh > 0) {
-      B22ApplicationLifecycleOrchestratorPhic
-              .b22InstanceGfkl
-              .b22HotLaunchCooldownSecondsDqtg =
-          b22HotLaunchCooldownPygh;
+      B22ApplicationLifecycleOrchestratorPhic.b22InstanceGfkl.b22HotLaunchCooldownSecondsDqtg = b22HotLaunchCooldownPygh*1000;
+    }
+    if(b22HotLaunchCooldownPygh==-1){
+      B22ApplicationLifecycleOrchestratorPhic.b22InstanceGfkl.b22HotLaunchCooldownSecondsDqtg = 0;
     }
     b22LoadAdEngagementConfigKbyc();
   }

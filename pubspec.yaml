@@ -56,7 +56,7 @@ dependencies:
   firebase_core: 4.11.0
   firebase_analytics: 12.4.3
   flutter_pdf_ad_plugins: 0.3.1
-  flutter_tba_info: 0.0.9
+  flutter_tba_info_new: 0.0.1
   flutter_app_lifecycle: 0.0.3
   flutter_check_af_new: 0.0.3
   flutter_pdf_risk_control_plugins: 0.0.3

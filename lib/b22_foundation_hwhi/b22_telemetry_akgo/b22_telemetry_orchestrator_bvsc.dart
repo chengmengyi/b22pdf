@@ -8,7 +8,7 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_ak
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_pdf_ad_plugins/bean/ad_info_bean.dart';
-import 'package:flutter_tba_info/flutter_tba_info.dart';
+import 'package:flutter_tba_info_new/flutter_tba_info_new.dart';
 
 class B22TelemetryOrchestratorNqon {
   B22TelemetryOrchestratorNqon._();
@@ -36,7 +36,7 @@ class B22TelemetryOrchestratorNqon {
     final Future<void> b22InstallRequestFutureAqoy = () async {
       final Map<String, dynamic> b22RequestBodyAtnj =
           await b22BuildCommonPayloadLzlq();
-      final Map<dynamic, dynamic> b22ReferrerDataLcuf = await FlutterTbaInfo
+      final Map<dynamic, dynamic> b22ReferrerDataLcuf = await FlutterTbaInfoNew
           .instance
           .getReferrerMap();
       b22RequestBodyAtnj["abide"] = "gamble";
@@ -205,47 +205,47 @@ class B22TelemetryOrchestratorNqon {
   Future<Map<String, dynamic>> b22BuildCommonPayloadLzlq() async {
     return {
       "dextrous": {
-        "caribou": await FlutterTbaInfo.instance.getBundleId(),
-        "puffin": await FlutterTbaInfo.instance.getDistinctId(),
-        "friend": await FlutterTbaInfo.instance.getBrand(),
-        "mix": await FlutterTbaInfo.instance.getDeviceModel(),
-        "casein": await FlutterTbaInfo.instance.getOperator(),
-        "sloane": await FlutterTbaInfo.instance.getSystemLanguage(),
+        "caribou": await FlutterTbaInfoNew.instance.getBundleId(),
+        "puffin": await FlutterTbaInfoNew.instance.getDistinctId(),
+        "friend": await FlutterTbaInfoNew.instance.getBrand(),
+        "mix": await FlutterTbaInfoNew.instance.getDeviceModel(),
+        "casein": await FlutterTbaInfoNew.instance.getOperator(),
+        "sloane": await FlutterTbaInfoNew.instance.getSystemLanguage(),
       },
       "cabot": {
         "lewd": Platform.isAndroid ? "accuracy" : "triable",
-        "avenue": await FlutterTbaInfo.instance.getAppVersion(),
-        "borate": await FlutterTbaInfo.instance.getOsVersion(),
-        "monk": await FlutterTbaInfo.instance.getNetworkType(),
-        "cinema": await FlutterTbaInfo.instance.getAndroidId(),
-        "risible": await FlutterTbaInfo.instance.getIdfv(),
-        "earphone": await FlutterTbaInfo.instance.getOsCountry(),
+        "avenue": await FlutterTbaInfoNew.instance.getAppVersion(),
+        "borate": await FlutterTbaInfoNew.instance.getOsVersion(),
+        "monk": await FlutterTbaInfoNew.instance.getNetworkType(),
+        "cinema": await FlutterTbaInfoNew.instance.getAndroidId(),
+        "risible": await FlutterTbaInfoNew.instance.getIdfv(),
+        "earphone": await FlutterTbaInfoNew.instance.getOsCountry(),
       },
       "maya": {
-        "heart": await FlutterTbaInfo.instance.getLogId(),
+        "heart": await FlutterTbaInfoNew.instance.getLogId(),
         "infernal": DateTime.now().millisecondsSinceEpoch,
-        "mazda": await FlutterTbaInfo.instance.getManufacturer(),
-        "visage": await FlutterTbaInfo.instance.getIdfa(),
-        "olympic": await FlutterTbaInfo.instance.getGaid(),
+        "mazda": await FlutterTbaInfoNew.instance.getManufacturer(),
+        "visage": await FlutterTbaInfoNew.instance.getIdfa(),
+        "olympic": await FlutterTbaInfoNew.instance.getGaid(),
       },
     };
   }
 
   Future<Map<String, String>> b22BuildRequestHeadersAwcm() async {
     return <String, String>{
-      'cinema': await FlutterTbaInfo.instance.getAndroidId(),
+      'cinema': await FlutterTbaInfoNew.instance.getAndroidId(),
     };
   }
 
   Future<String> b22BuildEndpointUrlWwbz() async {
-    return '${B22ApplicationManifestPdpm.b22TbaEndpointZoda}?mazda=${await FlutterTbaInfo.instance.getManufacturer()}&cinema=${await FlutterTbaInfo.instance.getAndroidId()}';
+    return '${B22ApplicationManifestPdpm.b22TbaEndpointZoda}?mazda=${await FlutterTbaInfoNew.instance.getManufacturer()}&cinema=${await FlutterTbaInfoNew.instance.getAndroidId()}';
   }
 
   b22AddUserGroupBsqx(int b22UserGroupLnle) async {
     b22TrackEventWyre(
       b22PointTypeDrbi: B22TelemetrySignalDbrq.ironside,
       b22ParametersErwm: {
-        "puffin": await FlutterTbaInfo.instance.getDistinctId(),
+        "puffin": await FlutterTbaInfoNew.instance.getDistinctId(),
       },
       b22UserGroupJayl: {"user_group": b22UserGroupLnle},
     );
@@ -255,14 +255,14 @@ class B22TelemetryOrchestratorNqon {
     b22TrackEventWyre(
       b22PointTypeDrbi: B22TelemetrySignalDbrq.ironside,
       b22ParametersErwm: {
-        "puffin": await FlutterTbaInfo.instance.getDistinctId(),
+        "puffin": await FlutterTbaInfoNew.instance.getDistinctId(),
       },
       b22UserGroupJayl: {"user_bv": b22NewEligibilityStateVfxa ? 1 : 0},
     );
   }
 
   Future<void> b22IncrementLifetimeDaysXfiy() async {
-    final Map<dynamic, dynamic> b22ReferrerMapUveu = await FlutterTbaInfo
+    final Map<dynamic, dynamic> b22ReferrerMapUveu = await FlutterTbaInfoNew
         .instance
         .getReferrerMap();
     final dynamic b22InstallFirstSecondsXqnb =
@@ -288,7 +288,7 @@ class B22TelemetryOrchestratorNqon {
     b22TrackEventWyre(
       b22PointTypeDrbi: B22TelemetrySignalDbrq.ironside,
       b22ParametersErwm: {
-        "puffin": await FlutterTbaInfo.instance.getDistinctId(),
+        "puffin": await FlutterTbaInfoNew.instance.getDistinctId(),
       },
       b22UserGroupJayl: {"life_time": b22IsInstalledTodayYgrj ? "d0" : "d1"},
     );

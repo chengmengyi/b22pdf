@@ -15,4 +15,6 @@ class B22StorageCatalogQugb {
   static const String b22LastOpenAdCloseTimeYpgd = 'last_open_ad_close_time';
   static const String b22AdSwitchDmzd = 'ad_switch';
   static const String b22FloatOhoFnts = 'float_oho';
+  static const String b22AdClickDelayDJeJO = 'ad_click_delay';
+  static const String b22LoadingDelayfjie = 'loading_delay';
 }
