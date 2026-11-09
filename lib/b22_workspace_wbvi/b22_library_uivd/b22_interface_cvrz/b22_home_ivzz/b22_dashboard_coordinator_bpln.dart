@@ -55,9 +55,8 @@ class B22DashboardCoordinatorNjxu extends B22FoundationCoordinatorXsba {
       b22PointTypeDrbi: B22TelemetrySignalDbrq.page_view,
       b22ParametersErwm: {"page": "file"},
     );
-    B22AlertOrchestratorNazk.b22InstanceOxzc.b22InitializeJrwh(
-      b22RequestPermissionTulq: true,
-    );
+    B22AlertOrchestratorNazk.b22InstanceOxzc
+        .b22RequestNotificationPermissionYwht();
   }
 
   Future<bool> b22OnSystemBackRequestedFens() async {

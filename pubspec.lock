@@ -25,14 +25,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
-  appsflyer_sdk_plus:
-    dependency: transitive
-    description:
-      name: appsflyer_sdk_plus
-      sha256: "66d0c14aa6f1dce80a3622cff7a39c0d736acf5c97459db5fb6d595eeddcaac9"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.4"
   archive:
     dependency: transitive
     description:
@@ -385,19 +377,18 @@ packages:
   flutter_boom_notification_plugins:
     dependency: "direct main"
     description:
-      name: flutter_boom_notification_plugins
-      sha256: "45ea42ee2d9f0499a7667d9f5e2f1aa7b7c21a29bb4ae684c4fe2ae9ac0de156"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.5"
+      path: "/Users/chengmengyi/testbird/plugins/flutter_boom_notification_plugins"
+      relative: false
+    source: path
+    version: "0.0.6"
   flutter_check_af_new:
     dependency: "direct main"
     description:
       name: flutter_check_af_new
-      sha256: "93b8027d008911edcaf954c86fd78bd5b074c70d502fb487223e644c5edcc588"
+      sha256: "1666214aee530b7d9de0111bc4c7b3e9872870dc45faffdb956de338d005edff"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.3"
   flutter_custom_facebook:
     dependency: "direct main"
     description:
@@ -406,6 +397,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.5"
+  flutter_headless_lifecycle_bootstrap:
+    dependency: "direct main"
+    description:
+      name: flutter_headless_lifecycle_bootstrap
+      sha256: "4ceac1a54dd4786a5a7e7f80d605c01dcbebc1a55265b98a5a774bead5445edb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   flutter_html:
     dependency: transitive
     description:
@@ -431,10 +430,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_pdf_ad_plugins
-      sha256: "635d06b50dc5d798ec3388a1a76a3765eb36a4a76df93fa8b95f15d24a0b4c75"
+      sha256: "41e5628e31b291de34c114d66a4e0c1d5571825c04c590362041543d428e3239"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.0"
+    version: "0.3.1"
   flutter_pdf_risk_control_plugins:
     dependency: "direct main"
     description:

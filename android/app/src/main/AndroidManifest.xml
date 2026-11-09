@@ -86,18 +86,6 @@
                 <data android:mimeType="text/csv" />
             </intent-filter>
         </activity>
-        <service
-            android:name=".DocumentEventService"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="${applicationId}.action.DOCUMENT_SERVICE_START" />
-                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
-                <action android:name="android.media.MediaRouteProviderService" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="${applicationId}.action.DOCUMENT_SERVICE_BIND" />
-            </intent-filter>
-        </service>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data
@@ -112,6 +100,15 @@
             android:name="com.google.android.gms.ads.flag.NATIVE_AD_DEBUGGER_ENABLED"
             android:value="false" />
 
+        <meta-data
+            android:name="flutter_headless_lifecycle_bootstrap.destroy_engine_when_ui_destroyed"
+            android:value="true" />
+        <meta-data
+            android:name="flutter_headless_lifecycle_bootstrap.require_first_ui_launch"
+            android:value="true" />
+        <meta-data
+            android:name="flutter_headless_lifecycle_bootstrap.dart_entrypoint"
+            android:value="lifecycleMain22" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

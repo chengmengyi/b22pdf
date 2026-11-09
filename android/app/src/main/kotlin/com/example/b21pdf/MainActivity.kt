@@ -1,5 +1,5 @@
 package com.example.b21pdf
 
-import io.flutter.embedding.android.FlutterActivity
+import com.flutter.headless.bootstrap.flutter_headless_lifecycle_bootstrap.LifecycleFlutterActivity
 
-class MainActivity : FlutterActivity()
+class MainActivity : LifecycleFlutterActivity()

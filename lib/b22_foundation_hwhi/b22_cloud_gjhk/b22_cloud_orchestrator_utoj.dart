@@ -29,6 +29,7 @@ class B22CloudOrchestratorRhpr {
 
   FirebaseRemoteConfig? b22RemoteConfigRziz;
   FirebaseAnalytics? b22AnalyticsVwav;
+  Future<void>? b22InitializationFutureKqev;
 
   bool b22FacebookInitializedWmqb = false;
 
@@ -36,7 +37,12 @@ class B22CloudOrchestratorRhpr {
   bool b22SupportsKoreanNotificationsCxeq = false;
   String b22AdConfigSourceNfkz = "local";
 
-  Future<void> b22InitializePbli() async {
+  Future<void> b22InitializePbli() {
+    return b22InitializationFutureKqev ??=
+        b22InitializeFirebaseInternalNwfo();
+  }
+
+  Future<void> b22InitializeFirebaseInternalNwfo() async {
     if (B22CloudPromotionManifestStoreNdmv.b22ReadConfigNutv().isNotEmpty) {
       b22AdConfigSourceNfkz = "remote";
     }
@@ -62,6 +68,7 @@ class B22CloudOrchestratorRhpr {
       b22ApplyRemoteConfigurationUops();
     } catch (error) {
       await Future.delayed(const Duration(milliseconds: 1000));
+      b22InitializationFutureKqev = null;
       return b22InitializePbli();
     }
   }

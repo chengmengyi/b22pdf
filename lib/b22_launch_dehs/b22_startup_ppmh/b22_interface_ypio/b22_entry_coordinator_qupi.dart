@@ -15,6 +15,7 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_ak
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_orchestrator_bvsc.dart';
 import 'package:b22_document_workspace_kmzm/b22_shared_midp/b22_interface_ruov/b22_foundation_coordinator_owyg.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_floating_overlay_zkry/b22_floating_layer_orchestrator_hqqb.dart';
+import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_operations_ancs/b22_alert_orchestrator_qrqj.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
@@ -44,6 +45,8 @@ class B22EntryCoordinatorVdiw extends B22FoundationCoordinatorXsba
   @override
   void onInit() {
     super.onInit();
+    B22AlertOrchestratorNazk.b22InstanceOxzc
+        .b22RequestNotificationPermissionYwht();
     unawaited(
       B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr
           .b22InitializeTimerOverlayLofh(),

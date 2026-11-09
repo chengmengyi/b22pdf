@@ -32,6 +32,7 @@ class B22AudienceQualificationOrchestratorCaap {
       B22AudienceQualificationOrchestratorCaap._();
 
   bool b22IsEligibleUserOvsb = false;
+  bool _hasInitializedAf = false;
 
   bool get isEligibleUser {
     if (kDebugMode) {
@@ -41,7 +42,11 @@ class B22AudienceQualificationOrchestratorCaap {
   }
 
   Future<void> b22InitializeAttributionGcmr() async {
-    b22ApplyReferrerConfigDvej();
+    if (_hasInitializedAf) {
+      return;
+    }
+    _hasInitializedAf = true;
+    await b22ApplyReferrerConfigDvej();
     b22RefreshEligibilityStateLlgu();
     final String b22DistinctIdGtck = await FlutterTbaInfo.instance
         .getDistinctId();

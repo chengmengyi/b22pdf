@@ -24,41 +24,77 @@ class B22AlertOrchestratorNazk {
   static final B22AlertOrchestratorNazk b22InstanceOxzc =
       B22AlertOrchestratorNazk._();
 
-  bool b22InitializedEtah = false;
+  bool b22PluginInitializedEtah = false;
+  bool b22ListenersInitializedVjqo = false;
+  bool b22TbaInitializedQkbr = false;
+  bool b22PeriodicNotificationsStartedMwxe = false;
+  bool b22BroadcastsInitializedPqiy = false;
+  bool b22FcmInitializedDzku = false;
+  bool b22MediaNotificationsStartedYvca = false;
+  bool b22ShortcutNotificationInitializedLhfg = false;
+  Future<void>? b22BaseInitializationFutureRjns;
+  Future<void> b22PermissionRequestTailKxwa = Future<void>.value();
 
-  Future<void> b22InitializeJrwh({
-    bool b22RequestPermissionTulq = false,
-  }) async {
-    if (b22InitializedEtah) {
-      return;
-    }
+  Future<void> b22InitializeJrwh() async {
     final bool b22CanInitializeOwzu = await b22IsInitializationAllowedCgbv();
     if (!b22CanInitializeOwzu) {
       return;
     }
-    b22InitializeListenersBaae();
+
+    final Future<void> b22InitializationFutureEtzf =
+        b22BaseInitializationFutureRjns ??=
+            b22InitializeNotificationBaseUgwp();
+    try {
+      await b22InitializationFutureEtzf;
+    } catch (_) {
+      if (identical(
+        b22BaseInitializationFutureRjns,
+        b22InitializationFutureEtzf,
+      )) {
+        b22BaseInitializationFutureRjns = null;
+      }
+      rethrow;
+    }
+
+    await b22InitializeMediaNotificationNxyd();
+  }
+
+  Future<void> b22InitializeNotificationBaseUgwp() async {
     await b22InitializeLocalInfoTfxi();
     await b22InitializeTbaInfoVnwr();
-    b22UpdateNewFileNotificationTextBclm();
-    await b22ScheduleLocalNotificationsGzvp();
-    b22InitializeFcmDlde();
-    await b22InitializeBroadcastsMpzh();
-    await b22InitializeMediaNotificationNxyd();
+    b22InitializeListenersBaae();
     b22InitializeShortcutNotificationNtfl();
-    b22InitializedEtah = true;
-    if (b22RequestPermissionTulq) {
-      await Permission.notification.request();
-      B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.storage_system_result,
-        b22ParametersErwm: {
-          "open": (await b22HasNotificationPermissionAqao()) ? 1 : 0,
-        },
-      );
-      B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-        b22PointTypeDrbi: B22TelemetrySignalDbrq.push_guide_view,
-        b22ParametersErwm: {"show_type": "system"},
-      );
+    b22ScheduleLocalNotificationsGzvp();
+    b22InitializeBroadcastsMpzh();
+    b22InitializeFcmDlde();
+  }
+
+  Future<void> b22RequestNotificationPermissionYwht() async {
+    final bool b22CanInitializeOwzu = await b22IsInitializationAllowedCgbv();
+    if (!b22CanInitializeOwzu) {
+      return;
     }
+    final Future<void> b22RequestFutureNkue = b22PermissionRequestTailKxwa
+        .then<void>(
+          (_) => b22PerformNotificationPermissionRequestCqza(),
+          onError: (_) => b22PerformNotificationPermissionRequestCqza(),
+        );
+    b22PermissionRequestTailKxwa = b22RequestFutureNkue;
+    return b22RequestFutureNkue;
+  }
+
+  Future<void> b22PerformNotificationPermissionRequestCqza() async {
+    await Permission.notification.request();
+    B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.storage_system_result,
+      b22ParametersErwm: {
+        "open": (await b22HasNotificationPermissionAqao()) ? 1 : 0,
+      },
+    );
+    B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.push_guide_view,
+      b22ParametersErwm: {"show_type": "system"},
+    );
   }
 
   startSessionBackground()async{
@@ -87,6 +123,9 @@ class B22AlertOrchestratorNazk {
   }
 
   Future<void> b22InitializeTbaInfoVnwr() async {
+    if (b22TbaInitializedQkbr) {
+      return;
+    }
     final Map<String, String> b22HeaderMapYwfg = Map<String, String>.from(
       await B22TelemetryOrchestratorNqon.instance.b22BuildRequestHeadersAwcm(),
     );
@@ -97,7 +136,7 @@ class B22AlertOrchestratorNazk {
           b22PointTypeSktl: B22TelemetrySignalDbrq.push,
           b22ParametersNfej: {'sourse': "local"},
         );
-    FlutterBoomNotificationPlugins.instance.configureNativePushReporting(
+    await FlutterBoomNotificationPlugins.instance.configureNativePushReporting(
       enabled: true,
       url: b22RequestUrlHprb,
       headers: b22HeaderMapYwfg,
@@ -108,10 +147,17 @@ class B22AlertOrchestratorNazk {
       notificationSourceKey: "sourse#mit",
       packageKey: "caribou",
     );
+    b22TbaInitializedQkbr = true;
   }
 
-  void b22InitializeShortcutNotificationNtfl() {
-    FlutterBoomNotificationPlugins.instance.showPersistentShortcutNotification(
+  Future<void> b22InitializeShortcutNotificationNtfl({
+    bool b22ForceYwov = false,
+  }) async {
+    if (!b22ForceYwov && b22ShortcutNotificationInitializedLhfg) {
+      return;
+    }
+    await FlutterBoomNotificationPlugins.instance
+        .showPersistentShortcutNotification(
       homeText: 'b22_home_fdyl'.tr,
       mergeText: 'b22_scan_tbqg'.tr,
       importText: 'b22_word_to_pdf_zmcn'.tr,
@@ -121,14 +167,19 @@ class B22AlertOrchestratorNazk {
       importIcon: 'b22_word_conversion_icon_otcr',
       convertIcon: 'b22_image_conversion_icon_ajfk',
     );
+    b22ShortcutNotificationInitializedLhfg = true;
   }
 
   Future<void> b22InitializeMediaNotificationNxyd() async {
     final bool b22CanInitializeCmhs = await b22IsInitializationAllowedCgbv();
-    if (!b22CanInitializeCmhs) {
+    if (!b22CanInitializeCmhs || b22MediaNotificationsStartedYvca) {
       return;
     }
-    FlutterBoomNotificationPlugins.instance.periodicallyShowMediaWithDuration(
+    await FlutterBoomNotificationPlugins.instance.updateShowMediaTag(
+      showMedia: true,
+    );
+    await FlutterBoomNotificationPlugins.instance
+        .periodicallyShowMediaWithDuration(
       reflectionConfig: MediaReflectionConfig(
         secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi,
         mediaSessionClass:
@@ -157,14 +208,23 @@ class B22AlertOrchestratorNazk {
       ),
       mediaBackgroundImageName: 'b22_notification_hero_artwork_vtka',
     );
+    b22MediaNotificationsStartedYvca = true;
   }
 
   Future<void> b22InitializeBroadcastsMpzh() async {
-    FlutterBoomNotificationPlugins.instance.registerBroadcastNotifications();
+    if (b22BroadcastsInitializedPqiy) {
+      return;
+    }
+    await FlutterBoomNotificationPlugins.instance
+        .registerBroadcastNotifications();
+    b22BroadcastsInitializedPqiy = true;
   }
 
-  void b22InitializeFcmDlde() {
-    FlutterBoomNotificationPlugins.instance.subscribeToTopic(
+  Future<void> b22InitializeFcmDlde() async {
+    if (b22FcmInitializedDzku) {
+      return;
+    }
+    await FlutterBoomNotificationPlugins.instance.subscribeToTopic(
       channelId: 'fcm_notice_channel',
       channelName: 'fcm_notice_channel_name',
       priority: Priority.max,
@@ -172,19 +232,29 @@ class B22AlertOrchestratorNazk {
       style: 'beauty',
       beautyButton: 'Claim',
     );
+    b22FcmInitializedDzku = true;
   }
 
   Future<void> b22ScheduleLocalNotificationsGzvp() async {
-    FlutterBoomNotificationPlugins.instance.periodicallyShowLocalWithDuration();
+    if (b22PeriodicNotificationsStartedMwxe) {
+      return;
+    }
+    await FlutterBoomNotificationPlugins.instance
+        .periodicallyShowLocalWithDuration();
+    b22PeriodicNotificationsStartedMwxe = true;
   }
 
-  void b22UpdateNewFileNotificationTextBclm() {
-    FlutterBoomNotificationPlugins.instance.setGalleryImageNotificationInfo(
+  Future<void> b22UpdateNewFileNotificationTextBclm() async {
+    await FlutterBoomNotificationPlugins.instance
+        .setGalleryImageNotificationInfo(
       title: 'b22_you_have_a_new_file_egds'.tr,
     );
   }
 
   Future<void> b22InitializeLocalInfoTfxi() async {
+    if (b22PluginInitializedEtah) {
+      return;
+    }
     await FlutterBoomNotificationPlugins.instance.initNotification(
       icon: 'b22_notification_small_brandmark_iznf',
       channelId: 'notice_channel',
@@ -195,9 +265,11 @@ class B22AlertOrchestratorNazk {
         bigLayoutName: 'b22_expanded_notification_layout_wgtn',
         actionText: 'b22_check_knsl'.tr,
       ),
-      showMedia: true,
+      showMedia: false,
       config: await b22BuildNotificationConfigEces(),
     );
+    await b22UpdateNewFileNotificationTextBclm();
+    b22PluginInitializedEtah = true;
   }
 
   Future<NotificationInitConfig> b22BuildNotificationConfigEces() async {
@@ -249,6 +321,9 @@ class B22AlertOrchestratorNazk {
   }
 
   void b22InitializeListenersBaae() {
+    if (b22ListenersInitializedVjqo) {
+      return;
+    }
     FlutterBoomNotificationPlugins.instance.setListeners(
       onNotificationClicked: (LocalNotificationEvent b22EventPgxr) {
         final B22ApplicationLifecycleOrchestratorPhic b22LifecycleServiceGzvw =
@@ -279,6 +354,7 @@ class B22AlertOrchestratorNazk {
       onTimerOverlayClicked: b22HandleTimerOverlayClickCatt,
       onProcessingOverlayClicked: b22HandleProcessingOverlayClickNhcp,
     );
+    b22ListenersInitializedVjqo = true;
   }
 
   void b22HandleTimerOverlayClickCatt(TimerOverlayClickEvent b22EventBtld) {
@@ -340,8 +416,8 @@ class B22AlertOrchestratorNazk {
     await FlutterBoomNotificationPlugins.instance.refreshNotificationConfig(
       config: await b22BuildNotificationConfigEces(),
     );
-    b22InitializeShortcutNotificationNtfl();
-    b22UpdateNewFileNotificationTextBclm();
+    await b22InitializeShortcutNotificationNtfl(b22ForceYwov: true);
+    await b22UpdateNewFileNotificationTextBclm();
   }
 
   Future<void> b22ShowAdFollowUpNotificationQtyb() async {

@@ -20,7 +20,6 @@ import 'package:flutter_check_af_new/flutter_check_af_new.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 import 'package:flutter_pdf_risk_control_plugins/flutter_pdf_risk_control_plugins.dart';
 import 'package:flutter_tba_info/flutter_tba_info.dart';
-import 'package:appsflyer_sdk_plus/appsflyer_sdk.dart';
 
 class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
   static final B22PromotionOrchestratorAzwq b22AdUtilsInstanceAsde =

@@ -18,43 +18,61 @@ class B22TelemetryOrchestratorNqon {
   static B22TelemetryOrchestratorNqon get instance => b22InstanceHnze;
 
   final Dio b22DioClientLfjx = Dio();
+  Future<void>? b22InstallRequestFutureXqmf;
 
   Future<void> b22TrackInstallHdny() async {
     b22IncrementLifetimeDaysXfiy();
-    b22TrackSessionIhkh();
     if (!B22SubmitInstallSignalStoreKmvw.b22ReadEnabledLrfs()) {
       return;
     }
 
-    final Map<String, dynamic> b22RequestBodyAtnj =
-        await b22BuildCommonPayloadLzlq();
-    final Map<dynamic, dynamic> b22ReferrerDataLcuf = await FlutterTbaInfo
-        .instance
-        .getReferrerMap();
-    b22RequestBodyAtnj["abide"] = "gamble";
-    b22RequestBodyAtnj["space"] = b22ReferrerDataLcuf["build"];
-    b22RequestBodyAtnj["ground"] = b22ReferrerDataLcuf["referrer_url"];
-    b22RequestBodyAtnj["utter"] = b22ReferrerDataLcuf["install_version"];
-    b22RequestBodyAtnj["giddy"] = b22ReferrerDataLcuf["user_agent"];
-    b22RequestBodyAtnj["paucity"] = "butt";
-    b22RequestBodyAtnj["slept"] =
-        b22ReferrerDataLcuf["referrer_click_timestamp_seconds"];
-    b22RequestBodyAtnj["surah"] =
-        b22ReferrerDataLcuf["install_begin_timestamp_seconds"];
-    b22RequestBodyAtnj["signpost"] =
-        b22ReferrerDataLcuf["referrer_click_timestamp_server_seconds"];
-    b22RequestBodyAtnj["pristine"] =
-        b22ReferrerDataLcuf["install_begin_timestamp_server_seconds"];
-    b22RequestBodyAtnj["beside"] = b22ReferrerDataLcuf["install_first_seconds"];
-    b22RequestBodyAtnj["gown"] = b22ReferrerDataLcuf["last_update_seconds"];
+    final Future<void>? b22RunningInstallRequestZlwe =
+        b22InstallRequestFutureXqmf;
+    if (b22RunningInstallRequestZlwe != null) {
+      await b22RunningInstallRequestZlwe;
+      return;
+    }
 
-    final bool b22UploadedUebt = await b22SendWithRetryGnul(
-      b22BodySrey: b22RequestBodyAtnj,
-      b22EventTypeQdpi: 'install',
-      b22EventNameVgpn: 'install',
-    );
-    if (b22UploadedUebt) {
-      await B22SubmitInstallSignalStoreKmvw.b22SaveEnabledBllf(false);
+    final Future<void> b22InstallRequestFutureAqoy = () async {
+      final Map<String, dynamic> b22RequestBodyAtnj =
+          await b22BuildCommonPayloadLzlq();
+      final Map<dynamic, dynamic> b22ReferrerDataLcuf = await FlutterTbaInfo
+          .instance
+          .getReferrerMap();
+      b22RequestBodyAtnj["abide"] = "gamble";
+      b22RequestBodyAtnj["space"] = b22ReferrerDataLcuf["build"];
+      b22RequestBodyAtnj["ground"] = b22ReferrerDataLcuf["referrer_url"];
+      b22RequestBodyAtnj["utter"] = b22ReferrerDataLcuf["install_version"];
+      b22RequestBodyAtnj["giddy"] = b22ReferrerDataLcuf["user_agent"];
+      b22RequestBodyAtnj["paucity"] = "butt";
+      b22RequestBodyAtnj["slept"] =
+          b22ReferrerDataLcuf["referrer_click_timestamp_seconds"];
+      b22RequestBodyAtnj["surah"] =
+          b22ReferrerDataLcuf["install_begin_timestamp_seconds"];
+      b22RequestBodyAtnj["signpost"] =
+          b22ReferrerDataLcuf["referrer_click_timestamp_server_seconds"];
+      b22RequestBodyAtnj["pristine"] =
+          b22ReferrerDataLcuf["install_begin_timestamp_server_seconds"];
+      b22RequestBodyAtnj["beside"] =
+          b22ReferrerDataLcuf["install_first_seconds"];
+      b22RequestBodyAtnj["gown"] = b22ReferrerDataLcuf["last_update_seconds"];
+
+      final bool b22UploadedUebt = await b22SendWithRetryGnul(
+        b22BodySrey: b22RequestBodyAtnj,
+        b22EventTypeQdpi: 'install',
+        b22EventNameVgpn: 'install',
+      );
+      if (b22UploadedUebt) {
+        await B22SubmitInstallSignalStoreKmvw.b22SaveEnabledBllf(false);
+      }
+    }();
+    b22InstallRequestFutureXqmf = b22InstallRequestFutureAqoy;
+    try {
+      await b22InstallRequestFutureAqoy;
+    } finally {
+      if (identical(b22InstallRequestFutureXqmf, b22InstallRequestFutureAqoy)) {
+        b22InstallRequestFutureXqmf = null;
+      }
     }
   }
 

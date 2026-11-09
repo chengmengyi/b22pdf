@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_configuration_pson/b22_application_manifest_pfbi.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_orchestrator_ngkh.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_identity_fjwe/b22_audience_qualification_orchestrator_tcus.dart';
@@ -15,34 +17,57 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-
+import 'package:flutter_headless_lifecycle_bootstrap/flutter_headless_lifecycle_bootstrap.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_operations_ancs/b22_alert_orchestrator_qrqj.dart';
 
-Future<void> main() async {
+@pragma('vm:entry-point')
+Future<void> lifecycleMain22() async {
+  await FlutterHeadlessLifecycleBootstrap.run(
+    backgroundInitializer: backInit22fekpfe,
+    uiInitializer: uiInit22dkwod,
+  );
+}
+
+Future<void> backInit22fekpfe() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   await GetStorage.init();
-  await B22ApplicationLexiconNofd.b22InitializeEncryptedLexiconRxye();
+
+  // Service 无界面拉活也上报 install；不要在这里上报 session。
+  unawaited(B22TelemetryOrchestratorNqon.instance.b22TrackInstallHdny());
+
+  // 后台首次拉起时 GetMaterialApp 尚未创建，必须先手动初始化 GetX 翻译。
+  Get.addTranslations(B22ApplicationLexiconNofd().keys);
+  Get.locale = B22ApplicationLexiconNofd.b22ResolveInitialLocaleYfpt();
+  Get.fallbackLocale = const Locale('en', 'US');
+
   B22AlertOrchestratorNazk.b22InstanceOxzc.startSessionBackground();
-  final Locale b22InitialLocaleFoyu =
-      B22ApplicationLexiconNofd.b22ResolveInitialLocaleYfpt();
+
+  unawaited(B22CloudOrchestratorRhpr.b22InstanceBbui.b22InitializePbli());
+
+  await B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.b22InitializeAttributionGcmr();
+}
+
+Future<void> uiInit22dkwod() async {
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await B22ApplicationLexiconNofd.b22InitializeEncryptedLexiconRxye();
+  final Locale b22InitialLocaleFoyu = B22ApplicationLexiconNofd.b22ResolveInitialLocaleYfpt();
   Get.locale = b22InitialLocaleFoyu;
   Get.fallbackLocale = B22ApplicationLexiconNofd.b22FallbackLocaleGbqu;
   await B22FirstEntryOriginOrchestratorJicy.instance.b22InitializeLwsd();
-  B22CloudOrchestratorRhpr.b22InstanceBbui.b22InitializePbli();
   B22PromotionOrchestratorAzwq.instance.b22InitializeYjdz();
   await B22QuickActionOrchestratorYmez.instance.b22InitializeKqab();
-  B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.b22InitializeAttributionGcmr();
-  B22AlertOrchestratorNazk.b22InstanceOxzc.b22InitializeJrwh(
-    b22RequestPermissionTulq: true,
-  );
   B22TelemetryOrchestratorNqon.instance.b22TrackInstallHdny();
-  B22AlertOrchestratorNazk.b22InstanceOxzc
-      .b22TrackInitialNotificationEventKvcs();
+  B22TelemetryOrchestratorNqon.instance.b22TrackSessionIhkh();
+  B22AlertOrchestratorNazk.b22InstanceOxzc.b22TrackInitialNotificationEventKvcs();
   B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr.b22CloseTimerOverlayZifz();
   runApp(
     B22FeaturePdfApplicationNgqh(b22InitialLocaleJuhu: b22InitialLocaleFoyu),
   );
+}
+
+Future<void> main() async {
+  await lifecycleMain22();
 }
 
 class B22FeaturePdfApplicationNgqh extends StatelessWidget {
