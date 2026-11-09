@@ -167,7 +167,7 @@ class B22LocaleChooserPagePkgi
 }
 
 class B22SelectLanguageNativePromotionHbhw extends StatefulWidget {
-  const B22SelectLanguageNativePromotionHbhw();
+  const B22SelectLanguageNativePromotionHbhw({super.key});
 
   @override
   State<B22SelectLanguageNativePromotionHbhw> createState() =>
@@ -176,12 +176,12 @@ class B22SelectLanguageNativePromotionHbhw extends StatefulWidget {
 
 class B22SelectLanguageNativePromotionStateDvmt
     extends State<B22SelectLanguageNativePromotionHbhw> {
-  static const Duration b22RetryDurationTinn = Duration(milliseconds: 500);
-
-  Timer? b22RetryTimerTtga;
   Widget? b22AdWidgetElpf;
   bool b22CheckingAdFbmx = false;
   bool b22CanShowAdXrav = false;
+  bool b22LoadListenerRegisteredAwon = false;
+  bool b22RequestedNextAdXzke = false;
+  bool b22PendingLoadSuccessZqtd = false;
 
   @override
   void initState() {
@@ -195,16 +195,34 @@ class B22SelectLanguageNativePromotionStateDvmt
     final bool b22CanShowAdZxvd = await b22AdServiceBkej
         .b22IsPlacementEnabledWiqd(B22PromotionSlotZwla.pr_new_lan_nat);
     if (!mounted || !b22CanShowAdZxvd) return;
+    b22AdServiceBkej.b22AddLoadSuccessListenerGgbr(
+      b22OnAdLoadSuccessEtvc,
+    );
+    b22LoadListenerRegisteredAwon = true;
     setState(() => b22CanShowAdXrav = true);
     b22AdServiceBkej.b22TrackAdOpportunityFbhf(
-      b22AdSceneGiep: B22PromotionContextSuaj.pr_ban1,
+      b22AdSceneGiep: B22PromotionContextSuaj.pr_ban2,
       b22AdPosIdEbwa: B22PromotionSlotZwla.pr_new_lan_nat,
     );
     unawaited(b22AttachNativeAdWidgetHeug());
-    b22RetryTimerTtga = Timer.periodic(
-      b22RetryDurationTinn,
-      (_) => unawaited(b22AttachNativeAdWidgetHeug()),
+    unawaited(
+      b22AdServiceBkej.b22LoadPlacementCwio(
+        b22AdSceneRvij: B22PromotionContextSuaj.pr_ban2,
+        b22AdPosIdIjec: B22PromotionSlotZwla.pr_new_lan_nat,
+      ),
     );
+  }
+
+  void b22OnAdLoadSuccessEtvc(B22PromotionContextSuaj b22AdSceneOimt) {
+    if (b22AdSceneOimt != B22PromotionContextSuaj.pr_ban2 ||
+        b22AdWidgetElpf != null) {
+      return;
+    }
+    if (b22CheckingAdFbmx) {
+      b22PendingLoadSuccessZqtd = true;
+      return;
+    }
+    unawaited(b22AttachNativeAdWidgetHeug());
   }
 
   Future<void> b22AttachNativeAdWidgetHeug() async {
@@ -216,22 +234,33 @@ class B22SelectLanguageNativePromotionStateDvmt
       final Widget? b22AdWidgetXgyh = await B22PromotionOrchestratorAzwq
           .instance
           .b22BuildCachedNativeAdJqgz(
-            b22AdSceneTbyk: B22PromotionContextSuaj.pr_ban1,
+            b22AdSceneTbyk: B22PromotionContextSuaj.pr_ban2,
             b22AdPosIdXckb: B22PromotionSlotZwla.pr_new_lan_nat,
           );
       if (!mounted || b22AdWidgetXgyh == null) {
         return;
       }
-      b22RetryTimerTtga?.cancel();
-      b22RetryTimerTtga = null;
       setState(() {
         b22AdWidgetElpf = b22AdWidgetXgyh;
       });
-      unawaited(
-        B22PromotionOrchestratorAzwq.instance.b22LoadDocumentListNativeAdAfwu(),
-      );
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted || b22RequestedNextAdXzke) return;
+        b22RequestedNextAdXzke = true;
+        unawaited(
+          B22PromotionOrchestratorAzwq.instance.b22ForceLoadSceneWgcb(
+            b22AdSceneRvij: B22PromotionContextSuaj.pr_ban2,
+            b22AdPosIdIjec: B22PromotionSlotZwla.pr_new_lan_nat,
+          ),
+        );
+      });
     } finally {
       b22CheckingAdFbmx = false;
+      if (mounted &&
+          b22PendingLoadSuccessZqtd &&
+          b22AdWidgetElpf == null) {
+        b22PendingLoadSuccessZqtd = false;
+        unawaited(b22AttachNativeAdWidgetHeug());
+      }
     }
   }
 
@@ -241,14 +270,22 @@ class B22SelectLanguageNativePromotionStateDvmt
     return SizedBox(
       width: double.infinity,
       height: 58.h,
-      child: b22AdWidgetElpf ?? const SizedBox.shrink(),
+      child:
+          b22AdWidgetElpf ??
+          const B22ResourceImageComponentXjch(
+            'b22_monetization_media_pgct/b22_native_ad_surfaces_fxri/b22_native_ad_fallback_fyvg',
+            b22WidthKbfi: double.infinity,
+          ),
     );
   }
 
   @override
   void dispose() {
-    b22RetryTimerTtga?.cancel();
-    b22RetryTimerTtga = null;
+    if (b22LoadListenerRegisteredAwon) {
+      B22PromotionOrchestratorAzwq.instance
+          .b22RemoveLoadSuccessListenerLhbt(b22OnAdLoadSuccessEtvc);
+      b22LoadListenerRegisteredAwon = false;
+    }
     super.dispose();
   }
 }

@@ -21,6 +21,9 @@ import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 import 'package:flutter_pdf_risk_control_plugins/flutter_pdf_risk_control_plugins.dart';
 import 'package:flutter_tba_info_new/flutter_tba_info_new.dart';
 
+typedef B22PromotionLoadSuccessListenerBfno =
+    void Function(B22PromotionContextSuaj b22AdSceneOimt);
+
 class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
   static final B22PromotionOrchestratorAzwq b22AdUtilsInstanceAsde =
       B22PromotionOrchestratorAzwq._();
@@ -36,6 +39,20 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
       <B22PromotionContextSuaj>[];
   final Set<B22PromotionContextSuaj> b22NoReloadAfterCloseAdScenesIrpa =
       <B22PromotionContextSuaj>{B22PromotionContextSuaj.pr_new_launch};
+  final Set<B22PromotionLoadSuccessListenerBfno>
+  b22LoadSuccessListenersAtuo = <B22PromotionLoadSuccessListenerBfno>{};
+
+  void b22AddLoadSuccessListenerGgbr(
+    B22PromotionLoadSuccessListenerBfno b22ListenerJaky,
+  ) {
+    b22LoadSuccessListenersAtuo.add(b22ListenerJaky);
+  }
+
+  void b22RemoveLoadSuccessListenerLhbt(
+    B22PromotionLoadSuccessListenerBfno b22ListenerJaky,
+  ) {
+    b22LoadSuccessListenersAtuo.remove(b22ListenerJaky);
+  }
 
   Future<void> b22InitializeYjdz() async {
     b22ConfigureStartupPreloadScenesVcly();
@@ -191,15 +208,10 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
   void b22ConfigureStartupPreloadScenesVcly() {
     b22StartupPreloadAdScenesYjme.clear();
     b22StartupPreloadAdScenesYjme.add(B22PromotionContextSuaj.pr_launch);
-    b22StartupPreloadAdScenesYjme.add(B22PromotionContextSuaj.pr_ban1);
-    if (B22AudienceQualificationOrchestratorCaap
-        .b22InstanceWcsm
-        .isEligibleUser) {
-      b22StartupPreloadAdScenesYjme.add(B22PromotionContextSuaj.pr_ban2);
+    if (B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.isEligibleUser) {
       b22StartupPreloadAdScenesYjme.add(B22PromotionContextSuaj.pr_exit);
     }
-    b22LoadNewLaunchAdSxft =
-        B22PrepareFreshEntryPromotionStoreUgpz.b22ReadEnabledZang();
+    b22LoadNewLaunchAdSxft = B22PrepareFreshEntryPromotionStoreUgpz.b22ReadEnabledZang();
     if (b22LoadNewLaunchAdSxft) {
       B22PrepareFreshEntryPromotionStoreUgpz.b22SaveEnabledHmfa(false);
       b22StartupPreloadAdScenesYjme.add(B22PromotionContextSuaj.pr_new_launch);
@@ -439,7 +451,8 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
       return;
     }
     b22PreloadSceneQjfv(B22PromotionContextSuaj.pr_exit);
-    b22PreloadSceneQjfv(B22PromotionContextSuaj.pr_ban2);
+    b22PreloadSceneQjfv(B22PromotionContextSuaj.pr_ban1);
+    b22PreloadSceneQjfv(B22PromotionContextSuaj.pr_new_int);
   }
 
   bool b22ShouldIgnoreCooldownRgam({
@@ -733,6 +746,14 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
         "load_time": b22LoadDurationSecondsCtqv,
       },
     );
+    final List<B22PromotionLoadSuccessListenerBfno> b22ListenersQyrf =
+        List<B22PromotionLoadSuccessListenerBfno>.of(
+          b22LoadSuccessListenersAtuo,
+        );
+    for (final B22PromotionLoadSuccessListenerBfno b22ListenerJaky
+        in b22ListenersQyrf) {
+      b22ListenerJaky(b22AdPlacementEuvh);
+    }
   }
 
   @override

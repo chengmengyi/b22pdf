@@ -8,4 +8,5 @@ enum B22PromotionContextSuaj {
   pr_exit,
   pr_ban2,
   pr_ban3,
+  pr_new_int,
 }

@@ -247,6 +247,17 @@ class B22EntryCoordinatorVdiw extends B22FoundationCoordinatorXsba
     B22PromotionOrchestratorAzwq.instance.b22PreloadSceneQjfv(
       B22PromotionContextSuaj.pr_user_use,
     );
+    B22PromotionOrchestratorAzwq.instance.b22PreloadSceneQjfv(
+      B22PromotionContextSuaj.pr_ban2,
+    );
+    if (B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.b22IsEligibleUserOvsb) {
+      B22PromotionOrchestratorAzwq.instance.b22PreloadSceneQjfv(
+        B22PromotionContextSuaj.pr_ban1,
+      );
+      B22PromotionOrchestratorAzwq.instance.b22PreloadSceneQjfv(
+        B22PromotionContextSuaj.pr_new_int,
+      );
+    }
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
       b22PointTypeDrbi: B22TelemetrySignalDbrq.app_launch_result,
     );

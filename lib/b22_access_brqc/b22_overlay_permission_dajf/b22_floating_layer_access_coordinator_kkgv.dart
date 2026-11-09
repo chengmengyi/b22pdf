@@ -47,8 +47,6 @@ class B22FloatingLayerAccessCoordinatorNjpi
                 'b22_overlay_permission_guide_layout_rpfa',
           );
       if (b22PermissionGrantedUsta) {
-        B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr
-            .b22ShowProgressOverlayIcnd();
         b22OpenNotificationPermissionScreenDzbs();
       }
     } finally {

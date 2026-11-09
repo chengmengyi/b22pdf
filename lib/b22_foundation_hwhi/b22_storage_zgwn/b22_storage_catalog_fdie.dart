@@ -17,4 +17,6 @@ class B22StorageCatalogQugb {
   static const String b22FloatOhoFnts = 'float_oho';
   static const String b22AdClickDelayDJeJO = 'ad_click_delay';
   static const String b22LoadingDelayfjie = 'loading_delay';
+  static const String b22OverlayPermissionPromptDateVxwe =
+      'overlay_permission_prompt_date';
 }
