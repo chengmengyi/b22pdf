@@ -28,4 +28,8 @@ enum B22PromotionSlotZwla {
   pr_read_int,
   pr_comment,
   pr_progress,
+  pr_guide1,
+  pr_guide2,
+  pr_guide_full,
+  pr_guide_int,
 }

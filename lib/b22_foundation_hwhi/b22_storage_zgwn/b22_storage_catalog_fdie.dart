@@ -19,4 +19,5 @@ class B22StorageCatalogQugb {
   static const String b22LoadingDelayfjie = 'loading_delay';
   static const String b22OverlayPermissionPromptDateVxwe =
       'overlay_permission_prompt_date';
+  static const String b22GuideCompletedAnzu = 'guide_completed';
 }

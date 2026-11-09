@@ -3,6 +3,7 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_m
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_router_cbkk.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_language_choice_zfoo.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_overlay_permission_prompt_date_store_akye.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_guide_completion_store_xqve.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_language_jdlb/b22_interface_brpn/b22_locale_chooser_coordinator_yrhs.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_interface_ozan/b22_permission_uawu/b22_alert_access_coordinator_ypyk.dart';
 import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
@@ -13,8 +14,8 @@ class B22FirstRunDirectorYxjn {
       B22FirstRunDirectorYxjn();
   static B22FirstRunDirectorYxjn get instance => b22InstanceCygx;
 
-  //语言选择页没有点确定----启动app：悬浮窗->语言选择页->通知->首页
-  //语言选择页点确定----启动app：悬浮窗->通知->首页
+  //语言选择页没有点确定----启动app：悬浮窗->语言选择页->引导页->通知->首页
+  //语言选择页点确定----启动app：悬浮窗->引导页->通知->首页
   Future<void> b22OpenOverlaySelectionRoen() async {
     var b22CheckOverlayPermissionHswh = await FlutterBoomNotificationPlugins
         .instance
@@ -40,8 +41,6 @@ class B22FirstRunDirectorYxjn {
     b22OpenLanguageSelectionClql();
   }
 
-  //语言选择页没有点确定----启动app：语言选择页->通知->首页
-  //语言选择页点确定----启动app：通知->首页
   void b22OpenLanguageSelectionClql() {
     if (B22LanguageChoiceDsdt.b22ReadLanguagePgwy().isEmpty) {
       if (Get.isRegistered<B22LocaleChooserCoordinatorAegb>()) {
@@ -54,6 +53,16 @@ class B22FirstRunDirectorYxjn {
               B22ApplicationDestinationsMcbk.b22ChooseLanguageRouteDfsy,
         );
       }
+      return;
+    }
+    b22OpenGuideJqva();
+  }
+
+  void b22OpenGuideJqva() {
+    if (!B22GuideCompletionStorePqaz.b22ReadCompletedLwmc()) {
+      B22ApplicationRouterJfva.b22ReplaceNamedGvtg<void>(
+        b22RouteNameSrbn: B22ApplicationDestinationsMcbk.b22GuideRouteVqme,
+      );
       return;
     }
     b22ToPageOpenNotificationPermissionVhup();

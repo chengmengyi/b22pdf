@@ -474,14 +474,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.0"
-  flutter_tba_info:
+  flutter_tba_info_new:
     dependency: "direct main"
     description:
-      name: flutter_tba_info
-      sha256: f1434a9adb02f324071ce6cc9537d78060ab6bba5ff56b8f9ed03711c23cc225
+      name: flutter_tba_info_new
+      sha256: "48b41da498ca141036f44abe2e7a94296bb8f1f2e51b6cc47459ee9aedaa16ce"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.9"
+    version: "0.0.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -916,6 +916,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.6"
+  play_install_referrer:
+    dependency: transitive
+    description:
+      name: play_install_referrer
+      sha256: "4d44b8537d6430c501cc02dbba5ec25e625c6021efcff13990592ea806f1c3c2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.0"
   plugin_platform_interface:
     dependency: transitive
     description:

@@ -76,7 +76,7 @@ class B22LocaleChooserCoordinatorAegb extends B22FoundationCoordinatorXsba {
     await B22ApplicationLexiconNofd.b22SelectLanguageXuyq(
       b22SelectedLanguageTjxp.b22LocaleGrtn,
     );
-    B22FirstRunDirectorYxjn.instance.b22ToPageOpenNotificationPermissionVhup();
+    B22FirstRunDirectorYxjn.instance.b22OpenGuideJqva();
   }
 
   @override

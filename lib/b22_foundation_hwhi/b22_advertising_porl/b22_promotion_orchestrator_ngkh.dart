@@ -69,7 +69,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     //   maxRevenue: 200,
     // );
     FlutterPdfAdPlugins.instance.updateInterstitialLikeNativePlacements(
-      const <B22PromotionContextSuaj>[B22PromotionContextSuaj.pr_user_use],
+      const <B22PromotionContextSuaj>[B22PromotionContextSuaj.pr_user_use,B22PromotionContextSuaj.pr_new_int],
     );
     FlutterPdfAdPlugins.instance
         .updateSmallTemplateNativePlacements(const <B22PromotionContextSuaj>[

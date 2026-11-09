@@ -12,6 +12,7 @@ import 'package:b22_document_workspace_kmzm/b22_preview_lzrw/b22_document_viewer
 import 'package:b22_document_workspace_kmzm/b22_conversion_cjbz/b22_pdf_workflow_ywxb/b22_interface_swtj/b22_task_result_rbnx/b22_pdf_job_outcome_page_qmam.dart';
 import 'package:b22_document_workspace_kmzm/b22_conversion_cjbz/b22_pdf_workflow_ywxb/b22_interface_swtj/b22_task_progress_warm/b22_pdf_job_execution_page_owno.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_uninstall_feedback_ozkk/b22_removal_response_page_smxi.dart';
+import 'package:b22_document_workspace_kmzm/b22_launch_dehs/b22_onboarding_wmqk/b22_interface_hgve/b22_guide_page_nzro.dart';
 import 'package:get/get.dart';
 
 abstract final class B22ApplicationDestinationsMcbk {
@@ -29,6 +30,7 @@ abstract final class B22ApplicationDestinationsMcbk {
   static const String b22ProcessWaitingRouteGtfb = '/task_progress';
   static const String b22ProcessResultRouteAjen = '/task_output';
   static const String b22OpenAdLoadingRouteQnvm = '/open_ad_loading';
+  static const String b22GuideRouteVqme = '/guide';
 
   static final List<GetPage<dynamic>> b22PagesMdxd = [
     GetPage(name: b22LauncherRouteFstc, page: B22EntryPageAwcy.new),
@@ -46,6 +48,7 @@ abstract final class B22ApplicationDestinationsMcbk {
       name: b22ChooseLanguageRouteDfsy,
       page: B22LocaleChooserPagePkgi.new,
     ),
+    GetPage(name: b22GuideRouteVqme, page: B22GuidePageVqme.new),
     GetPage(name: b22PreviewPdfRouteLumo, page: B22PdfReaderPageFneh.new),
     GetPage(
       name: b22PreviewWordRouteDgsr,
