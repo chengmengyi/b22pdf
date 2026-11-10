@@ -39,8 +39,31 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
       <B22PromotionContextSuaj>[];
   final Set<B22PromotionContextSuaj> b22NoReloadAfterCloseAdScenesIrpa =
       <B22PromotionContextSuaj>{B22PromotionContextSuaj.pr_new_launch};
+  final Map<(Object, Object, String?, String, String), int>
+  _b22AdShowSuccessTimesKqmw =
+      <(Object, Object, String?, String, String), int>{};
+  int? _b22LastAdShowSuccessToCloseDurationMsQxnv;
   final Set<B22PromotionLoadSuccessListenerBfno>
   b22LoadSuccessListenersAtuo = <B22PromotionLoadSuccessListenerBfno>{};
+
+  int? get b22LastAdShowSuccessToCloseDurationMsVqta =>
+      _b22LastAdShowSuccessToCloseDurationMsQxnv;
+
+  (Object, Object, String?, String, String) _b22BuildAdCallbackKeyRqmw({
+    required Object b22AdPlacementPqmv,
+    required AdInfoBean b22AdInfoKqmv,
+    required Object b22AdPosIdVmqx,
+    required String b22AdNetworkNqzr,
+    required String b22AdSourceNameLftc,
+  }) {
+    return (
+      b22AdPlacementPqmv,
+      b22AdPosIdVmqx,
+      b22AdInfoKqmv.adId,
+      b22AdNetworkNqzr,
+      b22AdSourceNameLftc,
+    );
+  }
 
   void b22AddLoadSuccessListenerGgbr(
     B22PromotionLoadSuccessListenerBfno b22ListenerJaky,
@@ -552,16 +575,34 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     AdInfoBean b22AdInfoFzbh,
     Object b22AdPosIdHrkd,
     String b22AdNetworkCpri,
-    String adSourceName,
+    String b22AdSourceNameNptv,
   ) {
+    final int b22AdClosedTimeMsRqmw = DateTime.now().millisecondsSinceEpoch;
     B22RecentPromotionDisplayTimestampStoreZobt.b22SaveTimeWuxl(
-      b22TimestampYivv: DateTime.now().millisecondsSinceEpoch,
+      b22TimestampYivv: b22AdClosedTimeMsRqmw,
     );
     if (b22AdPlacementKlcs is! B22PromotionContextSuaj) {
       return;
     }
     if (b22AdPosIdHrkd is! B22PromotionSlotZwla) {
       return;
+    }
+    final int? b22AdShowSuccessTimeMsKqmw = _b22AdShowSuccessTimesKqmw.remove(
+      _b22BuildAdCallbackKeyRqmw(
+        b22AdPlacementPqmv: b22AdPlacementKlcs,
+        b22AdInfoKqmv: b22AdInfoFzbh,
+        b22AdPosIdVmqx: b22AdPosIdHrkd,
+        b22AdNetworkNqzr: b22AdNetworkCpri,
+        b22AdSourceNameLftc: b22AdSourceNameNptv,
+      ),
+    );
+    if (b22AdShowSuccessTimeMsKqmw == null) {
+      _b22LastAdShowSuccessToCloseDurationMsQxnv = null;
+    } else {
+      _b22LastAdShowSuccessToCloseDurationMsQxnv =
+          b22AdClosedTimeMsRqmw >= b22AdShowSuccessTimeMsKqmw
+          ? b22AdClosedTimeMsRqmw - b22AdShowSuccessTimeMsKqmw
+          : 0;
     }
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
       b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_close,
@@ -572,6 +613,8 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
         "ad_pos_id": b22AdPosIdHrkd.name,
         "ad_network": b22AdNetworkCpri,
         "ad_source_client": b22AdInfoFzbh.adPlat,
+        "close_time_long":
+            _b22LastAdShowSuccessToCloseDurationMsQxnv ?? 0,
       },
     );
   }
@@ -800,10 +843,10 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
   @override
   void onAdShowSuccess(
     Object b22AdPlacementHjua,
-    AdInfoBean adInfo,
+    AdInfoBean b22AdInfoYkpd,
     Object b22AdPosIdUyfr,
-    String adNetwork,
-    String adSourceName,
+    String b22AdNetworkZwce,
+    String b22AdSourceNameHjrs,
   ) {
     if (b22AdPlacementHjua is! B22PromotionContextSuaj) {
       return;
@@ -811,6 +854,14 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     if (b22AdPosIdUyfr is! B22PromotionSlotZwla) {
       return;
     }
+    _b22AdShowSuccessTimesKqmw[_b22BuildAdCallbackKeyRqmw(
+          b22AdPlacementPqmv: b22AdPlacementHjua,
+          b22AdInfoKqmv: b22AdInfoYkpd,
+          b22AdPosIdVmqx: b22AdPosIdUyfr,
+          b22AdNetworkNqzr: b22AdNetworkZwce,
+          b22AdSourceNameLftc: b22AdSourceNameHjrs,
+        )] =
+        DateTime.now().millisecondsSinceEpoch;
   }
 
   @override

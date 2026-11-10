@@ -7,6 +7,8 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_ht
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_qdxm.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_router_cbkk.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_loading_delay_djiwfe.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_signal_nyqf.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_orchestrator_bvsc.dart';
 import 'package:b22_document_workspace_kmzm/b22_launch_dehs/b22_startup_ppmh/b22_interface_ypio/b22_open_ad_loading_qpmf/b22_launch_promotion_waiting_result_nlke.dart';
 import 'package:b22_document_workspace_kmzm/b22_shared_midp/b22_interface_ruov/b22_foundation_coordinator_owyg.dart';
 
@@ -62,6 +64,15 @@ class B22LaunchPromotionWaitingCoordinatorXnlw
       );
       return;
     }
+    unawaited(
+      B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.show_hot_launcher,
+        b22ParametersErwm: <String, dynamic>{
+          'ad_context': b22AdSceneRowq!.name,
+          'ad_pos_id': b22AdPosIdQfwk!.name,
+        },
+      ),
+    );
     if (b22IsForegroundMslk) b22StopwatchIeek.start();
     b22InitialCacheCheckDelayFsal = Duration(
       seconds: B22LoadingDelayDjiwfe.b22ReadUzvw(),
@@ -129,6 +140,25 @@ class B22LaunchPromotionWaitingCoordinatorXnlw
     b22TimerVtuf?.cancel();
     b22TimerVtuf = null;
     b22StopwatchIeek.stop();
+    final String? b22CloseReasonNvqa = switch (b22ReasonPrxj) {
+      'cache_ready' => 'has_cache',
+      'loading_timeout' => 'no_cache',
+      _ => null,
+    };
+    if (b22CloseReasonNvqa != null &&
+        b22AdSceneRowq != null &&
+        b22AdPosIdQfwk != null) {
+      unawaited(
+        B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+          b22PointTypeDrbi: B22TelemetrySignalDbrq.close_hot_launcher,
+          b22ParametersErwm: <String, dynamic>{
+            'ad_context': b22AdSceneRowq!.name,
+            'ad_pos_id': b22AdPosIdQfwk!.name,
+            'close_reason': b22CloseReasonNvqa,
+          },
+        ),
+      );
+    }
     final B22LaunchPromotionWaitingResultFqwa b22ResultFheq = b22CacheReadyQzca
         ? B22LaunchPromotionWaitingResultFqwa.ready(
             b22SessionIdZcsg: b22SessionIdZcsg!,

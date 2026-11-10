@@ -10,6 +10,7 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_ht
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_qdxm.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_destinations_crke.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_router_cbkk.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_signal_nyqf.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_orchestrator_bvsc.dart';
 import 'package:b22_document_workspace_kmzm/b22_launch_dehs/b22_startup_ppmh/b22_interface_ypio/b22_open_ad_loading_qpmf/b22_launch_promotion_waiting_result_nlke.dart';
 import 'package:b22_document_workspace_kmzm/b22_launch_dehs/b22_startup_ppmh/b22_operations_zxfh/b22_active_entry_origin_orchestrator_jesm.dart';
@@ -161,8 +162,22 @@ class B22ApplicationLifecycleOrchestratorPhic {
     B22LifecycleAdTriggerYgme b22TriggerXecm =
         B22LifecycleAdTriggerYgme.automatic,
   }) async {
-    if (b22TriggerXecm == B22LifecycleAdTriggerYgme.automatic &&
-        !b22HasReachedHotLaunchCooldownQjkc()) {
+    final bool b22ShouldCheckCooldownRqmw =
+        b22TriggerXecm == B22LifecycleAdTriggerYgme.automatic;
+    final int b22HotLaunchDurationMsVqnt = b22HotLaunchDurationMsKqmw();
+    if (b22ShouldCheckCooldownRqmw &&
+        b22HotLaunchDurationMsVqnt >= 0 &&
+        b22HotLaunchDurationMsVqnt < b22HotLaunchCooldownSecondsDqtg) {
+      unawaited(
+        B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+          b22PointTypeDrbi: B22TelemetrySignalDbrq.cd_hot,
+          b22ParametersErwm: <String, dynamic>{
+            'ad_context': b22AdSceneDpkx.name,
+            'ad_pos_id': b22PositionIdVgkp.name,
+            'timer': b22HotLaunchDurationMsVqnt,
+          },
+        ),
+      );
       return;
     }
     if ((b22TriggerXecm == B22LifecycleAdTriggerYgme.automatic &&
@@ -313,9 +328,15 @@ class B22ApplicationLifecycleOrchestratorPhic {
   }
 
   bool b22HasReachedHotLaunchCooldownQjkc() {
-    if (b22LastBackgroundTimeTtpm <= 0) return true;
-    final int b22IntervalMsJrmp =
+    final int b22HotLaunchDurationMsVqnt = b22HotLaunchDurationMsKqmw();
+    return b22HotLaunchDurationMsVqnt < 0 ||
+        b22HotLaunchDurationMsVqnt >= b22HotLaunchCooldownSecondsDqtg;
+  }
+
+  int b22HotLaunchDurationMsKqmw() {
+    if (b22LastBackgroundTimeTtpm <= 0) return -1;
+    final int b22DurationMsVqnt =
         DateTime.now().millisecondsSinceEpoch - b22LastBackgroundTimeTtpm;
-    return b22IntervalMsJrmp >= b22HotLaunchCooldownSecondsDqtg;
+    return b22DurationMsVqnt < 0 ? 0 : b22DurationMsVqnt;
   }
 }

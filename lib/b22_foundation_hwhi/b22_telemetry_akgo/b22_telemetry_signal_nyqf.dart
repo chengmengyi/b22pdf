@@ -87,4 +87,7 @@ enum B22TelemetrySignalDbrq {
   session_bac,
   firebase_time,
   user_type,
+  cd_hot,
+  show_hot_launcher,
+  close_hot_launcher,
 }
