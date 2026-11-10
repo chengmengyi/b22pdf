@@ -110,13 +110,22 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
         return false;
       },
       nativeAdHeadlineCallback: ({required String? headline, required bool isNextGenAdmob})  {
-        FlutterPdfRiskControlPlugins.instance.checkTestAdUser(
-          headline: headline,
-        );
+        handleNativeAdHeadline(headline);
       },
       smallNativeAdLayoutName: 'b22_native_promotion_layout_dkqs',
     );
     await b22PreloadStartupAdScenesLtcj();
+  }
+
+  Future<void> handleNativeAdHeadline(String? headline) async {
+    var result = await FlutterPdfRiskControlPlugins.instance.checkTestAdUser(
+      headline: headline,
+    );
+    if (result == 0) {
+      B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.up_local_nat,
+      );
+    }
   }
 
   Future<void> b22PreloadStartupAdScenesLtcj() async {

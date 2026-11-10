@@ -90,4 +90,5 @@ enum B22TelemetrySignalDbrq {
   cd_hot,
   show_hot_launcher,
   close_hot_launcher,
+  up_local_nat,
 }
