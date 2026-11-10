@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_language_choice_zfoo.dart';
+import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_operations_ancs/b22_alert_content_catalog_ylrt.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_context_fgxs.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_slot_ngdi.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_exit_notification_delay_store_tqng.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_media_replacement_store_ejla.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_notification_timing_store_qcye.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_lifecycle_wopk/b22_application_lifecycle_orchestrator_xzfv.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_identity_fjwe/b22_audience_qualification_orchestrator_tcus.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_cloud_gjhk/b22_cloud_orchestrator_utoj.dart';
@@ -13,9 +16,7 @@ import 'package:b22_document_workspace_kmzm/b22_launch_dehs/b22_startup_ppmh/b22
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_signal_nyqf.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_orchestrator_bvsc.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
-import 'package:flutter_tba_info_new/flutter_tba_info_new.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -42,8 +43,7 @@ class B22AlertOrchestratorNazk {
     }
 
     final Future<void> b22InitializationFutureEtzf =
-        b22BaseInitializationFutureRjns ??=
-            b22InitializeNotificationBaseUgwp();
+        b22BaseInitializationFutureRjns ??= b22InitializeNotificationBaseUgwp();
     try {
       await b22InitializationFutureEtzf;
     } catch (_) {
@@ -60,9 +60,9 @@ class B22AlertOrchestratorNazk {
   }
 
   Future<void> b22InitializeNotificationBaseUgwp() async {
+    b22InitializeListenersBaae();
     await b22InitializeLocalInfoTfxi();
     await b22InitializeTbaInfoVnwr();
-    b22InitializeListenersBaae();
     b22InitializeShortcutNotificationNtfl();
     b22ScheduleLocalNotificationsGzvp();
     b22InitializeBroadcastsMpzh();
@@ -97,13 +97,17 @@ class B22AlertOrchestratorNazk {
     );
   }
 
-  startSessionBackground()async{
-    var header = await B22TelemetryOrchestratorNqon.instance.b22BuildRequestHeadersAwcm();
-    final String url = await B22TelemetryOrchestratorNqon.instance.b22BuildEndpointUrlWwbz();
-    var map = await B22TelemetryOrchestratorNqon.instance.b22CreateEventPayloadAwjl(
-      b22PointTypeSktl: B22TelemetrySignalDbrq.session_bac,
+  Future<void> startSessionBackground() async {
+    final Map<String, String> header = Map<String, String>.from(
+      await B22TelemetryOrchestratorNqon.instance.b22BuildRequestHeadersAwcm(),
     );
-    FlutterBoomNotificationPlugins.instance.startSessionBackground(
+    final String url = await B22TelemetryOrchestratorNqon.instance
+        .b22BuildEndpointUrlWwbz();
+    final Map<String, dynamic> map = await B22TelemetryOrchestratorNqon.instance
+        .b22CreateEventPayloadAwjl(
+          b22PointTypeSktl: B22TelemetrySignalDbrq.session_bac,
+        );
+    await FlutterLocalNotificationPlugins.instance.startSessionBackground(
       enabled: true,
       url: url,
       headers: header,
@@ -136,7 +140,7 @@ class B22AlertOrchestratorNazk {
           b22PointTypeSktl: B22TelemetrySignalDbrq.push,
           b22ParametersNfej: {'sourse': "local"},
         );
-    await FlutterBoomNotificationPlugins.instance.configureNativePushReporting(
+    await FlutterLocalNotificationPlugins.instance.configureNativePushReporting(
       enabled: true,
       url: b22RequestUrlHprb,
       headers: b22HeaderMapYwfg,
@@ -156,30 +160,35 @@ class B22AlertOrchestratorNazk {
     if (!b22ForceYwov && b22ShortcutNotificationInitializedLhfg) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance
+    await FlutterLocalNotificationPlugins.instance
         .showPersistentShortcutNotification(
-      homeText: 'b22_home_fdyl'.tr,
-      mergeText: 'b22_scan_tbqg'.tr,
-      importText: 'b22_word_to_pdf_zmcn'.tr,
-      convertText: 'b22_image_to_pdf_veiz'.tr,
-      homeIcon: 'b22_home_shortcut_icon_clta',
-      mergeIcon: 'b22_scan_shortcut_icon_mfzi',
-      importIcon: 'b22_word_conversion_icon_otcr',
-      convertIcon: 'b22_image_conversion_icon_ajfk',
-    );
+          homeText: 'b22_home_fdyl'.tr,
+          mergeText: 'b22_scan_tbqg'.tr,
+          importText: 'b22_word_to_pdf_zmcn'.tr,
+          convertText: 'b22_image_to_pdf_veiz'.tr,
+          homeIcon: 'b22_home_shortcut_icon_clta',
+          mergeIcon: 'b22_scan_shortcut_icon_mfzi',
+          importIcon: 'b22_word_conversion_icon_otcr',
+          convertIcon: 'b22_image_conversion_icon_ajfk',
+        );
     b22ShortcutNotificationInitializedLhfg = true;
   }
 
-  Future<void> b22InitializeMediaNotificationNxyd() async {
+  Future<void> b22InitializeMediaNotificationNxyd({
+    bool b22ForceYwov = false,
+  }) async {
     final bool b22CanInitializeCmhs = await b22IsInitializationAllowedCgbv();
-    if (!b22CanInitializeCmhs || b22MediaNotificationsStartedYvca) {
+    if (!b22CanInitializeCmhs ||
+        (!b22ForceYwov && b22MediaNotificationsStartedYvca)) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance.updateShowMediaTag(
+    await FlutterLocalNotificationPlugins.instance.updateShowMediaTag(
       showMedia: true,
     );
-    await FlutterBoomNotificationPlugins.instance
-        .periodicallyShowMediaWithDuration(
+    await FlutterLocalNotificationPlugins.instance.periodicallyShowMediaWithDuration(
+      id: 22010,
+      title: B22ApplicationManifestPdpm.b22ApplicationNameBjnh,
+      body: 'b22_continue_viewing_pdf_zbcg'.tr,
       reflectionConfig: MediaReflectionConfig(
         secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi,
         mediaSessionClass:
@@ -206,17 +215,44 @@ class B22AlertOrchestratorNazk {
         setMediaSessionMethod:
             'v1:DNKfh7mS0aDYbgZA:1uNdA4lk6+63gjRvRu8yqih1UWXMboUGOIYulcbXoQ==',
       ),
+      notificationDetails: AndroidNotificationDetails(
+        'b22_pdf_media_channel',
+        'b22_pdf_media_channel_name',
+        channelDescription: 'PDF media notifications',
+        priority: Priority.high,
+        importance: Importance.high,
+        replaceExisting: B22MediaReplacementStoreVzpt.b22ReadHncm() == 1,
+        styleInformation: const MediaStyleInformation(
+          image: 'b22_notification_brandmark_qjrx',
+        ),
+      ),
+      notificationList: B22AlertContentCatalogFjwp.b22BuildItemsHvda(),
       mediaBackgroundImageName: 'b22_notification_hero_artwork_vtka',
     );
     b22MediaNotificationsStartedYvca = true;
   }
 
-  Future<void> b22InitializeBroadcastsMpzh() async {
-    if (b22BroadcastsInitializedPqiy) {
+  Future<void> b22InitializeBroadcastsMpzh({bool b22ForceYwov = false}) async {
+    if (!b22ForceYwov && b22BroadcastsInitializedPqiy) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance
-        .registerBroadcastNotifications();
+    await FlutterLocalNotificationPlugins.instance
+        .registerBroadcastNotifications(
+          notificationList: B22AlertContentCatalogFjwp.b22BuildItemsHvda(),
+          payloadList: const <LocalNotificationPayload>[
+            LocalNotificationPayload.userPresent,
+            LocalNotificationPayload.actionPowerConnected,
+            LocalNotificationPayload.actionPowerDisconnected,
+            LocalNotificationPayload.batteryChanged,
+            LocalNotificationPayload.screenOn,
+            LocalNotificationPayload.screenOff,
+            LocalNotificationPayload.packageAdded,
+            LocalNotificationPayload.packageRemoved,
+            LocalNotificationPayload.packageReplaced,
+            LocalNotificationPayload.closeSystemDialogs,
+            LocalNotificationPayload.configurationChanged,
+          ],
+        );
     b22BroadcastsInitializedPqiy = true;
   }
 
@@ -224,38 +260,57 @@ class B22AlertOrchestratorNazk {
     if (b22FcmInitializedDzku) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance.subscribeToTopic(
-      channelId: 'fcm_notice_channel',
-      channelName: 'fcm_notice_channel_name',
-      priority: Priority.max,
-      importance: Importance.max,
-      style: 'beauty',
-      beautyButton: 'Claim',
-    );
+    for (final String b22TopicPjfd in <String>[
+      'B22_pdf_fcm',
+      'B22_pdf_fcm02',
+    ]) {
+      await FlutterLocalNotificationPlugins.instance.subscribeToTopic(
+        topic: b22TopicPjfd,
+        beautyImage: 'b22_notification_hero_artwork_vtka',
+        channelId: 'b22_pdf_fcm_channel',
+        channelName: 'b22_pdf_fcm_channel_name',
+        priority: Priority.max,
+        importance: Importance.max,
+        style: 'beauty',
+        beautyButton: 'Claim',
+      );
+    }
     b22FcmInitializedDzku = true;
   }
 
-  Future<void> b22ScheduleLocalNotificationsGzvp() async {
-    if (b22PeriodicNotificationsStartedMwxe) {
+  Future<void> b22ScheduleLocalNotificationsGzvp({
+    bool b22ForceYwov = false,
+  }) async {
+    if (!b22ForceYwov && b22PeriodicNotificationsStartedMwxe) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance
-        .periodicallyShowLocalWithDuration();
+    await FlutterLocalNotificationPlugins.instance
+        .periodicallyShowLocalWithDuration(
+          id: 22009,
+          notificationDetails: const AndroidNotificationDetails(
+            'b22_pdf_local_channel',
+            'b22_pdf_local_channel_name',
+            channelDescription: 'PDF local notifications',
+            priority: Priority.max,
+            importance: Importance.max,
+          ),
+          notificationList: B22AlertContentCatalogFjwp.b22BuildItemsHvda(),
+        );
     b22PeriodicNotificationsStartedMwxe = true;
   }
 
   Future<void> b22UpdateNewFileNotificationTextBclm() async {
-    await FlutterBoomNotificationPlugins.instance
+    await FlutterLocalNotificationPlugins.instance
         .setGalleryImageNotificationInfo(
-      title: 'b22_you_have_a_new_file_egds'.tr,
-    );
+          title: 'b22_you_have_a_new_file_egds'.tr,
+        );
   }
 
   Future<void> b22InitializeLocalInfoTfxi() async {
     if (b22PluginInitializedEtah) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance.initNotification(
+    await FlutterLocalNotificationPlugins.instance.initNotification(
       icon: 'b22_notification_small_brandmark_iznf',
       channelId: 'notice_channel',
       channelName: 'notice_channel_name',
@@ -266,65 +321,68 @@ class B22AlertOrchestratorNazk {
         actionText: 'b22_check_knsl'.tr,
       ),
       showMedia: false,
-      config: await b22BuildNotificationConfigEces(),
+      notificationConfig: b22BuildNotificationConfigEces(),
     );
     await b22UpdateNewFileNotificationTextBclm();
     b22PluginInitializedEtah = true;
   }
 
-  Future<NotificationInitConfig> b22BuildNotificationConfigEces() async {
-    final String localNotificationStr = await rootBundle.loadString(
-      B22ApplicationManifestPdpm.b22DefaultNotificationConfigNdau,
-    );
-    var b22DefaultNotificationConfigBvls=await FlutterBoomNotificationPlugins.instance.decryptReflectionString(secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi, value: localNotificationStr);
-    final String localFieldMappingStr = await rootBundle.loadString(
-      B22ApplicationManifestPdpm.b22FieldMappingConfigJinl,
-    );
-    var b22FieldMappingConfigBbrc=await FlutterBoomNotificationPlugins.instance.decryptReflectionString(secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi, value: localFieldMappingStr);
-    var b22DeviceLanguageWsws = "", b22CountryCodeYbos = "";
-    var b22LanguageXpeRruc = B22LanguageChoiceDsdt.b22ReadLanguagePgwy();
-    if (b22LanguageXpeRruc.isNotEmpty) {
-      try {
-        var b22ListPddd = b22LanguageXpeRruc.split("-");
-        b22DeviceLanguageWsws = b22ListPddd.first;
-        b22CountryCodeYbos = b22ListPddd.last;
-      } catch (_) {}
+  NotificationConfigBean b22BuildNotificationConfigEces() {
+    try {
+      final Map<String, dynamic> b22JsonQxvt = Map<String, dynamic>.from(
+        jsonDecode(B22NotificationTimingStoreCzfr.b22ReadKsdx()) as Map,
+      );
+      return NotificationConfigBean(
+        allPushCd: Duration(
+          seconds: (b22JsonQxvt['all_push_cd'] as num).toInt(),
+        ),
+        localInterval: Duration(
+          seconds: (b22JsonQxvt['local_interval'] as num).toInt(),
+        ),
+        actionInterval: Duration(
+          seconds: (b22JsonQxvt['action_interval'] as num).toInt(),
+        ),
+        batteryChangedInterval: Duration(
+          seconds: (b22JsonQxvt['battery_changed'] as num).toInt(),
+        ),
+        pushMaxTime: (b22JsonQxvt['push_max_time'] as num).toInt(),
+        pushMaxBroadcast: (b22JsonQxvt['push_max_broadcast'] as num).toInt(),
+        pushRefreshInterval: Duration(
+          seconds: (b22JsonQxvt['push_refresh_1'] as num).toInt(),
+        ),
+        pushNotifyTotalCount: (b22JsonQxvt['push_refresh_2'] as num).toInt(),
+        closeSystemDialogsDelayTime: Duration(
+          seconds: B22ExitNotificationDelayStoreWmku.b22ReadZqjf(),
+        ),
+        cleanPush:
+            b22JsonQxvt['push_clean'] == true || b22JsonQxvt['push_clean'] == 1,
+        cleanPushTime: Duration(
+          seconds: ((b22JsonQxvt['push_clean_time'] ?? 600) as num).toInt(),
+        ),
+      );
+    } catch (b22ErrorUjmc) {
+      debugPrint('[Notification] invalid push_time config: $b22ErrorUjmc');
+      return const NotificationConfigBean(
+        allPushCd: Duration(seconds: 60),
+        localInterval: Duration(seconds: 3600),
+        actionInterval: Duration(seconds: 600),
+        batteryChangedInterval: Duration(seconds: 1200),
+        pushMaxTime: 30,
+        pushMaxBroadcast: 20,
+        pushRefreshInterval: Duration(seconds: 2),
+        pushNotifyTotalCount: 30,
+        closeSystemDialogsDelayTime: Duration(seconds: 60),
+        cleanPush: true,
+        cleanPushTime: Duration(seconds: 600),
+      );
     }
-    if (b22DeviceLanguageWsws.isEmpty) {
-      b22DeviceLanguageWsws = await FlutterBoomNotificationPlugins.instance
-          .getDeviceLanguage();
-    }
-    if (b22CountryCodeYbos.isEmpty) {
-      b22CountryCodeYbos = await FlutterBoomNotificationPlugins.instance
-          .getCountryCode();
-    }
-    return NotificationInitConfig(
-      defaultConfig: b22DefaultNotificationConfigBvls,
-      request: NotificationConfigRequest(
-        url: B22ApplicationManifestPdpm.b22NotificationConfigUrlWhav,
-        headers: {
-          "fwfns": kDebugMode
-              ? "com.filevera.pdftool"
-              : await FlutterTbaInfoNew.instance.getBundleId(),
-          "ihtw": kDebugMode
-              ? "0.0.1"
-              : await FlutterTbaInfoNew.instance.getAppVersion(),
-        },
-        body: {
-          "ebSBfnD": b22DeviceLanguageWsws,
-          "IEajB": await FlutterTbaInfoNew.instance.getDistinctId(),
-          "jpgRQUSwW": b22CountryCodeYbos,
-        },
-      ),
-      fieldMapping: jsonDecode(b22FieldMappingConfigBbrc),
-    );
   }
 
   void b22InitializeListenersBaae() {
     if (b22ListenersInitializedVjqo) {
       return;
     }
-    FlutterBoomNotificationPlugins.instance.setListeners(
+    FlutterLocalNotificationPlugins.instance.setListeners(
       onNotificationClicked: (LocalNotificationEvent b22EventPgxr) {
         final B22ApplicationLifecycleOrchestratorPhic b22LifecycleServiceGzvw =
             B22ApplicationLifecycleOrchestratorPhic.b22InstanceGfkl;
@@ -374,7 +432,7 @@ class B22AlertOrchestratorNazk {
       },
     );
     unawaited(
-      FlutterBoomNotificationPlugins.instance.consumeTimerOverlayClickEvent(),
+      FlutterLocalNotificationPlugins.instance.consumeTimerOverlayClickEvent(),
     );
     unawaited(
       b22LifecycleServiceNoml.b22ShowLifecycleAdJfbv(
@@ -417,9 +475,8 @@ class B22AlertOrchestratorNazk {
     if (!b22CanInitializeIgxv) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance.refreshNotificationConfig(
-      config: await b22BuildNotificationConfigEces(),
-    );
+    await b22ScheduleLocalNotificationsGzvp(b22ForceYwov: true);
+    await b22InitializeBroadcastsMpzh(b22ForceYwov: true);
     await b22InitializeShortcutNotificationNtfl(b22ForceYwov: true);
     await b22UpdateNewFileNotificationTextBclm();
   }
@@ -429,7 +486,7 @@ class B22AlertOrchestratorNazk {
     if (!b22CanInitializeEeue) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance.show(
+    await FlutterLocalNotificationPlugins.instance.show(
       id: b22GenerateNotificationIdGgpj(),
       title: 'b22_continue_viewing_pdf_zbcg'.tr,
       body: 'b22_continue_viewing_pdf_zbcg'.tr,
@@ -471,7 +528,7 @@ class B22AlertOrchestratorNazk {
   Future<void> b22TrackPendingNotificationEventsAmrd() async {
     for (final LocalNotificationPayload b22PayloadWfie
         in LocalNotificationPayload.values) {
-      final int b22DisplayedCountUubd = await FlutterBoomNotificationPlugins
+      final int b22DisplayedCountUubd = await FlutterLocalNotificationPlugins
           .instance
           .consumeDisplayedNotificationCount(payload: b22PayloadWfie);
       if (b22DisplayedCountUubd > 0) {
@@ -501,15 +558,18 @@ class B22AlertOrchestratorNazk {
   }
 
   Future<bool> b22IsInitializationAllowedCgbv() async {
+    if(B22NotificationTimingStoreCzfr.b22ReadKsdx().isEmpty){
+      return false;
+    }
     if (!B22AudienceQualificationOrchestratorCaap
         .b22InstanceWcsm
         .isEligibleUser) {
       return false;
     }
-    final bool b22SamsungDeviceJstf = await FlutterBoomNotificationPlugins
+    final bool b22SamsungDeviceJstf = await FlutterLocalNotificationPlugins
         .instance
         .isSamsungDevice();
-    final bool b22KoreanLocaleUnvf = await FlutterBoomNotificationPlugins
+    final bool b22KoreanLocaleUnvf = await FlutterLocalNotificationPlugins
         .instance
         .isKoreanLocale();
     if (b22SamsungDeviceJstf &&

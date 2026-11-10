@@ -374,13 +374,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.3"
-  flutter_boom_notification_plugins:
-    dependency: "direct main"
-    description:
-      path: "/Users/chengmengyi/testbird/plugins/flutter_boom_notification_plugins"
-      relative: false
-    source: path
-    version: "0.0.6"
   flutter_check_af_new:
     dependency: "direct main"
     description:
@@ -421,6 +414,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.0"
+  flutter_local_notification_plugins:
+    dependency: "direct main"
+    description:
+      name: flutter_local_notification_plugins
+      sha256: c499d68e24af5c561ba5217917a80c3baad64f69438991f44cb69441f83acd2d
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.2"
   flutter_localizations:
     dependency: "direct main"
     description: flutter

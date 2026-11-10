@@ -13,7 +13,7 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_ak
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_orchestrator_bvsc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:flutter_check_af_new/callback/request_callback.dart';
 import 'package:flutter_check_af_new/flutter_check_af_new.dart';
 import 'package:flutter_check_af_new/request_af/request_af_callback.dart';
@@ -185,7 +185,7 @@ class B22AudienceQualificationOrchestratorCaap {
     var s = await rootBundle.loadString(
       B22ApplicationManifestPdpm.b22LocalReferrerConfigPlsy,
     );
-    return FlutterBoomNotificationPlugins.instance.decryptReflectionString(secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi, value: s);
+    return FlutterLocalNotificationPlugins.instance.decryptReflectionString(secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi, value: s);
   }
 
   void b22RefreshEligibilityStateLlgu() {

@@ -33,7 +33,6 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_linux-3.2.2" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/webview_flutter_android-4.14.0" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0" />
-      <root url="file://$PROJECT_DIR$/../plugins/flutter_boom_notification_plugins" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/image_picker_linux-0.2.2" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/image_picker_ios-0.8.13+6" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/sqflite_android-2.4.3" />
@@ -61,6 +60,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_headless_lifecycle_bootstrap-0.0.4" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_tba_info_new-0.0.1" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/play_install_referrer-0.6.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_local_notification_plugins-0.3.2" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -11,6 +11,9 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_ht
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_hub_deqw.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_operations_ancs/b22_alert_orchestrator_qrqj.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_loading_delay_djiwfe.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_exit_notification_delay_store_tqng.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_media_replacement_store_ejla.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_notification_timing_store_qcye.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_promotion_toggle_store_wqpw.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_cloud_promotion_manifest_store_irzx.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_floating_overlay_zkry/b22_floating_layer_orchestrator_hqqb.dart';
@@ -20,7 +23,7 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_ak
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:flutter_custom_facebook/flutter_custom_facebook.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 
@@ -40,8 +43,7 @@ class B22CloudOrchestratorRhpr {
   String b22AdConfigSourceNfkz = "local";
 
   Future<void> b22InitializePbli() {
-    return b22InitializationFutureKqev ??=
-        b22InitializeFirebaseInternalNwfo();
+    return b22InitializationFutureKqev ??= b22InitializeFirebaseInternalNwfo();
   }
 
   Future<void> b22InitializeFirebaseInternalNwfo() async {
@@ -128,10 +130,35 @@ class B22CloudOrchestratorRhpr {
           .b22InitializeRiskControlQhar(b22RiskConfigNnap);
     }
 
+    final int b22ExitNotificationDelayCqom =
+        b22RemoteConfigRziz?.getInt('app_exit') ?? 0;
+    if (b22ExitNotificationDelayCqom > 0) {
+      B22ExitNotificationDelayStoreWmku.b22SaveXcpr(
+        b22ExitNotificationDelayCqom,
+      );
+    }
+
+    final String b22NotificationTimingConfigGzue =
+        b22RemoteConfigRziz?.getString('push_time') ?? '';
+    if (b22NotificationTimingConfigGzue.isNotEmpty) {
+      B22NotificationTimingStoreCzfr.b22SaveLwpf(
+        b22NotificationTimingConfigGzue,
+      );
+      B22AlertOrchestratorNazk.b22InstanceOxzc.b22InitializeJrwh();
+    }
+
+    final int b22MediaReplacementConfigRavy =
+        b22RemoteConfigRziz?.getInt('pr_md_unique') ?? 0;
+    if (b22MediaReplacementConfigRavy > 0) {
+      B22MediaReplacementStoreVzpt.b22SaveQjrs(b22MediaReplacementConfigRavy);
+      B22AlertOrchestratorNazk.b22InstanceOxzc
+          .b22InitializeMediaNotificationNxyd(b22ForceYwov: true);
+    }
+
     var b22FloatOhoWyks = b22RemoteConfigRziz?.getInt("float_oho") ?? 0;
     if (b22FloatOhoWyks > 0) {
       B22FloatingOhoStoreHxpr.b22SaveOaaq(b22TimestampAvvh: b22FloatOhoWyks);
-      FlutterBoomNotificationPlugins.instance.updateCloseOverlayProbability(
+      FlutterLocalNotificationPlugins.instance.updateCloseOverlayProbability(
         closeOverlayProbability: b22FloatOhoWyks,
       );
     }
@@ -153,12 +180,19 @@ class B22CloudOrchestratorRhpr {
       );
     }
 
-    final int b22HotLaunchCooldownPygh = b22RemoteConfigRziz?.getInt("cd_hot") ?? 0;
+    final int b22HotLaunchCooldownPygh =
+        b22RemoteConfigRziz?.getInt("cd_hot") ?? 0;
     if (b22HotLaunchCooldownPygh > 0) {
-      B22ApplicationLifecycleOrchestratorPhic.b22InstanceGfkl.b22HotLaunchCooldownSecondsDqtg = b22HotLaunchCooldownPygh*1000;
+      B22ApplicationLifecycleOrchestratorPhic
+              .b22InstanceGfkl
+              .b22HotLaunchCooldownSecondsDqtg =
+          b22HotLaunchCooldownPygh * 1000;
     }
-    if(b22HotLaunchCooldownPygh==-1){
-      B22ApplicationLifecycleOrchestratorPhic.b22InstanceGfkl.b22HotLaunchCooldownSecondsDqtg = 0;
+    if (b22HotLaunchCooldownPygh == -1) {
+      B22ApplicationLifecycleOrchestratorPhic
+              .b22InstanceGfkl
+              .b22HotLaunchCooldownSecondsDqtg =
+          0;
     }
     b22LoadAdEngagementConfigKbyc();
   }

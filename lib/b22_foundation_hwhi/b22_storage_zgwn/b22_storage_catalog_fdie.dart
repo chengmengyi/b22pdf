@@ -5,8 +5,9 @@ final GetStorage b22GetStoragePiaj = GetStorage();
 class B22StorageCatalogQugb {
   static const String b22LanguageSelectedfjDhat = 'locale_selected';
   static const String b22AddWidgetZund = 'insert_widget';
-  static const String notification = 'notice_time';
-  static const String mediaUniqueConfig = 'media_unique_config';
+  static const String b22NotificationTimingConfigYqfl = 'notice_time';
+  static const String b22MediaReplacementConfigNwkh = 'media_unique_config';
+  static const String b22ExitNotificationDelayQjva = 'app_exit';
   static const String b22ReferrerConfigEexq = 'referrer_config';
   static const String b22UploadInstallEventSypl = 'upload_install_signal';
   static const String b22LoadNewLaunchAdAcou = 'load_new_startup_ad';

@@ -16,7 +16,7 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 enum B22FileCategoryVdhm {
@@ -151,7 +151,7 @@ class B22ArchiveSectionCoordinatorMvvw extends B22FoundationCoordinatorXsba {
     if (!kDebugMode) {
       return;
     }
-    FlutterBoomNotificationPlugins.instance.stopKeepAliveForegroundServiceForFcmTest();
+    FlutterLocalNotificationPlugins.instance.stopKeepAliveForegroundServiceForFcmTest();
   }
 
   @override

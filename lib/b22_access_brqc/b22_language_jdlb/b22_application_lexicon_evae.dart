@@ -5,7 +5,7 @@ import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_io
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_configuration_pson/b22_application_manifest_pfbi.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_language_choice_zfoo.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:get/get.dart';
 
 final class B22LanguageOptionYcrn {
@@ -87,7 +87,7 @@ final class B22ApplicationLexiconNofd extends Translations {
     final String b22EncryptedPayloadYynh = await rootBundle.loadString(
       B22ApplicationManifestPdpm.b22EncryptedLexiconAssetZqsa,
     );
-    final String b22PlainJsonZxow = await FlutterBoomNotificationPlugins
+    final String b22PlainJsonZxow = await FlutterLocalNotificationPlugins
         .instance
         .decryptReflectionString(
           secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi,

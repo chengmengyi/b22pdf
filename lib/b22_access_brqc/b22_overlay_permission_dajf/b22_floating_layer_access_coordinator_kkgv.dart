@@ -6,7 +6,7 @@ import 'package:b22_document_workspace_kmzm/b22_launch_dehs/b22_onboarding_wmqk/
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_destinations_crke.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_router_cbkk.dart';
 import 'package:b22_document_workspace_kmzm/b22_shared_midp/b22_interface_ruov/b22_foundation_coordinator_owyg.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:get/get.dart';
 
 class B22FloatingLayerAccessCoordinatorNjpi
@@ -31,14 +31,14 @@ class B22FloatingLayerAccessCoordinatorNjpi
     }
     b22PermissionRequestRunningJsor = true;
     try {
-      final bool b22HasPermissionPlmg = await FlutterBoomNotificationPlugins
+      final bool b22HasPermissionPlmg = await FlutterLocalNotificationPlugins
           .instance
           .checkOverlayPermission();
       if (b22HasPermissionPlmg) {
         b22OpenNotificationPermissionScreenDzbs();
         return;
       }
-      final bool b22PermissionGrantedUsta = await FlutterBoomNotificationPlugins
+      final bool b22PermissionGrantedUsta = await FlutterLocalNotificationPlugins
           .instance
           .requestOverlayPermission(
             title: 'b22_almost_there_unlock_your_full_xhhm'.tr,

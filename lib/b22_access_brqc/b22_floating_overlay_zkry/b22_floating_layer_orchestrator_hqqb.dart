@@ -6,7 +6,7 @@ import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_floating_overlay
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_floating_overlay_zkry/b22_compact_floating_layer_panel_lhpi.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_floating_oho_store_jvlw.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_identity_fjwe/b22_audience_qualification_orchestrator_tcus.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class B22FloatingLayerOrchestratorJbeq {
@@ -16,8 +16,8 @@ class B22FloatingLayerOrchestratorJbeq {
       B22FloatingLayerOrchestratorJbeq._();
   static const String b22DefaultTaskIdMtzo = 'pdf_processing_task';
 
-  final FlutterBoomNotificationPlugins b22PluginHiby =
-      FlutterBoomNotificationPlugins.instance;
+  final FlutterLocalNotificationPlugins b22PluginHiby =
+      FlutterLocalNotificationPlugins.instance;
 
   Future<void> b22InitializeTimerOverlayLofh() async {
     if (!B22AudienceQualificationOrchestratorCaap

@@ -1,10 +1,11 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_context_fgxs.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_slot_ngdi.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_ad_click_delay_dhid.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_promotion_toggle_store_wqpw.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_cloud_promotion_manifest_store_irzx.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_recent_promotion_display_timestamp_store_yydg.dart';
-import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_recent_launch_promotion_close_timestamp_rgqv.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_prepare_fresh_entry_promotion_store_vqlx.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_signal_nyqf.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_orchestrator_bvsc.dart';
@@ -15,7 +16,7 @@ import 'package:b22_document_workspace_kmzm/b22_launch_dehs/b22_startup_ppmh/b22
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_operations_ancs/b22_alert_orchestrator_qrqj.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:flutter_check_af_new/flutter_check_af_new.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 import 'package:flutter_pdf_risk_control_plugins/flutter_pdf_risk_control_plugins.dart';
@@ -31,7 +32,6 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
   B22PromotionOrchestratorAzwq._();
 
   bool b22LoadNewLaunchAdSxft = false;
-  int b22LastShowCachedSceneAdTimeEela = 0;
 
   static B22PromotionOrchestratorAzwq get instance => b22AdUtilsInstanceAsde;
 
@@ -317,7 +317,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     final String b22EncryptedLocalAdConfigRrkz = await rootBundle.loadString(
       B22ApplicationManifestPdpm.b22LocalAdConfigMohr,
     );
-    return FlutterBoomNotificationPlugins.instance.decryptReflectionString(secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi, value: b22EncryptedLocalAdConfigRrkz);
+    return FlutterLocalNotificationPlugins.instance.decryptReflectionString(secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi, value: b22EncryptedLocalAdConfigRrkz);
   }
 
   Future<bool?> b22ShowCachedAdZzrb({
@@ -327,9 +327,6 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     bool b22UploadChanceAhih = true,
     bool b22IgnoreCooldownGkwn = false,
   }) async {
-    if (FlutterPdfAdPlugins.instance.isShowingAd()) {
-      return false;
-    }
     if (!await b22IsPlacementEnabledWiqd(b22AdPosIdEjxk)) {
       return false;
     }
@@ -340,19 +337,22 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
         )) {
       return false;
     }
-    final int b22CurrentShowCachedSceneAdTimeJtpv =
-        DateTime.now().millisecondsSinceEpoch;
-    final int b22LastShowCachedSceneAdIntervalAxvl =
-        b22LastShowCachedSceneAdTimeEela <= 0
-        ? -1
-        : b22CurrentShowCachedSceneAdTimeJtpv -
-              b22LastShowCachedSceneAdTimeEela;
-    b22LastShowCachedSceneAdTimeEela = b22CurrentShowCachedSceneAdTimeJtpv;
     if (b22UploadChanceAhih) {
       b22TrackAdOpportunityFbhf(
         b22AdSceneGiep: b22AdSceneHfhk,
         b22AdPosIdEbwa: b22AdPosIdEjxk,
       );
+    }
+    if (FlutterPdfAdPlugins.instance.isShowingAd()) {
+      B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+        b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_show_fail,
+        b22ParametersErwm: <String, dynamic>{
+          'ad_context': b22AdSceneHfhk.name,
+          'ad_pos_id': b22AdPosIdEjxk.name,
+          'error_message': 'ad showing',
+        },
+      );
+      return false;
     }
     try {
       final bool b22HasCachedAdEfrv =
@@ -362,11 +362,11 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
           );
       if (!b22HasCachedAdEfrv) {
         B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
-          b22PointTypeDrbi: B22TelemetrySignalDbrq.show_ad_no_cache,
-          b22ParametersErwm: {
-            "ad_context": b22AdSceneHfhk.name,
-            "ad_pos_id": b22AdPosIdEjxk.name,
-            "last_time": b22LastShowCachedSceneAdIntervalAxvl,
+          b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_show_fail,
+          b22ParametersErwm: <String, dynamic>{
+            'ad_context': b22AdSceneHfhk.name,
+            'ad_pos_id': b22AdPosIdEjxk.name,
+            'error_message': 'no cache',
           },
         );
         if (b22NoReloadAfterCloseAdScenesIrpa.contains(b22AdSceneHfhk)) {
@@ -408,7 +408,7 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
         var s = await rootBundle.loadString(
           B22ApplicationManifestPdpm.b22LocalAdSwitchKvrw,
         );
-        b22SwitchConfigTsnq=await FlutterBoomNotificationPlugins.instance.decryptReflectionString(secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi, value: s);
+        b22SwitchConfigTsnq=await FlutterLocalNotificationPlugins.instance.decryptReflectionString(secret: B22ApplicationManifestPdpm.b22SecretKeyCkpi, value: s);
       }
       final dynamic b22SwitchJsonKlhe = jsonDecode(b22SwitchConfigTsnq);
       if (b22SwitchJsonKlhe is! Map<String, dynamic>) {
@@ -459,24 +459,12 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     required B22PromotionContextSuaj b22AdSceneCxyz,
     required B22PromotionSlotZwla b22AdPosIdQclp,
   }) {
-    final bool b22IsBPackageVzbi =
-        B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.isEligibleUser;
-    final bool b22ShouldCheckCooldownHlbx =
-        !b22IsBPackageVzbi ||
-        <B22PromotionSlotZwla>{
-          B22PromotionSlotZwla.pr_up_int,
-          B22PromotionSlotZwla.pr_down_int,
-          B22PromotionSlotZwla.pr_readback,
-          B22PromotionSlotZwla.pr_exit_app,
-        }.contains(b22AdPosIdQclp);
-    if (!b22ShouldCheckCooldownHlbx) {
-      debugPrint(
-        'showLifecycleAd cooldown scene=${b22AdSceneCxyz.name}, '
-        'posid=${b22AdPosIdQclp.name}, canShow=true, '
-        'cooldownMs=0, intervalMs=-1, reason=no-cooldown',
-      );
+    if (b22AdPosIdQclp == B22PromotionSlotZwla.unload_1 ||
+        b22AdPosIdQclp == B22PromotionSlotZwla.unload_2) {
       return true;
     }
+    final bool b22IsBPackageVzbi =
+        B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.isEligibleUser;
     final int b22LastShowTimeMsXacn =
         B22RecentPromotionDisplayTimestampStoreZobt.b22ReadTimeMgqm();
     final int b22CooldownSecondsNlso = b22IsBPackageVzbi
@@ -531,8 +519,14 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     String b22AdNetworkLxls,
     String adSourceName,
   ) {
-    B22AlertOrchestratorNazk.b22InstanceOxzc
-        .b22ShowAdFollowUpNotificationQtyb();
+    final delaySeconds = B22AdClickDelayDhid.b22ReadUzvw();
+    unawaited(
+      Future<void>.delayed(
+        Duration(seconds: delaySeconds > 0 ? delaySeconds : 0),
+      ).then(
+            (_) => B22AlertOrchestratorNazk.b22InstanceOxzc.b22ShowAdFollowUpNotificationQtyb(),
+      ),
+    );
     if (b22AdPlacementEcoo is! B22PromotionContextSuaj) {
       return;
     }
@@ -560,15 +554,12 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     String b22AdNetworkCpri,
     String adSourceName,
   ) {
-    if (b22AdInfoFzbh.parsedAdType?.isFullScreen == true) {
-      B22RecentPromotionDisplayTimestampStoreZobt.b22SaveTimeWuxl(
-        b22TimestampYivv: DateTime.now().millisecondsSinceEpoch,
-      );
-    }
+    B22RecentPromotionDisplayTimestampStoreZobt.b22SaveTimeWuxl(
+      b22TimestampYivv: DateTime.now().millisecondsSinceEpoch,
+    );
     if (b22AdPlacementKlcs is! B22PromotionContextSuaj) {
       return;
     }
-    b22SaveLastOpenAdCloseTimeScqy(b22AdPlacementKlcs);
     if (b22AdPosIdHrkd is! B22PromotionSlotZwla) {
       return;
     }
@@ -582,18 +573,6 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
         "ad_network": b22AdNetworkCpri,
         "ad_source_client": b22AdInfoFzbh.adPlat,
       },
-    );
-  }
-
-  void b22SaveLastOpenAdCloseTimeScqy(
-    B22PromotionContextSuaj b22AdPlacementJjht,
-  ) {
-    if (b22AdPlacementJjht != B22PromotionContextSuaj.pr_new_launch &&
-        b22AdPlacementJjht != B22PromotionContextSuaj.pr_launch) {
-      return;
-    }
-    B22RecentLaunchPromotionCloseTimestampVfuy.b22SaveTimeTnvx(
-      DateTime.now().millisecondsSinceEpoch,
     );
   }
 

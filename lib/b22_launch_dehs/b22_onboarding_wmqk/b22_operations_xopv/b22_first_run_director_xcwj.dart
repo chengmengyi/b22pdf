@@ -6,7 +6,7 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_guide_completion_store_xqve.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_language_jdlb/b22_interface_brpn/b22_locale_chooser_coordinator_yrhs.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_interface_ozan/b22_permission_uawu/b22_alert_access_coordinator_ypyk.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:get/get.dart';
 
 class B22FirstRunDirectorYxjn {
@@ -17,7 +17,7 @@ class B22FirstRunDirectorYxjn {
   //语言选择页没有点确定----启动app：悬浮窗->语言选择页->引导页->通知->首页
   //语言选择页点确定----启动app：悬浮窗->引导页->通知->首页
   Future<void> b22OpenOverlaySelectionRoen() async {
-    var b22CheckOverlayPermissionHswh = await FlutterBoomNotificationPlugins
+    var b22CheckOverlayPermissionHswh = await FlutterLocalNotificationPlugins
         .instance
         .checkOverlayPermission();
     final DateTime b22NowOqfx = DateTime.now();
