@@ -7,6 +7,8 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_identity_fjw
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_kind_lqge.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_qdxm.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_guide_completion_store_xqve.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_orchestrator_bvsc.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_signal_nyqf.dart';
 import 'package:b22_document_workspace_kmzm/b22_launch_dehs/b22_onboarding_wmqk/b22_operations_xopv/b22_first_run_director_xcwj.dart';
 import 'package:b22_document_workspace_kmzm/b22_shared_midp/b22_interface_ruov/b22_foundation_coordinator_owyg.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +25,23 @@ class B22GuideCoordinatorFvke extends B22FoundationCoordinatorXsba {
   bool b22TriedGuideFullAdBqle = false;
   bool b22FinishingGuideXkva = false;
 
+  @override
+  void onInit() {
+    super.onInit();
+    B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.guide_page_action,
+      b22ParametersErwm: <String, dynamic>{'page': 'page_1'},
+    );
+  }
+
   void b22OnPageChangedFzro(int b22PageIndexUyme, BuildContext b22ContextTqva) {
     b22CurrentPagePrme = b22PageIndexUyme;
+    B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.guide_page_action,
+      b22ParametersErwm: <String, dynamic>{
+        'page': 'page_${b22PageIndexUyme + 1}',
+      },
+    );
     if (b22PageIndexUyme == 1 && !b22TriedGuideFullAdBqle) {
       b22TriedGuideFullAdBqle = true;
       if (B22AudienceQualificationOrchestratorCaap

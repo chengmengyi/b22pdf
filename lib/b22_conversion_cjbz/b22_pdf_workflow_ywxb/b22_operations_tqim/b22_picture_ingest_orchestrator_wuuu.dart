@@ -1,4 +1,5 @@
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_permissions_fems/b22_access_orchestrator_hlvl.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_lifecycle_wopk/b22_application_lifecycle_orchestrator_xzfv.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_destinations_crke.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_router_cbkk.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_signal_nyqf.dart';
@@ -31,6 +32,8 @@ final class B22PictureIngestOrchestratorIybt {
       }
     }
 
+    B22ApplicationLifecycleOrchestratorPhic.b22InstanceGfkl
+        .b22SuppressNextForegroundAdMmft();
     final List<String>? b22ScanPathListPxjx = await DocumentScanner.scan(
       format: DocScanFormat.jpeg,
     );
@@ -38,10 +41,7 @@ final class B22PictureIngestOrchestratorIybt {
       b22ScanPathListPxjx,
     );
     if (b22OpenResultKhoq) {
-      b22OpenImageSelectionTihs(
-        b22PathsIsgq,
-        B22PictureInputOriginVwda.scan,
-      );
+      b22OpenImageSelectionTihs(b22PathsIsgq, B22PictureInputOriginVwda.scan);
     }
     return b22PathsIsgq;
   }
@@ -54,15 +54,14 @@ final class B22PictureIngestOrchestratorIybt {
         b22PointTypeDrbi: B22TelemetrySignalDbrq.tool_image_to_pdf,
       );
     }
+    B22ApplicationLifecycleOrchestratorPhic.b22InstanceGfkl
+        .b22SuppressNextForegroundAdMmft();
     final List<XFile> b22ImageListWbgx = await ImagePicker().pickMultiImage();
     final List<String> b22PathsGnde = b22FilterValidImagePathsPjiw(
       b22ImageListWbgx.map((XFile b22ImageYqdt) => b22ImageYqdt.path),
     );
     if (b22OpenResultBhrs) {
-      b22OpenImageSelectionTihs(
-        b22PathsGnde,
-        B22PictureInputOriginVwda.choose,
-      );
+      b22OpenImageSelectionTihs(b22PathsGnde, B22PictureInputOriginVwda.choose);
     }
     return b22PathsGnde;
   }

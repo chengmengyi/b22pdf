@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_hub_deqw.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_kind_lqge.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_qdxm.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_destinations_crke.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_router_cbkk.dart';
 import 'package:b22_document_workspace_kmzm/b22_shared_midp/b22_interface_ruov/b22_foundation_coordinator_owyg.dart';
@@ -9,6 +12,16 @@ import 'package:get/get.dart';
 class B22PdfJobOutcomeCoordinatorUwje extends B22FoundationCoordinatorXsba {
   final FileToolsFileInfo b22FileInfoQdxx =
       Get.arguments['fileInfo'] as FileToolsFileInfo;
+
+  @override
+  void onInit() {
+    super.onInit();
+    B22ApplicationSignalHubQzvk.instance.b22PublishQwoy(
+      B22ApplicationSignalXfvp(
+        b22TypeIafj: B22ApplicationSignalKindJiwh.b22FileListRefreshOivp,
+      ),
+    );
+  }
 
   String get fileName {
     final String b22NameOxyk = b22FileInfoQdxx.name ?? '';

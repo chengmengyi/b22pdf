@@ -5,6 +5,7 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_slot_ngdi.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_kind_lqge.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_messaging_htgr/b22_application_signal_qdxm.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_destinations_crke.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_router_cbkk.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_storage_zgwn/b22_records_aogw/b22_loading_delay_djiwfe.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_signal_nyqf.dart';
@@ -26,6 +27,7 @@ class B22LaunchPromotionWaitingCoordinatorXnlw
 
   final Stopwatch b22StopwatchIeek = Stopwatch();
   Timer? b22TimerVtuf;
+  Timer? b22RouteCloseTimerJxqv;
   Duration b22LastCacheCheckOhzk = Duration.zero;
   late final Duration b22InitialCacheCheckDelayFsal;
   bool b22CheckingCacheQjjq = false;
@@ -171,7 +173,43 @@ class B22LaunchPromotionWaitingCoordinatorXnlw
             b22AdSceneAgkl: b22AdSceneRowq,
             b22AdPosIdIaul: b22AdPosIdQfwk,
           );
-    B22ApplicationRouterJfva.b22BackCwkm<dynamic>(b22ResultNvsq: b22ResultFheq);
+    b22CloseLoadingRouteVxqy(b22ResultFheq);
+  }
+
+  void b22CloseLoadingRouteVxqy(
+    B22LaunchPromotionWaitingResultFqwa b22ResultFheq,
+  ) {
+    if (B22ApplicationRouterJfva.b22IsCurrentRouteSsls(
+      B22ApplicationDestinationsMcbk.b22OpenAdLoadingRouteQnvm,
+    )) {
+      B22ApplicationRouterJfva.b22BackCwkm<dynamic>(
+        b22ResultNvsq: b22ResultFheq,
+      );
+      return;
+    }
+
+    final B22LaunchPromotionWaitingResultFqwa b22CancelledResultVdrp =
+        B22LaunchPromotionWaitingResultFqwa.cancelled(
+          b22SessionIdZcsg: b22SessionIdZcsg ?? -1,
+          b22ReasonPrxj: 'route_obscured',
+          b22AdSceneAgkl: b22AdSceneRowq,
+          b22AdPosIdIaul: b22AdPosIdQfwk,
+        );
+    b22RouteCloseTimerJxqv?.cancel();
+    b22RouteCloseTimerJxqv = Timer.periodic(b22CacheCheckIntervalKgkj, (
+      Timer b22TimerQxpm,
+    ) {
+      if (!B22ApplicationRouterJfva.b22IsCurrentRouteSsls(
+        B22ApplicationDestinationsMcbk.b22OpenAdLoadingRouteQnvm,
+      )) {
+        return;
+      }
+      b22TimerQxpm.cancel();
+      b22RouteCloseTimerJxqv = null;
+      B22ApplicationRouterJfva.b22BackCwkm<dynamic>(
+        b22ResultNvsq: b22CancelledResultVdrp,
+      );
+    });
   }
 
   @override
@@ -197,6 +235,8 @@ class B22LaunchPromotionWaitingCoordinatorXnlw
   void onClose() {
     b22TimerVtuf?.cancel();
     b22TimerVtuf = null;
+    b22RouteCloseTimerJxqv?.cancel();
+    b22RouteCloseTimerJxqv = null;
     b22StopwatchIeek.stop();
     super.onClose();
   }

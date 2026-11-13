@@ -30,6 +30,7 @@ class B22ApplicationLifecycleOrchestratorPhic {
   int b22HotLaunchCooldownSecondsDqtg = 800;
   bool b22ObserverStartedBtps = false, b22AppIsBackBftd = false;
   bool b22AppIsForegroundHykg = true;
+  bool b22HotLaunchHandlingEnabledQxmv = false;
   bool b22SuppressNextHotLaunchMsev = false;
   bool b22HandlingForegroundPedo = false;
   bool b22HasPendingForegroundRyma = false;
@@ -38,6 +39,8 @@ class B22ApplicationLifecycleOrchestratorPhic {
   int? b22ActiveLoadingSessionIdGlwl;
   B22PromotionContextSuaj? b22ActiveLoadingSceneJhmg;
   B22PromotionSlotZwla? b22ActiveLoadingPosIdFqod;
+  Timer? b22BackgroundProgressOverlayTimerQnwv;
+  int b22BackgroundProgressOverlayGenerationXkpm = 0;
   Future<void> b22AdTransitionFutureNisq = Future<void>.value();
 
   bool get shouldSuppressClickHotLaunch =>
@@ -59,10 +62,14 @@ class B22ApplicationLifecycleOrchestratorPhic {
   void b22StartObservingLifecycleJdlg() {
     if (b22ObserverStartedBtps) return;
     b22ObserverStartedBtps = true;
+    b22SyncCurrentLifecycleStateVqnt();
     FlutterAppLifecycle.instance.setCallObserver(
       AppStateObserver(
         call: (bool b22InBackgroundNmtj) {
-          if (!b22InBackgroundNmtj) b22PrepareForForegroundEventZkrd();
+          b22AppIsForegroundHykg = !b22InBackgroundNmtj;
+          if (!b22InBackgroundNmtj && b22HotLaunchHandlingEnabledQxmv) {
+            b22PrepareForForegroundEventZkrd();
+          }
           B22ApplicationSignalHubQzvk.instance.b22PublishQwoy(
             B22ApplicationSignalXfvp(
               b22TypeIafj: B22ApplicationSignalKindJiwh.b22AppLifecycleZpzc,
@@ -70,11 +77,22 @@ class B22ApplicationLifecycleOrchestratorPhic {
             ),
           );
           if (b22InBackgroundNmtj) {
+            if (!b22HotLaunchHandlingEnabledQxmv) {
+              b22ScheduleBackgroundProgressOverlayYjkr();
+            }
+          } else {
+            B22PromotionOrchestratorAzwq.instance.hotLauncherCheckAd();
+            B22TelemetryOrchestratorNqon.instance.b22TrackSessionIhkh();
+            b22CancelBackgroundProgressOverlayTimerEwqz();
+            B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr
+                .closeProgressOverlay();
+          }
+          if (!b22HotLaunchHandlingEnabledQxmv) {
+            return;
+          }
+          if (b22InBackgroundNmtj) {
             b22OnAppBackgroundedRxpr();
           } else {
-            unawaited(
-              B22TelemetryOrchestratorNqon.instance.b22TrackSessionIhkh(),
-            );
             B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr
                 .b22CloseTimerOverlayZifz();
             if (b22HandlingForegroundPedo) {
@@ -88,10 +106,70 @@ class B22ApplicationLifecycleOrchestratorPhic {
     );
   }
 
+  void b22EnableHotLaunchHandlingRkwe() {
+    b22StartObservingLifecycleJdlg();
+    if (b22HotLaunchHandlingEnabledQxmv) return;
+    b22HotLaunchHandlingEnabledQxmv = true;
+    b22AppIsBackBftd = false;
+    b22SuppressNextHotLaunchMsev = false;
+    b22HasPendingForegroundRyma = false;
+    b22LastBackgroundTimeTtpm = 0;
+    B22ActiveEntryOriginOrchestratorIonc.instance.b22ClearXdnh();
+  }
+
+  void b22SyncCurrentLifecycleStateVqnt() {
+    final AppLifecycleState? b22LifecycleStatePqmx =
+        WidgetsBinding.instance.lifecycleState;
+    b22AppIsForegroundHykg = switch (b22LifecycleStatePqmx) {
+      AppLifecycleState.paused ||
+      AppLifecycleState.hidden ||
+      AppLifecycleState.detached => false,
+      AppLifecycleState.resumed || AppLifecycleState.inactive || null => true,
+    };
+  }
+
   void b22OnAppBackgroundedRxpr() {
     b22AppIsForegroundHykg = false;
     b22AppIsBackBftd = true;
     b22LastBackgroundTimeTtpm = DateTime.now().millisecondsSinceEpoch;
+    b22ScheduleBackgroundProgressOverlayYjkr();
+  }
+
+  void b22ScheduleBackgroundProgressOverlayYjkr() {
+    b22BackgroundProgressOverlayTimerQnwv?.cancel();
+    final int b22GenerationLqtm = ++b22BackgroundProgressOverlayGenerationXkpm;
+    b22BackgroundProgressOverlayTimerQnwv = Timer(
+      const Duration(milliseconds: 500),
+      () {
+        b22BackgroundProgressOverlayTimerQnwv = null;
+        if (b22AppIsForegroundHykg ||
+            b22GenerationLqtm != b22BackgroundProgressOverlayGenerationXkpm) {
+          return;
+        }
+        unawaited(b22ShowBackgroundProgressOverlayVqze(b22GenerationLqtm));
+      },
+    );
+  }
+
+  void b22CancelBackgroundProgressOverlayTimerEwqz() {
+    b22BackgroundProgressOverlayGenerationXkpm++;
+    b22BackgroundProgressOverlayTimerQnwv?.cancel();
+    b22BackgroundProgressOverlayTimerQnwv = null;
+  }
+
+  Future<void> b22ShowBackgroundProgressOverlayVqze(
+    int b22GenerationLqtm,
+  ) async {
+    try {
+      await B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr
+          .b22ShowProgressOverlayIcnd();
+    } catch (_) {
+      return;
+    }
+    if (b22AppIsForegroundHykg ||
+        b22GenerationLqtm != b22BackgroundProgressOverlayGenerationXkpm) {
+      B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr.closeProgressOverlay();
+    }
   }
 
   void b22PrepareForForegroundEventZkrd() {

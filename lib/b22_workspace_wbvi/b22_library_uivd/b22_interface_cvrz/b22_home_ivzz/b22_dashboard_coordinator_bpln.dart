@@ -3,6 +3,7 @@ import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_slot_ngdi.dart';
 import 'package:b22_document_workspace_kmzm/b22_engagement_xkaj/b22_feedback_mtfc/b22_interface_sehm/b22_review_panel_qibi.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_identity_fjwe/b22_audience_qualification_orchestrator_tcus.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_cloud_gjhk/b22_cloud_orchestrator_utoj.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_operations_ancs/b22_alert_orchestrator_qrqj.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_destinations_crke.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_router_cbkk.dart';
@@ -51,6 +52,13 @@ class B22DashboardCoordinatorNjxu extends B22FoundationCoordinatorXsba {
   @override
   void onInit() {
     super.onInit();
+    B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.guide_page,
+      b22ParametersErwm: <String, dynamic>{
+        'guide_type':
+            '${B22CloudOrchestratorRhpr.b22InstanceBbui.b22ShowGuidePageQwsp}',
+      },
+    );
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
       b22PointTypeDrbi: B22TelemetrySignalDbrq.page_view,
       b22ParametersErwm: {"page": "file"},

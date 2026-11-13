@@ -31,14 +31,14 @@ class B22AudienceQualificationOrchestratorCaap {
   static final b22InstanceWcsm =
       B22AudienceQualificationOrchestratorCaap._();
 
-  bool b22IsEligibleUserOvsb = false;
+  bool _b22IsEligibleUserOvsb = false;
   bool _hasInitializedAf = false;
 
   bool get isEligibleUser {
     if (kDebugMode) {
       return true;
     }
-    return b22IsEligibleUserOvsb;
+    return _b22IsEligibleUserOvsb;
   }
 
   Future<void> b22InitializeAttributionGcmr() async {
@@ -203,10 +203,10 @@ class B22AudienceQualificationOrchestratorCaap {
     B22TelemetryOrchestratorNqon.instance.b22SetEligibleUserOotf(
       b22NewEligibilityStateHbqa,
     );
-    if (b22IsEligibleUserOvsb == b22NewEligibilityStateHbqa) {
+    if (_b22IsEligibleUserOvsb == b22NewEligibilityStateHbqa) {
       return;
     }
-    b22IsEligibleUserOvsb = b22NewEligibilityStateHbqa;
+    _b22IsEligibleUserOvsb = b22NewEligibilityStateHbqa;
     B22ApplicationSignalHubQzvk.instance.b22PublishQwoy(
       B22ApplicationSignalXfvp(
         b22TypeIafj: B22ApplicationSignalKindJiwh.b22RefreshBUserStateSzod,

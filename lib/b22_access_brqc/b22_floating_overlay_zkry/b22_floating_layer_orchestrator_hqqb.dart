@@ -87,24 +87,6 @@ class B22FloatingLayerOrchestratorJbeq {
     );
   }
 
-  Future<void> b22UpdateProgressOverlayIbax({
-    required double b22ProgressUhui,
-    String b22TaskIdMqdo = b22DefaultTaskIdMtzo,
-  }) async {
-    if (!Platform.isAndroid || !await b22PluginHiby.checkOverlayPermission())
-      return;
-    final double b22SafeProgressJssf = b22ProgressUhui.clamp(0, 1).toDouble();
-    if (!await b22PluginHiby.isProcessingOverlayActive()) {
-      await b22ShowProgressOverlayIcnd(b22TaskIdQuzk: b22TaskIdMqdo);
-      if (b22SafeProgressJssf == 0) return;
-    }
-    await b22PluginHiby.updateProcessingOverlay(
-      taskId: b22TaskIdMqdo,
-      title: B22ApplicationManifestPdpm.b22ApplicationNameBjnh,
-      progress: b22SafeProgressJssf,
-    );
-  }
-
   void b22CloseTimerOverlayZifz() => b22PluginHiby.closeTimerOverlay();
 
   void closeProgressOverlay() => b22PluginHiby.closeProcessingOverlay();

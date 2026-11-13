@@ -7,7 +7,6 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.5" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_web-32.2.9" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/google_mobile_ads-7.0.0" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_pdf_ad_plugins-0.3.1" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_analytics_web-0.6.1+9" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.2" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/sqflite_darwin-2.4.3+1" />
@@ -61,6 +60,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_tba_info_new-0.0.1" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/play_install_referrer-0.6.0" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_local_notification_plugins-0.3.2" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_pdf_ad_plugins-0.3.2" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

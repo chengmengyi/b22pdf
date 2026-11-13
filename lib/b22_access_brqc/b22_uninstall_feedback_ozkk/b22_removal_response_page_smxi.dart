@@ -283,7 +283,7 @@ class B22RemovalNativePromotionStateYndr
     if (!mounted || !b22CanShowAdEoly) return;
     setState(() => b22CanShowAdOicd = true);
     b22AdServiceEvhf.b22TrackAdOpportunityFbhf(
-      b22AdSceneGiep: B22PromotionContextSuaj.pr_ban2,
+      b22AdSceneGiep: B22PromotionContextSuaj.pr_ban1,
       b22AdPosIdEbwa: B22PromotionSlotZwla.unload_nat1,
     );
     unawaited(b22AttachNativeAdWidgetXlon());
@@ -302,7 +302,7 @@ class B22RemovalNativePromotionStateYndr
       final Widget? b22AdWidgetXaja = await B22PromotionOrchestratorAzwq
           .instance
           .b22BuildCachedNativeAdJqgz(
-            b22AdSceneTbyk: B22PromotionContextSuaj.pr_ban2,
+            b22AdSceneTbyk: B22PromotionContextSuaj.pr_ban1,
             b22AdPosIdXckb: B22PromotionSlotZwla.unload_nat1,
           );
       if (!mounted || b22AdWidgetXaja == null) {

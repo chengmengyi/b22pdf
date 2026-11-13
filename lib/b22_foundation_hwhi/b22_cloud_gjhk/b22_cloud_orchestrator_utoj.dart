@@ -40,6 +40,7 @@ class B22CloudOrchestratorRhpr {
 
   int b22AdCooldownSecondsNmts = 30, b22SecondaryAdCooldownSecondsBnlw = 180;
   bool b22SupportsKoreanNotificationsCxeq = false;
+  bool b22ShowGuidePageQwsp = true;
   String b22AdConfigSourceNfkz = "local";
 
   Future<void> b22InitializePbli() {
@@ -78,6 +79,7 @@ class B22CloudOrchestratorRhpr {
   }
 
   void b22ApplyRemoteConfigurationUops() {
+    b22ShowGuidePageQwsp = b22RemoteConfigRziz?.getBool('guide_page') ?? true;
     var ad_click_delay = b22RemoteConfigRziz?.getInt("ad_click_delay") ?? 0;
     if (ad_click_delay > 0) {
       B22AdClickDelayDhid.b22SaveOaaq(b22TimestampAvvh: ad_click_delay);
@@ -155,13 +157,11 @@ class B22CloudOrchestratorRhpr {
           .b22InitializeMediaNotificationNxyd(b22ForceYwov: true);
     }
 
-    var b22FloatOhoWyks = b22RemoteConfigRziz?.getInt("float_oho") ?? 0;
-    if (b22FloatOhoWyks > 0) {
-      B22FloatingOhoStoreHxpr.b22SaveOaaq(b22TimestampAvvh: b22FloatOhoWyks);
-      FlutterLocalNotificationPlugins.instance.updateCloseOverlayProbability(
-        closeOverlayProbability: b22FloatOhoWyks,
-      );
-    }
+    final int b22FloatOhoWyks = b22RemoteConfigRziz?.getInt("float_oho") ?? 0;
+    B22FloatingOhoStoreHxpr.b22SaveOaaq(b22TimestampAvvh: b22FloatOhoWyks);
+    FlutterLocalNotificationPlugins.instance.updateCloseOverlayProbability(
+      closeOverlayProbability: b22FloatOhoWyks,
+    );
 
     b22InitializeFacebookZcfm();
 

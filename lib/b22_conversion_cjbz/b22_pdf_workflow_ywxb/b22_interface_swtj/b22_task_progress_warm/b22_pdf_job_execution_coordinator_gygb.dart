@@ -53,8 +53,6 @@ class B22PdfJobExecutionCoordinatorDyvo extends B22FoundationCoordinatorXsba {
   Future<void> b22GeneratePdfLabo() async {
     if (b22GeneratingIefl || b22ImagePathsQxot.isEmpty) return;
     b22GeneratingIefl = true;
-    await B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr
-        .b22ShowProgressOverlayIcnd();
     try {
       final List<FileToolsFileInfo> b22ImagesPbjr = <FileToolsFileInfo>[];
       for (final String b22PathRtfb in b22ImagePathsQxot) {
@@ -75,21 +73,11 @@ class B22PdfJobExecutionCoordinatorDyvo extends B22FoundationCoordinatorXsba {
             onProgress: (double b22ValueTgul) {
               if (isClosed) return;
               b22ProgressTana = b22ValueTgul.clamp(0, 1);
-              unawaited(
-                B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr
-                    .b22UpdateProgressOverlayIbax(
-                      b22ProgressUhui: b22ProgressTana,
-                    ),
-              );
               update();
             },
           );
       if (isClosed) return;
       b22ProgressTana = 1;
-      unawaited(
-        B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr
-            .b22UpdateProgressOverlayIbax(b22ProgressUhui: b22ProgressTana),
-      );
       update();
       B22ApplicationRouterJfva.b22ReplaceNamedGvtg<void>(
         b22RouteNameSrbn:

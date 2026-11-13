@@ -70,10 +70,6 @@ class B22AlertOrchestratorNazk {
   }
 
   Future<void> b22RequestNotificationPermissionYwht() async {
-    final bool b22CanInitializeOwzu = await b22IsInitializationAllowedCgbv();
-    if (!b22CanInitializeOwzu) {
-      return;
-    }
     final Future<void> b22RequestFutureNkue = b22PermissionRequestTailKxwa
         .then<void>(
           (_) => b22PerformNotificationPermissionRequestCqza(),
@@ -558,7 +554,7 @@ class B22AlertOrchestratorNazk {
   }
 
   Future<bool> b22IsInitializationAllowedCgbv() async {
-    if(B22NotificationTimingStoreCzfr.b22ReadKsdx().isEmpty){
+    if (B22NotificationTimingStoreCzfr.b22ReadKsdx().isEmpty) {
       return false;
     }
     if (!B22AudienceQualificationOrchestratorCaap

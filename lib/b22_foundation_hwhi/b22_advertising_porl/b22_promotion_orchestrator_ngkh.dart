@@ -147,6 +147,17 @@ class B22PromotionOrchestratorAzwq implements FlutterPdfAdListener {
     }
   }
 
+  hotLauncherCheckAd(){
+    if (B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.isEligibleUser) {
+      B22PromotionOrchestratorAzwq.instance.b22PreloadSceneQjfv(
+        B22PromotionContextSuaj.pr_exit,
+      );
+    }
+    B22PromotionOrchestratorAzwq.instance.b22PreloadSceneQjfv(
+      B22PromotionContextSuaj.pr_user_use,
+    );
+  }
+
   Future<void> b22PreloadSceneQjfv(
     B22PromotionContextSuaj b22AdSceneRxbo,
   ) async {

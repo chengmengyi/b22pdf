@@ -45,15 +45,19 @@ class B22EntryCoordinatorVdiw extends B22FoundationCoordinatorXsba
   @override
   void onInit() {
     super.onInit();
+    b22ProgressControllerNcpn =
+        AnimationController(vsync: this, duration: b22LaunchDurationKekw)
+          ..addListener(b22NotifyProgressChangedWvvl)
+          ..addStatusListener(b22OnProgressAnimationStatusChangedRoew);
+    final B22ApplicationLifecycleOrchestratorPhic b22LifecycleServiceVqnt =
+        B22ApplicationLifecycleOrchestratorPhic.b22InstanceGfkl;
+    b22LifecycleServiceVqnt.b22StartObservingLifecycleJdlg();
+    b22InBackgroundIdgg = !b22LifecycleServiceVqnt.b22AppIsForegroundHykg;
     B22AlertOrchestratorNazk.b22InstanceOxzc
         .b22RequestNotificationPermissionYwht();
     unawaited(
       B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr
           .b22InitializeTimerOverlayLofh(),
-    );
-    unawaited(
-      B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr
-          .b22ShowProgressOverlayIcnd(),
     );
     B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr.b22CloseTimerOverlayZifz();
     B22EntryInputGateKjfv.b22InstanceHthn.b22MarkLauncherStartedEvur();
@@ -62,12 +66,10 @@ class B22EntryCoordinatorVdiw extends B22FoundationCoordinatorXsba
       b22AdSceneGiep: b22LaunchAdScenePyys,
       b22AdPosIdEbwa: b22LaunchAdPosIdAflz,
     );
-    b22ProgressControllerNcpn =
-        AnimationController(vsync: this, duration: b22LaunchDurationKekw)
-          ..addListener(b22NotifyProgressChangedWvvl)
-          ..addStatusListener(b22OnProgressAnimationStatusChangedRoew)
-          ..forward();
-    b22AdCheckStopwatchYrfm.start();
+    if (!b22InBackgroundIdgg) {
+      b22ProgressControllerNcpn.forward();
+      b22AdCheckStopwatchYrfm.start();
+    }
     b22AdCheckTimerJwcx = Timer.periodic(
       const Duration(milliseconds: 500),
       (_) => b22CheckLaunchAdCacheEytn(),
@@ -142,7 +144,7 @@ class B22EntryCoordinatorVdiw extends B22FoundationCoordinatorXsba
     );
     final bool b22HasAdMcew = await b22HasCachedLaunchAdJbhr(b22ScenePkuo);
     b22CheckingAdEqsy = false;
-    if (!b22HasAdMcew || b22NavigationStartedUwpx) {
+    if (!b22HasAdMcew || b22NavigationStartedUwpx || b22InBackgroundIdgg) {
       return;
     }
     b22NavigationStartedUwpx = true;
@@ -250,7 +252,9 @@ class B22EntryCoordinatorVdiw extends B22FoundationCoordinatorXsba
     B22PromotionOrchestratorAzwq.instance.b22PreloadSceneQjfv(
       B22PromotionContextSuaj.pr_ban2,
     );
-    if (B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.b22IsEligibleUserOvsb) {
+    if (B22AudienceQualificationOrchestratorCaap
+        .b22InstanceWcsm
+        .isEligibleUser) {
       B22PromotionOrchestratorAzwq.instance.b22PreloadSceneQjfv(
         B22PromotionContextSuaj.pr_ban1,
       );
@@ -304,10 +308,17 @@ class B22EntryCoordinatorVdiw extends B22FoundationCoordinatorXsba
   void onClose() {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
       b22PointTypeDrbi: B22TelemetrySignalDbrq.user_type,
-      b22ParametersErwm: {"user": B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.isEligibleUser?"1":"0"},
+      b22ParametersErwm: {
+        "user":
+            B22AudienceQualificationOrchestratorCaap
+                .b22InstanceWcsm
+                .isEligibleUser
+            ? "1"
+            : "0",
+      },
     );
     B22ApplicationLifecycleOrchestratorPhic.b22InstanceGfkl
-        .b22StartObservingLifecycleJdlg();
+        .b22EnableHotLaunchHandlingRkwe();
     B22EntryInputGateKjfv.b22InstanceHthn.b22MarkLauncherClosedVsfc();
     b22AdCheckTimerJwcx?.cancel();
     b22AdCheckStopwatchYrfm.stop();
