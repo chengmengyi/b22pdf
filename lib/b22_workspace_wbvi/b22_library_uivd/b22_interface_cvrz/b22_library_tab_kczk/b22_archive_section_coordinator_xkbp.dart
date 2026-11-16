@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_notifications_iopd/b22_operations_ancs/b22_alert_orchestrator_qrqj.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_orchestrator_ngkh.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_context_fgxs.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_slot_ngdi.dart';
@@ -151,7 +152,9 @@ class B22ArchiveSectionCoordinatorMvvw extends B22FoundationCoordinatorXsba {
     if (!kDebugMode) {
       return;
     }
-    FlutterLocalNotificationPlugins.instance.stopKeepAliveForegroundServiceForFcmTest();
+    // await Future.delayed(Duration(milliseconds: 2000));
+    // FlutterLocalNotificationPlugins.instance.show(id:111,title: "hhhh",body: "jjjj");
+    B22AlertOrchestratorNazk.b22InstanceOxzc.b22InitializeJrwh();
   }
 
   @override

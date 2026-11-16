@@ -36,22 +36,24 @@ Future<void> backInit22fekpfe() async {
   // Service 无界面拉活也上报 install；不要在这里上报 session。
   unawaited(B22TelemetryOrchestratorNqon.instance.b22TrackInstallHdny());
 
-  // 后台首次拉起时 GetMaterialApp 尚未创建，必须先手动初始化 GetX 翻译。
-  Get.addTranslations(B22ApplicationLexiconNofd().keys);
+  // Headless 阶段也可能先初始化通知和悬浮窗，必须先解密并注册完整语言表。
+  await B22ApplicationLexiconNofd.b22InitializeEncryptedLexiconRxye();
   Get.locale = B22ApplicationLexiconNofd.b22ResolveInitialLocaleYfpt();
-  Get.fallbackLocale = const Locale('en', 'US');
+  Get.fallbackLocale = B22ApplicationLexiconNofd.b22FallbackLocaleGbqu;
 
   B22AlertOrchestratorNazk.b22InstanceOxzc.startSessionBackground();
 
   unawaited(B22CloudOrchestratorRhpr.b22InstanceBbui.b22InitializePbli());
 
-  await B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm.b22InitializeAttributionGcmr();
+  await B22AudienceQualificationOrchestratorCaap.b22InstanceWcsm
+      .b22InitializeAttributionGcmr();
 }
 
 Future<void> uiInit22dkwod() async {
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await B22ApplicationLexiconNofd.b22InitializeEncryptedLexiconRxye();
-  final Locale b22InitialLocaleFoyu = B22ApplicationLexiconNofd.b22ResolveInitialLocaleYfpt();
+  final Locale b22InitialLocaleFoyu =
+      B22ApplicationLexiconNofd.b22ResolveInitialLocaleYfpt();
   Get.locale = b22InitialLocaleFoyu;
   Get.fallbackLocale = B22ApplicationLexiconNofd.b22FallbackLocaleGbqu;
   await B22FirstEntryOriginOrchestratorJicy.instance.b22InitializeLwsd();
@@ -59,7 +61,8 @@ Future<void> uiInit22dkwod() async {
   await B22QuickActionOrchestratorYmez.instance.b22InitializeKqab();
   B22TelemetryOrchestratorNqon.instance.b22TrackInstallHdny();
   B22TelemetryOrchestratorNqon.instance.b22TrackSessionIhkh();
-  B22AlertOrchestratorNazk.b22InstanceOxzc.b22TrackInitialNotificationEventKvcs();
+  B22AlertOrchestratorNazk.b22InstanceOxzc
+      .b22TrackInitialNotificationEventKvcs();
   B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr.b22CloseTimerOverlayZifz();
   runApp(
     B22FeaturePdfApplicationNgqh(b22InitialLocaleJuhu: b22InitialLocaleFoyu),

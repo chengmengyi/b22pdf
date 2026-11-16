@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_context_fgxs.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_orchestrator_ngkh.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_slot_ngdi.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_destinations_crke.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_navigation_mnyv/b22_application_router_cbkk.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_floating_overlay_zkry/b22_floating_layer_orchestrator_hqqb.dart';
@@ -36,6 +39,10 @@ class B22PdfJobExecutionCoordinatorDyvo extends B22FoundationCoordinatorXsba {
 
   Future<void> b22CheckOverlayPermissionAndGeneratePdfNqhw() async {
     if (b22ImagePathsQxot.isEmpty) return;
+    await B22PromotionOrchestratorAzwq.instance.b22ShowCachedAdZzrb(
+      b22AdSceneHfhk: B22PromotionContextSuaj.pr_user_use,
+      b22AdPosIdEjxk: B22PromotionSlotZwla.pr_use_end,
+    );
     if (await B22FloatingLayerOrchestratorJbeq.b22InstanceAdhr
         .b22HasOverlayPermissionBaud()) {
       await b22GeneratePdfLabo();

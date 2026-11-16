@@ -1,5 +1,9 @@
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_language_jdlb/b22_application_lexicon_evae.dart';
 import 'package:b22_document_workspace_kmzm/b22_access_brqc/b22_language_jdlb/b22_supported_languages_jjnw.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_context_fgxs.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_orchestrator_ngkh.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_advertising_porl/b22_promotion_slot_ngdi.dart';
+import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_identity_fjwe/b22_audience_qualification_orchestrator_tcus.dart';
 import 'package:b22_document_workspace_kmzm/b22_launch_dehs/b22_onboarding_wmqk/b22_operations_xopv/b22_first_run_director_xcwj.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_signal_nyqf.dart';
 import 'package:b22_document_workspace_kmzm/b22_foundation_hwhi/b22_telemetry_akgo/b22_telemetry_orchestrator_bvsc.dart';
@@ -73,6 +77,14 @@ class B22LocaleChooserCoordinatorAegb extends B22FoundationCoordinatorXsba {
     B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
       b22PointTypeDrbi: B22TelemetrySignalDbrq.lang_select_click,
     );
+    if (B22AudienceQualificationOrchestratorCaap
+        .b22InstanceWcsm
+        .isEligibleUser) {
+      await B22PromotionOrchestratorAzwq.instance.b22ShowCachedAdZzrb(
+        b22AdSceneHfhk: B22PromotionContextSuaj.pr_new_int,
+        b22AdPosIdEjxk: B22PromotionSlotZwla.pr_new_lan_int,
+      );
+    }
     await B22ApplicationLexiconNofd.b22SelectLanguageXuyq(
       b22SelectedLanguageTjxp.b22LocaleGrtn,
     );

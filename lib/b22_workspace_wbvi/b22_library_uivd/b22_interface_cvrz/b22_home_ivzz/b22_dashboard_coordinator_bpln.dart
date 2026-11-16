@@ -71,14 +71,14 @@ class B22DashboardCoordinatorNjxu extends B22FoundationCoordinatorXsba {
     if (b22CanExitAfterCommentGedw) {
       return true;
     }
-    if (B22AudienceQualificationOrchestratorCaap
-        .b22InstanceWcsm
-        .isEligibleUser) {
-      await B22PromotionOrchestratorAzwq.instance.b22ShowCachedAdZzrb(
-        b22AdSceneHfhk: B22PromotionContextSuaj.pr_exit,
-        b22AdPosIdEjxk: B22PromotionSlotZwla.pr_exit_app,
-      );
-    }
+    // if (B22AudienceQualificationOrchestratorCaap
+    //     .b22InstanceWcsm
+    //     .isEligibleUser) {
+    //   await B22PromotionOrchestratorAzwq.instance.b22ShowCachedAdZzrb(
+    //     b22AdSceneHfhk: B22PromotionContextSuaj.pr_exit,
+    //     b22AdPosIdEjxk: B22PromotionSlotZwla.pr_exit_app,
+    //   );
+    // }
     final bool? b22CanExitNextTimeBxov =
         await B22ApplicationRouterJfva.b22ShowDialogKwkf<bool>(
           b22ChildNodo: const B22ReviewPanelPomf(),

@@ -76,6 +76,7 @@ final class B22ApplicationLexiconNofd extends Translations {
 
   static Map<String, Map<String, String>> b22LoadedKeysQqpa =
       <String, Map<String, String>>{};
+  static Future<void>? b22InitializationFutureXjke;
 
   static List<Locale> get supportedLocales => b22LanguageOptionsQxlf
       .map((B22LanguageOptionYcrn b22OptionCkrh) {
@@ -84,6 +85,20 @@ final class B22ApplicationLexiconNofd extends Translations {
       .toList(growable: false);
 
   static Future<void> b22InitializeEncryptedLexiconRxye() async {
+    if (b22LoadedKeysQqpa.isNotEmpty) return;
+    final Future<void> b22InitializationFutureYqve =
+        b22InitializationFutureXjke ??= b22LoadEncryptedLexiconRkpa();
+    try {
+      await b22InitializationFutureYqve;
+    } catch (_) {
+      if (identical(b22InitializationFutureXjke, b22InitializationFutureYqve)) {
+        b22InitializationFutureXjke = null;
+      }
+      rethrow;
+    }
+  }
+
+  static Future<void> b22LoadEncryptedLexiconRkpa() async {
     final String b22EncryptedPayloadYynh = await rootBundle.loadString(
       B22ApplicationManifestPdpm.b22EncryptedLexiconAssetZqsa,
     );

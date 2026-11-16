@@ -32,4 +32,6 @@ enum B22PromotionSlotZwla {
   pr_guide2,
   pr_guide_full,
   pr_guide_int,
+  pr_use_end,
+  pr_new_lan_int,
 }

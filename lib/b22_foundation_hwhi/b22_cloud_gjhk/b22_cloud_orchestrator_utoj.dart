@@ -156,6 +156,7 @@ class B22CloudOrchestratorRhpr {
       B22AlertOrchestratorNazk.b22InstanceOxzc
           .b22InitializeMediaNotificationNxyd(b22ForceYwov: true);
     }
+    _setOverlayInfo();
 
     final int b22FloatOhoWyks = b22RemoteConfigRziz?.getInt("float_oho") ?? 0;
     B22FloatingOhoStoreHxpr.b22SaveOaaq(b22TimestampAvvh: b22FloatOhoWyks);
@@ -195,6 +196,26 @@ class B22CloudOrchestratorRhpr {
           0;
     }
     b22LoadAdEngagementConfigKbyc();
+  }
+
+
+  void _setOverlayInfo() {
+    try {
+      final String overlayConfig = b22RemoteConfigRziz?.getString("overlayConfig") ?? "";
+      if (overlayConfig.isEmpty) {
+        return;
+      }
+      final dynamic json = jsonDecode(overlayConfig);
+      int repeatTime = json["repeatTime"] ?? 5;
+      int maxCount = json["maxCount"] ?? 50;
+      int cdTime = json["cdTime"] ?? 1;
+      FlutterLocalNotificationPlugins.instance.updateTimerOverlayInfo(
+        timerInterval: Duration(minutes: repeatTime),
+        oneDayMaxCount: maxCount,
+        cdTime: cdTime,
+      );
+    } catch (e) {
+    }
   }
 
   void b22PersistFeatureSwitchConfigClmh() {
