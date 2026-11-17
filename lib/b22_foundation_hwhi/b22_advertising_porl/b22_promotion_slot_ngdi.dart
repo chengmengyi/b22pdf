@@ -2,6 +2,7 @@
 
 enum B22PromotionSlotZwla {
   pr_new_open,
+  pr_new_launch,
   pr_open_cold,
   pr_open_hot,
   pr_open_noti,

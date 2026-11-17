@@ -169,7 +169,7 @@ class B22EntryCoordinatorVdiw extends B22FoundationCoordinatorXsba
       return B22PromotionSlotZwla.pr_new_open;
     }
     if (_useNewLaunchAd && b22SceneKclu == B22PromotionContextSuaj.pr_launch) {
-      return B22PromotionSlotZwla.pr_open_cold;
+      return B22PromotionSlotZwla.pr_new_launch;
     }
     return b22LaunchAdPosIdAflz;
   }
@@ -206,7 +206,7 @@ class B22EntryCoordinatorVdiw extends B22FoundationCoordinatorXsba
       if (b22HasFallbackAdMtog) {
         await b22ShowResolvedLaunchAdZpyq(
           B22PromotionContextSuaj.pr_launch,
-          B22PromotionSlotZwla.pr_open_cold,
+          B22PromotionSlotZwla.pr_new_launch,
         );
         return;
       }
