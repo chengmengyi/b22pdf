@@ -390,6 +390,9 @@ class B22FileCollectionCoordinatorFigm extends B22FoundationCoordinatorXsba {
   }
 
   Future<void> b22OnDeleteFilePressedSwig() async {
+    B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.file_multi_action_click,
+    );
     final b22PermissionTypeMgch =
         await b22ResolveRequiredStoragePermissionFxme();
     final b22PermissionMctn = await B22AccessOrchestratorRwgw.b22InstanceWzjp

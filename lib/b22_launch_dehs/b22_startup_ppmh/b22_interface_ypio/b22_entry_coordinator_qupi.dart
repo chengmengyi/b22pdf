@@ -210,14 +210,37 @@ class B22EntryCoordinatorVdiw extends B22FoundationCoordinatorXsba
         );
         return;
       }
+      b22TrackLaunchNoCacheFailureOkza(
+        b22AdSceneHfhk: B22PromotionContextSuaj.pr_new_launch,
+        b22AdPosIdEjxk: B22PromotionSlotZwla.pr_new_open,
+      );
     } else if (await b22HasCachedLaunchAdJbhr(b22LaunchAdScenePyys)) {
       await b22ShowResolvedLaunchAdZpyq(
         b22LaunchAdScenePyys,
         b22LaunchAdPosIdAflz,
       );
       return;
+    } else {
+      b22TrackLaunchNoCacheFailureOkza(
+        b22AdSceneHfhk: b22LaunchAdScenePyys,
+        b22AdPosIdEjxk: b22LaunchAdPosIdAflz,
+      );
     }
     await b22CompleteStartupMeot();
+  }
+
+  void b22TrackLaunchNoCacheFailureOkza({
+    required B22PromotionContextSuaj b22AdSceneHfhk,
+    required B22PromotionSlotZwla b22AdPosIdEjxk,
+  }) {
+    B22TelemetryOrchestratorNqon.instance.b22TrackEventWyre(
+      b22PointTypeDrbi: B22TelemetrySignalDbrq.ad_show_fail,
+      b22ParametersErwm: <String, dynamic>{
+        'ad_context': b22AdSceneHfhk.name,
+        'ad_pos_id': b22AdPosIdEjxk.name,
+        'error_message': 'no cache',
+      },
+    );
   }
 
   Future<void> b22ShowResolvedLaunchAdZpyq(
