@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "841796886744",
-    "project_id": "boomtest-b4349",
-    "storage_bucket": "boomtest-b4349.firebasestorage.app"
+    "project_number": "1059676711771",
+    "project_id": "b22-all-pdf-reader",
+    "storage_bucket": "b22-all-pdf-reader.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:841796886744:android:8b9d8bf7a250c88eceb7ad",
+        "mobilesdk_app_id": "1:1059676711771:android:2d9cbfd3b935d6cc88087e",
         "android_client_info": {
-          "package_name": "com.test.boom"
+          "package_name": "com.filevera.pdftool"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDj1dHVW3rmpiU4B1kvpMNOOvJStN9nplQ"
+          "current_key": "AIzaSyCvmDWNZj11-7z-6j-3WgEhVNMnv-PUgn8"
         }
       ],
       "services": {

@@ -417,9 +417,10 @@ packages:
   flutter_local_notification_plugins:
     dependency: "direct main"
     description:
-      path: "/Users/chengmengyi/testbird/plugins/flutter_local_notification_plugins"
-      relative: false
-    source: path
+      name: flutter_local_notification_plugins
+      sha256: fdd843e3f4e2f72fb16f1983ecd95fecfcb75380ff2c8f7655cbc259d55bdbba
+      url: "https://pub.dev"
+    source: hosted
     version: "0.3.3"
   flutter_localizations:
     dependency: "direct main"
